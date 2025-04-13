@@ -14,6 +14,7 @@ class AppPage extends StatelessWidget {
       routes: nav.getRoutesList(),
       bottomNavigationBuilder: (context, tabsRouter) {
         return NavigationBar(
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           destinations: nav.getDestinationList(),
           selectedIndex: tabsRouter.activeIndex,
           onDestinationSelected: tabsRouter.setActiveIndex,
