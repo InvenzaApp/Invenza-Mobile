@@ -17,7 +17,7 @@ abstract class AppRoutes {
             ),
             AutoRoute(
               path: 'users',
-              page: UsersRoute.page,
+              page: TeamRoute.page,
             ),
           ],
         ),

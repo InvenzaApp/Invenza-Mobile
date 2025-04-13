@@ -17,14 +17,14 @@ class AppNavigationDestinations {
           label: "Tasks",
         ),
         NavigationDestination(
-          icon: Icon(Icons.person),
-          label: "Users",
+          icon: Icon(Icons.supervised_user_circle),
+          label: "Team",
         ),
       ];
 
   List<PageRouteInfo<Object?>> getRoutesList() => const [
         DashboardRoute(),
         TasksRoute(),
-        UsersRoute(),
+        TeamRoute(),
       ];
 }
