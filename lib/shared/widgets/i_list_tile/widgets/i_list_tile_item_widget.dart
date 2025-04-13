@@ -1,7 +1,7 @@
-import 'package:app/app/extensions/color_extension.dart';
-import 'package:app/app/extensions/text_extension.dart';
-import 'package:app/app/shared/widgets/i_list_tile/helpers/i_list_tile_item_widget_border_radius.dart';
-import 'package:app/app/shared/widgets/i_list_tile/models/i_list_tile_item.dart';
+import 'package:app/extensions/color_extension.dart';
+import 'package:app/extensions/text_extension.dart';
+import 'package:app/shared/widgets/i_list_tile/helpers/i_list_tile_item_widget_border_radius.dart';
+import 'package:app/shared/widgets/i_list_tile/models/i_list_tile_item.dart';
 import 'package:app/variables.dart';
 import 'package:flutter/material.dart';
 
