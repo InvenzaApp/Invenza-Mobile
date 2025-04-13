@@ -1,5 +1,6 @@
-import 'package:app/app/shared/widgets/i_app_bar.dart';
-import 'package:app/app/shared/widgets/i_list_tile/i_list_tile.dart';
+import 'package:app/extensions/app_localizations.dart';
+import 'package:app/shared/widgets/i_app_bar.dart';
+import 'package:app/shared/widgets/i_list_tile/i_list_tile.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +11,12 @@ class TeamPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       appBar: iAppBar(
         context: context,
-        title: "Team",
+        title: l10n.team_app_bar,
         showBackButton: false,
       ),
       body: Padding(
@@ -21,16 +24,16 @@ class TeamPage extends StatelessWidget {
         child: IListTile(
           children: [
             IListTileItem(
-              title: "Users",
-              subtitle: "Manage users in your company",
+              title: l10n.team_users_title,
+              subtitle: l10n.team_users_subtitle,
               icon: Icons.person,
               onPressed: (){},
             ),
             IListTileItem(
-              title: "Teams",
-              subtitle: "Manage teams in your company",
+              title: l10n.team_groups_title,
+              subtitle: l10n.team_groups_subtitle,
               icon: Icons.groups,
-              onPressed: (){}
+              onPressed: (){},
             ),
           ],
         ),
@@ -38,9 +41,3 @@ class TeamPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

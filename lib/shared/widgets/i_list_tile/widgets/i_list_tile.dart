@@ -1,5 +1,5 @@
-import 'package:app/app/shared/widgets/i_list_tile/models/i_list_tile_item.dart';
-import 'package:app/app/shared/widgets/i_list_tile/widgets/i_list_tile_item_widget.dart';
+import 'package:app/shared/widgets/i_list_tile/models/i_list_tile_item.dart';
+import 'package:app/shared/widgets/i_list_tile/widgets/i_list_tile_item_widget.dart';
 import 'package:app/variables.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,6 @@ class IListTile extends StatelessWidget {
               listLength: children.length,
               index: index,
             ),
-
             if(index != children.length - 1)
               SizedBox(height: smallValue),
           ],

@@ -1,5 +1,6 @@
 # Project
 *.gr.dart
+untranslated.txt
 
 # Miscellaneous
 *.class

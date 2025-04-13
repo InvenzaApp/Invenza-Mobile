@@ -1,0 +1,11 @@
+{
+  "nav_bar_dashboard": "Dashboard",
+  "nav_bar_tasks": "Tasks",
+  "nav_bar_team": "Team",
+
+  "team_app_bar": "Team",
+  "team_users_title": "Users",
+  "team_users_subtitle": "Manage users in your team",
+  "team_groups_title": "Groups",
+  "team_groups_subtitle": "Manage groups in your team"
+}
