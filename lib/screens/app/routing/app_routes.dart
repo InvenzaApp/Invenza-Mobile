@@ -19,6 +19,10 @@ abstract class AppRoutes {
               path: 'users',
               page: TeamRoute.page,
             ),
+            AutoRoute(
+              path: 'settings',
+              page: SettingsRoute.page,
+            ),
           ],
         ),
       ];

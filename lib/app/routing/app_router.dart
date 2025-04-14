@@ -1,4 +1,4 @@
-import 'package:app/app/screens/app/routing/app_routes.dart';
+import 'package:app/screens/app/routing/app_routes.dart';
 import 'package:auto_route/auto_route.dart';
 
 @AutoRouterConfig()
