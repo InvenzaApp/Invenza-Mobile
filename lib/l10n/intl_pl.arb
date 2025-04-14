@@ -3,5 +3,14 @@
   "team_users_title": "Użytkownicy",
   "team_users_subtitle": "Zarządzaj użytkownikami w swoim zespole",
   "team_groups_title": "Grupy",
-  "team_groups_subtitle": "Zarządzaj grupami w swoim zespole"
+  "team_groups_subtitle": "Zarządzaj grupami w swoim zespole",
+
+  "settings_app_bar": "Ustawienia",
+  "settings_theme_title": "Motyw",
+  "settings_theme_subtitle": "Zmień motyw aplikacji",
+
+  "theme_app_bar": "Motyw",
+  "theme_light_title": "Jasny motyw",
+  "theme_dark_title": "Ciemny motyw",
+  "theme_system_title": "Zgodny z systemem"
 }
