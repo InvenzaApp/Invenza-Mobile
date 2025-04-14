@@ -1,8 +1,4 @@
 {
-  "nav_bar_dashboard": "Panel",
-  "nav_bar_tasks": "Zadania",
-  "nav_bar_team": "Zespół",
-
   "team_app_bar": "Zespół",
   "team_users_title": "Użytkownicy",
   "team_users_subtitle": "Zarządzaj użytkownikami w swoim zespole",
