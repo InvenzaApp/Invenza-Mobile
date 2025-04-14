@@ -1,6 +1,8 @@
 # Project
 *.gr.dart
 untranslated.txt
+*.config.dart
+*.g.dart
 
 # Miscellaneous
 *.class

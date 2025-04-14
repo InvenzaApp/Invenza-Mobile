@@ -5,6 +5,10 @@
   "team_groups_title": "Groups",
   "team_groups_subtitle": "Manage groups in your team",
 
+  "login_email_label": "Email address",
+  "login_password_label": "Password",
+  "login_sign_in_button": "Sign in",
+
   "settings_app_bar": "Settings",
   "settings_theme_title": "Theme",
   "settings_theme_subtitle": "Change the theme of the application",

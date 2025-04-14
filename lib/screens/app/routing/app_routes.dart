@@ -5,7 +5,7 @@ import 'package:auto_route/auto_route.dart';
 abstract class AppRoutes {
   static List<AutoRoute> get() => [
         AutoRoute(
-          path: '/',
+          path: '/asd',
           page: AppRoute.page,
           children: [
             AutoRoute(
