@@ -8,9 +8,15 @@
   "settings_app_bar": "Settings",
   "settings_theme_title": "Theme",
   "settings_theme_subtitle": "Change the theme of the application",
+  "settings_language_title": "Language",
+  "settings_language_subtitle": "Change the language of the application",
 
   "theme_app_bar": "Theme",
   "theme_light_title": "Light theme",
   "theme_dark_title": "Dark theme",
-  "theme_system_title": "System default theme"
+  "theme_system_title": "System default theme",
+
+  "language_app_bar": "Language",
+  "language_english_title": "English",
+  "language_polish_title": "Polish"
 }

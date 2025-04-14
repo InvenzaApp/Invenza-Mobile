@@ -7,5 +7,9 @@ abstract class SettingsRoutes {
           path: '/theme',
           page: ThemeRoute.page,
         ),
+        AutoRoute(
+          path: '/language',
+          page: LanguageRoute.page,
+        ),
       ];
 }

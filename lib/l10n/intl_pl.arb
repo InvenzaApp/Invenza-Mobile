@@ -8,9 +8,15 @@
   "settings_app_bar": "Ustawienia",
   "settings_theme_title": "Motyw",
   "settings_theme_subtitle": "Zmień motyw aplikacji",
+  "settings_language_title": "Język",
+  "settings_language_subtitle": "Zmień język aplikacji",
 
   "theme_app_bar": "Motyw",
   "theme_light_title": "Jasny motyw",
   "theme_dark_title": "Ciemny motyw",
-  "theme_system_title": "Zgodny z systemem"
+  "theme_system_title": "Zgodny z systemem",
+
+  "language_app_bar": "Język",
+  "language_english_title": "Angielski",
+  "language_polish_title": "Polski"
 }

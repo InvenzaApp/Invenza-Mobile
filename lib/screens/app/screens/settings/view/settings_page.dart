@@ -30,6 +30,12 @@ class SettingsPage extends StatelessWidget {
               icon: Icons.dark_mode,
               onPressed: () => context.pushRoute(const ThemeRoute()),
             ),
+            IListTileItem(
+              title: l10n.settings_language_title,
+              subtitle: l10n.settings_language_subtitle,
+              icon: Icons.g_translate,
+              onPressed: () => context.pushRoute(const LanguageRoute()),
+            ),
           ],
         ),
       ),
