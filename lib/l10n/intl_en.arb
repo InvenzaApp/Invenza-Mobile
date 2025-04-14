@@ -3,5 +3,14 @@
   "team_users_title": "Users",
   "team_users_subtitle": "Manage users in your team",
   "team_groups_title": "Groups",
-  "team_groups_subtitle": "Manage groups in your team"
+  "team_groups_subtitle": "Manage groups in your team",
+
+  "settings_app_bar": "Settings",
+  "settings_theme_title": "Theme",
+  "settings_theme_subtitle": "Change the theme of the application",
+
+  "theme_app_bar": "Theme",
+  "theme_light_title": "Light theme",
+  "theme_dark_title": "Dark theme",
+  "theme_system_title": "System default theme"
 }

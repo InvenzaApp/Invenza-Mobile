@@ -1,4 +1,5 @@
 import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/screens/app/screens/settings/routing/settings_routes.dart';
 import 'package:auto_route/auto_route.dart';
 
 abstract class AppRoutes {
@@ -25,5 +26,6 @@ abstract class AppRoutes {
             ),
           ],
         ),
+        ...SettingsRoutes.get(),
       ];
 }

@@ -2,6 +2,10 @@ import 'package:app/variables.dart';
 import 'package:flutter/material.dart';
 
 BorderRadiusGeometry getInkBorderRadius(int index, int listLength) {
+  if(listLength == 1){
+    return BorderRadius.circular(largeValue);
+  }
+
   if (index == 0) {
     return BorderRadius.only(
       topLeft: Radius.circular(largeValue),
@@ -20,7 +24,7 @@ BorderRadiusGeometry getInkBorderRadius(int index, int listLength) {
 }
 
 BorderRadius getInkWellBorderRadius(int index, int listLength) {
-  if(listLength == 0){
+  if(listLength == 1){
     return BorderRadius.circular(largeValue);
   }
   
