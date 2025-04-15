@@ -5,6 +5,7 @@ enum ApiMessages {
   invalidRequestParameters,
   invalidCredentials,
   invalidResponse,
+  noInternetConnection,
   unknownError;
 
   static ApiMessages fromJson(String value) {
@@ -13,15 +14,18 @@ enum ApiMessages {
         return invalidRequestParameters;
       case 'INVALID_CREDENTIALS':
         return invalidCredentials;
+      case 'NO_INTERNET_CONNECTION':
+        return noInternetConnection;
       default:
         return unknownError;
     }
   }
 
-  String asString(BuildContext context) => switch(this){
-    invalidRequestParameters => context.l10n.api_invalid_request_parameters,
-    invalidCredentials => context.l10n.api_invalid_credentials,
-    invalidResponse => context.l10n.api_invalid_response,
-    unknownError => context.l10n.api_unknown_error,
-  };
+  String asString(BuildContext context) => switch (this) {
+        invalidRequestParameters => context.l10n.api_invalid_request_parameters,
+        invalidCredentials => context.l10n.api_invalid_credentials,
+        invalidResponse => context.l10n.api_invalid_response,
+        unknownError => context.l10n.api_unknown_error,
+        noInternetConnection => context.l10n.api_no_internet_connection,
+      };
 }
