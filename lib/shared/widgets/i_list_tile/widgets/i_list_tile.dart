@@ -12,6 +12,7 @@ class IListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: children.length,
+      shrinkWrap: true,
       itemBuilder: (context, index) {
         return Column(
           children: [

@@ -5,7 +5,6 @@ import 'package:app/cubit/locale_cubit.dart';
 import 'package:app/cubit/theme_cubit.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
-import 'package:app/network/user/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +19,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => ThemeCubit()),
         BlocProvider(create: (_) => LocaleCubit()),
-        BlocProvider(create: (_) => UserCubit(repo: inject<UserRepository>())),
+        BlocProvider(create: (_) => inject<UserCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, theme) {
