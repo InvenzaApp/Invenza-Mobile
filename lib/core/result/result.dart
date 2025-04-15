@@ -7,10 +7,12 @@ class Result<T> {
   ResultError<T>? get maybeError =>
       this is ResultError<T> ? this as ResultError<T> : null;
 
-  bool isSuccess() => this is ResultSuccess;
+  bool get isSuccess => this is ResultSuccess;
 
-  bool isError() => this is ResultError;
+  bool get isError => this is ResultError;
 }
+
+class EmptyResult<T> extends Result<T>{}
 
 class ResultSuccess<T> extends Result<T> {
   ResultSuccess(this.data);

@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_list_tile/i_list_tile.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class SettingsPage extends StatelessWidget {
@@ -36,9 +40,50 @@ class SettingsPage extends StatelessWidget {
               icon: Icons.g_translate,
               onPressed: () => context.pushRoute(const LanguageRoute()),
             ),
+            IListTileItem(
+              title: l10n.settings_logout_title,
+              subtitle: l10n.settings_logout_subtitle,
+              icon: Icons.logout,
+              onPressed: () async {
+                final userCubit = context.read<UserCubit>();
+                final success = await context.showConfirm(l10n.logout_confirm);
+
+                if(success != null && success){
+                  unawaited(userCubit.signOut());
+
+                  if(context.mounted){
+                    await context.replaceRoute(const LoginRoute());
+                  }
+                }
+              },
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+extension ConfirmExtension on BuildContext {
+  Future<bool?> showConfirm(String message) async {
+    return showDialog<bool>(
+      context: this,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(l10n.notification),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text(l10n.cancel),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: Text(l10n.confirm),
+            ),
+          ],
+        );
+      },
     );
   }
 }

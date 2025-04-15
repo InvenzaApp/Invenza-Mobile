@@ -1,4 +1,15 @@
 {
+  "ok": "Okay",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "notification": "Notification",
+  "logout_confirm": "Are you sure you want to sign out?",
+
+  "api_invalid_request_parameters": "Invalid request parameters. Please contact the administrator.",
+  "api_invalid_credentials": "Email address or password is incorrect.",
+  "api_invalid_response": "Invalid response. Please contact the administrator.",
+  "api_unknown_error": "Unknown error. Please contact the administrator.",
+
   "team_app_bar": "Team",
   "team_users_title": "Users",
   "team_users_subtitle": "Manage users in your team",
@@ -14,6 +25,8 @@
   "settings_theme_subtitle": "Change the theme of the application",
   "settings_language_title": "Language",
   "settings_language_subtitle": "Change the language of the application",
+  "settings_logout_title": "Sign out",
+  "settings_logout_subtitle": "Sign out of the application",
 
   "theme_app_bar": "Theme",
   "theme_light_title": "Light theme",

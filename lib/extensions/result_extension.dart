@@ -7,7 +7,7 @@ extension ResultExtension<T> on Json {
       final success = this['success'] as bool? ?? false;
       if (!success) {
         final errorData = this['data'];
-        return ResultError(ApiMessages.invalidCredentials);
+        return ResultError(ApiMessages.fromJson(errorData.toString()));
       }
 
       final resultData = this['data'];

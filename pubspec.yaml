@@ -25,6 +25,7 @@ dependencies:
   equatable: ^2.0.7
   json_serializable: ^6.9.4
   json_annotation: ^4.9.0
+  flutter_secure_storage: ^9.2.4
 
 dev_dependencies:
   flutter_test:
@@ -38,3 +39,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+    - assets/images/languages/
