@@ -15,6 +15,8 @@ class UserCubit extends Cubit<UserState> {
   final UserRepository repo;
   static final secure = SecureModule();
 
+  void reset() => emit(UserState(result: EmptyResult()));
+
   Future<void> signIn(UserAuthPayload payload) async{
     emit(state.copyWith(isLoading: true));
 

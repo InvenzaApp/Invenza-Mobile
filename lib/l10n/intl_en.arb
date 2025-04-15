@@ -9,6 +9,7 @@
   "api_invalid_credentials": "Email address or password is incorrect.",
   "api_invalid_response": "Invalid response. Please contact the administrator.",
   "api_unknown_error": "Unknown error. Please contact the administrator.",
+  "api_no_internet_connection": "Problem with internet connection. Please try again later.",
 
   "team_app_bar": "Team",
   "team_users_title": "Users",

@@ -17,6 +17,7 @@ class UserService {
   Future<Json> signIn(UserAuthPayload payload) async {
     return _dio
         .post<String>('$baseUrl/sign-in', data: payload.toJson())
-        .then((res) => jsonDecode(res.data!) as Json);
+        .then((res) => jsonDecode(res.data!) as Json)
+        .catchError((e) => noInternetConnectionJson);
   }
 }
