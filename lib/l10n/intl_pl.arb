@@ -1,15 +1,32 @@
 {
+  "ok": "Okej",
+  "confirm": "Dalej",
+  "cancel": "Anuluj",
+  "notification": "Powiadomienie",
+  "logout_confirm": "Czy na pewno chcesz się wylogować?",
+
+  "api_invalid_request_parameters": "Nieprawidłowe parametry żądania. Skontaktuj się z administracją.",
+  "api_invalid_credentials": "Adres e-mail lub hasło są nieprawidłowe.",
+  "api_invalid_response": "Nieprawidłowy odpowiedź serwera. Skontaktuj się z administracją.",
+  "api_unknown_error": "Nieznany błąd. Skontaktuj się z administracją.",
+
   "team_app_bar": "Zespół",
   "team_users_title": "Użytkownicy",
   "team_users_subtitle": "Zarządzaj użytkownikami w swoim zespole",
   "team_groups_title": "Grupy",
   "team_groups_subtitle": "Zarządzaj grupami w swoim zespole",
 
+  "login_email_label": "Adres e-mail",
+  "login_password_label": "Hasło",
+  "login_sign_in_button": "Zaloguj się",
+
   "settings_app_bar": "Ustawienia",
   "settings_theme_title": "Motyw",
   "settings_theme_subtitle": "Zmień motyw aplikacji",
   "settings_language_title": "Język",
   "settings_language_subtitle": "Zmień język aplikacji",
+  "settings_logout_title": "Wyloguj",
+  "settings_logout_subtitle": "Wyloguj się z aplikacji",
 
   "theme_app_bar": "Motyw",
   "theme_light_title": "Jasny motyw",

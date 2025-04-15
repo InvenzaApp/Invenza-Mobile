@@ -1,4 +1,7 @@
 import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/cubit/user_cubit/user_cubit.dart';
+import 'package:app/di.dart';
+import 'package:app/guards/auth_guard.dart';
 import 'package:app/screens/app/screens/settings/routing/settings_routes.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -6,6 +9,11 @@ abstract class AppRoutes {
   static List<AutoRoute> get() => [
         AutoRoute(
           path: '/',
+          guards: [
+            AuthGuard(
+              userCubit: inject<UserCubit>(),
+            ),
+          ],
           page: AppRoute.page,
           children: [
             AutoRoute(
