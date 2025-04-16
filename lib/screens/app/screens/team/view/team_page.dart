@@ -1,3 +1,4 @@
+import 'package:app/app/routing/app_router.gr.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_list_tile/i_list_tile.dart';
@@ -33,7 +34,7 @@ class TeamPage extends StatelessWidget {
               title: l10n.team_groups_title,
               subtitle: l10n.team_groups_subtitle,
               icon: Icons.groups,
-              onPressed: (){},
+              onPressed: () => context.pushRoute(const GroupsListRoute()),
             ),
           ],
         ),
