@@ -12,12 +12,19 @@ class UserService {
   }) : _dio = dio;
   final Dio _dio;
 
-  static const baseUrl = '/api/user';
+  static const userUrl = '/api/user';
+  static const organizationUrl = '/api/organization';
 
   Future<Json> signIn(UserAuthPayload payload) async {
     return _dio
-        .post<String>('$baseUrl/sign-in', data: payload.toJson())
+        .post<String>('$userUrl/sign-in', data: payload.toJson())
         .then((res) => jsonDecode(res.data!) as Json)
+        .catchError((e) => noInternetConnectionJson);
+  }
+
+  Future<Json> getOrganization(int organizationId) async{
+    return _dio.get<Json>('$organizationUrl/$organizationId')
+        .then((res) => jsonEncode(res.data) as Json)
         .catchError((e) => noInternetConnectionJson);
   }
 }
