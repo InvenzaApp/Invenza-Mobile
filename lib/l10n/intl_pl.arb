@@ -4,12 +4,30 @@
   "cancel": "Anuluj",
   "notification": "Powiadomienie",
   "logout_confirm": "Czy na pewno chcesz się wylogować?",
+  "create": "Utwórz",
+  "update": "Edytuj",
+  "form": "Formularz",
 
   "api_invalid_request_parameters": "Nieprawidłowe parametry żądania. Skontaktuj się z administracją.",
   "api_invalid_credentials": "Adres e-mail lub hasło są nieprawidłowe.",
   "api_invalid_response": "Nieprawidłowy odpowiedź serwera. Skontaktuj się z administracją.",
   "api_unknown_error": "Nieznany błąd. Skontaktuj się z administracją.",
   "api_no_internet_connection": "Problem z połączeniem internetowym. Spróbuj ponownie później.",
+
+  "tasks_list_app_bar": "Zadania",
+
+  "task_form_create_app_bar": "Utwórz zadanie",
+  "task_form_update_app_bar": "Edytuj zadanie",
+  "task_form_name": "Nazwa zadania",
+  "task_form_description": "Opis zadania (opcjonalne)",
+  "task_form_deadline": "Termin zadania (opcjonalne)",
+  "task_form_groups": "Grupy",
+
+  "task_show_app_bar": "Podgląd zadania",
+  "task_show_delete_confirm": "Czy na pewno chcesz usunąc zadanie?",
+  "task_show_name": "Nazwa zadania",
+  "task_show_description": "Opis zadania",
+  "task_show_deadline": "Termin zadania",
 
   "team_app_bar": "Zespół",
   "team_users_title": "Użytkownicy",

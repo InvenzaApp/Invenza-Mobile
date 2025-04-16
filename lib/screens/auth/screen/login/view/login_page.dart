@@ -3,7 +3,7 @@ import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/cubit/user_cubit/user_state.dart';
 import 'package:app/extensions/alert_extension.dart';
 import 'package:app/extensions/app_localizations.dart';
-import 'package:app/models/user/user_auth_payload.dart';
+import 'package:app/features/user/models/user_auth_payload.dart';
 import 'package:app/screens/auth/screen/login/widgets/login_language_selector_widget.dart';
 import 'package:app/shared/widgets/form/i_secure_field.dart';
 import 'package:app/shared/widgets/form/i_text_field.dart';

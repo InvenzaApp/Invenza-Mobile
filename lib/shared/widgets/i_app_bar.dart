@@ -5,13 +5,16 @@ PreferredSizeWidget iAppBar({
   required BuildContext context,
   required String title,
   bool showBackButton = true,
+  List<Widget>? actions,
+  VoidCallback? backButtonAction,
 }) =>
     AppBar(
       title: Text(title),
       leading: showBackButton
           ? IconButton(
-        onPressed: context.maybePop,
+        onPressed: backButtonAction ?? context.maybePop,
         icon: const Icon(Icons.chevron_left),
       )
           : null,
+      actions: actions,
     );

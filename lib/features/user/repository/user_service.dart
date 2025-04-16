@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:app/models/user/user_auth_payload.dart';
+import 'package:app/features/user/models/user_auth_payload.dart';
 import 'package:app/type_def/json.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
