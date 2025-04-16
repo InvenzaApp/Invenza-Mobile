@@ -16,7 +16,7 @@ class AuthGuard extends AutoRouteGuard {
   ) async {
     await userCubit.signInWithSavedCredentials();
 
-    if (userCubit.state.result.isSuccess) {
+    if (userCubit.state.user.isSuccess) {
       resolver.next();
       return;
     }

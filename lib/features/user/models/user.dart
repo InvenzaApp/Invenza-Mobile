@@ -1,4 +1,3 @@
-import 'package:app/features/organization/models/organization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -10,7 +9,7 @@ class User extends Equatable {
     required this.name,
     required this.lastname,
     required this.email,
-    required this.organization,
+    required this.organizationId,
     required this.groupsIdList,
   });
 
@@ -19,7 +18,7 @@ class User extends Equatable {
   final String name;
   final String lastname;
   final String email;
-  final Organization organization;
+  final int organizationId;
   final List<int> groupsIdList;
 
   @override
@@ -27,7 +26,7 @@ class User extends Equatable {
         name,
         lastname,
         email,
-        organization,
+        organizationId,
         groupsIdList,
       ];
 }

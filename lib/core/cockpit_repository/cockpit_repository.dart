@@ -4,8 +4,6 @@ import 'package:app/type_def/json.dart';
 abstract class CockpitRepository{
   String? get title => null;
 
-  String get baseUrl;
-
   CockpitRemoteDataSource get remoteDS;
 
   Future<int> create(Json payload);
