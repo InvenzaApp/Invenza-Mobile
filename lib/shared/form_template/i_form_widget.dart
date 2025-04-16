@@ -1,55 +1,34 @@
-import 'package:app/core/cockpit_repo/cockpit_repo.dart';
-import 'package:app/di.dart';
+import 'package:app/core/use_case/use_case.dart';
+import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
-import 'package:app/screens/app/screens/tasks/screens/form/create/repo/tasks_remote_data_source.dart';
-import 'package:app/screens/app/screens/tasks/screens/form/create/repo/tasks_repository.dart';
-import 'package:app/screens/app/screens/tasks/screens/form/create/use_case/tasks_create_use_case.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_button.dart';
 import 'package:app/variables.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-@RoutePage()
-class TasksFormPage extends StatelessWidget {
-  const TasksFormPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return IFormWidget(
-      repo: TasksRepository(
-        title: 'Zadania',
-        remoteDS: inject<TasksRemoteDataSource>(),
-        useCase: inject<TasksCreateUseCase>(),
-      ),
-      fields: [
-        FormBuilderTextField(
-          name: 'name',
-        ),
-      ],
-    );
-  }
-}
-
 class IFormWidget extends StatelessWidget {
   const IFormWidget({
-    required this.repo,
+    required this.useCase,
     required this.fields,
+    required this.onSubmit,
     super.key,
   });
 
-  final CockpitRepo repo;
+  final UseCase useCase;
   final List<Widget> fields;
+  final void Function(int resourceId) onSubmit;
 
   static final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       appBar: iAppBar(
         context: context,
-        title: repo.title,
+        title: useCase.cockpitRepository.title ?? l10n.form,
       ),
       body: Column(
         children: [
@@ -60,6 +39,7 @@ class IFormWidget extends StatelessWidget {
                 child: Padding(
                   padding: largePadding,
                   child: Column(
+                    spacing: largeValue,
                     children: fields,
                   ),
                 ),
@@ -72,10 +52,14 @@ class IFormWidget extends StatelessWidget {
               color: context.container,
             ),
             child: IButton(
-              label: repo.useCase is CreateUseCase ? 'Create' : 'Update',
+              label: useCase is CreateUseCase ? l10n.create : l10n.update,
               onPressed: () async {
-                if(_formKey.currentState!.saveAndValidate()){
-                  await repo.useCase.invoke(_formKey.currentState!.value);
+                if (_formKey.currentState!.saveAndValidate()) {
+                  final taskId = await useCase.invoke(
+                    _formKey.currentState!.value,
+                  );
+
+                  onSubmit(taskId);
                 }
               },
             ),

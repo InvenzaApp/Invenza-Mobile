@@ -8,6 +8,7 @@ class ITextField extends StatelessWidget {
     required this.hint,
     this.actionNext = true,
     this.validators = const [],
+    this.initialValue,
     super.key,
   });
 
@@ -15,13 +16,15 @@ class ITextField extends StatelessWidget {
   final String hint;
   final bool actionNext;
   final List<FormFieldValidator<String>> validators;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
       name: name,
+      initialValue: initialValue,
       decoration: InputDecoration(
-        hintText: hint,
+        label: Text(hint),
       ),
       textInputAction: actionNext ? TextInputAction.next : TextInputAction.done,
       keyboardType: TextInputType.emailAddress,

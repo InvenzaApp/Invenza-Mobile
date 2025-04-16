@@ -1,9 +1,9 @@
 import 'package:app/core/result/result.dart';
 import 'package:app/extensions/result_extension.dart';
-import 'package:app/models/user/user.dart';
-import 'package:app/models/user/user_auth_payload.dart';
+import 'package:app/features/user/models/user.dart';
+import 'package:app/features/user/models/user_auth_payload.dart';
+import 'package:app/features/user/repository/user_service.dart';
 import 'package:app/modules/secure_module.dart';
-import 'package:app/network/user/user_service.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton

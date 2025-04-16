@@ -1,4 +1,4 @@
-import 'package:app/models/organization.dart';
+import 'package:app/features/organization/models/organization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
