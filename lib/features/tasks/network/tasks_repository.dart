@@ -10,9 +10,6 @@ class TasksRepository extends CockpitRepository {
   });
 
   @override
-  String get baseUrl => '/api/tasks';
-
-  @override
   final String? title;
 
   @override

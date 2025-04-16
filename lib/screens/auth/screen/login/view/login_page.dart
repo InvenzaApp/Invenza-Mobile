@@ -35,15 +35,15 @@ class LoginPage extends StatelessWidget {
 
     return BlocListener<UserCubit, UserState>(
       listener: (context, state) async {
-        if (state.result.isError) {
+        if (state.user.isError) {
           final cubit = context.read<UserCubit>();
           await context.showAlert(
-            state.result.maybeError!.errorMessage.asString(
+            state.user.maybeError!.errorMessage.asString(
               context,
             ),
           );
           cubit.reset();
-        } else if (state.result.isSuccess) {
+        } else if (state.user.isSuccess) {
           await context.replaceRoute(const AppRoute());
         }
       },
