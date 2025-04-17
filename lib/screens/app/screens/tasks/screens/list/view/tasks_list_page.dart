@@ -4,6 +4,7 @@ import 'package:app/screens/app/screens/tasks/cubit/tasks_list_cubit.dart';
 import 'package:app/screens/app/screens/tasks/cubit/tasks_list_state.dart';
 import 'package:app/screens/app/screens/tasks/screens/list/widgets/tasks_list_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
+import 'package:app/shared/widgets/i_error_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,10 @@ class TasksListPage extends StatelessWidget {
       ),
       body: BlocBuilder<TasksListCubit, TasksListState>(
         builder: (context, state) {
+          if(state.result?.isError ?? true){
+            return const IErrorWidget();
+          }
+
           return Padding(
             padding: mediumPadding,
             child: RefreshIndicator(
@@ -42,9 +47,9 @@ class TasksListPage extends StatelessWidget {
                 await context.read<TasksListCubit>().fetch();
               },
               child: ListView.builder(
-                itemCount: state.tasksList.length,
+                itemCount: state.result!.maybeValue!.length,
                 itemBuilder: (context, index) {
-                  final item = state.tasksList[index];
+                  final item = state.result!.maybeValue![index];
 
                   return Column(
                     children: [

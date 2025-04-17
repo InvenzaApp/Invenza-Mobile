@@ -101,56 +101,55 @@ class _TasksShowPageState extends State<TasksShowPage> {
       ),
       body: BlocBuilder<TasksShowCubit, TasksShowState>(
         builder: (context, state) {
-          if (state is TasksShowLoadedState) {
-            return Padding(
-              padding: largePadding,
-              child: Column(
-                spacing: mediumValue,
-                children: [
-                  ICard(
-                    children: [
-                      ICardItem(
-                        label: l10n.task_show_name,
-                        value: state.task.title,
-                      ),
-                      if (state.task.description?.isNotEmpty ?? false)
-                        ICardItem(
-                          label: l10n.task_show_description,
-                          value: state.task.description!,
-                        ),
-                      if (state.task.deadline != null)
-                        ICardItem(
-                          label: l10n.task_show_deadline,
-                          value: state.task.deadline!.formattedDateTime,
-                        ),
-                    ],
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: state.task.groupsList!.length,
-                      itemBuilder: (context, index) {
-                        final group = state.task.groupsList![index];
-
-                        return Column(
-                          children: [
-                            TasksShowGroupWidget(
-                              group: group,
-                            ),
-                            SizedBox(height: smallValue),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            );
-          } else if (state is TasksShowPendingState) {
+          if (state.isLoading) {
             return const ILoadingWidget();
-          } else {
-            return const SizedBox.shrink();
           }
+
+          final task = state.task!;
+          return Padding(
+            padding: largePadding,
+            child: Column(
+              spacing: mediumValue,
+              children: [
+                ICard(
+                  children: [
+                    ICardItem(
+                      label: l10n.task_show_name,
+                      value: task.title,
+                    ),
+                    if (task.description?.isNotEmpty ?? false)
+                      ICardItem(
+                        label: l10n.task_show_description,
+                        value: task.description!,
+                      ),
+                    if (task.deadline != null)
+                      ICardItem(
+                        label: l10n.task_show_deadline,
+                        value: task.deadline!.formattedDateTime,
+                      ),
+                  ],
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: task.groupsList!.length,
+                    itemBuilder: (context, index) {
+                      final group = task.groupsList![index];
+
+                      return Column(
+                        children: [
+                          TasksShowGroupWidget(
+                            group: group,
+                          ),
+                          SizedBox(height: smallValue),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          );
         },
       ),
     );

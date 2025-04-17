@@ -5,19 +5,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class GroupsListCubit extends Cubit<GroupsListState> {
   GroupsListCubit({
     required this.repository,
-  }) : super(const GroupsListState()){
+  }) : super(const GroupsListState()) {
     _initialize();
   }
 
   final GroupsRepository repository;
 
-  Future<void> _initialize() async{
+  Future<void> _initialize() async {
     await fetch();
   }
 
-  Future<void> fetch() async{
-    final groups = await repository.getAll();
+  Future<void> fetch() async {
+    final result = await repository.getAll();
 
-    emit(GroupsListState(groupsList: groups));
+    emit(
+      GroupsListState(
+        groupsList: result.isSuccess ? result.maybeValue! : null,
+        error: result.isError ? result.maybeError! : null,
+      ),
+    );
   }
 }

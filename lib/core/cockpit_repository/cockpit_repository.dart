@@ -1,4 +1,5 @@
 import 'package:app/core/cockpit_repository/cockpit_remote_data_source.dart';
+import 'package:app/core/result/result.dart';
 import 'package:app/type_def/json.dart';
 
 abstract class CockpitRepository{
@@ -6,13 +7,13 @@ abstract class CockpitRepository{
 
   CockpitRemoteDataSource get remoteDS;
 
-  Future<int> create(Json payload);
+  Future<Result<int>> create(Json payload);
 
-  Future<List<Object>> getAll();
+  Future<Result<List<Object>>> getAll();
 
-  Future<Object> get(int resourceId);
+  Future<Result<Object>> get(int resourceId);
 
   Future<void> delete(int resourceId);
 
-  Future<int> update(int resourceId, Json payload);
+  Future<Result<int>> update(int resourceId, Json payload);
 }

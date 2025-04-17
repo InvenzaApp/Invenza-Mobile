@@ -34,9 +34,9 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
 
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
-        if (state.organization != null) {
-          final organization = state.organization!;
-          final user = state.user!;
+        if (state.organizationResult?.isSuccess ?? false) {
+          final organization = state.organizationResult!.maybeValue!;
+          final user = state.userResult!.maybeValue!;
 
           return IFormWidget(
             useCase: widget.useCase,

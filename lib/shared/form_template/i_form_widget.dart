@@ -1,3 +1,4 @@
+import 'package:app/core/result/result.dart';
 import 'package:app/core/use_case/use_case.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
@@ -17,7 +18,7 @@ class IFormWidget extends StatelessWidget {
 
   final UseCase useCase;
   final List<Widget> fields;
-  final void Function(int resourceId) onSubmit;
+  final void Function(Result<int> resourceId) onSubmit;
 
   static final _formKey = GlobalKey<FormBuilderState>();
 

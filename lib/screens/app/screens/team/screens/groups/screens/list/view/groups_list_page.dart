@@ -52,7 +52,7 @@ class GroupsListPage extends StatelessWidget implements AutoRouteWrapper {
       ),
       body: BlocBuilder<GroupsListCubit, GroupsListState>(
         builder: (context, state) {
-          if(state.groupsList.isEmpty){
+          if(state.groupsList?.isEmpty ?? true){
             return IErrorWidget(
               icon: Icons.group_off_sharp,
               title: context.l10n.groups_list_no_groups_title,
@@ -64,9 +64,9 @@ class GroupsListPage extends StatelessWidget implements AutoRouteWrapper {
             child: RefreshIndicator(
               onRefresh: () async => context.read<GroupsListCubit>().fetch(),
               child: ListView.builder(
-                itemCount: state.groupsList.length,
+                itemCount: state.groupsList!.length,
                 itemBuilder: (context, index) {
-                  final group = state.groupsList[index];
+                  final group = state.groupsList![index];
                   return Column(
                     children: [
                       GroupsListWidget(child: group),

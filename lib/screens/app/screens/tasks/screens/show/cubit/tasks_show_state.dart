@@ -1,16 +1,24 @@
 import 'package:app/features/tasks/models/task.dart';
 import 'package:equatable/equatable.dart';
 
-abstract class TasksShowState{}
-
-class TasksShowPendingState extends TasksShowState {}
-
-class TasksShowLoadedState extends TasksShowState with EquatableMixin{
-  TasksShowLoadedState({
-    required this.task,
+class TasksShowState extends Equatable {
+  const TasksShowState({
+    this.task,
+    this.isLoading = false,
   });
 
-  final Task task;
+  TasksShowState copyWith({
+    Task? task,
+    bool? isLoading,
+  }) {
+    return TasksShowState(
+      task: task ?? this.task,
+      isLoading: isLoading ?? this.isLoading,
+    );
+  }
+
+  final Task? task;
+  final bool isLoading;
 
   @override
   List<Object?> get props => [task];

@@ -16,31 +16,27 @@ abstract class CockpitRemoteDataSource {
   @protected
   final String baseUrl;
 
-  Future<int> create(Json payload) async{
+  Future<Json> create(Json payload) async{
     return httpClient.post<Json>(baseUrl, data: jsonEncode(payload))
-        .then((res) => res.data)
-        .then((data) => data!['data'] as int);
+        .then((res) => res.data!);
   }
 
-  Future<List<dynamic>> getAll() async{
+  Future<Json> getAll() async{
     return httpClient.get<Json>(baseUrl)
-        .then((res) => res.data)
-        .then((data) => data!['data'] as List<dynamic>);
+        .then((res) => res.data!);
   }
 
-  Future<dynamic> get(int resourceId) async{
+  Future<Json> get(int resourceId) async{
     return httpClient.get<Json>('$baseUrl/$resourceId')
-        .then((res) => res.data)
-        .then((data) => data!['data']);
+        .then((res) => res.data!);
   }
 
   Future<void> delete(int resourceId) async{
     await httpClient.delete<Json>('$baseUrl/$resourceId');
   }
 
-  Future<int> update(int resourceId, Json payload) async{
+  Future<Json> update(int resourceId, Json payload) async{
     return httpClient.put<Json>('$baseUrl/$resourceId', data: jsonEncode(payload))
-        .then((res) => res.data)
-        .then((data) => data!['data'] as int);
+        .then((res) => res.data!);
   }
 }

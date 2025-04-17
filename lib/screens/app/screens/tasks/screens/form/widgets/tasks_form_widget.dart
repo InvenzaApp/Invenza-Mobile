@@ -45,11 +45,13 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
 
     final useCase = widget.useCase as TasksUpdateUseCase;
 
-    final task = await useCase.cockpitRepository.get(useCase.resourceId);
+    final result = await useCase.cockpitRepository.get(useCase.resourceId);
 
-    setState(() {
-      resources = task;
-    });
+    if(result.isSuccess){
+      setState(() {
+        resources = result.maybeValue;
+      });
+    }
   }
 
   @override
@@ -59,7 +61,7 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
       builder: (context, groupsState) {
         return BlocBuilder<UserCubit, UserState>(
           builder: (context, userState) {
-            if (groupsState.groupsList.isEmpty) {
+            if (groupsState.groupsList?.isEmpty ?? true) {
               return IScaffoldErrorWidget(
                 icon: Icons.group_off_sharp,
                 title: l10n.task_form_no_groups_title,
@@ -100,7 +102,7 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
                         label: l10n.task_form_groups_label,
                         initialValue:
                             resources?.groupsList?.map((e) => e.id).toList(),
-                        options: groupsState.groupsList
+                        options: groupsState.groupsList!
                             .map(
                               (group) => IFormOption(
                                 label: group.name,

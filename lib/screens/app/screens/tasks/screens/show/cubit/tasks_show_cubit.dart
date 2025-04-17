@@ -6,24 +6,29 @@ class TasksShowCubit extends Cubit<TasksShowState> {
   TasksShowCubit({
     required this.repository,
     required this.resourceId,
-  }) : super(TasksShowPendingState()){
+  }) : super(const TasksShowState()) {
     _initialize();
   }
 
   final TasksRepository repository;
   final int resourceId;
 
-  Future<void> _initialize() async{
+  Future<void> _initialize() async {
     await fetch();
   }
 
   Future<void> fetch() async {
-    final task = await repository.get(resourceId);
+    emit(state.copyWith(isLoading: true));
+    final result = await repository.get(resourceId);
 
-    emit(TasksShowLoadedState(task: task));
+    emit(
+      TasksShowState(
+        task: result.isSuccess ? result.maybeValue! : null,
+      ),
+    );
   }
 
-  Future<void> delete() async{
+  Future<void> delete() async {
     await repository.delete(resourceId);
   }
 }
