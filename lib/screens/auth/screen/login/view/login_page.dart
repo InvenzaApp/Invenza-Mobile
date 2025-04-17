@@ -5,8 +5,8 @@ import 'package:app/extensions/alert_extension.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/user/models/user_auth_payload.dart';
 import 'package:app/screens/auth/screen/login/widgets/login_language_selector_widget.dart';
-import 'package:app/shared/widgets/form/i_secure_field.dart';
-import 'package:app/shared/widgets/form/i_text_field.dart';
+import 'package:app/shared/widgets/form/i_form_secure_field.dart';
+import 'package:app/shared/widgets/form/i_form_text_field.dart';
 import 'package:app/shared/widgets/i_button.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
@@ -61,17 +61,19 @@ class LoginPage extends StatelessWidget {
                       spacing: smallValue,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        ITextField(
+                        IFormTextField(
                           name: 'email',
-                          hint: l10n.login_email_label,
+                          placeholder: l10n.login_email_placeholder,
+                          label: l10n.login_email_label,
                           validators: [
                             FormBuilderValidators.required(),
                             FormBuilderValidators.email(),
                           ],
                         ),
-                        ISecureField(
+                        IFormSecureField(
                           name: 'password',
-                          hint: l10n.login_password_label,
+                          placeholder: l10n.login_password_placeholder,
+                          label: l10n.login_password_label,
                           validators: [
                             FormBuilderValidators.required(),
                           ],

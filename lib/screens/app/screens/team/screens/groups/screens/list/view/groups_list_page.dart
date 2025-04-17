@@ -1,4 +1,8 @@
+import 'dart:async';
+
+import 'package:app/app/routing/app_router.gr.dart';
 import 'package:app/di.dart';
+import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/group/network/groups_remote_data_source.dart';
 import 'package:app/features/group/network/groups_repository.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_cubit.dart';
@@ -31,7 +35,19 @@ class GroupsListPage extends StatelessWidget implements AutoRouteWrapper {
     return Scaffold(
       appBar: iAppBar(
         context: context,
-        title: 'Grupy',
+        title: context.l10n.groups_list_app_bar,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final cubit = context.read<GroupsListCubit>();
+          final needUpdate =
+              await context.pushRoute(const GroupsCreateFormRoute());
+
+          if(needUpdate == true){
+            unawaited(cubit.fetch());
+          }
+        },
+        child: const Icon(Icons.add),
       ),
       body: BlocBuilder<GroupsListCubit, GroupsListState>(
         builder: (context, state) {

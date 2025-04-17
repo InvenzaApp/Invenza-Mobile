@@ -6,7 +6,11 @@ import 'package:app/type_def/json.dart';
 class GroupsRepository extends CockpitRepository {
   GroupsRepository({
     required this.remoteDS,
+    this.title,
   });
+
+  @override
+  final String? title;
 
   @override
   Future<int> create(Json payload) async {

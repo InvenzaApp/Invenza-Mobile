@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 PreferredSizeWidget iAppBar({
   required BuildContext context,
-  required String title,
+  String? title,
   bool showBackButton = true,
   List<Widget>? actions,
   VoidCallback? backButtonAction,
 }) =>
     AppBar(
-      title: Text(title),
+      title: title != null ? Text(title) : null,
       leading: showBackButton
           ? IconButton(
         onPressed: backButtonAction ?? context.maybePop,

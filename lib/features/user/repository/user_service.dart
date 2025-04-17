@@ -22,9 +22,10 @@ class UserService {
         .catchError((e) => noInternetConnectionJson);
   }
 
-  Future<Json> getOrganization(int organizationId) async{
-    return _dio.get<Json>('$organizationUrl/$organizationId')
-        .then((res) => jsonEncode(res.data) as Json)
+  Future<Json> getOrganization(int organizationId) async {
+    return _dio
+        .get<Json>('$organizationUrl/$organizationId')
+        .then((res) => res.data!)
         .catchError((e) => noInternetConnectionJson);
   }
 }
