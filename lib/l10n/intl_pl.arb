@@ -1,0 +1,75 @@
+{
+  "ok": "Okej",
+  "confirm": "Dalej",
+  "cancel": "Anuluj",
+  "notification": "Powiadomienie",
+  "logout_confirm": "Czy na pewno chcesz się wylogować?",
+  "create": "Utwórz",
+  "update": "Edytuj",
+  "form": "Formularz",
+  "error_title": "Wystąpił błąd podczas pobierania danych.",
+  "error_subtitle": "Naciśnij, aby spróbować ponownie.",
+
+  "api_invalid_request_parameters": "Nieprawidłowe parametry żądania. Skontaktuj się z administracją.",
+  "api_invalid_credentials": "Adres e-mail lub hasło są nieprawidłowe.",
+  "api_invalid_response": "Nieprawidłowy odpowiedź serwera. Skontaktuj się z administracją.",
+  "api_unknown_error": "Nieznany błąd. Skontaktuj się z administracją.",
+  "api_no_internet_connection": "Problem z połączeniem internetowym. Spróbuj ponownie później.",
+
+  "tasks_list_app_bar": "Zadania",
+
+  "task_form_create_app_bar": "Utwórz zadanie",
+  "task_form_no_groups_title": "Nie znaleziono żadnych grup",
+  "task_form_no_groups_subtitle": "Aby dodać zadanie musisz najpierw utworzyć grupę",
+  "task_form_update_app_bar": "Edytuj zadanie",
+  "task_form_name_label": "Nazwa zadania",
+  "task_form_name_placeholder": "Wpisz nazwę",
+  "task_form_description_label": "Opis zadania (opcjonalne)",
+  "task_form_description_placeholder": "Wpisz opis",
+  "task_form_deadline_label": "Termin zadania (opcjonalne)",
+  "task_form_deadline_placeholder": "Podaj termin",
+  "task_form_groups_label": "Grupy",
+
+  "task_show_app_bar": "Podgląd zadania",
+  "task_show_delete_confirm": "Czy na pewno chcesz usunąc zadanie?",
+  "task_show_name": "Nazwa zadania",
+  "task_show_description": "Opis zadania",
+  "task_show_deadline": "Termin zadania",
+
+  "team_app_bar": "Zespół",
+  "team_users_title": "Użytkownicy",
+  "team_users_subtitle": "Zarządzaj użytkownikami w swoim zespole",
+  "team_groups_title": "Grupy",
+  "team_groups_subtitle": "Zarządzaj grupami w swoim zespole",
+
+  "groups_list_app_bar": "Grupy",
+  "groups_list_no_groups_title": "Nie znaleziono żadnych grup",
+
+  "groups_create_app_bar": "Utwórz grupę",
+  "groups_create_name_label": "Nazwa grupy",
+  "groups_create_name_placeholder": "Wpisz nazwę",
+  "groups_create_users_label": "Lista użytkowników",
+
+  "login_email_label": "Adres e-mail",
+  "login_email_placeholder": "Wpisz adres e-mail",
+  "login_password_label": "Hasło",
+  "login_password_placeholder": "Wpisz hasło",
+  "login_sign_in_button": "Zaloguj się",
+
+  "settings_app_bar": "Ustawienia",
+  "settings_theme_title": "Motyw",
+  "settings_theme_subtitle": "Zmień motyw aplikacji",
+  "settings_language_title": "Język",
+  "settings_language_subtitle": "Zmień język aplikacji",
+  "settings_logout_title": "Wyloguj",
+  "settings_logout_subtitle": "Wyloguj się z aplikacji",
+
+  "theme_app_bar": "Motyw",
+  "theme_light_title": "Jasny motyw",
+  "theme_dark_title": "Ciemny motyw",
+  "theme_system_title": "Zgodny z systemem",
+
+  "language_app_bar": "Język",
+  "language_english_title": "Angielski",
+  "language_polish_title": "Polski"
+}
