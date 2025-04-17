@@ -43,6 +43,7 @@
   "team_groups_subtitle": "Zarządzaj grupami w swoim zespole",
 
   "groups_list_app_bar": "Grupy",
+  "groups_list_no_groups_title": "Nie znaleziono żadnych grup",
 
   "groups_create_app_bar": "Utwórz grupę",
   "groups_create_name_label": "Nazwa grupy",
