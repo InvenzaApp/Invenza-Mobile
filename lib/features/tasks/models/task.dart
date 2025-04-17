@@ -1,3 +1,4 @@
+import 'package:app/features/group/models/group.dart';
 import 'package:app/type_def/json.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -9,7 +10,7 @@ class Task extends Equatable {
   const Task({
     required this.id,
     required this.title,
-    required this.groupsIdList,
+    required this.groupsList,
     this.description,
     this.deadline,
   });
@@ -20,8 +21,14 @@ class Task extends Equatable {
   final String title;
   final String? description;
   final DateTime? deadline;
-  final List<int> groupsIdList;
+  final List<Group>? groupsList;
 
   @override
-  List<Object?> get props => [id, title, description, deadline, groupsIdList];
+  List<Object?> get props => [
+        id,
+        title,
+        description,
+        deadline,
+        groupsList,
+      ];
 }
