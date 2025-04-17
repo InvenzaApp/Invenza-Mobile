@@ -44,5 +44,6 @@ class UserCubit extends Cubit<UserState> {
 
   Future<void> signOut() async {
     await secure.deleteUserCredentials();
+    reset();
   }
 }
