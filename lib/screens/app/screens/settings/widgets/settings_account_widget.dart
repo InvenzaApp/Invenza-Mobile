@@ -13,7 +13,7 @@ class SettingsAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
-        final user = state.user.maybeValue!.data;
+        final user = state.user;
 
         return Container(
           padding: mediumPadding,
@@ -38,11 +38,11 @@ class SettingsAccountWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${user.name} ${user.lastname}',
+                    '${user?.name ?? 'null'} ${user?.lastname ?? 'null'}',
                     style: context.titleSmall,
                   ),
                   Text(
-                    user.email,
+                    user?.email ?? 'null',
                     style: context.bodyMedium.copyWith(
                       color: context.onSurfaceVariant,
                     ),

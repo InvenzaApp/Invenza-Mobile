@@ -20,11 +20,12 @@ class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   static final _formKey = GlobalKey<FormBuilderState>();
+  static bool _hasNavigated = false;
 
   Future<void> _signIn(UserCubit cubit) async {
     if (_formKey.currentState!.saveAndValidate()) {
       final json = _formKey.currentState!.value;
-
+      _hasNavigated = false;
       await cubit.signIn(UserAuthPayload.fromJson(json));
     }
   }
@@ -34,16 +35,16 @@ class LoginPage extends StatelessWidget {
     final l10n = context.l10n;
 
     return BlocListener<UserCubit, UserState>(
+      listenWhen: (previous, current) {
+        return previous != current;
+      },
       listener: (context, state) async {
-        if (state.user.isError) {
+        if (state.user == null && state.error != null) {
           final cubit = context.read<UserCubit>();
-          await context.showAlert(
-            state.user.maybeError!.errorMessage.asString(
-              context,
-            ),
-          );
+          await context.showAlert(state.error!.asString(context));
           cubit.reset();
-        } else if (state.user.isSuccess) {
+        } else if (state.user != null && !_hasNavigated) {
+          _hasNavigated = true;
           await context.replaceRoute(const AppRoute());
         }
       },

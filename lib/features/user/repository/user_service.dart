@@ -18,14 +18,14 @@ class UserService {
   Future<Json> signIn(UserAuthPayload payload) async {
     return _dio
         .post<String>('$userUrl/sign-in', data: payload.toJson())
-        .then((res) => jsonDecode(res.data!) as Json)
+        .then((res) => jsonDecode(res.data!)['data'] as Json)
         .catchError((e) => noInternetConnectionJson);
   }
 
   Future<Json> getOrganization(int organizationId) async {
     return _dio
-        .get<Json>('$organizationUrl/$organizationId')
-        .then((res) => res.data!)
+        .get<String>('$organizationUrl/$organizationId')
+        .then((res) => jsonDecode(res.data!)['data'] as Json)
         .catchError((e) => noInternetConnectionJson);
   }
 }
