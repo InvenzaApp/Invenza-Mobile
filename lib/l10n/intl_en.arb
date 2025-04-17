@@ -19,6 +19,8 @@
   "tasks_list_app_bar": "Tasks",
 
   "task_form_create_app_bar": "Create task",
+  "task_form_no_groups_title": "No groups found",
+  "task_form_no_groups_subtitle": "You need to create at least one group to create task",
   "task_form_update_app_bar": "Edit task",
   "task_form_name_label": "Task name",
   "task_form_name_placeholder": "Enter name",

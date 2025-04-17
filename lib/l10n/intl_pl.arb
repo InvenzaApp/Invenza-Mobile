@@ -19,6 +19,8 @@
   "tasks_list_app_bar": "Zadania",
 
   "task_form_create_app_bar": "Utwórz zadanie",
+  "task_form_no_groups_title": "Nie znaleziono żadnych grup",
+  "task_form_no_groups_subtitle": "Aby dodać zadanie musisz najpierw utworzyć grupę",
   "task_form_update_app_bar": "Edytuj zadanie",
   "task_form_name_label": "Nazwa zadania",
   "task_form_name_placeholder": "Wpisz nazwę",
