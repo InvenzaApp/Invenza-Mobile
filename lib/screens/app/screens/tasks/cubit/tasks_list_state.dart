@@ -1,13 +1,23 @@
+import 'package:app/core/result/result.dart';
+import 'package:app/enums/api_messages.dart';
 import 'package:app/features/tasks/models/task.dart';
 import 'package:equatable/equatable.dart';
 
-class TasksListState extends Equatable{
+class TasksListState extends Equatable {
   const TasksListState({
-    this.tasksList = const [],
+    this.result,
   });
 
-  final List<Task> tasksList;
+  TasksListState copyWith({
+    Result<List<Task>>? result,
+    ApiMessages? error,
+  }) =>
+      TasksListState(
+        result: result ?? this.result,
+      );
+
+  final Result<List<Task>>? result;
 
   @override
-  List<Object?> get props => [tasksList];
+  List<Object?> get props => [result];
 }

@@ -1,4 +1,6 @@
 import 'package:app/core/cockpit_repository/cockpit_repository.dart';
+import 'package:app/core/result/result.dart';
+import 'package:app/extensions/result_extension.dart';
 import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/network/tasks_remote_data_source.dart';
 import 'package:app/type_def/json.dart';
@@ -16,22 +18,18 @@ class TasksRepository extends CockpitRepository {
   final TasksRemoteDataSource remoteDS;
 
   @override
-  Future<int> create(Json payload) async {
-    return remoteDS.create(payload)
-        .then((data) => data);
+  Future<Result<int>> create(Json payload) async {
+    return remoteDS.create(payload).asResult<int>();
   }
 
   @override
-  Future<List<Task>> getAll() async {
-    return remoteDS.getAll().then(
-          (data) => data.map((item) => Task.fromJson(item as Json)).toList(),
-        );
+  Future<Result<List<Task>>> getAll() async {
+    return remoteDS.getAll().asListResult<Task>(fromJson: Task.fromJson);
   }
 
   @override
-  Future<Task> get(int resourceId) async{
-    return remoteDS.get(resourceId)
-        .then((data) => Task.fromJson(data as Json));
+  Future<Result<Task>> get(int resourceId) async {
+    return remoteDS.get(resourceId).asResult<Task>(fromJson: Task.fromJson);
   }
 
   @override
@@ -40,8 +38,7 @@ class TasksRepository extends CockpitRepository {
   }
 
   @override
-  Future<int> update(int resourceId, Json payload) async{
-    return remoteDS.update(resourceId, payload)
-        .then((data) => data);
+  Future<Result<int>> update(int resourceId, Json payload) async {
+    return remoteDS.update(resourceId, payload).asResult<int>();
   }
 }

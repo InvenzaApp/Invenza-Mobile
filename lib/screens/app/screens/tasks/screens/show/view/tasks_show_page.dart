@@ -10,6 +10,7 @@ import 'package:app/features/tasks/network/tasks_repository.dart';
 import 'package:app/screens/app/screens/tasks/screens/list/widgets/tasks_list_widget.dart';
 import 'package:app/screens/app/screens/tasks/screens/show/cubit/tasks_show_cubit.dart';
 import 'package:app/screens/app/screens/tasks/screens/show/cubit/tasks_show_state.dart';
+import 'package:app/screens/app/screens/tasks/screens/show/widgets/tasks_show_group_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_card/i_card.dart';
 import 'package:app/shared/widgets/i_loading_widget.dart';
@@ -19,7 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
-class TasksShowPage extends StatefulWidget implements AutoRouteWrapper{
+class TasksShowPage extends StatefulWidget implements AutoRouteWrapper {
   const TasksShowPage({
     @pathParam required this.resourceId,
     super.key,
@@ -62,8 +63,8 @@ class _TasksShowPageState extends State<TasksShowPage> {
           IconButton(
             onPressed: () async {
               final cubit = context.read<TasksShowCubit>();
-              final success = await context
-                  .showConfirm(l10n.task_show_delete_confirm);
+              final success =
+                  await context.showConfirm(l10n.task_show_delete_confirm);
 
               if (success != null && success) {
                 unawaited(cubit.delete());
@@ -89,7 +90,7 @@ class _TasksShowPageState extends State<TasksShowPage> {
             ),
           );
 
-          if(needUpdate == true && context.mounted){
+          if (needUpdate == true && context.mounted) {
             setState(() {
               requireUpdate = true;
             });
@@ -100,37 +101,55 @@ class _TasksShowPageState extends State<TasksShowPage> {
       ),
       body: BlocBuilder<TasksShowCubit, TasksShowState>(
         builder: (context, state) {
-          if (state is TasksShowLoadedState) {
-            return Padding(
-              padding: largePadding,
-              child: Column(
-                children: [
-                  ICard(
-                    children: [
-                      ICardItem(
-                        label: l10n.task_show_name,
-                        value: state.task.title,
-                      ),
-                      if (state.task.description?.isNotEmpty ?? false)
-                        ICardItem(
-                          label: l10n.task_show_description,
-                          value: state.task.description!,
-                        ),
-                      if (state.task.deadline != null)
-                        ICardItem(
-                          label: l10n.task_show_deadline,
-                          value: state.task.deadline!.formattedDateTime,
-                        ),
-                    ],
-                  ),
-                ],
-              ),
-            );
-          } else if (state is TasksShowPendingState) {
+          if (state.isLoading) {
             return const ILoadingWidget();
-          } else {
-            return const SizedBox.shrink();
           }
+
+          final task = state.task!;
+          return Padding(
+            padding: largePadding,
+            child: Column(
+              spacing: mediumValue,
+              children: [
+                ICard(
+                  children: [
+                    ICardItem(
+                      label: l10n.task_show_name,
+                      value: task.title,
+                    ),
+                    if (task.description?.isNotEmpty ?? false)
+                      ICardItem(
+                        label: l10n.task_show_description,
+                        value: task.description!,
+                      ),
+                    if (task.deadline != null)
+                      ICardItem(
+                        label: l10n.task_show_deadline,
+                        value: task.deadline!.formattedDateTime,
+                      ),
+                  ],
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: task.groupsList!.length,
+                    itemBuilder: (context, index) {
+                      final group = task.groupsList![index];
+
+                      return Column(
+                        children: [
+                          TasksShowGroupWidget(
+                            group: group,
+                          ),
+                          SizedBox(height: smallValue),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          );
         },
       ),
     );

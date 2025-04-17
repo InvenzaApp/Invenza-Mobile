@@ -4,6 +4,7 @@ import 'package:app/di.dart';
 import 'package:app/guards/auth_guard.dart';
 import 'package:app/screens/app/screens/settings/routing/settings_routes.dart';
 import 'package:app/screens/app/screens/tasks/routing/tasks_routes.dart';
+import 'package:app/screens/app/screens/team/routing/team_routes.dart';
 import 'package:auto_route/auto_route.dart';
 
 abstract class AppRoutes {
@@ -36,6 +37,7 @@ abstract class AppRoutes {
           ],
         ),
         ...TasksRoutes.get(),
+        ...TeamRoutes.get(),
         ...SettingsRoutes.get(),
       ];
 }

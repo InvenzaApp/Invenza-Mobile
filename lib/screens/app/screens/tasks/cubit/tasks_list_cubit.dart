@@ -5,19 +5,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class TasksListCubit extends Cubit<TasksListState> {
   TasksListCubit({
     required this.repository,
-  }) : super(const TasksListState()){
+  }) : super(const TasksListState()) {
     _initialize();
   }
 
   final TasksRepository repository;
 
-  Future<void> _initialize() async{
+  Future<void> _initialize() async {
     await fetch();
   }
 
-  Future<void> fetch() async{
-    final tasksList = await repository.getAll();
+  Future<void> fetch() async {
+    final result = await repository.getAll();
 
-    emit(TasksListState(tasksList: tasksList));
+    emit(
+      TasksListState(
+        result: result,
+      ),
+    );
   }
 }

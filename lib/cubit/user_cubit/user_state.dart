@@ -1,34 +1,30 @@
-import 'package:app/enums/api_messages.dart';
+import 'package:app/core/result/result.dart';
 import 'package:app/features/organization/models/organization.dart';
 import 'package:app/features/user/models/user.dart';
 import 'package:equatable/equatable.dart';
 
 class UserState extends Equatable {
   const UserState({
-    this.user,
-    this.organization,
-    this.error,
+    this.userResult,
+    this.organizationResult,
     this.isLoading = false,
   });
 
-  final User? user;
-  final Organization? organization;
+  final Result<User>? userResult;
+  final Result<Organization>? organizationResult;
   final bool isLoading;
-  final ApiMessages? error;
 
   UserState copyWith({
-    User? user,
-    Organization? organization,
+    Result<User>? userResult,
+    Result<Organization>? organizationResult,
     bool? isLoading,
-    ApiMessages? error,
   }) =>
       UserState(
-        user: user ?? this.user,
-        organization: organization ?? this.organization,
+        userResult: userResult ?? this.userResult,
+        organizationResult: organizationResult ?? this.organizationResult,
         isLoading: isLoading ?? this.isLoading,
-        error: error ?? this.error,
       );
 
   @override
-  List<Object?> get props => [user, organization, isLoading];
+  List<Object?> get props => [userResult, organizationResult, isLoading];
 }

@@ -7,6 +7,8 @@
   "create": "Utwórz",
   "update": "Edytuj",
   "form": "Formularz",
+  "error_title": "Wystąpił błąd podczas pobierania danych.",
+  "error_subtitle": "Naciśnij, aby spróbować ponownie.",
 
   "api_invalid_request_parameters": "Nieprawidłowe parametry żądania. Skontaktuj się z administracją.",
   "api_invalid_credentials": "Adres e-mail lub hasło są nieprawidłowe.",
@@ -17,11 +19,16 @@
   "tasks_list_app_bar": "Zadania",
 
   "task_form_create_app_bar": "Utwórz zadanie",
+  "task_form_no_groups_title": "Nie znaleziono żadnych grup",
+  "task_form_no_groups_subtitle": "Aby dodać zadanie musisz najpierw utworzyć grupę",
   "task_form_update_app_bar": "Edytuj zadanie",
-  "task_form_name": "Nazwa zadania",
-  "task_form_description": "Opis zadania (opcjonalne)",
-  "task_form_deadline": "Termin zadania (opcjonalne)",
-  "task_form_groups": "Grupy",
+  "task_form_name_label": "Nazwa zadania",
+  "task_form_name_placeholder": "Wpisz nazwę",
+  "task_form_description_label": "Opis zadania (opcjonalne)",
+  "task_form_description_placeholder": "Wpisz opis",
+  "task_form_deadline_label": "Termin zadania (opcjonalne)",
+  "task_form_deadline_placeholder": "Podaj termin",
+  "task_form_groups_label": "Grupy",
 
   "task_show_app_bar": "Podgląd zadania",
   "task_show_delete_confirm": "Czy na pewno chcesz usunąc zadanie?",
@@ -35,8 +42,18 @@
   "team_groups_title": "Grupy",
   "team_groups_subtitle": "Zarządzaj grupami w swoim zespole",
 
+  "groups_list_app_bar": "Grupy",
+  "groups_list_no_groups_title": "Nie znaleziono żadnych grup",
+
+  "groups_create_app_bar": "Utwórz grupę",
+  "groups_create_name_label": "Nazwa grupy",
+  "groups_create_name_placeholder": "Wpisz nazwę",
+  "groups_create_users_label": "Lista użytkowników",
+
   "login_email_label": "Adres e-mail",
+  "login_email_placeholder": "Wpisz adres e-mail",
   "login_password_label": "Hasło",
+  "login_password_placeholder": "Wpisz hasło",
   "login_sign_in_button": "Zaloguj się",
 
   "settings_app_bar": "Ustawienia",
