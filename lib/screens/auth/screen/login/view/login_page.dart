@@ -35,9 +35,6 @@ class LoginPage extends StatelessWidget {
     final l10n = context.l10n;
 
     return BlocListener<UserCubit, UserState>(
-      listenWhen: (previous, current) {
-        return previous != current;
-      },
       listener: (context, state) async {
         if (state.user == null && state.error != null) {
           final cubit = context.read<UserCubit>();
