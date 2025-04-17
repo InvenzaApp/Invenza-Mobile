@@ -9,6 +9,7 @@ import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/g
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_state.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/widgets/groups_list_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
+import 'package:app/shared/widgets/i_error_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +52,13 @@ class GroupsListPage extends StatelessWidget implements AutoRouteWrapper {
       ),
       body: BlocBuilder<GroupsListCubit, GroupsListState>(
         builder: (context, state) {
+          if(state.groupsList.isEmpty){
+            return IErrorWidget(
+              icon: Icons.group_off_sharp,
+              title: context.l10n.groups_list_no_groups_title,
+              showSubtitle: false,
+            );
+          }
           return Padding(
             padding: mediumPadding,
             child: RefreshIndicator(

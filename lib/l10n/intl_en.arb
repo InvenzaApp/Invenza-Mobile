@@ -43,6 +43,7 @@
   "team_groups_subtitle": "Manage groups in your team",
 
   "groups_list_app_bar": "Groups",
+  "groups_list_no_groups_title": "No groups found",
 
   "groups_create_app_bar": "Create group",
   "groups_create_name_label": "Group name",
