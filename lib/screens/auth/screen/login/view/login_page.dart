@@ -20,11 +20,12 @@ class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   static final _formKey = GlobalKey<FormBuilderState>();
+  static bool _hasNavigated = false;
 
   Future<void> _signIn(UserCubit cubit) async {
     if (_formKey.currentState!.saveAndValidate()) {
       final json = _formKey.currentState!.value;
-
+      _hasNavigated = false;
       await cubit.signIn(UserAuthPayload.fromJson(json));
     }
   }
@@ -43,7 +44,8 @@ class LoginPage extends StatelessWidget {
             ),
           );
           cubit.reset();
-        } else if (state.user.isSuccess) {
+        } else if (state.user.isSuccess && !_hasNavigated) {
+          _hasNavigated = true;
           await context.replaceRoute(const AppRoute());
         }
       },
