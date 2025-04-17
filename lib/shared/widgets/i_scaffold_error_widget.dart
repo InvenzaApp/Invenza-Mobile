@@ -9,6 +9,7 @@ class IScaffoldErrorWidget extends StatelessWidget {
   const IScaffoldErrorWidget({
     this.title,
     this.subtitle,
+    this.icon,
     this.showSubtitle = true,
     this.onPressed,
     super.key,
@@ -16,6 +17,7 @@ class IScaffoldErrorWidget extends StatelessWidget {
 
   final String? title;
   final String? subtitle;
+  final IconData? icon;
   final bool showSubtitle;
   final VoidCallback? onPressed;
 
@@ -40,7 +42,7 @@ class IScaffoldErrorWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(
-                        Icons.error_outline,
+                        icon ?? Icons.error_outline,
                         size: 64,
                         color: context.primary,
                       ),

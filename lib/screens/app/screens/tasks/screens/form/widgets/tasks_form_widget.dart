@@ -13,6 +13,7 @@ import 'package:app/shared/widgets/form/i_form_checkbox_group.dart';
 import 'package:app/shared/widgets/form/i_form_date_time.dart';
 import 'package:app/shared/widgets/form/i_form_text_field.dart';
 import 'package:app/shared/widgets/i_loading_widget.dart';
+import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,6 +59,14 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
       builder: (context, groupsState) {
         return BlocBuilder<UserCubit, UserState>(
           builder: (context, userState) {
+            if(groupsState.groupsList.isEmpty){
+              return IScaffoldErrorWidget(
+                icon: Icons.group_off_sharp,
+                title: l10n.task_form_no_groups_title,
+                subtitle: l10n.task_form_no_groups_subtitle,
+              );
+            }
+
             return IFormWidget(
               useCase: widget.useCase,
               onSubmit: (_) => context.maybePop(true),
