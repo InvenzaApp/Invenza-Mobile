@@ -13,7 +13,7 @@ class SettingsAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
-        final user = state.user.maybeValue?.data;
+        final user = state.user;
 
         return Container(
           padding: mediumPadding,
