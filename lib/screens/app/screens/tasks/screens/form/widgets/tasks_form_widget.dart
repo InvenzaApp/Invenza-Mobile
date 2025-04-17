@@ -59,7 +59,7 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
       builder: (context, groupsState) {
         return BlocBuilder<UserCubit, UserState>(
           builder: (context, userState) {
-            if(groupsState.groupsList.isEmpty){
+            if (groupsState.groupsList.isEmpty) {
               return IScaffoldErrorWidget(
                 icon: Icons.group_off_sharp,
                 title: l10n.task_form_no_groups_title,
@@ -98,7 +98,8 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
                       IFormCheckboxGroup(
                         name: 'groupsIdList',
                         label: l10n.task_form_groups_label,
-                        initialValue: resources?.groupsIdList,
+                        initialValue:
+                            resources?.groupsList?.map((e) => e.id).toList(),
                         options: groupsState.groupsList
                             .map(
                               (group) => IFormOption(
