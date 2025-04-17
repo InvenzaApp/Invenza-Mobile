@@ -1,16 +1,17 @@
-# app
+# Invenza
 
-A new Flutter project.
+Invenza - mobile app
+
+## About the app
+
+Invenza is a simple app, which allows you to create your team, create groups of users, and follow tasks
+
+## YouTrack
+[Open YouTrack](https://invenza.youtrack.cloud/agiles/182-2/current)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To initialize project run this command
+```
+flutter clean && flutter pub get && dart run build_runner build
+```
