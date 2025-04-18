@@ -127,6 +127,15 @@ class _TasksShowPageState extends State<TasksShowPage> {
                         label: l10n.task_show_deadline,
                         value: task.deadline!.formattedDateTime,
                       ),
+                    ICardItem(
+                      label: l10n.task_show_created_at,
+                      value: task.createdAt.formattedDateTime,
+                    ),
+                    ICardItem(
+                      label: l10n.task_show_created_by,
+                      value:
+                          '${task.createdBy.name} ${task.createdBy.lastname}',
+                    ),
                   ],
                 ),
                 Expanded(
