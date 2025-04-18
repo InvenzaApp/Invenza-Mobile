@@ -15,4 +15,15 @@ abstract class HttpModule{
         },
       ),
     );
+
+    @singleton
+    @Named('httpClient')
+    Dio get httpClient => Dio(
+      BaseOptions(
+        baseUrl: _baseUrl,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      ),
+    );
 }

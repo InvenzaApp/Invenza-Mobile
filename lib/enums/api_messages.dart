@@ -6,6 +6,7 @@ enum ApiMessages {
   invalidCredentials,
   invalidResponse,
   noInternetConnection,
+  unauthorizedAccess,
   unknownError;
 
   static ApiMessages fromJson(String value) {
@@ -16,6 +17,8 @@ enum ApiMessages {
         return invalidCredentials;
       case 'NO_INTERNET_CONNECTION':
         return noInternetConnection;
+      case 'UNAUTHORIZED_ACCESS':
+        return unauthorizedAccess;
       default:
         return unknownError;
     }
@@ -27,5 +30,6 @@ enum ApiMessages {
         invalidResponse => context.l10n.api_invalid_response,
         unknownError => context.l10n.api_unknown_error,
         noInternetConnection => context.l10n.api_no_internet_connection,
+        unauthorizedAccess => context.l10n.api_unauthorized_access,
       };
 }
