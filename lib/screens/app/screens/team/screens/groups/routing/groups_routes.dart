@@ -11,5 +11,9 @@ abstract class GroupsRoutes {
           path: '/group-create',
           page: GroupsCreateFormRoute.page,
         ),
+        AutoRoute(
+          path: '/group/:id',
+          page: GroupsShowRoute.page,
+        ),
       ];
 }

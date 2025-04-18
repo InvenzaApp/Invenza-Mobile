@@ -53,6 +53,9 @@
   "groups_create_name_placeholder": "Enter name",
   "groups_create_users_label": "Users list",
 
+  "groups_show_app_bar": "Group preview",
+  "groups_show_name": "Group name",
+
   "login_email_label": "Email address",
   "login_email_placeholder": "Enter email address",
   "login_password_label": "Password",
