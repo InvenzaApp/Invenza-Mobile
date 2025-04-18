@@ -36,6 +36,8 @@
   "task_show_name": "Task name",
   "task_show_description": "Task description",
   "task_show_deadline": "Deadline",
+  "task_show_created_at": "Created at",
+  "task_show_created_by": "Created by",
 
   "team_app_bar": "Team",
   "team_users_title": "Users",

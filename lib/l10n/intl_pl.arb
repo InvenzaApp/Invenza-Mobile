@@ -36,6 +36,8 @@
   "task_show_name": "Nazwa zadania",
   "task_show_description": "Opis zadania",
   "task_show_deadline": "Termin zadania",
+  "task_show_created_at": "Utworzone o",
+  "task_show_created_by": "Utworzone przez",
 
   "team_app_bar": "Zespół",
   "team_users_title": "Użytkownicy",
