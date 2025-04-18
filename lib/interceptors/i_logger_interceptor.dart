@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 
 @singleton
 class ILoggerInterceptor extends QueuedInterceptor {
+
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     debugPrint('********** REQUEST **********');

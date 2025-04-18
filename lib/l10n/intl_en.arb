@@ -15,6 +15,7 @@
   "api_invalid_response": "Invalid response. Please contact the administrator.",
   "api_unknown_error": "Unknown error. Please contact the administrator.",
   "api_no_internet_connection": "Problem with internet connection. Please try again later.",
+  "api_unauthorized_access": "Unauthorized access. Please try again.",
 
   "tasks_list_app_bar": "Tasks",
 

@@ -15,6 +15,7 @@
   "api_invalid_response": "Nieprawidłowy odpowiedź serwera. Skontaktuj się z administracją.",
   "api_unknown_error": "Nieznany błąd. Skontaktuj się z administracją.",
   "api_no_internet_connection": "Problem z połączeniem internetowym. Spróbuj ponownie później.",
+  "api_unauthorized_access": "Nieuprawniony dostęp. Spróbuj ponownie.",
 
   "tasks_list_app_bar": "Zadania",
 

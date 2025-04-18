@@ -4,6 +4,6 @@ import 'package:injectable/injectable.dart';
 @singleton
 class TasksRemoteDataSource extends CockpitRemoteDataSource {
   TasksRemoteDataSource({
-    @Named('noAuthHttpClient') required super.httpClient,
+    @Named('httpClient') required super.httpClient,
   }) : super(baseUrl: '/api/tasks');
 }
