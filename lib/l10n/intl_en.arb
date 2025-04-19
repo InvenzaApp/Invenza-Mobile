@@ -10,6 +10,7 @@
   "error_title": "Error has occurred while fetching data.",
   "error_subtitle": "Press, to try again.",
   "problem": "Problem",
+  "preview": "Preview",
 
   "api_invalid_request_parameters": "Invalid request parameters. Please contact the administrator.",
   "api_invalid_credentials": "Email address or password is incorrect.",
