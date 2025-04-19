@@ -4,9 +4,7 @@ import 'package:app/cubit/user_cubit/user_state.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:app/features/group/use_case/groups_update_use_case.dart';
-import 'package:app/shared/form_template/i_form_widget.dart';
-import 'package:app/shared/widgets/form/i_form_checkbox_group.dart';
-import 'package:app/shared/widgets/form/i_form_text_field.dart';
+import 'package:app/shared/form_template/i_form_template.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
 import 'package:app/shared/widgets/i_scaffold_loading_widget.dart';
 import 'package:auto_route/auto_route.dart';
@@ -60,7 +58,7 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
                   await context.read<UserCubit>().signInWithSavedCredentials();
                 },
               )
-            : IFormWidget(
+            : IFormTemplate(
                 useCase: widget.useCase,
                 onSubmit: (_) => context.maybePop(true),
                 fields: [
