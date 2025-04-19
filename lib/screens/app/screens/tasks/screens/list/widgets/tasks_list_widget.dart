@@ -23,7 +23,7 @@ class TasksListWidget extends StatelessWidget {
         final needUpdate =
             await context.pushRoute(TasksShowRoute(resourceId: task.id));
 
-        if(needUpdate == true){
+        if (needUpdate == true) {
           await cubit.fetch();
         }
       },
@@ -32,6 +32,9 @@ class TasksListWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: context.container,
           borderRadius: mediumRadius,
+          border: task.groupsIdList.isEmpty
+              ? Border.all(color: context.error)
+              : null,
         ),
         child: Row(
           spacing: mediumValue,
@@ -64,7 +67,7 @@ class TasksListWidget extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                  if(task.deadline != null)
+                  if (task.deadline != null)
                     Text(
                       task.deadline!.formattedDateTime,
                       style: context.bodySmall,
@@ -79,6 +82,6 @@ class TasksListWidget extends StatelessWidget {
   }
 }
 
-extension DateTimeExtension on DateTime{
+extension DateTimeExtension on DateTime {
   String get formattedDateTime => DateFormat.yMMMd().format(this);
 }
