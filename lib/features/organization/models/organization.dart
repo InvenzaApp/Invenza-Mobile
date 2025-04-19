@@ -11,6 +11,7 @@ class Organization extends Equatable {
     required this.id,
     required this.name,
     required this.usersList,
+    required this.admin,
   });
 
   factory Organization.fromJson(Json json) => _$OrganizationFromJson(json);
@@ -19,7 +20,8 @@ class Organization extends Equatable {
   final String name;
   @JsonKey(name: 'users')
   final List<User> usersList;
+  final User admin;
 
   @override
-  List<Object?> get props => [id, name, usersList];
+  List<Object?> get props => [id, name, usersList, admin];
 }

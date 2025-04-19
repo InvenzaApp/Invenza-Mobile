@@ -11,6 +11,7 @@ import 'package:app/screens/app/screens/tasks/screens/list/widgets/tasks_list_wi
 import 'package:app/screens/app/screens/tasks/screens/show/cubit/tasks_show_cubit.dart';
 import 'package:app/screens/app/screens/tasks/screens/show/cubit/tasks_show_state.dart';
 import 'package:app/screens/app/screens/tasks/screens/show/widgets/tasks_show_group_widget.dart';
+import 'package:app/shared/widgets/i_alert_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_card/i_card.dart';
 import 'package:app/shared/widgets/i_loading_widget.dart';
@@ -111,6 +112,8 @@ class _TasksShowPageState extends State<TasksShowPage> {
             child: Column(
               spacing: mediumValue,
               children: [
+                if (task.groupsList?.isEmpty ?? true)
+                  IAlertWidget(message: l10n.task_show_no_group_alert),
                 ICard(
                   children: [
                     ICardItem(
