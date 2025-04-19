@@ -14,6 +14,7 @@ import 'package:app/shared/widgets/form/i_form_date_time.dart';
 import 'package:app/shared/widgets/form/i_form_text_field.dart';
 import 'package:app/shared/widgets/i_loading_widget.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
+import 'package:app/shared/widgets/i_scaffold_loading_widget.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,11 +48,9 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
 
     final result = await useCase.cockpitRepository.get(useCase.resourceId);
 
-    if(result.isSuccess){
-      setState(() {
-        resources = result.maybeValue;
-      });
-    }
+    setState(() {
+      resources = result.isSuccess ? result.maybeValue! : null;
+    });
   }
 
   @override
@@ -61,6 +60,10 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
       builder: (context, groupsState) {
         return BlocBuilder<UserCubit, UserState>(
           builder: (context, userState) {
+            if(groupsState.isLoading){
+              return const IScaffoldLoadingWidget();
+            }
+
             if (groupsState.groupsList?.isEmpty ?? true) {
               return IScaffoldErrorWidget(
                 icon: Icons.group_off_sharp,

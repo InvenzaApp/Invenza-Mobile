@@ -6,21 +6,25 @@ class GroupsListState extends Equatable {
   const GroupsListState({
     this.groupsList,
     this.error,
+    this.isLoading = true,
   });
 
   GroupsListState copyWith({
     List<Group>? groupsList,
     ApiMessages? error,
+    bool? isLoading,
   }) {
     return GroupsListState(
       groupsList: groupsList ?? this.groupsList,
       error: error ?? this.error,
+      isLoading: isLoading ?? this.isLoading,
     );
   }
 
   final List<Group>? groupsList;
   final ApiMessages? error;
+  final bool isLoading;
 
   @override
-  List<Object?> get props => [groupsList, error];
+  List<Object?> get props => [groupsList, error, isLoading];
 }

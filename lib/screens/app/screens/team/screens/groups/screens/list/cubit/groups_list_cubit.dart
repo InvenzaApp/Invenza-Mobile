@@ -22,6 +22,7 @@ class GroupsListCubit extends Cubit<GroupsListState> {
       GroupsListState(
         groupsList: result.isSuccess ? result.maybeValue! : null,
         error: result.isError ? result.maybeError! : null,
+        isLoading: false,
       ),
     );
   }
