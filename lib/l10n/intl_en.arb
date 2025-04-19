@@ -19,6 +19,7 @@
   "api_unauthorized_access": "Unauthorized access. Please try again.",
 
   "tasks_list_app_bar": "Tasks",
+  "tasks_list_no_tasks_title": "No tasks found",
 
   "task_form_create_app_bar": "Create task",
   "task_form_no_groups_title": "No groups found",
