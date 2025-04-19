@@ -7,6 +7,7 @@ import 'package:app/screens/app/screens/tasks/screens/list/widgets/tasks_list_wi
 import 'package:app/screens/app/screens/tasks/screens/show/cubit/tasks_show_cubit.dart';
 import 'package:app/screens/app/screens/tasks/screens/show/widgets/tasks_show_group_widget.dart';
 import 'package:app/shared/show_template/i_show_template.dart';
+import 'package:app/shared/widgets/i_alert_widget.dart';
 import 'package:app/shared/widgets/i_card/i_card.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
@@ -40,6 +41,10 @@ class TasksShowPage extends StatelessWidget {
           child: Column(
             spacing: mediumValue,
             children: [
+              if (task.groupsList?.isEmpty ?? true)
+                IAlertWidget(
+                  message: l10n.task_show_no_group_alert,
+                ),
               ICard(
                 children: [
                   ICardItem(
