@@ -13,13 +13,14 @@ import 'package:app/screens/app/screens/team/screens/groups/screens/show/widgets
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_card/i_card.dart';
 import 'package:app/shared/widgets/i_error_widget.dart';
+import 'package:app/shared/widgets/i_loading_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
-class GroupsShowPage extends StatefulWidget implements AutoRouteWrapper{
+class GroupsShowPage extends StatefulWidget implements AutoRouteWrapper {
   const GroupsShowPage({
     @pathParam required this.resourceId,
     super.key,
@@ -65,7 +66,7 @@ class _GroupsShowPageState extends State<GroupsShowPage> {
               final cubit = context.read<GroupsShowCubit>();
 
               final needUpdate =
-              await context.showConfirm(l10n.groups_show_delete_alert);
+                  await context.showConfirm(l10n.groups_show_delete_alert);
 
               if (needUpdate != null && needUpdate) {
                 unawaited(cubit.delete());
@@ -83,7 +84,7 @@ class _GroupsShowPageState extends State<GroupsShowPage> {
           final needUpdate = await context
               .pushRoute(GroupsUpdateFormRoute(resourceId: widget.resourceId));
 
-          if(needUpdate == true){
+          if (needUpdate == true) {
             unawaited(cubit.fetch());
             setState(() {
               requireUpdate = true;
@@ -93,40 +94,39 @@ class _GroupsShowPageState extends State<GroupsShowPage> {
         child: const Icon(Icons.edit),
       ),
       body: BlocBuilder<GroupsShowCubit, GroupsShowState>(
-        builder: (context, state) {
-          if (state.result?.isError ?? true) {
-            return const IErrorWidget();
-          }
+        builder: (context, state) => switch (state.isLoading) {
+          true => const ILoadingWidget(),
+          false => (state.result?.isError ?? true)
+              ? const IErrorWidget()
+              : Padding(
+                  padding: mediumPadding,
+                  child: Column(
+                    spacing: mediumValue,
+                    children: [
+                      ICard(
+                        children: [
+                          ICardItem(
+                            label: l10n.groups_show_name,
+                            value: state.result!.maybeValue!.name,
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount:
+                              state.result!.maybeValue!.usersList!.length,
+                          itemBuilder: (context, index) {
+                            final user =
+                                state.result!.maybeValue!.usersList![index];
 
-          final group = state.result!.maybeValue!;
-
-          return Padding(
-            padding: mediumPadding,
-            child: Column(
-              spacing: mediumValue,
-              children: [
-                ICard(
-                  children: [
-                    ICardItem(
-                      label: l10n.groups_show_name,
-                      value: group.name,
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: group.usersList!.length,
-                    itemBuilder: (context, index) {
-                      final user = group.usersList![index];
-
-                      return GroupsShowWidget(user: user);
-                    },
+                            return GroupsShowWidget(user: user);
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          );
         },
       ),
     );

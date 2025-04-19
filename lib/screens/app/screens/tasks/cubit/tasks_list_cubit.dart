@@ -16,12 +16,9 @@ class TasksListCubit extends Cubit<TasksListState> {
   }
 
   Future<void> fetch() async {
+    emit(state.copyWith(isLoading: true));
     final result = await repository.getAll();
 
-    emit(
-      TasksListState(
-        result: result,
-      ),
-    );
+    emit(state.copyWith(result: result, isLoading: false));
   }
 }

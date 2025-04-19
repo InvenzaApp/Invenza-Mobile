@@ -16,12 +16,14 @@ class GroupsListCubit extends Cubit<GroupsListState> {
   }
 
   Future<void> fetch() async {
+    emit(state.copyWith(isLoading: true));
     final result = await repository.getAll();
 
     emit(
       GroupsListState(
         groupsList: result.isSuccess ? result.maybeValue! : null,
         error: result.isError ? result.maybeError! : null,
+        isLoading: false,
       ),
     );
   }

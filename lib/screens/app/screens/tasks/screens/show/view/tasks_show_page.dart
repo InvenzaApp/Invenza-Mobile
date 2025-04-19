@@ -14,6 +14,7 @@ import 'package:app/screens/app/screens/tasks/screens/show/widgets/tasks_show_gr
 import 'package:app/shared/widgets/i_alert_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_card/i_card.dart';
+import 'package:app/shared/widgets/i_error_widget.dart';
 import 'package:app/shared/widgets/i_loading_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
@@ -101,67 +102,71 @@ class _TasksShowPageState extends State<TasksShowPage> {
         child: const Icon(Icons.edit),
       ),
       body: BlocBuilder<TasksShowCubit, TasksShowState>(
-        builder: (context, state) {
-          if (state.isLoading) {
-            return const ILoadingWidget();
-          }
-
-          final task = state.task!;
-          return Padding(
-            padding: largePadding,
-            child: Column(
-              spacing: mediumValue,
-              children: [
-                if (task.groupsList?.isEmpty ?? true)
-                  IAlertWidget(message: l10n.task_show_no_group_alert),
-                ICard(
-                  children: [
-                    ICardItem(
-                      label: l10n.task_show_name,
-                      value: task.title,
-                    ),
-                    if (task.description?.isNotEmpty ?? false)
-                      ICardItem(
-                        label: l10n.task_show_description,
-                        value: task.description!,
-                      ),
-                    if (task.deadline != null)
-                      ICardItem(
-                        label: l10n.task_show_deadline,
-                        value: task.deadline!.formattedDateTime,
-                      ),
-                    ICardItem(
-                      label: l10n.task_show_created_at,
-                      value: task.createdAt.formattedDateTime,
-                    ),
-                    ICardItem(
-                      label: l10n.task_show_created_by,
-                      value:
-                          '${task.createdBy.name} ${task.createdBy.lastname}',
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: task.groupsList!.length,
-                    itemBuilder: (context, index) {
-                      final group = task.groupsList![index];
-
-                      return Column(
+        builder: (context, state) => switch (state.isLoading) {
+          true => const ILoadingWidget(),
+          false => (state.result?.isError ?? true)
+              ? const IErrorWidget()
+              : Padding(
+                  padding: largePadding,
+                  child: Column(
+                    spacing: mediumValue,
+                    children: [
+                      if (state.result!.maybeValue!.groupsList?.isEmpty ?? true)
+                        IAlertWidget(message: l10n.task_show_no_group_alert),
+                      ICard(
                         children: [
-                          TasksShowGroupWidget(
-                            group: group,
+                          ICardItem(
+                            label: l10n.task_show_name,
+                            value: state.result!.maybeValue!.title,
                           ),
-                          SizedBox(height: smallValue),
+                          if (state.result!.maybeValue!.description
+                                  ?.isNotEmpty ??
+                              false)
+                            ICardItem(
+                              label: l10n.task_show_description,
+                              value: state.result!.maybeValue!.description!,
+                            ),
+                          if (state.result!.maybeValue!.deadline != null)
+                            ICardItem(
+                              label: l10n.task_show_deadline,
+                              value: state.result!.maybeValue!.deadline!
+                                  .formattedDateTime,
+                            ),
+                          ICardItem(
+                            label: l10n.task_show_created_at,
+                            value: state.result!.maybeValue!.createdAt
+                                .formattedDateTime,
+                          ),
+                          ICardItem(
+                            label: l10n.task_show_created_by,
+                            value: '${state.result!.maybeValue!.createdBy.name} '
+                                '${state.result!.maybeValue!.createdBy.lastname}',
+                          ),
                         ],
-                      );
-                    },
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount:
+                              state.result!.maybeValue!.groupsList!.length,
+                          itemBuilder: (context, index) {
+                            final group =
+                                state.result!.maybeValue!.groupsList![index];
+
+                            return Column(
+                              children: [
+                                TasksShowGroupWidget(
+                                  group: group,
+                                ),
+                                SizedBox(height: smallValue),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          );
         },
       ),
     );

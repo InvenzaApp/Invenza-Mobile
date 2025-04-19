@@ -20,7 +20,11 @@ class IButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilledButton(
-      onPressed: onPressed,
+      onPressed: (){
+        if(!isPending){
+          onPressed();
+        }
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: fullWidth ? MainAxisSize.max : MainAxisSize.min,
