@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:app/di.dart';
 import 'package:app/extensions/app_localizations.dart';
+import 'package:app/extensions/color_extension.dart';
+import 'package:app/extensions/confirm_extension.dart';
 import 'package:app/features/group/network/groups_remote_data_source.dart';
 import 'package:app/features/group/network/groups_repository.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/show/cubit/groups_show_cubit.dart';
@@ -40,9 +44,30 @@ class GroupsShowPage extends StatelessWidget implements AutoRouteWrapper {
     final l10n = context.l10n;
 
     return Scaffold(
-      appBar: iAppBar(context: context, title: l10n.groups_show_app_bar),
+      appBar: iAppBar(
+        context: context,
+        title: l10n.groups_show_app_bar,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delete, color: context.error),
+            onPressed: () async {
+              final cubit = context.read<GroupsShowCubit>();
+
+              final needUpdate = await context
+                  .showConfirm(l10n.groups_show_delete_alert);
+
+              if (needUpdate != null && needUpdate) {
+                unawaited(cubit.delete());
+                if (context.mounted) {
+                  await context.maybePop(true);
+                }
+              }
+            },
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {},
         child: const Icon(Icons.edit),
       ),
       body: BlocBuilder<GroupsShowCubit, GroupsShowState>(

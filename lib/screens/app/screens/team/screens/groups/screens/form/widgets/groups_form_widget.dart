@@ -21,7 +21,6 @@ class GroupsFormWidget extends StatefulWidget {
 }
 
 class _GroupsFormWidgetState extends State<GroupsFormWidget> {
-
   @override
   void initState() {
     super.initState();
@@ -50,19 +49,20 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
                   FormBuilderValidators.required(),
                 ],
               ),
-              IFormCheckboxGroup<int>(
-                name: 'usersIdList',
-                label: context.l10n.groups_create_users_label,
-                options: organization.usersList
-                    .where((item) => item != user)
-                    .map((user) {
-                  return IFormOption(
-                    label: '${user.name} ${user.lastname}',
-                    value: user.id,
-                  );
-                }).toList(),
-                initialValue: [user.id],
-              ),
+              if (organization.usersList.length > 1)
+                IFormCheckboxGroup<int>(
+                  name: 'usersIdList',
+                  label: context.l10n.groups_create_users_label,
+                  options: organization.usersList
+                      .where((item) => item != user)
+                      .map((user) {
+                    return IFormOption(
+                      label: '${user.name} ${user.lastname}',
+                      value: user.id,
+                    );
+                  }).toList(),
+                  initialValue: [user.id],
+                ),
             ],
           );
         } else {

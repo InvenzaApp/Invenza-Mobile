@@ -14,6 +14,7 @@ class Task extends Equatable {
     required this.groupsList,
     required this.createdAt,
     required this.createdBy,
+    required this.groupsIdList,
     this.description,
     this.deadline,
   });
@@ -25,6 +26,7 @@ class Task extends Equatable {
   final String? description;
   final DateTime? deadline;
   final List<Group>? groupsList;
+  final List<int> groupsIdList;
   final DateTime createdAt;
   final User createdBy;
 
@@ -37,5 +39,6 @@ class Task extends Equatable {
         groupsList,
         createdAt,
         createdBy,
+        groupsIdList
       ];
 }

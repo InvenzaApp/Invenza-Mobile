@@ -20,6 +20,10 @@ class GroupsShowCubit extends Cubit<GroupsShowState> {
     emit(GroupsShowState(result: result));
   }
 
+  Future<void> delete() async{
+    await repository.delete(resourceId);
+  }
+
   final GroupsRepository repository;
   final int resourceId;
 }
