@@ -32,7 +32,9 @@ class TasksListWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: context.container,
           borderRadius: mediumRadius,
-          border: task.groupsIdList.isEmpty ? Border.all(color: context.error) : null,
+          border: task.groupsIdList.isEmpty
+              ? Border.all(color: context.error)
+              : null,
         ),
         child: Row(
           spacing: mediumValue,

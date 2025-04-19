@@ -56,6 +56,8 @@
   "groups_create_name_placeholder": "Wpisz nazwę",
   "groups_create_users_label": "Lista użytkowników",
 
+  "groups_update_app_bar": "Edytuj grupę",
+
   "groups_show_app_bar": "Podgląd grupy",
   "groups_show_name": "Nazwa grupy",
   "groups_show_delete_alert": "Czy na pewno chcesz usunąć grupę?",

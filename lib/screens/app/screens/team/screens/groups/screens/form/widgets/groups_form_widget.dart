@@ -2,6 +2,8 @@ import 'package:app/core/use_case/use_case.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/cubit/user_cubit/user_state.dart';
 import 'package:app/extensions/app_localizations.dart';
+import 'package:app/features/group/models/group.dart';
+import 'package:app/features/group/use_case/groups_update_use_case.dart';
 import 'package:app/shared/form_template/i_form_widget.dart';
 import 'package:app/shared/widgets/form/i_form_checkbox_group.dart';
 import 'package:app/shared/widgets/form/i_form_text_field.dart';
@@ -21,10 +23,27 @@ class GroupsFormWidget extends StatefulWidget {
 }
 
 class _GroupsFormWidgetState extends State<GroupsFormWidget> {
+  Group? resources;
+
   @override
   void initState() {
     super.initState();
+    fetchData();
     context.read<UserCubit>().fetchOrganization();
+  }
+
+  Future<void> fetchData() async {
+    if (widget.useCase is! UpdateUseCase) return;
+
+    final useCase = widget.useCase as GroupsUpdateUseCase;
+
+    final result = await useCase.cockpitRepository.get(useCase.resourceId);
+
+    if (result.isSuccess) {
+      setState(() {
+        resources = result.maybeValue;
+      });
+    }
   }
 
   @override
@@ -33,45 +52,51 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
 
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
-        if (state.organizationResult?.isSuccess ?? false) {
-          final organization = state.organizationResult!.maybeValue!;
-          final user = state.userResult!.maybeValue!;
+        if (state.isLoading) {
+          return const IScaffoldErrorWidget();
+        }
 
-          return IFormWidget(
-            useCase: widget.useCase,
-            onSubmit: (_) => context.maybePop(true),
-            fields: [
-              IFormTextField(
-                name: 'name',
-                label: l10n.groups_create_name_label,
-                placeholder: l10n.groups_create_name_placeholder,
-                validators: [
-                  FormBuilderValidators.required(),
-                ],
-              ),
-              if (organization.usersList.length > 1)
-                IFormCheckboxGroup<int>(
-                  name: 'usersIdList',
-                  label: context.l10n.groups_create_users_label,
-                  options: organization.usersList
-                      .where((item) => item != user)
-                      .map((user) {
-                    return IFormOption(
-                      label: '${user.name} ${user.lastname}',
-                      value: user.id,
-                    );
-                  }).toList(),
-                  initialValue: [user.id],
-                ),
-            ],
-          );
-        } else {
+        if (state.organizationResult?.isError ?? true) {
           return IScaffoldErrorWidget(
             onPressed: () async {
               await context.read<UserCubit>().signInWithSavedCredentials();
             },
           );
         }
+
+        final organization = state.organizationResult!.maybeValue!;
+        final user = state.userResult!.maybeValue!;
+
+        return IFormWidget(
+          useCase: widget.useCase,
+          onSubmit: (_) => context.maybePop(true),
+          fields: [
+            IFormTextField(
+              name: 'name',
+              label: l10n.groups_create_name_label,
+              placeholder: l10n.groups_create_name_placeholder,
+              validators: [
+                FormBuilderValidators.required(),
+              ],
+              initialValue: resources?.name,
+            ),
+            if (organization.usersList.length > 1)
+              IFormCheckboxGroup<int>(
+                name: 'usersIdList',
+                label: context.l10n.groups_create_users_label,
+                options: organization.usersList
+                    .where((item) => item != user)
+                    .map((user) {
+                  return IFormOption(
+                    label: '${user.name} ${user.lastname}',
+                    value: user.id,
+                  );
+                }).toList(),
+                initialValue:
+                    (resources?.usersList ?? []).map((e) => e.id).toList(),
+              ),
+          ],
+        );
       },
     );
   }

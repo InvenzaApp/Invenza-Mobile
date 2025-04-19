@@ -15,5 +15,9 @@ abstract class GroupsRoutes {
           path: '/group/:id',
           page: GroupsShowRoute.page,
         ),
+        AutoRoute(
+          path: '/group-update',
+          page: GroupsUpdateFormRoute.page,
+        ),
       ];
 }

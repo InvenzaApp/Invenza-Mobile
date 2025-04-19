@@ -39,6 +39,6 @@ class Task extends Equatable {
         groupsList,
         createdAt,
         createdBy,
-        groupsIdList
+        groupsIdList,
       ];
 }

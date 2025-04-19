@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app/app/routing/app_router.gr.dart';
 import 'package:app/di.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
@@ -18,13 +19,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
-class GroupsShowPage extends StatelessWidget implements AutoRouteWrapper {
+class GroupsShowPage extends StatefulWidget implements AutoRouteWrapper{
   const GroupsShowPage({
     @pathParam required this.resourceId,
     super.key,
   });
-
-  final int resourceId;
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -39,6 +38,15 @@ class GroupsShowPage extends StatelessWidget implements AutoRouteWrapper {
     );
   }
 
+  final int resourceId;
+
+  @override
+  State<GroupsShowPage> createState() => _GroupsShowPageState();
+}
+
+class _GroupsShowPageState extends State<GroupsShowPage> {
+  bool requireUpdate = false;
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -47,14 +55,17 @@ class GroupsShowPage extends StatelessWidget implements AutoRouteWrapper {
       appBar: iAppBar(
         context: context,
         title: l10n.groups_show_app_bar,
+        backButtonAction: () {
+          context.maybePop(requireUpdate);
+        },
         actions: [
           IconButton(
             icon: Icon(Icons.delete, color: context.error),
             onPressed: () async {
               final cubit = context.read<GroupsShowCubit>();
 
-              final needUpdate = await context
-                  .showConfirm(l10n.groups_show_delete_alert);
+              final needUpdate =
+              await context.showConfirm(l10n.groups_show_delete_alert);
 
               if (needUpdate != null && needUpdate) {
                 unawaited(cubit.delete());
@@ -67,7 +78,18 @@ class GroupsShowPage extends StatelessWidget implements AutoRouteWrapper {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {
+          final cubit = context.read<GroupsShowCubit>();
+          final needUpdate = await context
+              .pushRoute(GroupsUpdateFormRoute(resourceId: widget.resourceId));
+
+          if(needUpdate == true){
+            unawaited(cubit.fetch());
+            setState(() {
+              requireUpdate = true;
+            });
+          }
+        },
         child: const Icon(Icons.edit),
       ),
       body: BlocBuilder<GroupsShowCubit, GroupsShowState>(
