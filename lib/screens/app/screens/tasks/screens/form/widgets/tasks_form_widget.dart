@@ -59,66 +59,65 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
     return BlocBuilder<GroupsListCubit, GroupsListState>(
       builder: (context, groupsState) {
         return BlocBuilder<UserCubit, UserState>(
-          builder: (context, userState) {
-            if(groupsState.isLoading){
-              return const IScaffoldLoadingWidget();
-            }
-
-            if (groupsState.groupsList?.isEmpty ?? true) {
-              return IScaffoldErrorWidget(
-                icon: Icons.group_off_sharp,
-                title: l10n.task_form_no_groups_title,
-                subtitle: l10n.task_form_no_groups_subtitle,
-              );
-            }
-
-            return IFormWidget(
-              useCase: widget.useCase,
-              onSubmit: (_) => context.maybePop(true),
-              fields: (widget.useCase is UpdateUseCase && resources == null)
-                  ? [const ILoadingWidget()]
-                  : [
-                      IFormTextField(
-                        name: 'title',
-                        label: l10n.task_form_name_label,
-                        placeholder: l10n.task_form_name_placeholder,
-                        initialValue: resources?.title,
-                        validators: [
-                          FormBuilderValidators.required(),
-                        ],
-                      ),
-                      IFormTextField(
-                        name: 'description',
-                        initialValue: resources?.description,
-                        label: l10n.task_form_description_label,
-                        placeholder: l10n.task_form_description_placeholder,
-                      ),
-                      IFormDateTime(
-                        name: 'deadline',
-                        label: l10n.task_form_deadline_label,
-                        placeholder: l10n.task_form_deadline_placeholder,
-                        initialValue: resources?.deadline,
-                        valueTransformer: (value) => value?.toIso8601String(),
-                      ),
-                      IFormCheckboxGroup(
-                        name: 'groupsIdList',
-                        label: l10n.task_form_groups_label,
-                        initialValue:
-                            resources?.groupsList?.map((e) => e.id).toList(),
-                        options: groupsState.groupsList!
-                            .map(
-                              (group) => IFormOption(
-                                label: group.name,
-                                value: group.id,
-                              ),
-                            )
-                            .toList(),
-                        validators: [
-                          FormBuilderValidators.required(),
-                        ],
-                      ),
-                    ],
-            );
+          builder: (context, userState) => switch (groupsState.isLoading) {
+            true => const IScaffoldLoadingWidget(),
+            false => (groupsState.groupsList?.isEmpty ?? true)
+                ? IScaffoldErrorWidget(
+                    icon: Icons.group_off_sharp,
+                    title: l10n.task_form_no_groups_title,
+                    subtitle: l10n.task_form_no_groups_subtitle,
+                  )
+                : IFormWidget(
+                    useCase: widget.useCase,
+                    onSubmit: (_) => context.maybePop(true),
+                    fields: (widget.useCase is UpdateUseCase &&
+                            resources == null)
+                        ? [const ILoadingWidget()]
+                        : [
+                            IFormTextField(
+                              name: 'title',
+                              label: l10n.task_form_name_label,
+                              placeholder: l10n.task_form_name_placeholder,
+                              initialValue: resources?.title,
+                              validators: [
+                                FormBuilderValidators.required(),
+                              ],
+                            ),
+                            IFormTextField(
+                              name: 'description',
+                              initialValue: resources?.description,
+                              label: l10n.task_form_description_label,
+                              placeholder:
+                                  l10n.task_form_description_placeholder,
+                            ),
+                            IFormDateTime(
+                              name: 'deadline',
+                              label: l10n.task_form_deadline_label,
+                              placeholder: l10n.task_form_deadline_placeholder,
+                              initialValue: resources?.deadline,
+                              valueTransformer: (value) =>
+                                  value?.toIso8601String(),
+                            ),
+                            IFormCheckboxGroup(
+                              name: 'groupsIdList',
+                              label: l10n.task_form_groups_label,
+                              initialValue: resources?.groupsList
+                                  ?.map((e) => e.id)
+                                  .toList(),
+                              options: groupsState.groupsList!
+                                  .map(
+                                    (group) => IFormOption(
+                                      label: group.name,
+                                      value: group.id,
+                                    ),
+                                  )
+                                  .toList(),
+                              validators: [
+                                FormBuilderValidators.required(),
+                              ],
+                            ),
+                          ],
+                  ),
           },
         );
       },

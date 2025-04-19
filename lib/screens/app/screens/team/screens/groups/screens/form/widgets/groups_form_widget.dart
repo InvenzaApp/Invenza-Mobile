@@ -8,6 +8,7 @@ import 'package:app/shared/form_template/i_form_widget.dart';
 import 'package:app/shared/widgets/form/i_form_checkbox_group.dart';
 import 'package:app/shared/widgets/form/i_form_text_field.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
+import 'package:app/shared/widgets/i_scaffold_loading_widget.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,52 +52,48 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
     final l10n = context.l10n;
 
     return BlocBuilder<UserCubit, UserState>(
-      builder: (context, state) {
-        if (state.isLoading) {
-          return const IScaffoldErrorWidget();
-        }
-
-        if (state.organizationResult?.isError ?? true) {
-          return IScaffoldErrorWidget(
-            onPressed: () async {
-              await context.read<UserCubit>().signInWithSavedCredentials();
-            },
-          );
-        }
-
-        final organization = state.organizationResult!.maybeValue!;
-        final user = state.userResult!.maybeValue!;
-
-        return IFormWidget(
-          useCase: widget.useCase,
-          onSubmit: (_) => context.maybePop(true),
-          fields: [
-            IFormTextField(
-              name: 'name',
-              label: l10n.groups_create_name_label,
-              placeholder: l10n.groups_create_name_placeholder,
-              validators: [
-                FormBuilderValidators.required(),
-              ],
-              initialValue: resources?.name,
-            ),
-            if (organization.usersList.length > 1)
-              IFormCheckboxGroup<int>(
-                name: 'usersIdList',
-                label: context.l10n.groups_create_users_label,
-                options: organization.usersList
-                    .where((item) => item != user)
-                    .map((user) {
-                  return IFormOption(
-                    label: '${user.name} ${user.lastname}',
-                    value: user.id,
-                  );
-                }).toList(),
-                initialValue:
-                    (resources?.usersList ?? []).map((e) => e.id).toList(),
+      builder: (context, state) => switch (state.isLoading) {
+        true => const IScaffoldLoadingWidget(),
+        false => (state.organizationResult?.isError ?? true)
+            ? IScaffoldErrorWidget(
+                onPressed: () async {
+                  await context.read<UserCubit>().signInWithSavedCredentials();
+                },
+              )
+            : IFormWidget(
+                useCase: widget.useCase,
+                onSubmit: (_) => context.maybePop(true),
+                fields: [
+                  IFormTextField(
+                    name: 'name',
+                    label: l10n.groups_create_name_label,
+                    placeholder: l10n.groups_create_name_placeholder,
+                    validators: [
+                      FormBuilderValidators.required(),
+                    ],
+                    initialValue: resources?.name,
+                  ),
+                  if (state.organizationResult!.maybeValue!.usersList.length >
+                      1)
+                    IFormCheckboxGroup<int>(
+                      name: 'usersIdList',
+                      label: context.l10n.groups_create_users_label,
+                      options: state.organizationResult!.maybeValue!.usersList
+                          .where(
+                        (item) => item != state.userResult!.maybeValue!,
+                      )
+                          .map((user) {
+                        return IFormOption(
+                          label: '${user.name} ${user.lastname}',
+                          value: user.id,
+                        );
+                      }).toList(),
+                      initialValue: (resources?.usersList ?? [])
+                          .map((e) => e.id)
+                          .toList(),
+                    ),
+                ],
               ),
-          ],
-        );
       },
     );
   }

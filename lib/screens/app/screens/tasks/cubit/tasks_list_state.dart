@@ -1,23 +1,25 @@
 import 'package:app/core/result/result.dart';
-import 'package:app/enums/api_messages.dart';
 import 'package:app/features/tasks/models/task.dart';
 import 'package:equatable/equatable.dart';
 
 class TasksListState extends Equatable {
   const TasksListState({
     this.result,
+    this.isLoading = false,
   });
 
   TasksListState copyWith({
     Result<List<Task>>? result,
-    ApiMessages? error,
+    bool? isLoading,
   }) =>
       TasksListState(
         result: result ?? this.result,
+        isLoading: isLoading ?? this.isLoading,
       );
 
   final Result<List<Task>>? result;
+  final bool isLoading;
 
   @override
-  List<Object?> get props => [result];
+  List<Object?> get props => [result, isLoading];
 }

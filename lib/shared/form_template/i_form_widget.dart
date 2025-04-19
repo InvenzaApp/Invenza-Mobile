@@ -8,7 +8,7 @@ import 'package:app/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-class IFormWidget extends StatelessWidget {
+class IFormWidget extends StatefulWidget {
   const IFormWidget({
     required this.useCase,
     required this.fields,
@@ -20,7 +20,13 @@ class IFormWidget extends StatelessWidget {
   final List<Widget> fields;
   final void Function(Result<int> resourceId) onSubmit;
 
+  @override
+  State<IFormWidget> createState() => _IFormWidgetState();
+}
+
+class _IFormWidgetState extends State<IFormWidget> {
   static final _formKey = GlobalKey<FormBuilderState>();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +35,7 @@ class IFormWidget extends StatelessWidget {
     return Scaffold(
       appBar: iAppBar(
         context: context,
-        title: useCase.cockpitRepository.title ?? l10n.form,
+        title: widget.useCase.cockpitRepository.title ?? l10n.form,
       ),
       body: Column(
         children: [
@@ -41,7 +47,7 @@ class IFormWidget extends StatelessWidget {
                   padding: largePadding,
                   child: Column(
                     spacing: largeValue,
-                    children: fields,
+                    children: widget.fields,
                   ),
                 ),
               ),
@@ -53,14 +59,23 @@ class IFormWidget extends StatelessWidget {
               color: context.container,
             ),
             child: IButton(
-              label: useCase is CreateUseCase ? l10n.create : l10n.update,
+              isPending: isLoading,
+              label: widget.useCase is CreateUseCase ? l10n.create : l10n.update,
               onPressed: () async {
                 if (_formKey.currentState!.saveAndValidate()) {
-                  final taskId = await useCase.invoke(
+                  setState(() {
+                    isLoading = true;
+                  });
+
+                  final taskId = await widget.useCase.invoke(
                     _formKey.currentState!.value,
                   );
 
-                  onSubmit(taskId);
+                  setState(() {
+                    isLoading = false;
+                  });
+
+                  widget.onSubmit(taskId);
                 }
               },
             ),
@@ -70,3 +85,4 @@ class IFormWidget extends StatelessWidget {
     );
   }
 }
+

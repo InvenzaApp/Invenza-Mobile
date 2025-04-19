@@ -16,6 +16,7 @@ class GroupsListCubit extends Cubit<GroupsListState> {
   }
 
   Future<void> fetch() async {
+    emit(state.copyWith(isLoading: true));
     final result = await repository.getAll();
 
     emit(

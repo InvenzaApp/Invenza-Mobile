@@ -15,9 +15,9 @@ class GroupsShowCubit extends Cubit<GroupsShowState> {
   }
 
   Future<void> fetch() async{
+    emit(state.copyWith(isLoading: true));
     final result = await repository.get(resourceId);
-
-    emit(GroupsShowState(result: result));
+    emit(state.copyWith(result: result, isLoading: false));
   }
 
   Future<void> delete() async{

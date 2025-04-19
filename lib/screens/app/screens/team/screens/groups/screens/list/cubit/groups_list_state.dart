@@ -6,7 +6,7 @@ class GroupsListState extends Equatable {
   const GroupsListState({
     this.groupsList,
     this.error,
-    this.isLoading = true,
+    this.isLoading = false,
   });
 
   GroupsListState copyWith({

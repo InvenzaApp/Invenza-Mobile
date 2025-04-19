@@ -1,25 +1,26 @@
+import 'package:app/core/result/result.dart';
 import 'package:app/features/tasks/models/task.dart';
 import 'package:equatable/equatable.dart';
 
 class TasksShowState extends Equatable {
   const TasksShowState({
-    this.task,
+    this.result,
     this.isLoading = false,
   });
 
   TasksShowState copyWith({
-    Task? task,
+    Result<Task>? result,
     bool? isLoading,
   }) {
     return TasksShowState(
-      task: task ?? this.task,
+      result: result ?? this.result,
       isLoading: isLoading ?? this.isLoading,
     );
   }
 
-  final Task? task;
+  final Result<Task>? result;
   final bool isLoading;
 
   @override
-  List<Object?> get props => [task];
+  List<Object?> get props => [result, isLoading];
 }

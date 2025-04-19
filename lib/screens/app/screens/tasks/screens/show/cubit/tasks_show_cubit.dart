@@ -22,8 +22,9 @@ class TasksShowCubit extends Cubit<TasksShowState> {
     final result = await repository.get(resourceId);
 
     emit(
-      TasksShowState(
-        task: result.isSuccess ? result.maybeValue! : null,
+      state.copyWith(
+        result: result,
+        isLoading: false,
       ),
     );
   }
