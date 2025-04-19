@@ -18,6 +18,7 @@
   "api_unauthorized_access": "Nieuprawniony dostęp. Spróbuj ponownie.",
 
   "tasks_list_app_bar": "Zadania",
+  "tasks_list_no_tasks_title": "Nie znaleziono żadnych zadań",
 
   "task_form_create_app_bar": "Utwórz zadanie",
   "task_form_no_groups_title": "Nie znaleziono żadnych grup",

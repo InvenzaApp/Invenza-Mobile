@@ -28,7 +28,7 @@ class TasksListPage extends StatelessWidget {
           final needUpdate =
               await context.pushRoute(const TasksCreateFormRoute());
 
-          if(needUpdate == true){
+          if (needUpdate == true) {
             await cubit.fetch();
           }
         },
@@ -36,32 +36,38 @@ class TasksListPage extends StatelessWidget {
       ),
       body: BlocBuilder<TasksListCubit, TasksListState>(
         builder: (context, state) {
-          if(state.result?.isError ?? true){
+          if (state.result?.isError ?? true) {
             return const IErrorWidget();
           }
 
           return Padding(
             padding: mediumPadding,
-            child: RefreshIndicator(
-              onRefresh: () async {
-                await context.read<TasksListCubit>().fetch();
-              },
-              child: ListView.builder(
-                itemCount: state.result!.maybeValue!.length,
-                itemBuilder: (context, index) {
-                  final item = state.result!.maybeValue![index];
+            child: state.result!.maybeValue!.isEmpty
+                ? IErrorWidget(
+                    icon: Icons.no_sim_outlined,
+                    title: context.l10n.tasks_list_no_tasks_title,
+                    showSubtitle: false,
+                  )
+                : RefreshIndicator(
+                    onRefresh: () async {
+                      await context.read<TasksListCubit>().fetch();
+                    },
+                    child: ListView.builder(
+                      itemCount: state.result!.maybeValue!.length,
+                      itemBuilder: (context, index) {
+                        final item = state.result!.maybeValue![index];
 
-                  return Column(
-                    children: [
-                      TasksListWidget(task: item),
-                      SizedBox(
-                        height: mediumValue,
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
+                        return Column(
+                          children: [
+                            TasksListWidget(task: item),
+                            SizedBox(
+                              height: mediumValue,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
           );
         },
       ),
