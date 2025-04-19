@@ -8,11 +8,7 @@ import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/use_case/tasks_update_use_case.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_cubit.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_state.dart';
-import 'package:app/shared/form_template/i_form_widget.dart';
-import 'package:app/shared/widgets/form/i_form_checkbox_group.dart';
-import 'package:app/shared/widgets/form/i_form_date_time.dart';
-import 'package:app/shared/widgets/form/i_form_text_field.dart';
-import 'package:app/shared/widgets/i_loading_widget.dart';
+import 'package:app/shared/form_template/i_form_template.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
 import 'package:app/shared/widgets/i_scaffold_loading_widget.dart';
 import 'package:auto_route/auto_route.dart';
@@ -67,12 +63,12 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
                     title: l10n.task_form_no_groups_title,
                     subtitle: l10n.task_form_no_groups_subtitle,
                   )
-                : IFormWidget(
+                : IFormTemplate(
                     useCase: widget.useCase,
                     onSubmit: (_) => context.maybePop(true),
                     fields: (widget.useCase is UpdateUseCase &&
                             resources == null)
-                        ? [const ILoadingWidget()]
+                        ? [const IFormLoadingWidget()]
                         : [
                             IFormTextField(
                               name: 'title',
