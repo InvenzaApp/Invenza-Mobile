@@ -10,6 +10,8 @@
   "error_title": "Wystąpił błąd podczas pobierania danych.",
   "error_subtitle": "Naciśnij, aby spróbować ponownie.",
   "problem": "Problem",
+  "preview": "Podgląd",
+  "delete_confirm": "Czy na pewno chcesz usunąć ten rekord?",
 
   "api_invalid_request_parameters": "Nieprawidłowe parametry żądania. Skontaktuj się z administracją.",
   "api_invalid_credentials": "Adres e-mail lub hasło są nieprawidłowe.",
