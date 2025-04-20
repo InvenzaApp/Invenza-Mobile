@@ -25,4 +25,9 @@ class TasksShowCubit extends ShowCubit<Task> {
     final result = await repository.get(resourceId);
     super.emitState(data: result, isLoading: false);
   }
+
+  @override
+  Future<void> delete() async{
+    await repository.delete(resourceId);
+  }
 }

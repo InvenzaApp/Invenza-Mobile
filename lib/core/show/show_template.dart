@@ -9,4 +9,6 @@ abstract class ShowTemplate<T> extends StatefulWidget{
   ShowCubit<T> get cubit;
 
   Widget Function(BuildContext context, ShowCubit<T> cubit) get builder;
+
+  bool get deleteEnabled;
 }

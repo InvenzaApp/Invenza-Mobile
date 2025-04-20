@@ -5,7 +5,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class ShowCubit<T> extends Cubit<ShowState<T>> {
-  ShowCubit({required this.editRoute}) : super(ShowState<T>()) {
+  ShowCubit({this.editRoute}) : super(ShowState<T>()) {
     initialize();
   }
 
@@ -15,7 +15,7 @@ abstract class ShowCubit<T> extends Cubit<ShowState<T>> {
 
   Future<void> initialize();
 
-  final PageRouteInfo editRoute;
+  final PageRouteInfo? editRoute;
 
   void emitState({
     Result<T>? data,
@@ -24,4 +24,6 @@ abstract class ShowCubit<T> extends Cubit<ShowState<T>> {
       super.emit(state.copyWith(data: data, isLoading: isLoading));
 
   T get data => super.state.data!.maybeValue!;
+
+  Future<void> delete();
 }

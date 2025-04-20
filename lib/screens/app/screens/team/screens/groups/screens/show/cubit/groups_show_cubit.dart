@@ -1,29 +1,31 @@
+import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/core/show/cubit/show_cubit.dart';
+import 'package:app/features/group/models/group.dart';
 import 'package:app/features/group/network/groups_repository.dart';
-import 'package:app/screens/app/screens/team/screens/groups/screens/show/cubit/groups_show_state.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class GroupsShowCubit extends Cubit<GroupsShowState> {
+class GroupsShowCubit extends ShowCubit<Group> {
   GroupsShowCubit({
     required this.repository,
     required this.resourceId,
-  }) : super(const GroupsShowState()) {
-    _initialize();
-  }
+  }) : super(editRoute: GroupsUpdateFormRoute(resourceId: resourceId));
 
-  Future<void> _initialize() async {
+  @override
+  Future<void> delete() async {}
+
+  @override
+  Future<void> initialize() async {
     await fetch();
   }
 
-  Future<void> fetch() async{
-    emit(state.copyWith(isLoading: true));
+  Future<void> fetch() async {
+    super.emitState(isLoading: true);
     final result = await repository.get(resourceId);
-    emit(state.copyWith(result: result, isLoading: false));
+    super.emitState(data: result, isLoading: false);
   }
 
-  Future<void> delete() async{
-    await repository.delete(resourceId);
-  }
-
+  @override
   final GroupsRepository repository;
+
+  @override
   final int resourceId;
 }
