@@ -22,33 +22,38 @@ class INavigationBar extends StatelessWidget {
     return IntrinsicHeight(
       child: Padding(
         padding: mediumPadding,
-        child: Ink(
-          padding: smallPadding,
-          decoration: BoxDecoration(
-            color: context.container,
-            borderRadius: mediumRadius,
-          ),
-          child: Row(
-            spacing: smallValue,
-            children: destinations.asMap().entries.map(
-                  (entry) {
-                final index = entry.key;
-                final item = entry.value;
-                final selected = selectedIndex == index;
+        child: Column(
+          children: [
+            Ink(
+              padding: smallPadding,
+              decoration: BoxDecoration(
+                color: context.container,
+                borderRadius: mediumRadius,
+              ),
+              child: Row(
+                spacing: smallValue,
+                children: destinations.asMap().entries.map(
+                      (entry) {
+                    final index = entry.key;
+                    final item = entry.value;
+                    final selected = selectedIndex == index;
 
-                return Expanded(
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(mediumValue),
-                    onTap: () => onDestinationSelected(index),
-                    child: Padding(
-                      padding: mediumPadding,
-                      child: selected ? item.selectedIcon! : item.icon,
-                    ),
-                  ),
-                );
-              },
-            ).toList(),
-          ),
+                    return Expanded(
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(mediumValue),
+                        onTap: () => onDestinationSelected(index),
+                        child: Padding(
+                          padding: mediumPadding,
+                          child: selected ? item.selectedIcon! : item.icon,
+                        ),
+                      ),
+                    );
+                  },
+                ).toList(),
+              ),
+            ),
+            SizedBox(height: mediumValue),
+          ],
         ),
       ),
     );
