@@ -1,3 +1,4 @@
+import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/group/network/groups_remote_data_source.dart';
@@ -19,6 +20,7 @@ class GroupsCreateFormPage extends StatelessWidget {
           title: context.l10n.groups_create_app_bar,
           remoteDS: inject<GroupsRemoteDataSource>(),
         ),
+        userCubit: inject<UserCubit>(),
       ),
     );
   }

@@ -17,4 +17,5 @@ PreferredSizeWidget iAppBar({
       )
           : null,
       actions: actions,
+      centerTitle: false,
     );

@@ -1,28 +1,32 @@
+import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/core/show/cubit/show_cubit.dart';
+import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/network/tasks_repository.dart';
-import 'package:app/screens/app/screens/tasks/screens/show/cubit/tasks_show_state.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TasksShowCubit extends Cubit<TasksShowState> {
+class TasksShowCubit extends ShowCubit<Task> {
   TasksShowCubit({
     required this.repository,
     required this.resourceId,
-  }) : super(TasksShowPendingState()){
-    _initialize();
-  }
+  }) : super(editRoute: TasksUpdateFormRoute(resourceId: resourceId));
 
-  final TasksRepository repository;
+  @override
   final int resourceId;
 
-  Future<void> _initialize() async{
+  @override
+  final TasksRepository repository;
+
+  @override
+  Future<void> initialize() async {
     await fetch();
   }
 
-  Future<void> fetch() async {
-    final task = await repository.get(resourceId);
-
-    emit(TasksShowLoadedState(task: task));
+  Future<void> fetch() async{
+    super.emitState(isLoading: true);
+    final result = await repository.get(resourceId);
+    super.emitState(data: result, isLoading: false);
   }
 
+  @override
   Future<void> delete() async{
     await repository.delete(resourceId);
   }

@@ -4,6 +4,8 @@ import 'package:app/screens/app/screens/tasks/cubit/tasks_list_cubit.dart';
 import 'package:app/screens/app/screens/tasks/cubit/tasks_list_state.dart';
 import 'package:app/screens/app/screens/tasks/screens/list/widgets/tasks_list_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
+import 'package:app/shared/widgets/i_error_widget.dart';
+import 'package:app/shared/widgets/i_loading_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -27,37 +29,46 @@ class TasksListPage extends StatelessWidget {
           final needUpdate =
               await context.pushRoute(const TasksCreateFormRoute());
 
-          if(needUpdate == true){
+          if (needUpdate == true) {
             await cubit.fetch();
           }
         },
         child: const Icon(Icons.add),
       ),
       body: BlocBuilder<TasksListCubit, TasksListState>(
-        builder: (context, state) {
-          return Padding(
-            padding: mediumPadding,
-            child: RefreshIndicator(
-              onRefresh: () async {
-                await context.read<TasksListCubit>().fetch();
-              },
-              child: ListView.builder(
-                itemCount: state.tasksList.length,
-                itemBuilder: (context, index) {
-                  final item = state.tasksList[index];
+        builder: (context, state) => switch (state.isLoading) {
+          true => const ILoadingWidget(),
+          false => (state.result?.isError ?? true)
+              ? const IErrorWidget()
+              : Padding(
+                  padding: mediumPadding,
+                  child: state.result!.maybeValue!.isEmpty
+                      ? IErrorWidget(
+                          icon: Icons.no_sim_outlined,
+                          title: context.l10n.tasks_list_no_tasks_title,
+                          showSubtitle: false,
+                        )
+                      : RefreshIndicator(
+                          onRefresh: () async {
+                            await context.read<TasksListCubit>().fetch();
+                          },
+                          child: ListView.builder(
+                            itemCount: state.result!.maybeValue!.length,
+                            itemBuilder: (context, index) {
+                              final item = state.result!.maybeValue![index];
 
-                  return Column(
-                    children: [
-                      TasksListWidget(task: item),
-                      SizedBox(
-                        height: mediumValue,
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
-          );
+                              return Column(
+                                children: [
+                                  TasksListWidget(task: item),
+                                  SizedBox(
+                                    height: mediumValue,
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                        ),
+                ),
         },
       ),
     );

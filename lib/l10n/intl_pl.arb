@@ -9,14 +9,19 @@
   "form": "Formularz",
   "error_title": "Wystąpił błąd podczas pobierania danych.",
   "error_subtitle": "Naciśnij, aby spróbować ponownie.",
+  "problem": "Problem",
+  "preview": "Podgląd",
+  "delete_confirm": "Czy na pewno chcesz usunąć ten rekord?",
 
   "api_invalid_request_parameters": "Nieprawidłowe parametry żądania. Skontaktuj się z administracją.",
   "api_invalid_credentials": "Adres e-mail lub hasło są nieprawidłowe.",
   "api_invalid_response": "Nieprawidłowy odpowiedź serwera. Skontaktuj się z administracją.",
   "api_unknown_error": "Nieznany błąd. Skontaktuj się z administracją.",
   "api_no_internet_connection": "Problem z połączeniem internetowym. Spróbuj ponownie później.",
+  "api_unauthorized_access": "Nieuprawniony dostęp. Spróbuj ponownie.",
 
   "tasks_list_app_bar": "Zadania",
+  "tasks_list_no_tasks_title": "Nie znaleziono żadnych zadań",
 
   "task_form_create_app_bar": "Utwórz zadanie",
   "task_form_no_groups_title": "Nie znaleziono żadnych grup",
@@ -35,6 +40,9 @@
   "task_show_name": "Nazwa zadania",
   "task_show_description": "Opis zadania",
   "task_show_deadline": "Termin zadania",
+  "task_show_created_at": "Utworzone o",
+  "task_show_created_by": "Utworzone przez",
+  "task_show_no_group_alert": "Twoje zadanie nie jest przypisane do żadnej grupy. Przypisz je do grupy, aby było widoczne dla innych.",
 
   "team_app_bar": "Zespół",
   "team_users_title": "Użytkownicy",
@@ -49,6 +57,12 @@
   "groups_create_name_label": "Nazwa grupy",
   "groups_create_name_placeholder": "Wpisz nazwę",
   "groups_create_users_label": "Lista użytkowników",
+
+  "groups_update_app_bar": "Edytuj grupę",
+
+  "groups_show_app_bar": "Podgląd grupy",
+  "groups_show_name": "Nazwa grupy",
+  "groups_show_delete_alert": "Czy na pewno chcesz usunąć grupę?",
 
   "login_email_label": "Adres e-mail",
   "login_email_placeholder": "Wpisz adres e-mail",

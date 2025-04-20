@@ -1,3 +1,5 @@
+import 'package:app/core/result/result.dart';
+import 'package:app/extensions/result_extension.dart';
 import 'package:app/features/organization/models/organization.dart';
 import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/models/user_auth_payload.dart';
@@ -14,15 +16,13 @@ class UserRepository {
   final UserService service;
   static final secure = SecureModule();
 
-  Future<User> signIn(UserAuthPayload payload) async {
-    return service.signIn(payload).then(User.fromJson);
+  Future<Result<User>> signIn(UserAuthPayload payload) async {
+    return service.signIn(payload).asResult<User>(fromJson: User.fromJson);
   }
 
-  Future<Organization?> getOrganization(int? organizationId) async {
-    if (organizationId == null) return null;
-
+  Future<Result<Organization>> getOrganization(int organizationId) async {
     return service
         .getOrganization(organizationId)
-        .then(Organization.fromJson);
+        .asResult<Organization>(fromJson: Organization.fromJson);
   }
 }

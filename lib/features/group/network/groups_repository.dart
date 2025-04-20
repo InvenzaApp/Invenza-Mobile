@@ -1,4 +1,6 @@
 import 'package:app/core/cockpit_repository/cockpit_repository.dart';
+import 'package:app/core/result/result.dart';
+import 'package:app/extensions/result_extension.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:app/features/group/network/groups_remote_data_source.dart';
 import 'package:app/type_def/json.dart';
@@ -13,8 +15,8 @@ class GroupsRepository extends CockpitRepository {
   final String? title;
 
   @override
-  Future<int> create(Json payload) async {
-    return remoteDS.create(payload).then((data) => data);
+  Future<Result<int>> create(Json payload) async {
+    return remoteDS.create(payload).asResult<int>();
   }
 
   @override
@@ -23,24 +25,20 @@ class GroupsRepository extends CockpitRepository {
   }
 
   @override
-  Future<Group> get(int resourceId) {
-    return remoteDS
-        .get(resourceId)
-        .then((data) => Group.fromJson(data as Json));
+  Future<Result<Group>> get(int resourceId) {
+    return remoteDS.get(resourceId).asResult<Group>(fromJson: Group.fromJson);
   }
 
   @override
-  Future<List<Group>> getAll() {
-    return remoteDS.getAll().then(
-          (data) => data.map((item) => Group.fromJson(item as Json)).toList(),
-        );
+  Future<Result<List<Group>>> getAll() {
+    return remoteDS.getAll().asListResult<Group>(fromJson: Group.fromJson);
   }
 
   @override
   final GroupsRemoteDataSource remoteDS;
 
   @override
-  Future<int> update(int resourceId, Json payload) {
-    return remoteDS.update(resourceId, payload).then((data) => data);
+  Future<Result<int>> update(int resourceId, Json payload) {
+    return remoteDS.update(resourceId, payload).asResult<int>();
   }
 }

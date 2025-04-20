@@ -5,8 +5,8 @@ import 'package:app/extensions/alert_extension.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/user/models/user_auth_payload.dart';
 import 'package:app/screens/auth/screen/login/widgets/login_language_selector_widget.dart';
-import 'package:app/shared/widgets/form/i_form_secure_field.dart';
-import 'package:app/shared/widgets/form/i_form_text_field.dart';
+import 'package:app/shared/form_template/widgets/i_form_secure_field.dart';
+import 'package:app/shared/form_template/widgets/i_form_text_field.dart';
 import 'package:app/shared/widgets/i_button.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
@@ -35,15 +35,13 @@ class LoginPage extends StatelessWidget {
     final l10n = context.l10n;
 
     return BlocListener<UserCubit, UserState>(
-      listenWhen: (previous, current) {
-        return previous != current;
-      },
       listener: (context, state) async {
-        if (state.user == null && state.error != null) {
+        if (state.userResult?.isError ?? true) {
           final cubit = context.read<UserCubit>();
-          await context.showAlert(state.error!.asString(context));
+          await context
+              .showAlert(state.userResult!.maybeError!.asString(context));
           cubit.reset();
-        } else if (state.user != null && !_hasNavigated) {
+        } else if ((state.userResult?.isSuccess ?? false) && !_hasNavigated) {
           _hasNavigated = true;
           await context.replaceRoute(const AppRoute());
         }

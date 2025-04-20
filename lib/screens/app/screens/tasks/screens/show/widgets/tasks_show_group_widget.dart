@@ -1,7 +1,9 @@
+import 'package:app/app/routing/app_router.gr.dart';
 import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/text_extension.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:app/variables.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class TasksShowGroupWidget extends StatelessWidget {
@@ -15,7 +17,7 @@ class TasksShowGroupWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => context.pushRoute(GroupsShowRoute(resourceId: group.id)),
       borderRadius: BorderRadius.circular(mediumValue),
       child: Ink(
         padding: mediumPadding,
