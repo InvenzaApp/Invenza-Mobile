@@ -7,5 +7,13 @@ abstract class UsersRoutes {
           path: '/users',
           page: UsersListRoute.page,
         ),
+        AutoRoute(
+          path: '/users/:id',
+          page: UsersShowRoute.page,
+        ),
+        AutoRoute(
+          path: '/user-create',
+          page: UsersCreateFormRoute.page,
+        ),
       ];
 }

@@ -31,6 +31,7 @@ class TasksShowPage extends StatelessWidget {
         resourceId: resourceId,
         repository: TasksRepository(
           remoteDS: inject<TasksRemoteDataSource>(),
+          title: l10n.task_show_app_bar,
         ),
       ),
       builder: (context, cubit) {

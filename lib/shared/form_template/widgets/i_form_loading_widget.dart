@@ -3,7 +3,7 @@ import 'package:app/shared/form_template/models/i_form_widget.dart';
 import 'package:app/variables.dart';
 import 'package:flutter/material.dart';
 
-class IFormLoadingWidget extends IFormWidget {
+class IFormLoadingWidget extends IFormStatelessWidget {
   const IFormLoadingWidget({super.key});
 
   @override
