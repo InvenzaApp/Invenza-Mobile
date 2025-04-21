@@ -10,7 +10,9 @@ class GroupsShowCubit extends ShowCubit<Group> {
   }) : super(editRoute: GroupsUpdateFormRoute(resourceId: resourceId));
 
   @override
-  Future<void> delete() async {}
+  Future<void> delete() async {
+    await repository.delete(resourceId);
+  }
 
   @override
   Future<void> initialize() async {
