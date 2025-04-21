@@ -11,6 +11,7 @@
   "error_subtitle": "Naciśnij, aby spróbować ponownie.",
   "problem": "Problem",
   "preview": "Podgląd",
+  "list": "Lista",
   "delete_confirm": "Czy na pewno chcesz usunąć ten rekord?",
 
   "api_invalid_request_parameters": "Nieprawidłowe parametry żądania. Skontaktuj się z administracją.",

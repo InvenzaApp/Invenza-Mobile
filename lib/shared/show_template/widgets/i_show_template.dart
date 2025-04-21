@@ -17,13 +17,9 @@ class IShowTemplate<T> extends ShowTemplate<T> {
   const IShowTemplate({
     required this.cubit,
     required this.builder,
-    this.title,
     this.deleteEnabled = true,
     super.key,
   });
-
-  @override
-  final String? title;
 
   @override
   State<StatefulWidget> createState() => _IShowTemplateState<T>();
@@ -45,11 +41,11 @@ class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return BlocProvider(
-      create: (context) => widget.cubit,
+      create: (_) => widget.cubit,
       child: Scaffold(
         appBar: iAppBar(
           context: context,
-          title: widget.title ?? context.l10n.preview,
+          title: widget.cubit.repository.title ?? context.l10n.preview,
           backButtonAction: () {
             context.maybePop(requireUpdate);
           },

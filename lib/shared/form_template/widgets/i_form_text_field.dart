@@ -12,6 +12,7 @@ class IFormTextField extends IFormWidget {
     this.actionNext = true,
     this.validators = const [],
     this.initialValue,
+    this.keyboardType,
     super.key,
   });
 
@@ -21,6 +22,7 @@ class IFormTextField extends IFormWidget {
   final bool actionNext;
   final List<FormFieldValidator<String>> validators;
   final String? initialValue;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class IFormTextField extends IFormWidget {
           ),
           textInputAction:
               actionNext ? TextInputAction.next : TextInputAction.done,
-          keyboardType: TextInputType.emailAddress,
+          keyboardType: keyboardType,
           validator: FormBuilderValidators.compose(validators),
         ),
       ],
