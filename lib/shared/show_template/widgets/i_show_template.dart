@@ -18,6 +18,7 @@ class IShowTemplate<T> extends ShowTemplate<T> {
     required this.cubit,
     required this.builder,
     this.deleteEnabled = true,
+    this.editEnabled = true,
     super.key,
   });
 
@@ -32,6 +33,9 @@ class IShowTemplate<T> extends ShowTemplate<T> {
 
   @override
   final bool deleteEnabled;
+
+  @override
+  final bool editEnabled;
 }
 
 class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
@@ -67,22 +71,23 @@ class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
               ),
           ],
         ),
-        floatingActionButton: widget.cubit.editRoute == null
-            ? null
-            : FloatingActionButton(
-                child: const Icon(Icons.edit),
-                onPressed: () async {
-                  final needUpdate =
-                      await context.pushRoute(widget.cubit.editRoute!);
+        floatingActionButton:
+            (widget.cubit.editRoute == null || !widget.editEnabled)
+                ? null
+                : FloatingActionButton(
+                    child: const Icon(Icons.edit),
+                    onPressed: () async {
+                      final needUpdate =
+                          await context.pushRoute(widget.cubit.editRoute!);
 
-                  if (needUpdate == true) {
-                    setState(() {
-                      requireUpdate = true;
-                    });
-                    await widget.cubit.initialize();
-                  }
-                },
-              ),
+                      if (needUpdate == true) {
+                        setState(() {
+                          requireUpdate = true;
+                        });
+                        await widget.cubit.initialize();
+                      }
+                    },
+                  ),
         body: BlocBuilder<ShowCubit<T>, ShowState<T>>(
           builder: (context, state) => switch (state.isLoading) {
             true => const ILoadingWidget(),

@@ -20,6 +20,7 @@
   "api_unknown_error": "Nieznany błąd. Skontaktuj się z administracją.",
   "api_no_internet_connection": "Problem z połączeniem internetowym. Spróbuj ponownie później.",
   "api_unauthorized_access": "Nieuprawniony dostęp. Spróbuj ponownie.",
+  "api_user_exists": "Użytkownik o tym adresie email już istnieje.",
 
   "tasks_list_app_bar": "Zadania",
   "tasks_list_no_tasks_title": "Nie znaleziono żadnych zadań",
@@ -64,6 +65,24 @@
   "groups_show_app_bar": "Podgląd grupy",
   "groups_show_name": "Nazwa grupy",
   "groups_show_delete_alert": "Czy na pewno chcesz usunąć grupę?",
+
+  "users_create_app_bar": "Dodaj użytkownika",
+  "users_create_name_label": "Imię",
+  "users_create_name_placeholder": "Wpisz imię",
+  "users_create_lastname_label": "Nazwisko",
+  "users_create_lastname_placeholder": "Wpisz nazwisko",
+  "users_create_email_label": "Adres e-mail",
+  "users_create_email_placeholder": "Wpisz e-mail",
+  "users_create_password_label": "Hasło",
+  "users_create_password_placeholder": "Wpisz hasło",
+  "users_create_groups_label": "Grupy",
+
+  "users_list_app_bar": "Użytkownicy",
+
+  "users_show_app_bar": "Podgląd użytkownika",
+  "users_show_name": "Imię",
+  "users_show_lastname": "Nazwisko",
+  "users_show_email": "Adres e-mail",
 
   "login_email_label": "Adres e-mail",
   "login_email_placeholder": "Wpisz adres e-mail",
