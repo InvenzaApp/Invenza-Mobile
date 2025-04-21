@@ -1,13 +1,14 @@
-import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/core/list/cubit/list_cubit.dart';
+import 'package:app/di.dart';
 import 'package:app/extensions/app_localizations.dart';
-import 'package:app/screens/app/screens/tasks/cubit/tasks_list_cubit.dart';
-import 'package:app/screens/app/screens/tasks/cubit/tasks_list_state.dart';
+import 'package:app/features/tasks/models/task.dart';
+import 'package:app/features/tasks/network/tasks_remote_data_source.dart';
+import 'package:app/features/tasks/network/tasks_repository.dart';
+import 'package:app/screens/app/screens/tasks/screens/list/cubits/tasks_list_cubit.dart';
 import 'package:app/screens/app/screens/tasks/screens/list/widgets/tasks_list_widget.dart';
-import 'package:app/shared/widgets/i_app_bar.dart';
-import 'package:app/shared/widgets/i_error_widget.dart';
-import 'package:app/shared/widgets/i_loading_widget.dart';
+import 'package:app/shared/list_template/i_list_template.dart';
 import 'package:app/variables.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,60 +18,33 @@ class TasksListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: iAppBar(
-        context: context,
-        title: context.l10n.tasks_list_app_bar,
-        showBackButton: false,
+    return IListTemplate<Task>(
+      cubit: TasksListCubit(
+        repository: TasksRepository(
+          remoteDS: inject<TasksRemoteDataSource>(),
+          title: context.l10n.tasks_list_app_bar,
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final cubit = context.read<TasksListCubit>();
-          final needUpdate =
-              await context.pushRoute(const TasksCreateFormRoute());
+      builder: (context, cubit) {
+        final tasksList = cubit.data;
 
-          if (needUpdate == true) {
-            await cubit.fetch();
-          }
-        },
-        child: const Icon(Icons.add),
-      ),
-      body: BlocBuilder<TasksListCubit, TasksListState>(
-        builder: (context, state) => switch (state.isLoading) {
-          true => const ILoadingWidget(),
-          false => (state.result?.isError ?? true)
-              ? const IErrorWidget()
-              : Padding(
-                  padding: mediumPadding,
-                  child: state.result!.maybeValue!.isEmpty
-                      ? IErrorWidget(
-                          icon: Icons.no_sim_outlined,
-                          title: context.l10n.tasks_list_no_tasks_title,
-                          showSubtitle: false,
-                        )
-                      : RefreshIndicator(
-                          onRefresh: () async {
-                            await context.read<TasksListCubit>().fetch();
-                          },
-                          child: ListView.builder(
-                            itemCount: state.result!.maybeValue!.length,
-                            itemBuilder: (context, index) {
-                              final item = state.result!.maybeValue![index];
+        return RefreshIndicator(
+          onRefresh: () async => context.read<ListCubit<Task>>().initialize(),
+          child: ListView.builder(
+            itemCount: tasksList.length,
+            itemBuilder: (context, index) {
+              final task = tasksList[index];
 
-                              return Column(
-                                children: [
-                                  TasksListWidget(task: item),
-                                  SizedBox(
-                                    height: mediumValue,
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                        ),
-                ),
-        },
-      ),
+              return Column(
+                children: [
+                  TasksListWidget(task: task),
+                  SizedBox(height: mediumValue),
+                ],
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

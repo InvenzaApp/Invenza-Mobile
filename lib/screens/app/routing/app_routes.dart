@@ -24,7 +24,7 @@ abstract class AppRoutes {
             ),
             AutoRoute(
               path: 'tasks',
-              page: TasksRoute.page,
+              page: TasksListRoute.page,
             ),
             AutoRoute(
               path: 'users',
