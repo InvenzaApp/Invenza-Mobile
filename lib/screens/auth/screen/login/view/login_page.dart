@@ -68,6 +68,7 @@ class LoginPage extends StatelessWidget {
                             FormBuilderValidators.required(),
                             FormBuilderValidators.email(),
                           ],
+                          keyboardType: TextInputType.emailAddress,
                         ),
                         IFormSecureField(
                           name: 'password',
