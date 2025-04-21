@@ -26,7 +26,10 @@ class GroupsUpdateUseCase extends UpdateUseCase {
     final mutablePayload = Map<String, dynamic>.from(payload);
 
     final existingUsers = (mutablePayload['usersIdList'] as List<int>?) ?? [];
-    mutablePayload['usersIdList'] = [creatorId, ...existingUsers];
+    mutablePayload['usersIdList'] = [
+      if (!existingUsers.contains(creatorId)) creatorId,
+      ...existingUsers,
+    ];
 
     return cockpitRepository.update(resourceId, mutablePayload);
   }
