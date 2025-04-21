@@ -1,30 +1,24 @@
+import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/core/list/cubit/list_cubit.dart';
+import 'package:app/features/group/models/group.dart';
 import 'package:app/features/group/network/groups_repository.dart';
-import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_state.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class GroupsListCubit extends Cubit<GroupsListState> {
+class GroupsListCubit extends ListCubit<Group> {
   GroupsListCubit({
     required this.repository,
-  }) : super(const GroupsListState()) {
-    _initialize();
-  }
+  }) : super(createRoute: const GroupsCreateFormRoute());
 
+  @override
   final GroupsRepository repository;
 
-  Future<void> _initialize() async {
+  @override
+  Future<void> initialize() async {
     await fetch();
   }
 
-  Future<void> fetch() async {
-    emit(state.copyWith(isLoading: true));
+  Future<void> fetch() async{
+    super.emitState(isLoading: true);
     final result = await repository.getAll();
-
-    emit(
-      GroupsListState(
-        groupsList: result.isSuccess ? result.maybeValue! : null,
-        error: result.isError ? result.maybeError! : null,
-        isLoading: false,
-      ),
-    );
+    super.emitState(data: result, isLoading: false);
   }
 }
