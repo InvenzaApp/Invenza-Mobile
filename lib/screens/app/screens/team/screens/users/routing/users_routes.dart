@@ -15,5 +15,9 @@ abstract class UsersRoutes {
           path: '/user-create',
           page: UsersCreateFormRoute.page,
         ),
+        AutoRoute(
+          path: '/user-update',
+          page: UsersUpdateFormRoute.page,
+        ),
       ];
 }

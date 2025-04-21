@@ -1,3 +1,4 @@
+import 'package:app/app/routing/app_router.gr.dart';
 import 'package:app/core/show/cubit/show_cubit.dart';
 import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/network/users_repository.dart';
@@ -6,7 +7,7 @@ class UsersShowCubit extends ShowCubit<User>{
   UsersShowCubit({
     required this.repository,
     required this.resourceId,
-}) : super();
+}) : super(editRoute: UsersUpdateFormRoute(resourceId: resourceId));
 
   @override
   final UsersRepository repository;

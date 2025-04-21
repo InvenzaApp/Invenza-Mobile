@@ -5,6 +5,8 @@ import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:app/features/group/network/groups_remote_data_source.dart';
 import 'package:app/features/group/network/groups_repository.dart';
+import 'package:app/features/user/models/user.dart';
+import 'package:app/features/user/use_case/users_update_use_case.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_cubit.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
@@ -24,6 +26,28 @@ class UsersFormWidget extends StatefulWidget {
 }
 
 class _UsersFormWidgetState extends State<UsersFormWidget> {
+  User? resources;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async{
+    if(widget.useCase is! UpdateUseCase) return;
+
+    final useCase = widget.useCase as UsersUpdateUseCase;
+
+    final result = await useCase.cockpitRepository.get(useCase.resourceId);
+
+    if(result.isSuccess){
+      setState(() {
+        resources = result.maybeValue;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -51,6 +75,7 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
                         validators: [
                           FormBuilderValidators.required(),
                         ],
+                        initialValue: resources?.name,
                       ),
                       IFormTextField(
                         name: 'lastname',
@@ -59,6 +84,7 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
                         validators: [
                           FormBuilderValidators.required(),
                         ],
+                        initialValue: resources?.lastname,
                       ),
                       IFormTextField(
                         name: 'email',
@@ -67,6 +93,7 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
                         ],
                         label: l10n.users_create_email_label,
                         placeholder: l10n.users_create_email_placeholder,
+                        initialValue: resources?.email,
                       ),
                       if (widget.useCase is CreateUseCase)
                         IFormSecureField(
@@ -81,6 +108,7 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
                       IFormCheckboxGroup(
                         name: 'groupsIdList',
                         label: l10n.users_create_groups_label,
+                        initialValue: resources?.groupsIdList,
                         options: state.data!.maybeValue!.map(
                           (group) {
                             return IFormOption(
@@ -91,7 +119,7 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
                         ).toList(),
                       ),
                     ],
-                  )
+                  ),
           };
         },
       ),

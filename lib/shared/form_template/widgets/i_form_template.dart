@@ -2,6 +2,7 @@ import 'package:app/core/result/result.dart';
 import 'package:app/core/use_case/use_case.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
+import 'package:app/extensions/toast_extension.dart';
 import 'package:app/shared/form_template/models/i_form_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_button.dart';
@@ -72,7 +73,7 @@ class _IFormTemplateState extends State<IFormTemplate> {
                         isLoading = true;
                       });
 
-                      final taskId = await widget.useCase.invoke(
+                      final result = await widget.useCase.invoke(
                         _formKey.currentState!.value,
                       );
 
@@ -80,7 +81,16 @@ class _IFormTemplateState extends State<IFormTemplate> {
                         isLoading = false;
                       });
 
-                      widget.onSubmit(taskId);
+                      if(!context.mounted) return;
+
+                      if(result.isError){
+                        final error = result.maybeError!;
+                        context.showToast(error.asString(context));
+                      }
+
+                      if(result.isSuccess){
+                        widget.onSubmit(result);
+                      }
                     }
                   },
                 ),

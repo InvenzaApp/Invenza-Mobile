@@ -20,9 +20,8 @@ class UsersRepository extends CockpitRepository {
   }
 
   @override
-  Future<void> delete(int resourceId) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<void> delete(int resourceId) async {
+    await remoteDS.delete(resourceId);
   }
 
   @override
@@ -36,9 +35,8 @@ class UsersRepository extends CockpitRepository {
   }
 
   @override
-  Future<Result<int>> update(int resourceId, Json payload) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<Result<int>> update(int resourceId, Json payload) async {
+    return remoteDS.update(resourceId, payload).asResult<int>();
   }
 
   @override

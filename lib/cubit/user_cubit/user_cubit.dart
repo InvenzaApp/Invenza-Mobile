@@ -27,10 +27,11 @@ class UserCubit extends Cubit<UserState> {
 
     emit(
       state.copyWith(
-        isLoading: false,
         userResult: result,
       ),
     );
+
+    await fetchOrganization();
   }
 
   Future<void> fetchOrganization() async {
