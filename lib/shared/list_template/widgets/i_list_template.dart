@@ -51,7 +51,9 @@ class IListTemplate<T> extends ListTemplate<T> {
           builder: (context, state) => switch (state.isLoading) {
             true => const ILoadingWidget(),
             false => (state.data?.isError ?? true)
-                ? const IErrorWidget()
+                ? IErrorWidget(
+                    subtitle: state.data!.maybeError!.asString(context),
+                  )
                 : Padding(
                     padding: mediumPadding,
                     child: builder(context, cubit),

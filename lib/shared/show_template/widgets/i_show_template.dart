@@ -92,7 +92,9 @@ class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
           builder: (context, state) => switch (state.isLoading) {
             true => const ILoadingWidget(),
             false => (state.data?.isError ?? true)
-                ? const IErrorWidget()
+                ? IErrorWidget(
+              subtitle: state.data!.maybeError!.asString(context),
+            )
                 : widget.builder(context, widget.cubit),
           },
         ),
