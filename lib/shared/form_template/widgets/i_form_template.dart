@@ -63,8 +63,9 @@ class _IFormTemplateState extends State<IFormTemplate> {
               children: [
                 IButton(
                   isPending: isLoading,
-                  label:
-                      widget.useCase is CreateUseCase ? l10n.create : l10n.update,
+                  label: widget.useCase is CreateUseCase
+                      ? l10n.create
+                      : l10n.update,
                   onPressed: () async {
                     if (_formKey.currentState!.saveAndValidate()) {
                       setState(() {
