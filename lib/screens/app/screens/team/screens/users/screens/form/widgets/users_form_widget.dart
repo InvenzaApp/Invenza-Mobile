@@ -9,8 +9,8 @@ import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/use_case/users_update_use_case.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_cubit.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
+import 'package:app/shared/widgets/i_form_skeletonizer.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
-import 'package:app/shared/widgets/i_scaffold_loading_widget.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,7 +61,7 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
       child: BlocBuilder<GroupsListCubit, ListState<Group>>(
         builder: (context, state) {
           return switch (state.isLoading) {
-            true => const IScaffoldLoadingWidget(),
+            true => const IFormSkeletonizer(),
             false => (state.data?.isError ?? true)
                 ? const IScaffoldErrorWidget()
                 : IFormTemplate(

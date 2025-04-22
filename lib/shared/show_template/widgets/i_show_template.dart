@@ -8,7 +8,7 @@ import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/confirm_extension.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_error_widget.dart';
-import 'package:app/shared/widgets/i_loading_widget.dart';
+import 'package:app/shared/widgets/i_show_skeletonizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -90,7 +90,7 @@ class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
                   ),
         body: BlocBuilder<ShowCubit<T>, ShowState<T>>(
           builder: (context, state) => switch (state.isLoading) {
-            true => const ILoadingWidget(),
+            true => const IShowSkeletonizer(),
             false => (state.data?.isError ?? true)
                 ? IErrorWidget(
               subtitle: state.data!.maybeError!.asString(context),

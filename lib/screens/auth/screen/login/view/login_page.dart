@@ -48,7 +48,8 @@ class LoginPage extends StatelessWidget {
           if (!_shownAlert) {
             _shownAlert = true;
             await context.showAlert(
-                (error ?? ApiMessages.unknownError).asString(context));
+              (error ?? ApiMessages.unknownError).asString(context),
+            );
             _shownAlert = false;
           }
         } else if ((state.userResult?.isSuccess ?? false) && !_hasNavigated) {
