@@ -10,8 +10,8 @@ import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/use_case/tasks_update_use_case.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_cubit.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
+import 'package:app/shared/widgets/i_form_skeletonizer.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
-import 'package:app/shared/widgets/i_scaffold_loading_widget.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,7 +58,7 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
       builder: (context, groupsState) {
         return BlocBuilder<UserCubit, UserState>(
           builder: (context, userState) => switch (groupsState.isLoading) {
-            true => const IScaffoldLoadingWidget(),
+            true => const IFormSkeletonizer(),
             false => (groupsState.data == null)
                 ? IScaffoldErrorWidget(
                     icon: Icons.group_off_sharp,

@@ -27,6 +27,7 @@ dependencies:
   json_annotation: ^4.9.0
   flutter_secure_storage: ^9.2.4
   flutter_launcher_icons: ^0.14.3
+  skeletonizer: ^1.4.3
 
 dev_dependencies:
   flutter_test:
