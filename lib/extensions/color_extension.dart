@@ -64,4 +64,7 @@ extension ColorExtension on BuildContext {
   Color get scrim => Theme.of(this).colorScheme.scrim;
 
   Color get shadow => Theme.of(this).colorScheme.shadow;
+
+  bool get isDarkMode =>
+      Theme.of(this).colorScheme.brightness == Brightness.dark;
 }

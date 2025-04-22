@@ -26,6 +26,7 @@ dependencies:
   json_serializable: ^6.9.4
   json_annotation: ^4.9.0
   flutter_secure_storage: ^9.2.4
+  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   flutter_test:
@@ -40,4 +41,6 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
+    - assets/images/
     - assets/images/languages/
+    - assets/icon/icon.png
