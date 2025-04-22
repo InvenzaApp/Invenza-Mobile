@@ -3,6 +3,7 @@
 untranslated.txt
 *.config.dart
 *.g.dart
+devtools_options.yaml
 
 # Miscellaneous
 *.class

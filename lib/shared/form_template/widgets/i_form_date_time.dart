@@ -3,7 +3,7 @@ import 'package:app/shared/form_template/models/i_form_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-class IFormDateTime extends IFormWidget {
+class IFormDateTime extends IFormStatelessWidget {
   const IFormDateTime({
     required this.name,
     this.label,

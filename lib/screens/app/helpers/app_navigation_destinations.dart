@@ -37,7 +37,7 @@ class AppNavigationDestinations {
 
   List<PageRouteInfo<Object?>> getRoutesList() => const [
         DashboardRoute(),
-        TasksRoute(),
+        TasksListRoute(),
         TeamRoute(),
         SettingsRoute(),
       ];

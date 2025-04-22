@@ -2,6 +2,7 @@ import 'package:app/core/result/result.dart';
 import 'package:app/core/use_case/use_case.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
+import 'package:app/extensions/toast_extension.dart';
 import 'package:app/shared/form_template/models/i_form_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_button.dart';
@@ -59,27 +60,42 @@ class _IFormTemplateState extends State<IFormTemplate> {
             decoration: BoxDecoration(
               color: context.container,
             ),
-            child: IButton(
-              isPending: isLoading,
-              label:
-                  widget.useCase is CreateUseCase ? l10n.create : l10n.update,
-              onPressed: () async {
-                if (_formKey.currentState!.saveAndValidate()) {
-                  setState(() {
-                    isLoading = true;
-                  });
+            child: Column(
+              children: [
+                IButton(
+                  isPending: isLoading,
+                  label: widget.useCase is CreateUseCase
+                      ? l10n.create
+                      : l10n.update,
+                  onPressed: () async {
+                    if (_formKey.currentState!.saveAndValidate()) {
+                      setState(() {
+                        isLoading = true;
+                      });
 
-                  final taskId = await widget.useCase.invoke(
-                    _formKey.currentState!.value,
-                  );
+                      final result = await widget.useCase.invoke(
+                        _formKey.currentState!.value,
+                      );
 
-                  setState(() {
-                    isLoading = false;
-                  });
+                      setState(() {
+                        isLoading = false;
+                      });
 
-                  widget.onSubmit(taskId);
-                }
-              },
+                      if(!context.mounted) return;
+
+                      if(result.isError){
+                        final error = result.maybeError!;
+                        context.showToast(error.asString(context));
+                      }
+
+                      if(result.isSuccess){
+                        widget.onSubmit(result);
+                      }
+                    }
+                  },
+                ),
+                SizedBox(height: mediumValue),
+              ],
             ),
           ),
         ],

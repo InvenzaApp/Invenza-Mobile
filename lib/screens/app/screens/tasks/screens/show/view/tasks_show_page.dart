@@ -1,9 +1,9 @@
 import 'package:app/di.dart';
 import 'package:app/extensions/app_localizations.dart';
+import 'package:app/extensions/date_time_extension.dart';
 import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/network/tasks_remote_data_source.dart';
 import 'package:app/features/tasks/network/tasks_repository.dart';
-import 'package:app/screens/app/screens/tasks/screens/list/widgets/tasks_list_widget.dart';
 import 'package:app/screens/app/screens/tasks/screens/show/cubit/tasks_show_cubit.dart';
 import 'package:app/screens/app/screens/tasks/screens/show/widgets/tasks_show_group_widget.dart';
 import 'package:app/shared/show_template/i_show_template.dart';
@@ -31,6 +31,7 @@ class TasksShowPage extends StatelessWidget {
         resourceId: resourceId,
         repository: TasksRepository(
           remoteDS: inject<TasksRemoteDataSource>(),
+          title: l10n.task_show_app_bar,
         ),
       ),
       builder: (context, cubit) {

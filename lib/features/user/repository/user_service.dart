@@ -15,7 +15,7 @@ class UserService {
   final Dio _noAuthDio;
   final Dio _authDio;
 
-  static const userUrl = '/api/user';
+  static const userUrl = '/api/users';
   static const organizationUrl = '/api/organization';
 
   Future<Json> signIn(UserAuthPayload payload) async {

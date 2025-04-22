@@ -17,13 +17,10 @@ class IShowTemplate<T> extends ShowTemplate<T> {
   const IShowTemplate({
     required this.cubit,
     required this.builder,
-    this.title,
     this.deleteEnabled = true,
+    this.editEnabled = true,
     super.key,
   });
-
-  @override
-  final String? title;
 
   @override
   State<StatefulWidget> createState() => _IShowTemplateState<T>();
@@ -36,6 +33,9 @@ class IShowTemplate<T> extends ShowTemplate<T> {
 
   @override
   final bool deleteEnabled;
+
+  @override
+  final bool editEnabled;
 }
 
 class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
@@ -45,11 +45,11 @@ class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return BlocProvider(
-      create: (context) => widget.cubit,
+      create: (_) => widget.cubit,
       child: Scaffold(
         appBar: iAppBar(
           context: context,
-          title: widget.title ?? context.l10n.preview,
+          title: widget.cubit.repository.title ?? context.l10n.preview,
           backButtonAction: () {
             context.maybePop(requireUpdate);
           },
@@ -71,27 +71,30 @@ class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
               ),
           ],
         ),
-        floatingActionButton: widget.cubit.editRoute == null
-            ? null
-            : FloatingActionButton(
-                child: const Icon(Icons.edit),
-                onPressed: () async {
-                  final needUpdate =
-                      await context.pushRoute(widget.cubit.editRoute!);
+        floatingActionButton:
+            (widget.cubit.editRoute == null || !widget.editEnabled)
+                ? null
+                : FloatingActionButton(
+                    child: const Icon(Icons.edit),
+                    onPressed: () async {
+                      final needUpdate =
+                          await context.pushRoute(widget.cubit.editRoute!);
 
-                  if (needUpdate == true) {
-                    setState(() {
-                      requireUpdate = true;
-                    });
-                    await widget.cubit.initialize();
-                  }
-                },
-              ),
+                      if (needUpdate == true) {
+                        setState(() {
+                          requireUpdate = true;
+                        });
+                        await widget.cubit.initialize();
+                      }
+                    },
+                  ),
         body: BlocBuilder<ShowCubit<T>, ShowState<T>>(
           builder: (context, state) => switch (state.isLoading) {
             true => const ILoadingWidget(),
             false => (state.data?.isError ?? true)
-                ? const IErrorWidget()
+                ? IErrorWidget(
+              subtitle: state.data!.maybeError!.asString(context),
+            )
                 : widget.builder(context, widget.cubit),
           },
         ),

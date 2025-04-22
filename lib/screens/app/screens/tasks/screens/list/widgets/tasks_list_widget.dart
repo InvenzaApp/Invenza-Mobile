@@ -1,13 +1,13 @@
 import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/core/list/cubit/list_cubit.dart';
 import 'package:app/extensions/color_extension.dart';
+import 'package:app/extensions/date_time_extension.dart';
 import 'package:app/extensions/text_extension.dart';
 import 'package:app/features/tasks/models/task.dart';
-import 'package:app/screens/app/screens/tasks/cubit/tasks_list_cubit.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class TasksListWidget extends StatelessWidget {
   const TasksListWidget({required this.task, super.key});
@@ -19,12 +19,12 @@ class TasksListWidget extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(mediumValue),
       onTap: () async {
-        final cubit = context.read<TasksListCubit>();
+        final cubit = context.read<ListCubit<Task>>();
         final needUpdate =
             await context.pushRoute(TasksShowRoute(resourceId: task.id));
 
         if (needUpdate == true) {
-          await cubit.fetch();
+          await cubit.initialize();
         }
       },
       child: Ink(
@@ -80,8 +80,4 @@ class TasksListWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-extension DateTimeExtension on DateTime {
-  String get formattedDateTime => DateFormat.yMMMd().format(this);
 }

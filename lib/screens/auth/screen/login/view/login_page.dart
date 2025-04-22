@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:app/app/routing/app_router.gr.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/cubit/user_cubit/user_state.dart';
+import 'package:app/enums/api_messages.dart';
 import 'package:app/extensions/alert_extension.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/user/models/user_auth_payload.dart';
@@ -21,6 +24,7 @@ class LoginPage extends StatelessWidget {
 
   static final _formKey = GlobalKey<FormBuilderState>();
   static bool _hasNavigated = false;
+  static bool _shownAlert = false;
 
   Future<void> _signIn(UserCubit cubit) async {
     if (_formKey.currentState!.saveAndValidate()) {
@@ -36,11 +40,16 @@ class LoginPage extends StatelessWidget {
 
     return BlocListener<UserCubit, UserState>(
       listener: (context, state) async {
-        if (state.userResult?.isError ?? true) {
+        if (!state.isLoading && (state.userResult?.isError ?? true)) {
           final cubit = context.read<UserCubit>();
-          await context
-              .showAlert(state.userResult!.maybeError!.asString(context));
+          final error = cubit.state.userResult?.maybeError;
           cubit.reset();
+          if(!_shownAlert){
+            _shownAlert = true;
+            await context
+                .showAlert((error ?? ApiMessages.unknownError).asString(context));
+            _shownAlert = false;
+          }
         } else if ((state.userResult?.isSuccess ?? false) && !_hasNavigated) {
           _hasNavigated = true;
           await context.replaceRoute(const AppRoute());
@@ -68,6 +77,7 @@ class LoginPage extends StatelessWidget {
                             FormBuilderValidators.required(),
                             FormBuilderValidators.email(),
                           ],
+                          keyboardType: TextInputType.emailAddress,
                         ),
                         IFormSecureField(
                           name: 'password',

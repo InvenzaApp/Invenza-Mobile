@@ -8,8 +8,8 @@ import 'package:app/modules/secure_module.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton
-class UserRepository {
-  const UserRepository({
+class UserAuthRepository {
+  const UserAuthRepository({
     required this.service,
   });
 
