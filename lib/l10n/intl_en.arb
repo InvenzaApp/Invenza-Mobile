@@ -13,6 +13,8 @@
   "preview": "Preview",
   "list": "List",
   "delete_confirm": "Are you sure you want to delete this item?",
+  "empty_list_title": "List is empty",
+  "empty_list_subtitle": "We did not found any data",
 
   "api_invalid_request_parameters": "Invalid request parameters. Please contact the administrator.",
   "api_invalid_credentials": "Email address or password is incorrect.",
