@@ -54,6 +54,13 @@ class IListTemplate<T> extends ListTemplate<T> {
                 ? IErrorWidget(
                     subtitle: state.data!.maybeError!.asString(context),
                   )
+            : (state.data?.maybeValue?.isEmpty ?? true)
+            ? IErrorWidget(
+              icon: Icons.cloud_off,
+              title: l10n.empty_list_title,
+              subtitle: l10n.empty_list_subtitle,
+              onPressed: () async => context.read<ListCubit<T>>().initialize(),
+            )
                 : Padding(
                     padding: mediumPadding,
                     child: builder(context, cubit),

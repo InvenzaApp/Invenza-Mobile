@@ -21,5 +21,5 @@ abstract class ListCubit<T> extends Cubit<ListState<T>> {
   }) =>
       super.emit(state.copyWith(data: data, isLoading: isLoading));
 
-  List<T> get data => super.state.data!.maybeValue!;
+  List<T> get data => super.state.data?.maybeValue ?? [];
 }
