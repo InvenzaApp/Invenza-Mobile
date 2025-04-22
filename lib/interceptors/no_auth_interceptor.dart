@@ -18,10 +18,11 @@ class NoAuthInterceptor extends QueuedInterceptor {
   ) {
     final jsonData = jsonDecode(response.data as String) as Json;
     final token = jsonData['token'] as String?;
+    final success = jsonData['success'] as bool;
 
-    if (token == null) return;
-
-    cubit.token = token;
+    if (success && token != null){
+      cubit.token = token;
+    }
 
     super.onResponse(response, handler);
   }

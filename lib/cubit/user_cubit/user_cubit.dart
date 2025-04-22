@@ -21,17 +21,17 @@ class UserCubit extends Cubit<UserState> {
 
     final result = await repo.signIn(payload);
 
-    if(result.isSuccess){
-      await secure.saveUserCredentials(payload);
-    }
-
     emit(
       state.copyWith(
         userResult: result,
+        isLoading: false,
       ),
     );
 
-    await fetchOrganization();
+    if(result.isSuccess){
+      await secure.saveUserCredentials(payload);
+      await fetchOrganization();
+    }
   }
 
   Future<void> fetchOrganization() async {
