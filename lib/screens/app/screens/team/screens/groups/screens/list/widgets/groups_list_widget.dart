@@ -49,7 +49,7 @@ class GroupsListWidget extends StatelessWidget {
               ),
             ),
             Text(
-              child.name,
+              child.title,
               style: context.titleMedium,
             ),
           ],

@@ -105,7 +105,7 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
                               options: groupsState.data!.maybeValue!
                                   .map(
                                     (group) => IFormOption(
-                                      label: group.name,
+                                      label: group.title,
                                       value: group.id,
                                     ),
                                   )

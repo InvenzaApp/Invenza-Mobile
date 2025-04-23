@@ -39,7 +39,7 @@ class GroupsShowPage extends StatelessWidget {
                 children: [
                   ICardItem(
                     label: context.l10n.groups_show_name,
-                    value: group.name,
+                    value: group.title,
                   ),
                 ],
               ),

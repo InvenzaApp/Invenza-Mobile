@@ -40,7 +40,7 @@ class TasksShowGroupWidget extends StatelessWidget {
               ),
             ),
             Text(
-              group.name,
+              group.title,
               style: context.bodyMedium,
             ),
           ],
