@@ -97,6 +97,8 @@
   "settings_theme_subtitle": "Zmień motyw aplikacji",
   "settings_language_title": "Język",
   "settings_language_subtitle": "Zmień język aplikacji",
+  "settings_license_title": "Licencje",
+  "settings_license_subtitle": "Licencje użyte w aplikacji",
   "settings_logout_title": "Wyloguj",
   "settings_logout_subtitle": "Wyloguj się z aplikacji",
 

@@ -6,12 +6,12 @@ import 'package:app/cubit/user_cubit/user_state.dart';
 import 'package:app/enums/api_messages.dart';
 import 'package:app/extensions/alert_extension.dart';
 import 'package:app/extensions/app_localizations.dart';
-import 'package:app/extensions/color_extension.dart';
 import 'package:app/features/user/models/user_auth_payload.dart';
 import 'package:app/screens/auth/screen/login/widgets/login_language_selector_widget.dart';
 import 'package:app/shared/form_template/widgets/i_form_secure_field.dart';
 import 'package:app/shared/form_template/widgets/i_form_text_field.dart';
 import 'package:app/shared/widgets/i_button.dart';
+import 'package:app/shared/widgets/i_logo_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +71,7 @@ class LoginPage extends StatelessWidget {
                       spacing: smallValue,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const LoginLogoWidget(),
+                        const ILogoWidget(),
                         IFormTextField(
                           name: 'email',
                           placeholder: l10n.login_email_placeholder,
@@ -106,27 +106,6 @@ class LoginPage extends StatelessWidget {
           },
         ),
       ),
-    );
-  }
-}
-
-class LoginLogoWidget extends StatelessWidget {
-  const LoginLogoWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Padding(
-          padding: xLargePadding,
-          child: Image.asset(
-            'assets/images/black_logo.png',
-            width: constraints.maxWidth * 0.8,
-            color: context.isDarkMode ? Colors.white : Colors.black,
-            colorBlendMode: BlendMode.srcIn,
-          ),
-        );
-      },
     );
   }
 }
