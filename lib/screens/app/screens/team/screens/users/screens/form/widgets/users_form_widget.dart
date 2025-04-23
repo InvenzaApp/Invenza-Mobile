@@ -9,6 +9,7 @@ import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/use_case/users_update_use_case.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_cubit.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
+import 'package:app/shared/select_template/select_template.dart';
 import 'package:app/shared/widgets/i_form_skeletonizer.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
 import 'package:auto_route/auto_route.dart';
@@ -105,6 +106,7 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
                             FormBuilderValidators.minLength(8),
                           ],
                         ),
+                      IFormMultipleSelectWidget<Group>(),
                       IFormCheckboxGroup(
                         name: 'groupsIdList',
                         label: l10n.users_create_groups_label,
@@ -126,3 +128,6 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
     );
   }
 }
+
+
+
