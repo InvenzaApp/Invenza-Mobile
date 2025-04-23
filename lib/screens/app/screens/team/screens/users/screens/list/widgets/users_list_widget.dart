@@ -49,7 +49,7 @@ class UsersListWidget extends StatelessWidget {
               ),
             ),
             Text(
-              '${child.name} ${child.lastname}',
+              child.title,
               style: context.titleMedium,
             ),
           ],
