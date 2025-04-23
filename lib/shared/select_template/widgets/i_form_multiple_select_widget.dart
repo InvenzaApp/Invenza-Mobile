@@ -18,6 +18,8 @@ class IFormMultipleSelectWidget<T extends Entity> extends IFormStatefulWidget {
     this.label,
     this.subtitle,
     this.initialIdList,
+    this.dontBuildWithId,
+    this.validator,
     super.key,
   });
 
@@ -27,6 +29,8 @@ class IFormMultipleSelectWidget<T extends Entity> extends IFormStatefulWidget {
   final String? title;
   final String? subtitle;
   final List<int>? initialIdList;
+  final int? dontBuildWithId;
+  final FormFieldValidator<dynamic>? validator;
 
   @override
   State<IFormMultipleSelectWidget> createState() =>
@@ -37,21 +41,31 @@ class _IFormMultipleSelectWidgetState<T extends Entity>
     extends State<IFormMultipleSelectWidget> {
   List<int> selectedEntities = [];
 
+  late int length;
+
   @override
   void initState() {
     super.initState();
 
     if (widget.initialIdList?.isNotEmpty ?? false) {
-      setState(() {
-        selectedEntities = widget.initialIdList!;
-      });
+      selectedEntities = widget.initialIdList!;
     }
+
+    length = selectedEntities.length;
+
+    if (widget.dontBuildWithId != null &&
+        selectedEntities.contains(widget.dontBuildWithId)) {
+      length--;
+    }
+
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return FormBuilderField(
       name: widget.name,
+      validator: widget.validator,
       builder: (field) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,28 +82,38 @@ class _IFormMultipleSelectWidgetState<T extends Entity>
                     name: widget.name,
                     repository: widget.repository,
                     initialIdList: selectedEntities,
+                    dontBuildWithId: widget.dontBuildWithId,
                   ),
                 );
 
                 if (result is List<int>) {
-                  setState(() {
-                    selectedEntities = result;
-                  });
+                  selectedEntities = result;
                 }
+
+                length = selectedEntities.length;
 
                 field.didChange(selectedEntities);
 
-                if(selectedEntities.isEmpty){
+                if (selectedEntities.isEmpty) {
                   field.didChange(null);
                 }
+
+                if (widget.dontBuildWithId != null &&
+                    selectedEntities.contains(widget.dontBuildWithId)) {
+                  length--;
+                }
+
+                setState(() {});
               },
               borderRadius: BorderRadius.circular(mediumValue),
               child: Ink(
                 padding: mediumPadding,
                 decoration: BoxDecoration(
-                  color: selectedEntities.isEmpty
-                      ? context.container
-                      : context.primaryContainer,
+                  color: field.hasError
+                      ? context.errorContainer
+                      : length == 0
+                          ? context.container
+                          : context.primaryContainer,
                   borderRadius: smallRadius,
                 ),
                 child: Row(
@@ -101,12 +125,18 @@ class _IFormMultipleSelectWidgetState<T extends Entity>
                           widget.title ?? context.l10n.select,
                           style: context.titleSmall,
                         ),
-                        if (widget.subtitle != null)
+                        Text(
+                          length == 0
+                              ? (widget.subtitle ?? context.l10n.tap_to_select)
+                              : '${context.l10n.selected}: $length',
+                          style: context.bodyMedium,
+                        ),
+                        if (field.hasError)
                           Text(
-                            selectedEntities.isEmpty
-                                ? widget.subtitle!
-                                : '${context.l10n.selected}: ${selectedEntities.length}',
-                            style: context.bodyMedium,
+                            field.errorText!,
+                            style: context.bodyMedium.copyWith(
+                              color: context.error,
+                            ),
                           ),
                       ],
                     ),

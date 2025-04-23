@@ -19,12 +19,14 @@ class IFormMultipleSelectPage<T extends Entity> extends StatefulWidget {
     required this.repository,
     required this.name,
     this.initialIdList,
+    this.dontBuildWithId,
     super.key,
   });
 
   final CockpitRepository repository;
   final String name;
   final List<int>? initialIdList;
+  final int? dontBuildWithId;
 
   @override
   State<IFormMultipleSelectPage> createState() =>
@@ -61,8 +63,8 @@ class _IFormMultipleSelectPageState<T extends Entity>
             ),
             body: switch (state.isLoading) {
               true => const IFormSkeletonizer(
-                showAppBar: false,
-              ),
+                  showAppBar: false,
+                ),
               false => (state.data?.isError ?? true)
                   ? const IErrorWidget()
                   : Column(
@@ -76,18 +78,30 @@ class _IFormMultipleSelectPageState<T extends Entity>
                               itemBuilder: (context, index) {
                                 final data = state.data!.maybeValue![index];
 
-                                return _IFormMultipleSelectWidget(
-                                  isSelected: selectedEntities.contains(data.id),
-                                  entity: data,
-                                  onChanged: (selected) {
-                                    setState(() {
-                                      if (selectedEntities.contains(data.id)) {
-                                        selectedEntities.remove(data.id);
-                                      } else {
-                                        selectedEntities.add(data.id);
-                                      }
-                                    });
-                                  },
+                                if (widget.dontBuildWithId != null &&
+                                    data.id == widget.dontBuildWithId) {
+                                  return const SizedBox.shrink();
+                                }
+
+                                return Column(
+                                  children: [
+                                    _IFormMultipleSelectWidget(
+                                      isSelected:
+                                          selectedEntities.contains(data.id),
+                                      entity: data,
+                                      onChanged: (selected) {
+                                        setState(() {
+                                          if (selectedEntities
+                                              .contains(data.id)) {
+                                            selectedEntities.remove(data.id);
+                                          } else {
+                                            selectedEntities.add(data.id);
+                                          }
+                                        });
+                                      },
+                                    ),
+                                    SizedBox(height: mediumValue),
+                                  ],
                                 );
                               },
                             ),

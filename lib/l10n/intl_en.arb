@@ -18,6 +18,7 @@
   "delete_confirm": "Are you sure you want to delete this item?",
   "empty_list_title": "List is empty",
   "empty_list_subtitle": "We did not found any data",
+  "tap_to_select": "Tap to select",
 
   "api_invalid_request_parameters": "Invalid request parameters. Please contact the administrator.",
   "api_invalid_credentials": "Email address or password is incorrect.",
@@ -70,6 +71,8 @@
   "groups_show_app_bar": "Group preview",
   "groups_show_name": "Group name",
   "groups_show_delete_alert": "Are you sure you want to delete this group?",
+  "groups_create_users_title": "Select users",
+  "groups_create_users_subtitle": "Tap here to select users",
 
   "users_create_app_bar": "Create user",
   "users_create_name_label": "Name",

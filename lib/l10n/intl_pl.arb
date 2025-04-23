@@ -18,6 +18,7 @@
   "delete_confirm": "Czy na pewno chcesz usunąć ten rekord?",
   "empty_list_title": "Lista jest pusta",
   "empty_list_subtitle": "Niestety nie znaleźliśmy żadnych danych",
+  "tap_to_select": "Kliknij, aby wybrać",
 
   "api_invalid_request_parameters": "Nieprawidłowe parametry żądania. Skontaktuj się z administracją.",
   "api_invalid_credentials": "Adres e-mail lub hasło są nieprawidłowe.",
@@ -64,6 +65,8 @@
   "groups_create_name_label": "Nazwa grupy",
   "groups_create_name_placeholder": "Wpisz nazwę",
   "groups_create_users_label": "Lista użytkowników",
+  "groups_create_users_title": "Wybierz użytkowników",
+  "groups_create_users_subtitle": "Kliknij, aby wybrać użytkowników",
 
   "groups_update_app_bar": "Edytuj grupę",
 
