@@ -1,4 +1,5 @@
 import 'package:app/core/entity/entity.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -14,6 +15,7 @@ class User extends Entity with EquatableMixin {
     required this.email,
     required this.organizationId,
     required this.groupsIdList,
+    required this.permissions,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -27,6 +29,8 @@ class User extends Entity with EquatableMixin {
   final String email;
   final int organizationId;
   final List<int> groupsIdList;
+  @JsonKey(fromJson: Permissions.fromJson, includeToJson: false)
+  final List<Permissions> permissions;
 
   @override
   List<Object?> get props => [
@@ -37,5 +41,6 @@ class User extends Entity with EquatableMixin {
         email,
         organizationId,
         groupsIdList,
+        permissions,
       ];
 }

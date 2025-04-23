@@ -1,5 +1,6 @@
 import 'package:app/core/use_case/use_case.dart';
 import 'package:app/di.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:app/features/group/network/groups_remote_data_source.dart';
@@ -97,6 +98,16 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
           ),
         IFormMultipleSelectWidget<Group>(
           name: 'groupsIdList',
+          repository: GroupsRepository(
+            remoteDS: inject<GroupsRemoteDataSource>(),
+          ),
+          label: l10n.users_create_groups_label,
+          title: l10n.users_create_groups_title,
+          subtitle: l10n.users_create_groups_subtitle,
+          initialIdList: resources?.groupsIdList,
+        ),
+        IFormMultipleSelectWidget<Permissions>(
+          name: 'permissions',
           repository: GroupsRepository(
             remoteDS: inject<GroupsRemoteDataSource>(),
           ),
