@@ -6,6 +6,9 @@
   "logout_confirm": "Czy na pewno chcesz się wylogować?",
   "create": "Utwórz",
   "update": "Edytuj",
+  "save": "Zapisz",
+  "select": "Wybierz",
+  "selected": "Wybrano",
   "form": "Formularz",
   "error_title": "Wystąpił błąd podczas pobierania danych.",
   "error_subtitle": "Naciśnij, aby spróbować ponownie.",
@@ -78,6 +81,8 @@
   "users_create_password_label": "Hasło",
   "users_create_password_placeholder": "Wpisz hasło",
   "users_create_groups_label": "Grupy",
+  "users_create_groups_title": "Wybierz grupy",
+  "users_create_groups_subtitle": "Kliknij, aby wybrać grupy",
 
   "users_list_app_bar": "Użytkownicy",
 

@@ -9,7 +9,7 @@ import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/use_case/users_update_use_case.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_cubit.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
-import 'package:app/shared/select_template/select_template.dart';
+import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
 import 'package:app/shared/widgets/i_form_skeletonizer.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
 import 'package:auto_route/auto_route.dart';
@@ -35,14 +35,14 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
     fetchData();
   }
 
-  Future<void> fetchData() async{
-    if(widget.useCase is! UpdateUseCase) return;
+  Future<void> fetchData() async {
+    if (widget.useCase is! UpdateUseCase) return;
 
     final useCase = widget.useCase as UsersUpdateUseCase;
 
     final result = await useCase.cockpitRepository.get(useCase.resourceId);
 
-    if(result.isSuccess){
+    if (result.isSuccess) {
       setState(() {
         resources = result.maybeValue;
       });
@@ -106,19 +106,15 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
                             FormBuilderValidators.minLength(8),
                           ],
                         ),
-                      IFormMultipleSelectWidget<Group>(),
-                      IFormCheckboxGroup(
+                      IFormMultipleSelectWidget<Group>(
                         name: 'groupsIdList',
+                        repository: GroupsRepository(
+                          remoteDS: inject<GroupsRemoteDataSource>(),
+                        ),
                         label: l10n.users_create_groups_label,
-                        initialValue: resources?.groupsIdList,
-                        options: state.data!.maybeValue!.map(
-                          (group) {
-                            return IFormOption(
-                              value: group.id,
-                              label: group.title,
-                            );
-                          },
-                        ).toList(),
+                        title: l10n.users_create_groups_title,
+                        subtitle: l10n.users_create_groups_subtitle,
+                        initialIdList: resources?.groupsIdList,
                       ),
                     ],
                   ),
@@ -128,6 +124,3 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
     );
   }
 }
-
-
-
