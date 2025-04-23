@@ -113,7 +113,7 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
                           (group) {
                             return IFormOption(
                               value: group.id,
-                              label: group.name,
+                              label: group.title,
                             );
                           },
                         ).toList(),

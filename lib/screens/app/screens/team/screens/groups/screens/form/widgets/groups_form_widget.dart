@@ -69,7 +69,7 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
                     validators: [
                       FormBuilderValidators.required(),
                     ],
-                    initialValue: resources?.name,
+                    initialValue: resources?.title,
                   ),
                   if (state.organizationResult!.maybeValue!.usersList.length >
                       1)
