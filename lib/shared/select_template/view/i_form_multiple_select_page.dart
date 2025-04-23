@@ -60,7 +60,9 @@ class _IFormMultipleSelectPageState<T extends Entity>
               title: l10n.select,
             ),
             body: switch (state.isLoading) {
-              true => const IFormSkeletonizer(),
+              true => const IFormSkeletonizer(
+                showAppBar: false,
+              ),
               false => (state.data?.isError ?? true)
                   ? const IErrorWidget()
                   : Column(

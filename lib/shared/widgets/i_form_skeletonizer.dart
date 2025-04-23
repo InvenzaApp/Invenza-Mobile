@@ -6,14 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class IFormSkeletonizer extends StatelessWidget {
-  const IFormSkeletonizer({super.key});
+  const IFormSkeletonizer({
+    this.showAppBar = true,
+    super.key,
+  });
+
+  final bool showAppBar;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: iAppBar(
-        context: context,
-      ),
+      appBar: showAppBar
+          ? iAppBar(
+              context: context,
+            )
+          : null,
       body: Padding(
         padding: mediumPadding,
         child: ListView.builder(
