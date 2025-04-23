@@ -38,7 +38,7 @@ class SettingsAccountWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${user?.name ?? 'null'} ${user?.lastname ?? 'null'}',
+                    user?.title ?? 'null',
                     style: context.titleSmall,
                   ),
                   Text(
