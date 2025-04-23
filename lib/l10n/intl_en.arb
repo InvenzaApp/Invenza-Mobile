@@ -19,6 +19,9 @@
   "empty_list_title": "List is empty",
   "empty_list_subtitle": "We did not found any data",
   "tap_to_select": "Tap to select",
+  "permissions_widget_label": "Permissions",
+  "permissions_widget_title": "Select permissions",
+  "permissions_widget_subtitle": "Tap here to select permissions",
 
   "api_invalid_request_parameters": "Invalid request parameters. Please contact the administrator.",
   "api_invalid_credentials": "Email address or password is incorrect.",

@@ -167,7 +167,7 @@ class _IFormMultipleSelectWidget extends StatelessWidget {
             Text(
               entity.title,
               style: context.bodyMedium,
-            ),
+            )
           ],
         ),
       ),

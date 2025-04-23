@@ -1,4 +1,4 @@
-enum Permissions exten{
+enum Permissions{
   addUser,
   listUser,
   showUser,

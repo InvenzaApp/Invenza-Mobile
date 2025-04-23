@@ -19,6 +19,9 @@
   "empty_list_title": "Lista jest pusta",
   "empty_list_subtitle": "Niestety nie znaleźliśmy żadnych danych",
   "tap_to_select": "Kliknij, aby wybrać",
+  "permissions_widget_label": "Uprawnienia",
+  "permissions_widget_title": "Wybierz uprawnienia",
+  "permissions_widget_subtitle": "Kliknij, aby wybrać uprawnienia",
 
   "api_invalid_request_parameters": "Nieprawidłowe parametry żądania. Skontaktuj się z administracją.",
   "api_invalid_credentials": "Adres e-mail lub hasło są nieprawidłowe.",
