@@ -10,7 +10,7 @@ class INoPermissionsWidget extends StatelessWidget {
     return IErrorWidget(
       icon: Icons.shield_outlined,
       title: context.l10n.no_permissions_title,
-      subtitle: context.l10n.no_permiossions_subtitle,
+      subtitle: context.l10n.no_permissions_subtitle,
     );
   }
 }

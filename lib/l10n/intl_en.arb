@@ -23,9 +23,12 @@
   "permissions_widget_title": "Select permissions",
   "permissions_widget_subtitle": "Tap here to select permissions",
   "permissions": "Permissions",
+  "status": "Status",
 
   "no_permissions_title": "No permissions",
-  "no_permiossions_subtitle": "You do not have permissions",
+  "no_permissions_subtitle": "You do not have permissions",
+
+  "task_status": "Task status",
 
   "api_invalid_request_parameters": "Invalid request parameters. Please contact the administrator.",
   "api_invalid_credentials": "Email address or password is incorrect.",
@@ -51,6 +54,13 @@
   "permissions_update_task": "Edit tasks",
   "permissions_delete_task": "Delete tasks",
 
+  "task_status_to_do": "To do",
+  "task_status_in_progress": "In progress",
+  "task_status_waiting": "Waiting",
+  "task_status_testing": "Testing",
+  "task_status_review": "Review",
+  "task_status_done": "Done",
+
   "tasks_list_app_bar": "Tasks",
   "tasks_list_no_tasks_title": "No tasks found",
 
@@ -73,6 +83,7 @@
   "task_show_deadline": "Deadline",
   "task_show_created_at": "Created at",
   "task_show_created_by": "Created by",
+  "task_show_status": "Status",
   "task_show_no_group_alert": "Your task does not belong to any group. Assign it to a group to make it available to others.",
 
   "team_app_bar": "Team",

@@ -11,6 +11,7 @@ import 'package:app/features/group/network/groups_remote_data_source.dart';
 import 'package:app/features/group/network/groups_repository.dart';
 import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/use_case/tasks_update_use_case.dart';
+import 'package:app/screens/app/screens/tasks/screens/form/widgets/task_status/i_form_task_status_widget.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_cubit.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
 import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
@@ -100,6 +101,10 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
                               valueTransformer: (value) =>
                                   value?.toIso8601String(),
                             ),
+                            if (widget.useCase is UpdateUseCase)
+                              IFormTaskStatusWidget(
+                                status: resources!.status,
+                              ),
                             IFormMultipleSelectWidget<Group>(
                               name: 'groupsIdList',
                               label: l10n.task_form_groups_label,
@@ -111,7 +116,6 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
                                   .toList(),
                               validator: FormBuilderValidators.required(),
                             ),
-
                           ],
                   ),
           },

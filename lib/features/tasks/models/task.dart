@@ -1,4 +1,5 @@
 import 'package:app/core/entity/entity.dart';
+import 'package:app/enums/task_status.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:app/features/user/models/user.dart';
 import 'package:app/type_def/json.dart';
@@ -16,6 +17,7 @@ class Task extends Entity with EquatableMixin {
     required this.createdAt,
     required this.createdBy,
     required this.groupsIdList,
+    required this.status,
     this.description,
     this.deadline,
   });
@@ -32,6 +34,8 @@ class Task extends Entity with EquatableMixin {
   final List<int> groupsIdList;
   final DateTime createdAt;
   final User createdBy;
+  @JsonKey(fromJson: TaskStatus.fromJson, toJson: TaskStatus.toJson)
+  final TaskStatus status;
 
   @override
   List<Object?> get props => [

@@ -71,6 +71,10 @@ class TasksShowPage extends StatelessWidget {
                     label: l10n.task_show_created_by,
                     value: '${task.createdBy.name} ${task.createdBy.lastname}',
                   ),
+                  ICardItem(
+                    label: l10n.task_show_status,
+                    value: task.status.getName(context),
+                  ),
                 ],
               ),
               Expanded(
@@ -92,7 +96,8 @@ class TasksShowPage extends StatelessWidget {
             ],
           ),
         );
-      }, updatePermission: Permissions.updateTask,
+      },
+      updatePermission: Permissions.updateTask,
       deletePermission: Permissions.deleteTask,
     );
   }
