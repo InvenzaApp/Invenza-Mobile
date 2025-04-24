@@ -40,60 +40,52 @@ class TasksShowPage extends StatelessWidget {
 
         return Padding(
           padding: mediumPadding,
-          child: Column(
-            spacing: mediumValue,
-            children: [
-              if (task.groupsList?.isEmpty ?? true)
-                IAlertWidget(
-                  message: l10n.task_show_no_group_alert,
-                ),
-              ICard(
-                children: [
-                  ICardItem(
-                    label: l10n.task_show_name,
-                    value: task.title,
+          child: SingleChildScrollView(
+            child: Column(
+              spacing: mediumValue,
+              children: [
+                if (task.groupsList?.isEmpty ?? true)
+                  IAlertWidget(
+                    message: l10n.task_show_no_group_alert,
                   ),
-                  if (task.description != null)
+                ICard(
+                  children: [
                     ICardItem(
-                      label: l10n.task_show_description,
-                      value: task.description!,
+                      label: l10n.task_show_name,
+                      value: task.title,
                     ),
-                  if (task.deadline != null)
+                    if (task.description != null)
+                      ICardItem(
+                        label: l10n.task_show_description,
+                        value: task.description!,
+                      ),
+                    if (task.deadline != null)
+                      ICardItem(
+                        label: l10n.task_show_deadline,
+                        value: task.deadline!.formattedDateTime,
+                      ),
                     ICardItem(
-                      label: l10n.task_show_deadline,
-                      value: task.deadline!.formattedDateTime,
+                      label: l10n.task_show_created_at,
+                      value: task.createdAt.formattedDateTime,
                     ),
-                  ICardItem(
-                    label: l10n.task_show_created_at,
-                    value: task.createdAt.formattedDateTime,
-                  ),
-                  ICardItem(
-                    label: l10n.task_show_created_by,
-                    value: '${task.createdBy.name} ${task.createdBy.lastname}',
-                  ),
-                  ICardItem(
-                    label: l10n.task_show_status,
-                    value: task.status.getName(context),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: task.groupsList?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final group = task.groupsList![index];
-
-                    return Column(
-                      children: [
-                        TasksShowGroupWidget(group: group),
-                        SizedBox(height: mediumValue),
-                      ],
-                    );
-                  },
+                    ICardItem(
+                      label: l10n.task_show_created_by,
+                      value: '${task.createdBy.name} ${task.createdBy.lastname}',
+                    ),
+                    ICardItem(
+                      label: l10n.task_show_status,
+                      value: task.status.getName(context),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                Column(
+                  spacing: mediumValue,
+                  children: task.groupsList!.map((item){
+                    return TasksShowGroupWidget(group: item);
+                  }).toList(),
+                ),
+              ],
+            ),
           ),
         );
       },

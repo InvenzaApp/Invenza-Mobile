@@ -33,34 +33,25 @@ class GroupsShowPage extends StatelessWidget {
 
         return Padding(
           padding: mediumPadding,
-          child: Column(
-            spacing: mediumValue,
-            children: [
-              ICard(
-                children: [
-                  ICardItem(
-                    label: context.l10n.groups_show_name,
-                    value: group.title,
-                  ),
-                ],
-              ),
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: group.usersList?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final user = group.usersList![index];
-
-                    return Column(
-                      children: [
-                        GroupsShowWidget(user: user),
-                        SizedBox(height: mediumValue),
-                      ],
-                    );
-                  },
+          child: SingleChildScrollView(
+            child: Column(
+              spacing: mediumValue,
+              children: [
+                ICard(
+                  children: [
+                    ICardItem(
+                      label: context.l10n.groups_show_name,
+                      value: group.title,
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                Column(
+                  children: group.usersList!.map((item){
+                    return GroupsShowWidget(user: item);
+                  }).toList(),
+                ),
+              ],
+            ),
           ),
         );
       }, updatePermission: Permissions.updateGroup,
