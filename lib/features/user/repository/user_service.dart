@@ -31,4 +31,11 @@ class UserService {
         .then((res) => jsonDecode(res.data!) as Json)
         .catchError((e) => noInternetConnectionJson);
   }
+
+  Future<Json> changePassword(Json payload) async{
+    return _authDio
+        .post<String>('$userUrl/update-password', data: payload)
+        .then((res) => jsonDecode(res.data!) as Json)
+        .catchError((e) => noInternetConnectionJson);
+  }
 }

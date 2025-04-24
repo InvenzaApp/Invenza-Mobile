@@ -128,6 +128,8 @@
   "settings_theme_subtitle": "Change the theme of the application",
   "settings_language_title": "Language",
   "settings_language_subtitle": "Change the language of the application",
+  "settings_password_title": "Password",
+  "settings_password_subtitle": "Change password to your account",
   "settings_license_title": "Licenses",
   "settings_license_subtitle": "Licenses used in the app",
   "settings_logout_title": "Sign out",
@@ -140,5 +142,14 @@
 
   "language_app_bar": "Language",
   "language_english_title": "English",
-  "language_polish_title": "Polish"
+  "language_polish_title": "Polish",
+
+  "password_page_app_bar": "Change password",
+  "password_page_placeholder": "Enter password",
+  "password_page_old_label": "Old password",
+  "password_page_new_label": "New password",
+  "password_page_confirm_label": "Confirm new password",
+  "password_page_passwords_error": "Passwords are not the same.",
+  "password_page_api_error": "Old password is incorrect",
+  "password_page_submit": "Change password"
 }
