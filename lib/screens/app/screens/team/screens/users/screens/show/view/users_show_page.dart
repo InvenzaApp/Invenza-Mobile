@@ -2,13 +2,13 @@ import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
 import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
-import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/text_extension.dart';
 import 'package:app/features/user/network/users_remote_data_source.dart';
 import 'package:app/features/user/network/users_repository.dart';
 import 'package:app/screens/app/screens/team/screens/users/screens/show/cubits/users_show_cubit.dart';
 import 'package:app/shared/show_template/i_show_template.dart';
 import 'package:app/shared/widgets/i_card/i_card.dart';
+import 'package:app/shared/widgets/i_permission_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
@@ -90,42 +90,6 @@ class UsersShowPage extends StatelessWidget {
         );
       }, updatePermission: Permissions.updateUser,
       deletePermission: Permissions.deleteUser,
-    );
-  }
-}
-
-class IPermissionWidget extends StatelessWidget {
-  const IPermissionWidget({required this.permission, super.key});
-
-  final Permissions permission;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: mediumPadding,
-      decoration: BoxDecoration(
-        color: context.container,
-        borderRadius: mediumRadius,
-      ),
-      child: Row(
-        spacing: mediumValue,
-        children: [
-          Container(
-            padding: smallPadding,
-            decoration: BoxDecoration(
-              color: context.primary,
-              borderRadius: smallRadius,
-            ),
-            child: Icon(
-              Icons.shield_outlined,
-              color: context.onPrimary,
-            ),
-          ),
-          Text(
-            permission.getName(context),
-          ),
-        ],
-      ),
     );
   }
 }
