@@ -4,6 +4,7 @@ import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/date_time_extension.dart';
 import 'package:app/extensions/text_extension.dart';
 import 'package:app/features/tasks/models/task.dart';
+import 'package:app/screens/app/screens/tasks/screens/list/widgets/task_status_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -75,6 +76,7 @@ class TasksListWidget extends StatelessWidget {
                 ],
               ),
             ),
+            TaskStatusWidget(task: task),
           ],
         ),
       ),

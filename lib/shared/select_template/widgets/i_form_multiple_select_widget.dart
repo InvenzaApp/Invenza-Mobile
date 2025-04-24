@@ -66,6 +66,7 @@ class _IFormMultipleSelectWidgetState<T extends Entity>
     return FormBuilderField(
       name: widget.name,
       validator: widget.validator,
+      initialValue: selectedEntities,
       builder: (field) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
