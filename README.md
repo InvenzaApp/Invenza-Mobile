@@ -30,4 +30,7 @@ To initialize project run this command
 flutter clean && flutter pub get && dart run build_runner build
 ```
 
+### Signing app
 
+To sign app for release, copy `key.properties.copy` file and rename it to `key.properties`. Fill `key.properties` file with proper data.
+Also, you have to place `keystore.jks` file in `android/app` folder.
