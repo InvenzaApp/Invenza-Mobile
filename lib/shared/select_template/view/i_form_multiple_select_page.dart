@@ -67,69 +67,78 @@ class _IFormMultipleSelectPageState<T extends Entity>
                 ),
               false => (state.data?.isError ?? true)
                   ? const IErrorWidget()
-                  : Column(
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: mediumPadding,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: state.data!.maybeValue!.length,
-                              itemBuilder: (context, index) {
-                                final data = state.data!.maybeValue![index];
+                  : (state.data?.maybeValue?.isEmpty ?? true)
+                      ? IErrorWidget(
+                          icon: Icons.cloud_off,
+                          title: l10n.empty_list_title,
+                          subtitle: l10n.empty_list_subtitle,
+                          onPressed: () async =>
+                              context.read<SelectCubit<T>>().fetch(),
+                        )
+                      : Column(
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: mediumPadding,
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: state.data!.maybeValue!.length,
+                                  itemBuilder: (context, index) {
+                                    final data = state.data!.maybeValue![index];
 
-                                if (widget.dontBuildWithId != null &&
-                                    data.id == widget.dontBuildWithId) {
-                                  return const SizedBox.shrink();
-                                }
+                                    if (widget.dontBuildWithId != null &&
+                                        data.id == widget.dontBuildWithId) {
+                                      return const SizedBox.shrink();
+                                    }
 
-                                return Column(
-                                  children: [
-                                    _IFormMultipleSelectWidget(
-                                      isSelected:
-                                          selectedEntities.contains(data.id),
-                                      entity: data,
-                                      onChanged: (selected) {
-                                        setState(() {
-                                          if (selectedEntities
-                                              .contains(data.id)) {
-                                            selectedEntities.remove(data.id);
-                                          } else {
-                                            selectedEntities.add(data.id);
-                                          }
-                                        });
-                                      },
-                                    ),
-                                    SizedBox(height: mediumValue),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: largePadding,
-                          decoration: BoxDecoration(
-                            color: context.container,
-                          ),
-                          child: Column(
-                            children: [
-                              IButton(
-                                label: l10n.save,
-                                onPressed: () {
-                                  if (selectedEntities.isEmpty) {
-                                    context.maybePop(<Entity>[]);
-                                  } else {
-                                    context.maybePop(selectedEntities);
-                                  }
-                                },
+                                    return Column(
+                                      children: [
+                                        _IFormMultipleSelectWidget(
+                                          isSelected: selectedEntities
+                                              .contains(data.id),
+                                          entity: data,
+                                          onChanged: (selected) {
+                                            setState(() {
+                                              if (selectedEntities
+                                                  .contains(data.id)) {
+                                                selectedEntities
+                                                    .remove(data.id);
+                                              } else {
+                                                selectedEntities.add(data.id);
+                                              }
+                                            });
+                                          },
+                                        ),
+                                        SizedBox(height: mediumValue),
+                                      ],
+                                    );
+                                  },
+                                ),
                               ),
-                              SizedBox(height: mediumValue),
-                            ],
-                          ),
+                            ),
+                            Container(
+                              padding: largePadding,
+                              decoration: BoxDecoration(
+                                color: context.container,
+                              ),
+                              child: Column(
+                                children: [
+                                  IButton(
+                                    label: l10n.save,
+                                    onPressed: () {
+                                      if (selectedEntities.isEmpty) {
+                                        context.maybePop(<Entity>[]);
+                                      } else {
+                                        context.maybePop(selectedEntities);
+                                      }
+                                    },
+                                  ),
+                                  SizedBox(height: mediumValue),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
             },
           );
         },
