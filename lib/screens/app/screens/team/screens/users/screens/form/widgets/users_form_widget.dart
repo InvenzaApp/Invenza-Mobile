@@ -85,6 +85,7 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
           label: l10n.users_create_email_label,
           placeholder: l10n.users_create_email_placeholder,
           initialValue: resources?.email,
+          keyboardType: TextInputType.emailAddress,
         ),
         if (widget.useCase is CreateUseCase)
           IFormSecureField(
