@@ -29,7 +29,7 @@ class User extends Entity with EquatableMixin {
   final String email;
   final int organizationId;
   final List<int> groupsIdList;
-  @JsonKey(fromJson: Permissions.fromJson, includeToJson: false)
+  @JsonKey(fromJson: Permissions.fromJson, toJson: Permissions.toJson)
   final List<Permissions> permissions;
 
   @override

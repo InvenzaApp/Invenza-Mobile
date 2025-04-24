@@ -17,7 +17,7 @@ class IFormPermissionSelectWidget<T extends Entity>
     super.key,
   });
 
-  final List<Permissions>? initialList;
+  final List<String>? initialList;
 
   @override
   State<IFormPermissionSelectWidget> createState() =>
@@ -26,7 +26,7 @@ class IFormPermissionSelectWidget<T extends Entity>
 
 class _IFormMultipleSelectWidgetState<T extends Entity>
     extends State<IFormPermissionSelectWidget> {
-  List<Permissions> selectedEntities = [];
+  List<String> selectedEntities = [];
 
   @override
   void initState() {
@@ -59,7 +59,7 @@ class _IFormMultipleSelectWidgetState<T extends Entity>
                   ),
                 );
 
-                if (result is List<Permissions>) {
+                if (result is List<String>) {
                   selectedEntities = result;
                 }
 

@@ -14,16 +14,15 @@ class IFormPermissionSelectPage extends StatefulWidget {
     super.key,
   });
 
-  final List<Permissions>? initialList;
+  final List<String>? initialList;
 
   @override
   State<IFormPermissionSelectPage> createState() =>
       _IFormPermissionSelectPageState();
 }
 
-class _IFormPermissionSelectPageState
-    extends State<IFormPermissionSelectPage> {
-  List<Permissions> selectedEntities = [];
+class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
+  List<String> selectedEntities = [];
 
   @override
   void initState() {
@@ -59,16 +58,14 @@ class _IFormPermissionSelectPageState
                   return Column(
                     children: [
                       _IFormPermissionSelectWidget(
-                        isSelected:
-                        selectedEntities.contains(permission),
+                        isSelected: selectedEntities.contains(permission.name),
                         permission: permission,
                         onChanged: (selected) {
                           setState(() {
-                            if (selectedEntities
-                                .contains(permission)) {
-                              selectedEntities.remove(permission);
+                            if (selectedEntities.contains(permission.name)) {
+                              selectedEntities.remove(permission.name);
                             } else {
-                              selectedEntities.add(permission);
+                              selectedEntities.add(permission.name);
                             }
                           });
                         },
@@ -134,7 +131,7 @@ class _IFormPermissionSelectWidget extends StatelessWidget {
           children: [
             Icon(isSelected ? Icons.check_circle : Icons.circle_outlined),
             Text(
-              permission.name,
+              permission.getName(context),
             ),
           ],
         ),

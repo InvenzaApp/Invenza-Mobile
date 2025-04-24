@@ -108,7 +108,7 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
           initialIdList: resources?.groupsIdList,
         ),
         IFormPermissionSelectWidget(
-          initialList: resources?.permissions,
+          initialList: resources?.permissions.map((e) => e.name).toList(),
         ),
       ],
     );
