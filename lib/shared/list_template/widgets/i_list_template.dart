@@ -1,6 +1,8 @@
 import 'package:app/core/list/cubit/list_cubit.dart';
 import 'package:app/core/list/cubit/list_state.dart';
 import 'package:app/core/list/list_template.dart';
+import 'package:app/core/user_permissions/user_permissions.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_error_widget.dart';
@@ -14,6 +16,7 @@ class IListTemplate<T> extends ListTemplate<T> {
   const IListTemplate({
     required this.cubit,
     required this.builder,
+    required this.createPermission,
     super.key,
   });
 
@@ -22,6 +25,9 @@ class IListTemplate<T> extends ListTemplate<T> {
 
   @override
   final ListCubit<T> cubit;
+
+  @override
+  final Permissions createPermission;
 
   @override
   Widget build(BuildContext context) {
@@ -34,19 +40,21 @@ class IListTemplate<T> extends ListTemplate<T> {
           title: cubit.repository.title ?? l10n.list,
           showBackButton: false,
         ),
-        floatingActionButton: cubit.createRoute == null
-            ? null
-            : FloatingActionButton(
-                child: const Icon(Icons.add),
-                onPressed: () async {
-                  final needUpdate =
-                      await context.pushRoute(cubit.createRoute!);
+        floatingActionButton:
+            (!UserPermissions.hasPermission(createPermission) ||
+                    cubit.createRoute == null)
+                ? null
+                : FloatingActionButton(
+                    child: const Icon(Icons.add),
+                    onPressed: () async {
+                      final needUpdate =
+                          await context.pushRoute(cubit.createRoute!);
 
-                  if (needUpdate == true) {
-                    await cubit.initialize();
-                  }
-                },
-              ),
+                      if (needUpdate == true) {
+                        await cubit.initialize();
+                      }
+                    },
+                  ),
         body: BlocBuilder<ListCubit<T>, ListState<T>>(
           builder: (context, state) => switch (state.isLoading) {
             true => const IListSkeletonizer(),

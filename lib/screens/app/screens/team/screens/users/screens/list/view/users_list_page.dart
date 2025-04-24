@@ -1,5 +1,6 @@
 import 'package:app/core/list/cubit/list_cubit.dart';
 import 'package:app/di.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/network/users_remote_data_source.dart';
@@ -44,7 +45,7 @@ class UsersListPage extends StatelessWidget {
             },
           ),
         );
-      },
+      }, createPermission: Permissions.addUser,
     );
   }
 }

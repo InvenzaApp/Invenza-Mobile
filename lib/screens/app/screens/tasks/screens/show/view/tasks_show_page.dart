@@ -1,4 +1,5 @@
 import 'package:app/di.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/date_time_extension.dart';
 import 'package:app/features/tasks/models/task.dart';
@@ -91,7 +92,8 @@ class TasksShowPage extends StatelessWidget {
             ],
           ),
         );
-      },
+      }, updatePermission: Permissions.updateTask,
+      deletePermission: Permissions.deleteTask,
     );
   }
 }

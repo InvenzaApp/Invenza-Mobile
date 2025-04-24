@@ -1,6 +1,5 @@
 import 'package:app/core/use_case/use_case.dart';
 import 'package:app/di.dart';
-import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:app/features/group/network/groups_remote_data_source.dart';

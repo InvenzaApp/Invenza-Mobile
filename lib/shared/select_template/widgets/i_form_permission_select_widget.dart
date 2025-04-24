@@ -1,5 +1,4 @@
 import 'package:app/core/entity/entity.dart';
-import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/text_extension.dart';

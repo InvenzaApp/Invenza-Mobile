@@ -87,7 +87,8 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
                       title: l10n.groups_create_users_title,
                       subtitle: l10n.groups_create_users_subtitle,
                       dontBuildWithId: state.userResult!.maybeValue!.id,
-                      initialIdList: resources?.usersList?.map((e) => e.id).toList(),
+                      initialIdList:
+                          resources?.usersList?.map((e) => e.id).toList(),
                     ),
                 ],
               ),

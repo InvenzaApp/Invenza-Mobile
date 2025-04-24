@@ -88,7 +88,8 @@ class UsersShowPage extends StatelessWidget {
             ),
           ),
         );
-      },
+      }, updatePermission: Permissions.updateUser,
+      deletePermission: Permissions.deleteUser,
     );
   }
 }

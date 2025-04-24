@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:app/core/show/cubit/show_cubit.dart';
 import 'package:app/core/show/cubit/show_state.dart';
 import 'package:app/core/show/show_template.dart';
+import 'package:app/core/user_permissions/user_permissions.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/confirm_extension.dart';
@@ -17,6 +19,8 @@ class IShowTemplate<T> extends ShowTemplate<T> {
   const IShowTemplate({
     required this.cubit,
     required this.builder,
+    required this.updatePermission,
+    required this.deletePermission,
     this.deleteEnabled = true,
     this.editEnabled = true,
     super.key,
@@ -36,6 +40,12 @@ class IShowTemplate<T> extends ShowTemplate<T> {
 
   @override
   final bool editEnabled;
+
+  @override
+  final Permissions deletePermission;
+
+  @override
+  final Permissions updatePermission;
 }
 
 class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
@@ -53,48 +63,51 @@ class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
           backButtonAction: () {
             context.maybePop(requireUpdate);
           },
-          actions: [
-            if (widget.deleteEnabled)
-              IconButton(
-                icon: Icon(Icons.delete, color: context.error),
+          actions: UserPermissions.hasPermission(widget.deletePermission)
+              ? [
+                  if (widget.deleteEnabled)
+                    IconButton(
+                      icon: Icon(Icons.delete, color: context.error),
+                      onPressed: () async {
+                        final needUpdate =
+                            await context.showConfirm(l10n.delete_confirm);
+
+                        if (needUpdate != null && needUpdate) {
+                          unawaited(widget.cubit.delete());
+                          if (context.mounted) {
+                            await context.maybePop(true);
+                          }
+                        }
+                      },
+                    ),
+                ]
+              : null,
+        ),
+        floatingActionButton: (widget.cubit.editRoute == null ||
+                !widget.editEnabled ||
+                !UserPermissions.hasPermission(widget.updatePermission))
+            ? null
+            : FloatingActionButton(
+                child: const Icon(Icons.edit),
                 onPressed: () async {
                   final needUpdate =
-                      await context.showConfirm(l10n.delete_confirm);
+                      await context.pushRoute(widget.cubit.editRoute!);
 
-                  if (needUpdate != null && needUpdate) {
-                    unawaited(widget.cubit.delete());
-                    if (context.mounted) {
-                      await context.maybePop(true);
-                    }
+                  if (needUpdate == true) {
+                    setState(() {
+                      requireUpdate = true;
+                    });
+                    await widget.cubit.initialize();
                   }
                 },
               ),
-          ],
-        ),
-        floatingActionButton:
-            (widget.cubit.editRoute == null || !widget.editEnabled)
-                ? null
-                : FloatingActionButton(
-                    child: const Icon(Icons.edit),
-                    onPressed: () async {
-                      final needUpdate =
-                          await context.pushRoute(widget.cubit.editRoute!);
-
-                      if (needUpdate == true) {
-                        setState(() {
-                          requireUpdate = true;
-                        });
-                        await widget.cubit.initialize();
-                      }
-                    },
-                  ),
         body: BlocBuilder<ShowCubit<T>, ShowState<T>>(
           builder: (context, state) => switch (state.isLoading) {
             true => const IShowSkeletonizer(),
             false => (state.data?.isError ?? true)
                 ? IErrorWidget(
-              subtitle: state.data!.maybeError!.asString(context),
-            )
+                    subtitle: state.data!.maybeError!.asString(context),
+                  )
                 : widget.builder(context, widget.cubit),
           },
         ),

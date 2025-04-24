@@ -1,5 +1,4 @@
 import 'package:app/extensions/app_localizations.dart';
-import 'package:app/type_def/json.dart';
 import 'package:flutter/material.dart';
 
 enum Permissions{

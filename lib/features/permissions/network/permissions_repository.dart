@@ -12,17 +12,17 @@ class PermissionsRepository extends CockpitRepository {
 
   @override
   Future<Result<int>> create(Json payload) {
-    throw UnsupportedError('Permissions doesn\'t support create.');
+    throw UnsupportedError("Permissions doesn't support create.");
   }
 
   @override
   Future<void> delete(int resourceId) {
-    throw UnsupportedError('Permissions doesn\'t support delete.');
+    throw UnsupportedError("Permissions doesn't support delete.");
   }
 
   @override
   Future<Result<Object>> get(int resourceId) {
-    throw UnsupportedError('Permissions doesn\'t support get.');
+    throw UnsupportedError("Permissions doesn't support get.");
   }
 
   @override
@@ -34,7 +34,7 @@ class PermissionsRepository extends CockpitRepository {
 
   @override
   Future<Result<int>> update(int resourceId, Json payload) {
-    throw UnsupportedError('Permissions doesn\'t support update.');
+    throw UnsupportedError("Permissions doesn't support update.");
   }
 
   @override
