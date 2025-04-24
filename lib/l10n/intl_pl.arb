@@ -128,6 +128,8 @@
   "settings_theme_subtitle": "Zmień motyw aplikacji",
   "settings_language_title": "Język",
   "settings_language_subtitle": "Zmień język aplikacji",
+  "settings_password_title": "Hasło",
+  "settings_password_subtitle": "Zmień hasło do swojego konta",
   "settings_license_title": "Licencje",
   "settings_license_subtitle": "Licencje użyte w aplikacji",
   "settings_logout_title": "Wyloguj",
@@ -140,5 +142,14 @@
 
   "language_app_bar": "Język",
   "language_english_title": "Angielski",
-  "language_polish_title": "Polski"
+  "language_polish_title": "Polski",
+
+  "password_page_app_bar": "Zmień hasło",
+  "password_page_placeholder": "Wpisz hasło",
+  "password_page_old_label": "Stare hasło",
+  "password_page_new_label": "Nowe hasło",
+  "password_page_confirm_label": "Powtórz nowe hasło",
+  "password_page_passwords_error": "Hasła nie są takie same.",
+  "password_page_api_error": "Stare hasło jest nieprawidłowe",
+  "password_page_submit": "Zmień hasło"
 }

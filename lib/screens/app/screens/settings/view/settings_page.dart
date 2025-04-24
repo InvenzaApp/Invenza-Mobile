@@ -48,6 +48,13 @@ class SettingsPage extends StatelessWidget {
                   onPressed: () => context.pushRoute(const LanguageRoute()),
                 ),
                 IListTileItem(
+                  title: l10n.settings_password_title,
+                  subtitle: l10n.settings_password_subtitle,
+                  icon: Icons.password,
+                  onPressed: () =>
+                      context.pushRoute(const ChangePasswordRoute()),
+                ),
+                IListTileItem(
                   title: l10n.settings_license_title,
                   subtitle: l10n.settings_license_subtitle,
                   icon: Icons.policy,

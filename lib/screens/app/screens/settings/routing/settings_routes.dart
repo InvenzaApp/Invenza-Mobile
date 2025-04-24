@@ -11,5 +11,9 @@ abstract class SettingsRoutes {
           path: '/language',
           page: LanguageRoute.page,
         ),
+        AutoRoute(
+          path: '/change_password',
+          page: ChangePasswordRoute.page,
+        ),
       ];
 }
