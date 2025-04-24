@@ -7,6 +7,7 @@ import 'package:app/extensions/confirm_extension.dart';
 import 'package:app/screens/app/screens/settings/widgets/settings_account_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_list_tile/i_list_tile.dart';
+import 'package:app/shared/widgets/i_logo_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,25 @@ class SettingsPage extends StatelessWidget {
                   subtitle: l10n.settings_language_subtitle,
                   icon: Icons.g_translate,
                   onPressed: () => context.pushRoute(const LanguageRoute()),
+                ),
+                IListTileItem(
+                  title: l10n.settings_password_title,
+                  subtitle: l10n.settings_password_subtitle,
+                  icon: Icons.password,
+                  onPressed: () =>
+                      context.pushRoute(const ChangePasswordRoute()),
+                ),
+                IListTileItem(
+                  title: l10n.settings_license_title,
+                  subtitle: l10n.settings_license_subtitle,
+                  icon: Icons.policy,
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (context) => const LicensePage(
+                        applicationIcon: ILogoWidget(),
+                      ),
+                    ),
+                  ),
                 ),
                 IListTileItem(
                   title: l10n.settings_logout_title,

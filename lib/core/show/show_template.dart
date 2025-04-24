@@ -1,4 +1,5 @@
 import 'package:app/core/show/cubit/show_cubit.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:flutter/material.dart';
 
 abstract class ShowTemplate<T> extends StatefulWidget{
@@ -11,4 +12,8 @@ abstract class ShowTemplate<T> extends StatefulWidget{
   bool get deleteEnabled;
 
   bool get editEnabled;
+
+  Permissions get updatePermission;
+
+  Permissions get deletePermission;
 }

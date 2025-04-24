@@ -1,4 +1,5 @@
 import 'package:app/di.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/date_time_extension.dart';
 import 'package:app/features/tasks/models/task.dart';
@@ -70,6 +71,10 @@ class TasksShowPage extends StatelessWidget {
                     label: l10n.task_show_created_by,
                     value: '${task.createdBy.name} ${task.createdBy.lastname}',
                   ),
+                  ICardItem(
+                    label: l10n.task_show_status,
+                    value: task.status.getName(context),
+                  ),
                 ],
               ),
               Expanded(
@@ -92,6 +97,8 @@ class TasksShowPage extends StatelessWidget {
           ),
         );
       },
+      updatePermission: Permissions.updateTask,
+      deletePermission: Permissions.deleteTask,
     );
   }
 }

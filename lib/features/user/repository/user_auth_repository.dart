@@ -5,6 +5,7 @@ import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/models/user_auth_payload.dart';
 import 'package:app/features/user/repository/user_service.dart';
 import 'package:app/modules/secure_module.dart';
+import 'package:app/type_def/json.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton
@@ -24,5 +25,11 @@ class UserAuthRepository {
     return service
         .getOrganization(organizationId)
         .asResult<Organization>(fromJson: Organization.fromJson);
+  }
+
+  Future<bool> updatePassword(Json payload) async{
+    return service
+        .changePassword(payload)
+        .then((data) => data['data'] as bool);
   }
 }

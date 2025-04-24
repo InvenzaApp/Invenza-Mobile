@@ -1,3 +1,4 @@
+import 'package:app/enums/task_status.dart';
 import 'package:flutter/material.dart';
 
 extension ColorExtension on BuildContext {
@@ -64,4 +65,18 @@ extension ColorExtension on BuildContext {
   Color get scrim => Theme.of(this).colorScheme.scrim;
 
   Color get shadow => Theme.of(this).colorScheme.shadow;
+
+  bool get isDarkMode =>
+      Theme.of(this).colorScheme.brightness == Brightness.dark;
+}
+
+extension TaskStatusColorExtension on TaskStatus{
+  Color get color => switch(this){
+    TaskStatus.toDo => const Color(0xFF6389C1),
+    TaskStatus.inProgress => const Color(0xFF77C163),
+    TaskStatus.waiting => const Color(0xFF63C1B3),
+    TaskStatus.testing => const Color(0xFF9063C1),
+    TaskStatus.review => const Color(0xFFC16363),
+    TaskStatus.done => const Color(0xFFFB930B),
+  };
 }

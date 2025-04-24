@@ -1,5 +1,6 @@
 import 'package:app/core/list/cubit/list_cubit.dart';
 import 'package:app/di.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/network/tasks_remote_data_source.dart';
@@ -45,6 +46,8 @@ class TasksListPage extends StatelessWidget {
           ),
         );
       },
+      createPermission: Permissions.addTask,
+      listPermission: Permissions.listTask,
     );
   }
 }

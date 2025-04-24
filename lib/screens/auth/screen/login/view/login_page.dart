@@ -11,6 +11,7 @@ import 'package:app/screens/auth/screen/login/widgets/login_language_selector_wi
 import 'package:app/shared/form_template/widgets/i_form_secure_field.dart';
 import 'package:app/shared/form_template/widgets/i_form_text_field.dart';
 import 'package:app/shared/widgets/i_button.dart';
+import 'package:app/shared/widgets/i_logo_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -44,10 +45,11 @@ class LoginPage extends StatelessWidget {
           final cubit = context.read<UserCubit>();
           final error = cubit.state.userResult?.maybeError;
           cubit.reset();
-          if(!_shownAlert){
+          if (!_shownAlert) {
             _shownAlert = true;
-            await context
-                .showAlert((error ?? ApiMessages.unknownError).asString(context));
+            await context.showAlert(
+              (error ?? ApiMessages.unknownError).asString(context),
+            );
             _shownAlert = false;
           }
         } else if ((state.userResult?.isSuccess ?? false) && !_hasNavigated) {
@@ -69,6 +71,7 @@ class LoginPage extends StatelessWidget {
                       spacing: smallValue,
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        const ILogoWidget(),
                         IFormTextField(
                           name: 'email',
                           placeholder: l10n.login_email_placeholder,

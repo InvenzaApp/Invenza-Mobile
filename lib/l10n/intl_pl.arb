@@ -6,6 +6,9 @@
   "logout_confirm": "Czy na pewno chcesz się wylogować?",
   "create": "Utwórz",
   "update": "Edytuj",
+  "save": "Zapisz",
+  "select": "Wybierz",
+  "selected": "Wybrano",
   "form": "Formularz",
   "error_title": "Wystąpił błąd podczas pobierania danych.",
   "error_subtitle": "Naciśnij, aby spróbować ponownie.",
@@ -15,6 +18,17 @@
   "delete_confirm": "Czy na pewno chcesz usunąć ten rekord?",
   "empty_list_title": "Lista jest pusta",
   "empty_list_subtitle": "Niestety nie znaleźliśmy żadnych danych",
+  "tap_to_select": "Kliknij, aby wybrać",
+  "permissions_widget_label": "Uprawnienia",
+  "permissions_widget_title": "Wybierz uprawnienia",
+  "permissions_widget_subtitle": "Kliknij, aby wybrać uprawnienia",
+  "permissions": "Uprawnienia",
+  "status": "Status",
+
+  "no_permissions_title": "Brak uprawnień",
+  "no_permissions_subtitle": "Niestety, nie masz uprawnień",
+
+  "task_status": "Status zadania",
 
   "api_invalid_request_parameters": "Nieprawidłowe parametry żądania. Skontaktuj się z administracją.",
   "api_invalid_credentials": "Adres e-mail lub hasło są nieprawidłowe.",
@@ -23,6 +37,29 @@
   "api_no_internet_connection": "Problem z połączeniem internetowym. Spróbuj ponownie później.",
   "api_unauthorized_access": "Nieuprawniony dostęp. Spróbuj ponownie.",
   "api_user_exists": "Użytkownik o tym adresie email już istnieje.",
+
+  "permissions_add_user": "Dodawanie użytkowników",
+  "permissions_list_user": "Listowanie użytkowników",
+  "permissions_show_user": "Pogląd użytkownika",
+  "permissions_update_user": "Modifykacja użytkowników",
+  "permissions_delete_user": "Usuwanie użytkowników",
+  "permissions_add_group": "Dodawanie grup",
+  "permissions_list_group": "Listowanie grup",
+  "permissions_show_group": "Pogląd grupy",
+  "permissions_update_group": "Modifykacja grup",
+  "permissions_delete_group": "Usuwanie grup",
+  "permissions_add_task": "Dodawanie zadań",
+  "permissions_list_task": "Listowanie zadań",
+  "permissions_show_task": "Pogląd zadań",
+  "permissions_update_task": "Modifykacja zadań",
+  "permissions_delete_task": "Usuwanie zadań",
+
+  "task_status_to_do": "Do zrobienia",
+  "task_status_in_progress": "W trakcie",
+  "task_status_waiting": "Oczekuje",
+  "task_status_testing": "Testuje",
+  "task_status_review": "W ocenie",
+  "task_status_done": "Zrobione",
 
   "tasks_list_app_bar": "Zadania",
   "tasks_list_no_tasks_title": "Nie znaleziono żadnych zadań",
@@ -46,6 +83,7 @@
   "task_show_deadline": "Termin zadania",
   "task_show_created_at": "Utworzone o",
   "task_show_created_by": "Utworzone przez",
+  "task_show_status": "Status",
   "task_show_no_group_alert": "Twoje zadanie nie jest przypisane do żadnej grupy. Przypisz je do grupy, aby było widoczne dla innych.",
 
   "team_app_bar": "Zespół",
@@ -61,6 +99,8 @@
   "groups_create_name_label": "Nazwa grupy",
   "groups_create_name_placeholder": "Wpisz nazwę",
   "groups_create_users_label": "Lista użytkowników",
+  "groups_create_users_title": "Wybierz użytkowników",
+  "groups_create_users_subtitle": "Kliknij, aby wybrać użytkowników",
 
   "groups_update_app_bar": "Edytuj grupę",
 
@@ -78,6 +118,8 @@
   "users_create_password_label": "Hasło",
   "users_create_password_placeholder": "Wpisz hasło",
   "users_create_groups_label": "Grupy",
+  "users_create_groups_title": "Wybierz grupy",
+  "users_create_groups_subtitle": "Kliknij, aby wybrać grupy",
 
   "users_list_app_bar": "Użytkownicy",
 
@@ -97,6 +139,10 @@
   "settings_theme_subtitle": "Zmień motyw aplikacji",
   "settings_language_title": "Język",
   "settings_language_subtitle": "Zmień język aplikacji",
+  "settings_password_title": "Hasło",
+  "settings_password_subtitle": "Zmień hasło do swojego konta",
+  "settings_license_title": "Licencje",
+  "settings_license_subtitle": "Licencje użyte w aplikacji",
   "settings_logout_title": "Wyloguj",
   "settings_logout_subtitle": "Wyloguj się z aplikacji",
 
@@ -107,5 +153,14 @@
 
   "language_app_bar": "Język",
   "language_english_title": "Angielski",
-  "language_polish_title": "Polski"
+  "language_polish_title": "Polski",
+
+  "password_page_app_bar": "Zmień hasło",
+  "password_page_placeholder": "Wpisz hasło",
+  "password_page_old_label": "Stare hasło",
+  "password_page_new_label": "Nowe hasło",
+  "password_page_confirm_label": "Powtórz nowe hasło",
+  "password_page_passwords_error": "Hasła nie są takie same.",
+  "password_page_api_error": "Stare hasło jest nieprawidłowe",
+  "password_page_submit": "Zmień hasło"
 }

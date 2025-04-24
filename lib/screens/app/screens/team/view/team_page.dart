@@ -23,21 +23,23 @@ class TeamPage extends StatelessWidget {
       body: Padding(
         padding: largePadding,
         child: IListTile(
-          children: [
-            IListTileItem(
-              title: l10n.team_users_title,
-              subtitle: l10n.team_users_subtitle,
-              icon: Icons.person,
-              onPressed: () => context.pushRoute(const UsersListRoute()),
-            ),
-            IListTileItem(
-              title: l10n.team_groups_title,
-              subtitle: l10n.team_groups_subtitle,
-              icon: Icons.groups,
-              onPressed: () => context.pushRoute(const GroupsListRoute()),
-            ),
-          ],
-        ),
+                children: [
+                    IListTileItem(
+                      title: l10n.team_users_title,
+                      subtitle: l10n.team_users_subtitle,
+                      icon: Icons.person,
+                      onPressed: () =>
+                          context.pushRoute(const UsersListRoute()),
+                    ),
+                    IListTileItem(
+                      title: l10n.team_groups_title,
+                      subtitle: l10n.team_groups_subtitle,
+                      icon: Icons.groups,
+                      onPressed: () =>
+                          context.pushRoute(const GroupsListRoute()),
+                    ),
+                ],
+              ),
       ),
     );
   }

@@ -27,8 +27,14 @@ class INavigationBar extends StatelessWidget {
             Ink(
               padding: smallPadding,
               decoration: BoxDecoration(
-                color: context.container,
-                borderRadius: mediumRadius,
+                color: context.surface,
+                borderRadius: xLargeRadius,
+                boxShadow: [
+                  BoxShadow(
+                    color: context.shadow.withValues(alpha: 0.1),
+                    blurRadius: 10,
+                  ),
+                ],
               ),
               child: Row(
                 spacing: smallValue,
@@ -40,8 +46,10 @@ class INavigationBar extends StatelessWidget {
 
                     return Expanded(
                       child: InkWell(
-                        borderRadius: BorderRadius.circular(mediumValue),
+                        borderRadius: BorderRadius.circular(circleValue),
                         onTap: () => onDestinationSelected(index),
+                        splashColor: context.primaryContainer,
+                        highlightColor: context.primaryContainer,
                         child: Padding(
                           padding: mediumPadding,
                           child: selected ? item.selectedIcon! : item.icon,
