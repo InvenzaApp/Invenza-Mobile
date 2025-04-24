@@ -8,6 +8,7 @@ import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/use_case/users_update_use_case.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
 import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
+import 'package:app/shared/select_template/widgets/i_form_permission_select_widget.dart';
 import 'package:app/shared/widgets/i_form_skeletonizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -104,6 +105,9 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
           title: l10n.users_create_groups_title,
           subtitle: l10n.users_create_groups_subtitle,
           initialIdList: resources?.groupsIdList,
+        ),
+        IFormPermissionSelectWidget(
+          initialList: resources?.permissions.map((e) => e.name).toList(),
         ),
       ],
     );

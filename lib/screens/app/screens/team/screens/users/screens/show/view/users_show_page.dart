@@ -1,6 +1,9 @@
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
+import 'package:app/extensions/color_extension.dart';
+import 'package:app/extensions/text_extension.dart';
 import 'package:app/features/user/network/users_remote_data_source.dart';
 import 'package:app/features/user/network/users_repository.dart';
 import 'package:app/screens/app/screens/team/screens/users/screens/show/cubits/users_show_cubit.dart';
@@ -18,11 +21,11 @@ class UsersShowPage extends StatelessWidget {
   static final userCubit = inject<UserCubit>();
 
   bool isDeleteAndEditEnabled() {
-    if(userCubit.state.organizationResult?.maybeValue?.id == resourceId){
+    if (userCubit.state.organizationResult?.maybeValue?.id == resourceId) {
       return false;
     }
 
-    if(userCubit.state.userResult?.maybeValue?.id == resourceId){
+    if (userCubit.state.userResult?.maybeValue?.id == resourceId) {
       return false;
     }
 
@@ -48,28 +51,81 @@ class UsersShowPage extends StatelessWidget {
 
         return Padding(
           padding: mediumPadding,
-          child: Column(
-            children: [
-              ICard(
-                children: [
-                  ICardItem(
-                    label: l10n.users_show_name,
-                    value: user.name,
-                  ),
-                  ICardItem(
-                    label: l10n.users_show_lastname,
-                    value: user.lastname,
-                  ),
-                  ICardItem(
-                    label: l10n.users_show_email,
-                    value: user.email,
-                  ),
-                ],
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ICard(
+                  children: [
+                    ICardItem(
+                      label: l10n.users_show_name,
+                      value: user.name,
+                    ),
+                    ICardItem(
+                      label: l10n.users_show_lastname,
+                      value: user.lastname,
+                    ),
+                    ICardItem(
+                      label: l10n.users_show_email,
+                      value: user.email,
+                    ),
+                  ],
+                ),
+                SizedBox(height: largeValue),
+                Text(
+                  l10n.permissions,
+                  style: context.bodyMedium,
+                ),
+                SizedBox(height: smallValue),
+                Column(
+                  spacing: mediumValue,
+                  children: user.permissions.map((permission){
+                    return IPermissionWidget(permission: permission);
+                  }).toList(),
+                ),
+              ],
+            ),
           ),
         );
-      },
+      }, updatePermission: Permissions.updateUser,
+      deletePermission: Permissions.deleteUser,
+    );
+  }
+}
+
+class IPermissionWidget extends StatelessWidget {
+  const IPermissionWidget({required this.permission, super.key});
+
+  final Permissions permission;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: mediumPadding,
+      decoration: BoxDecoration(
+        color: context.container,
+        borderRadius: mediumRadius,
+      ),
+      child: Row(
+        spacing: mediumValue,
+        children: [
+          Container(
+            padding: smallPadding,
+            decoration: BoxDecoration(
+              color: context.primary,
+              borderRadius: smallRadius,
+            ),
+            child: Icon(
+              Icons.shield_outlined,
+              color: context.onPrimary,
+            ),
+          ),
+          Text(
+            permission.getName(context),
+          ),
+        ],
+      ),
     );
   }
 }
