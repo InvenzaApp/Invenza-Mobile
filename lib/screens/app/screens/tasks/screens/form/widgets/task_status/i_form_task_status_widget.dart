@@ -30,6 +30,7 @@ class _IFormTaskStatusWidgetState extends State<IFormTaskStatusWidget> {
   Widget build(BuildContext context) {
     return FormBuilderField(
       name: 'status',
+      initialValue: taskStatus.name,
       builder: (field) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
