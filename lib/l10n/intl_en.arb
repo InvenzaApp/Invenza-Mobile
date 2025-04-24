@@ -24,6 +24,9 @@
   "permissions_widget_subtitle": "Tap here to select permissions",
   "permissions": "Permissions",
 
+  "no_permissions_title": "No permissions",
+  "no_permiossions_subtitle": "You do not have permissions",
+
   "api_invalid_request_parameters": "Invalid request parameters. Please contact the administrator.",
   "api_invalid_credentials": "Email address or password is incorrect.",
   "api_invalid_response": "Invalid response. Please contact the administrator.",

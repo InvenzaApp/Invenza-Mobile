@@ -45,7 +45,9 @@ class UsersListPage extends StatelessWidget {
             },
           ),
         );
-      }, createPermission: Permissions.addUser,
+      },
+      createPermission: Permissions.addUser,
+      listPermission: Permissions.listUser,
     );
   }
 }

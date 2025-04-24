@@ -7,6 +7,7 @@ import 'package:app/extensions/app_localizations.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_error_widget.dart';
 import 'package:app/shared/widgets/i_list_skeletonizer.dart';
+import 'package:app/shared/widgets/i_no_permissions_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class IListTemplate<T> extends ListTemplate<T> {
     required this.cubit,
     required this.builder,
     required this.createPermission,
+    required this.listPermission,
     super.key,
   });
 
@@ -28,6 +30,9 @@ class IListTemplate<T> extends ListTemplate<T> {
 
   @override
   final Permissions createPermission;
+
+  @override
+  final Permissions listPermission;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +60,9 @@ class IListTemplate<T> extends ListTemplate<T> {
                       }
                     },
                   ),
-        body: BlocBuilder<ListCubit<T>, ListState<T>>(
+        body: !UserPermissions.hasPermission(listPermission)
+        ? const INoPermissionsWidget()
+        : BlocBuilder<ListCubit<T>, ListState<T>>(
           builder: (context, state) => switch (state.isLoading) {
             true => const IListSkeletonizer(),
             false => (state.data?.isError ?? true)

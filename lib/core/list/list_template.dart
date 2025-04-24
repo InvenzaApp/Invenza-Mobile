@@ -12,4 +12,6 @@ abstract class ListTemplate<T> extends StatelessWidget{
   Widget Function(BuildContext context, ListCubit<T> cubit) get builder;
 
   Permissions get createPermission;
+
+  Permissions get listPermission;
 }

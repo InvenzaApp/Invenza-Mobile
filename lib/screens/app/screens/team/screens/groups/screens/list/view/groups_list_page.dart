@@ -132,7 +132,9 @@ class GroupsListPage extends StatelessWidget {
             },
           ),
         );
-      }, createPermission: Permissions.addGroup,
+      },
+      createPermission: Permissions.addGroup,
+      listPermission: Permissions.listGroup,
     );
   }
 }
