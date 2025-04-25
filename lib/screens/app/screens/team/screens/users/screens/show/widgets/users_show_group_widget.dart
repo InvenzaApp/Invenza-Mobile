@@ -1,12 +1,13 @@
-import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/color_extension.dart';
+import 'package:app/extensions/text_extension.dart';
+import 'package:app/features/group/models/group.dart';
 import 'package:app/variables.dart';
 import 'package:flutter/material.dart';
 
-class IPermissionWidget extends StatelessWidget {
-  const IPermissionWidget({required this.permission, super.key});
+class UsersShowGroupWidget extends StatelessWidget {
+  const UsersShowGroupWidget({required this.group, super.key});
 
-  final Permissions permission;
+  final Group group;
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +26,17 @@ class IPermissionWidget extends StatelessWidget {
             Container(
               padding: smallPadding,
               decoration: BoxDecoration(
-                color: context.primary,
                 borderRadius: smallRadius,
+                color: context.primary,
               ),
               child: Icon(
-                Icons.shield_outlined,
+                Icons.group,
                 color: context.onPrimary,
               ),
             ),
             Text(
-              permission.getName(context),
+              group.title,
+              style: context.bodyMedium,
             ),
           ],
         ),

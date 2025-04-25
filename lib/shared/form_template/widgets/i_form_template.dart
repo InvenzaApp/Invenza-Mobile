@@ -81,14 +81,14 @@ class _IFormTemplateState extends State<IFormTemplate> {
                         isLoading = false;
                       });
 
-                      if(!context.mounted) return;
+                      if (!context.mounted) return;
 
-                      if(result.isError){
+                      if (result.isError) {
                         final error = result.maybeError!;
                         context.showToast(error.asString(context));
                       }
 
-                      if(result.isSuccess){
+                      if (result.isSuccess) {
                         widget.onSubmit(result);
                       }
                     }

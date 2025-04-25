@@ -127,6 +127,7 @@
   "users_show_name": "Imię",
   "users_show_lastname": "Nazwisko",
   "users_show_email": "Adres e-mail",
+  "users_show_groups": "Grupy",
 
   "login_email_label": "Adres e-mail",
   "login_email_placeholder": "Wpisz adres e-mail",

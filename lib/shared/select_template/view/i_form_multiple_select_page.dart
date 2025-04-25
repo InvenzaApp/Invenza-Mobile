@@ -66,7 +66,9 @@ class _IFormMultipleSelectPageState<T extends Entity>
                   showAppBar: false,
                 ),
               false => (state.data?.isError ?? true)
-                  ? const IErrorWidget()
+                  ? IErrorWidget(
+                onPressed: () async => context.read<SelectCubit<T>>().fetch(),
+              )
                   : (state.data?.maybeValue?.isEmpty ?? true)
                       ? IErrorWidget(
                           icon: Icons.cloud_off,

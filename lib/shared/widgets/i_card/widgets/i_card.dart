@@ -11,32 +11,36 @@ class ICard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: mediumPadding,
-      decoration:
-      BoxDecoration(color: context.container, borderRadius: mediumRadius),
-      child: Column(
-        spacing: xLargeValue,
-        children: children.map((child) {
-          return Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (child.label != null)
+    return InkWell(
+      onTap: (){},
+      borderRadius: BorderRadius.circular(mediumValue),
+      child: Ink(
+        padding: mediumPadding,
+        decoration:
+        BoxDecoration(color: context.container, borderRadius: mediumRadius),
+        child: Column(
+          spacing: xLargeValue,
+          children: children.map((child) {
+            return Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (child.label != null)
+                      Text(
+                        child.label!,
+                        style: context.titleMedium,
+                      ),
                     Text(
-                      child.label!,
-                      style: context.titleMedium,
+                      child.value,
+                      style: context.bodyMedium,
                     ),
-                  Text(
-                    child.value,
-                    style: context.bodyMedium,
-                  ),
-                ],
-              ),
-            ],
-          );
-        }).toList(),
+                  ],
+                ),
+              ],
+            );
+          }).toList(),
+        ),
       ),
     );
   }
