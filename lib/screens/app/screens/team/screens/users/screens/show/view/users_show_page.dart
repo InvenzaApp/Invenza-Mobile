@@ -6,6 +6,7 @@ import 'package:app/extensions/text_extension.dart';
 import 'package:app/features/user/network/users_remote_data_source.dart';
 import 'package:app/features/user/network/users_repository.dart';
 import 'package:app/screens/app/screens/team/screens/users/screens/show/cubits/users_show_cubit.dart';
+import 'package:app/screens/app/screens/team/screens/users/screens/show/widgets/users_show_group_widget.dart';
 import 'package:app/shared/show_template/i_show_template.dart';
 import 'package:app/shared/widgets/i_card/i_card.dart';
 import 'package:app/shared/widgets/i_permission_widget.dart';
@@ -73,7 +74,21 @@ class UsersShowPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: largeValue),
-                if(user.permissions.isNotEmpty)...[
+                if (user.groups?.isNotEmpty ?? false) ...[
+                  Text(
+                    l10n.users_show_groups,
+                    style: context.bodyMedium,
+                  ),
+                  SizedBox(height: smallValue),
+                  Column(
+                    spacing: mediumValue,
+                    children: user.groups!.map((group) {
+                      return UsersShowGroupWidget(group: group);
+                    }).toList(),
+                  ),
+                  SizedBox(height: largeValue),
+                ],
+                if (user.permissions.isNotEmpty) ...[
                   Text(
                     l10n.permissions,
                     style: context.bodyMedium,
@@ -81,16 +96,18 @@ class UsersShowPage extends StatelessWidget {
                   SizedBox(height: smallValue),
                   Column(
                     spacing: mediumValue,
-                    children: user.permissions.map((permission){
+                    children: user.permissions.map((permission) {
                       return IPermissionWidget(permission: permission);
                     }).toList(),
                   ),
+                  SizedBox(height: largeValue),
                 ],
               ],
             ),
           ),
         );
-      }, updatePermission: Permissions.updateUser,
+      },
+      updatePermission: Permissions.updateUser,
       deletePermission: Permissions.deleteUser,
     );
   }
