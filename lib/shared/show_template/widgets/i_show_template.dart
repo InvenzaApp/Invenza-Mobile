@@ -56,61 +56,67 @@ class _IShowTemplateState<T> extends State<IShowTemplate<T>> {
     final l10n = context.l10n;
     return BlocProvider(
       create: (_) => widget.cubit,
-      child: Scaffold(
-        appBar: iAppBar(
-          context: context,
-          title: widget.cubit.repository.title ?? context.l10n.preview,
-          backButtonAction: () {
-            context.maybePop(requireUpdate);
-          },
-          actions: UserPermissions.hasPermission(widget.deletePermission)
-              ? [
-                  if (widget.deleteEnabled)
-                    IconButton(
-                      icon: Icon(Icons.delete, color: context.error),
-                      onPressed: () async {
-                        final needUpdate =
-                            await context.showConfirm(l10n.delete_confirm);
+      child: BlocBuilder<ShowCubit<T>, ShowState<T>>(
+        builder: (context, state) {
+          return Scaffold(
+            appBar: iAppBar(
+              context: context,
+              title: widget.cubit.repository.title ?? context.l10n.preview,
+              backButtonAction: () {
+                context.maybePop(requireUpdate);
+              },
+              actions:
+                  (UserPermissions.hasPermission(widget.deletePermission) &&
+                          !(state.data?.isError ?? true))
+                      ? [
+                          if (widget.deleteEnabled)
+                            IconButton(
+                              icon: Icon(Icons.delete, color: context.error),
+                              onPressed: () async {
+                                final needUpdate = await context
+                                    .showConfirm(l10n.delete_confirm);
 
-                        if (needUpdate != null && needUpdate) {
-                          unawaited(widget.cubit.delete());
-                          if (context.mounted) {
-                            await context.maybePop(true);
-                          }
-                        }
-                      },
-                    ),
-                ]
-              : null,
-        ),
-        floatingActionButton: (widget.cubit.editRoute == null ||
-                !widget.editEnabled ||
-                !UserPermissions.hasPermission(widget.updatePermission))
-            ? null
-            : FloatingActionButton(
-                child: const Icon(Icons.edit),
-                onPressed: () async {
-                  final needUpdate =
-                      await context.pushRoute(widget.cubit.editRoute!);
+                                if (needUpdate != null && needUpdate) {
+                                  unawaited(widget.cubit.delete());
+                                  if (context.mounted) {
+                                    await context.maybePop(true);
+                                  }
+                                }
+                              },
+                            ),
+                        ]
+                      : null,
+            ),
+            floatingActionButton: ((state.data?.isError ?? true) ||
+                    widget.cubit.editRoute == null ||
+                    !widget.editEnabled ||
+                    !UserPermissions.hasPermission(widget.updatePermission))
+                ? null
+                : FloatingActionButton(
+                    child: const Icon(Icons.edit),
+                    onPressed: () async {
+                      final needUpdate =
+                          await context.pushRoute(widget.cubit.editRoute!);
 
-                  if (needUpdate == true) {
-                    setState(() {
-                      requireUpdate = true;
-                    });
-                    await widget.cubit.initialize();
-                  }
-                },
-              ),
-        body: BlocBuilder<ShowCubit<T>, ShowState<T>>(
-          builder: (context, state) => switch (state.isLoading) {
-            true => const IShowSkeletonizer(),
-            false => (state.data?.isError ?? true)
-                ? IErrorWidget(
-                    subtitle: state.data!.maybeError!.asString(context),
-                  )
-                : widget.builder(context, widget.cubit),
-          },
-        ),
+                      if (needUpdate == true) {
+                        setState(() {
+                          requireUpdate = true;
+                        });
+                        await widget.cubit.initialize();
+                      }
+                    },
+                  ),
+            body: switch (state.isLoading) {
+              true => const IShowSkeletonizer(),
+              false => (state.data?.isError ?? true)
+                  ? IErrorWidget(
+                      subtitle: state.data!.maybeError!.asString(context),
+                onPressed: () async => widget.cubit.initialize(),
+                    )
+                  : widget.builder(context, widget.cubit),
+            },
+          );
+        },
       ),
     );
   }

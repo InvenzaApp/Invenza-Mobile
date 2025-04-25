@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:app/core/list/cubit/list_state.dart';
 import 'package:app/core/use_case/use_case.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/cubit/user_cubit/user_state.dart';
@@ -12,11 +11,8 @@ import 'package:app/features/group/network/groups_repository.dart';
 import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/use_case/tasks_update_use_case.dart';
 import 'package:app/screens/app/screens/tasks/screens/form/widgets/task_status/i_form_task_status_widget.dart';
-import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_cubit.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
 import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
-import 'package:app/shared/widgets/i_form_skeletonizer.dart';
-import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,6 +32,7 @@ class TasksFormWidget extends StatefulWidget {
 
 class _TasksFormWidgetState extends State<TasksFormWidget> {
   Task? resources;
+  bool isError = false;
 
   @override
   void initState() {
@@ -51,7 +48,8 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
     final result = await useCase.cockpitRepository.get(useCase.resourceId);
 
     setState(() {
-      resources = result.isSuccess ? result.maybeValue! : null;
+      resources = result.isSuccess ? result.maybeValue : null;
+      isError = result.isError;
     });
   }
 
@@ -59,66 +57,56 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    return BlocBuilder<GroupsListCubit, ListState<Group>>(
-      builder: (context, groupsState) {
-        return BlocBuilder<UserCubit, UserState>(
-          builder: (context, userState) => switch (groupsState.isLoading) {
-            true => const IFormSkeletonizer(),
-            false => (groupsState.data == null)
-                ? IScaffoldErrorWidget(
-                    icon: Icons.group_off_sharp,
-                    title: l10n.task_form_no_groups_title,
-                    subtitle: l10n.task_form_no_groups_subtitle,
-                  )
-                : IFormTemplate(
-                    useCase: widget.useCase,
-                    onSubmit: (_) => context.maybePop(true),
-                    fields: (widget.useCase is UpdateUseCase &&
-                            resources == null)
-                        ? [const IFormLoadingWidget()]
-                        : [
-                            IFormTextField(
-                              name: 'title',
-                              label: l10n.task_form_name_label,
-                              placeholder: l10n.task_form_name_placeholder,
-                              initialValue: resources?.title,
-                              validators: [
-                                FormBuilderValidators.required(),
-                              ],
-                            ),
-                            IFormTextField(
-                              name: 'description',
-                              initialValue: resources?.description,
-                              label: l10n.task_form_description_label,
-                              placeholder:
-                                  l10n.task_form_description_placeholder,
-                            ),
-                            IFormDateTime(
-                              name: 'deadline',
-                              label: l10n.task_form_deadline_label,
-                              placeholder: l10n.task_form_deadline_placeholder,
-                              initialValue: resources?.deadline,
-                              valueTransformer: (value) =>
-                                  value?.toIso8601String(),
-                            ),
-                            if (widget.useCase is UpdateUseCase)
-                              IFormTaskStatusWidget(
-                                status: resources!.status,
-                              ),
-                            IFormMultipleSelectWidget<Group>(
-                              name: 'groupsIdList',
-                              label: l10n.task_form_groups_label,
-                              repository: GroupsRepository(
-                                remoteDS: inject<GroupsRemoteDataSource>(),
-                              ),
-                              initialIdList: resources?.groupsList
-                                  ?.map((e) => e.id)
-                                  .toList(),
-                              validator: FormBuilderValidators.required(),
-                            ),
-                          ],
-                  ),
-          },
+    return BlocBuilder<UserCubit, UserState>(
+      builder: (context, userState) {
+        return IFormTemplate(
+          useCase: widget.useCase,
+          onSubmit: (_) => context.maybePop(true),
+          fields: (widget.useCase is UpdateUseCase &&
+              resources == null)
+              ? [const IFormLoadingWidget()]
+              : [
+            IFormTextField(
+              name: 'title',
+              label: l10n.task_form_name_label,
+              placeholder: l10n.task_form_name_placeholder,
+              initialValue: resources?.title,
+              validators: [
+                FormBuilderValidators.required(),
+              ],
+            ),
+            IFormTextField(
+              name: 'description',
+              initialValue: resources?.description,
+              label: l10n.task_form_description_label,
+              placeholder:
+              l10n.task_form_description_placeholder,
+            ),
+            IFormDateTime(
+              name: 'deadline',
+              label: l10n.task_form_deadline_label,
+              placeholder:
+              l10n.task_form_deadline_placeholder,
+              initialValue: resources?.deadline,
+              valueTransformer: (value) =>
+                  value?.toIso8601String(),
+            ),
+            if (widget.useCase is UpdateUseCase)
+              IFormTaskStatusWidget(
+                status: resources!.status,
+              ),
+            IFormMultipleSelectWidget<Group>(
+              name: 'groupsIdList',
+              label: l10n.task_form_groups_label,
+              repository: GroupsRepository(
+                remoteDS: inject<GroupsRemoteDataSource>(),
+              ),
+              initialIdList: resources?.groupsList
+                  ?.map((e) => e.id)
+                  .toList(),
+              validator: FormBuilderValidators.required(),
+            ),
+          ],
         );
       },
     );
