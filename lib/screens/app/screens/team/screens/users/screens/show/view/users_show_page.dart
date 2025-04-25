@@ -73,17 +73,19 @@ class UsersShowPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: largeValue),
-                Text(
-                  l10n.permissions,
-                  style: context.bodyMedium,
-                ),
-                SizedBox(height: smallValue),
-                Column(
-                  spacing: mediumValue,
-                  children: user.permissions.map((permission){
-                    return IPermissionWidget(permission: permission);
-                  }).toList(),
-                ),
+                if(user.permissions.isNotEmpty)...[
+                  Text(
+                    l10n.permissions,
+                    style: context.bodyMedium,
+                  ),
+                  SizedBox(height: smallValue),
+                  Column(
+                    spacing: mediumValue,
+                    children: user.permissions.map((permission){
+                      return IPermissionWidget(permission: permission);
+                    }).toList(),
+                  ),
+                ],
               ],
             ),
           ),
