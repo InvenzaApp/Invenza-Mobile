@@ -10,6 +10,7 @@ import 'package:app/shared/form_template/i_form_template.dart';
 import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
 import 'package:app/shared/select_template/widgets/i_form_permission_select_widget.dart';
 import 'package:app/shared/widgets/i_form_skeletonizer.dart';
+import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -25,6 +26,7 @@ class UsersFormWidget extends StatefulWidget {
 
 class _UsersFormWidgetState extends State<UsersFormWidget> {
   User? resources;
+  bool isError = false;
 
   @override
   void initState() {
@@ -39,21 +41,25 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
 
     final result = await useCase.cockpitRepository.get(useCase.resourceId);
 
-    if (result.isSuccess) {
-      setState(() {
-        resources = result.maybeValue;
-      });
-    }
+    setState(() {
+      resources = result.isSuccess ? result.maybeValue! : null;
+      isError = result.isError;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
+    if(isError){
+      return IScaffoldErrorWidget(
+        onPressed: () async => fetchData(),
+      );
+    }
+
     if(widget.useCase is UpdateUseCase && resources == null){
       return const IFormSkeletonizer();
     }
-
 
     return IFormTemplate(
       useCase: widget.useCase,

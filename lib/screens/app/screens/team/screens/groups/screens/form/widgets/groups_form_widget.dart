@@ -28,6 +28,7 @@ class GroupsFormWidget extends StatefulWidget {
 
 class _GroupsFormWidgetState extends State<GroupsFormWidget> {
   Group? resources;
+  bool isError = false;
 
   @override
   void initState() {
@@ -43,11 +44,10 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
 
     final result = await useCase.cockpitRepository.get(useCase.resourceId);
 
-    if (result.isSuccess) {
-      setState(() {
-        resources = result.maybeValue;
-      });
-    }
+    setState(() {
+      resources = result.isSuccess ? result.maybeValue : null;
+      isError = result.isError;
+    });
   }
 
   @override

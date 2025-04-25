@@ -70,7 +70,8 @@ class TasksShowPage extends StatelessWidget {
                     ),
                     ICardItem(
                       label: l10n.task_show_created_by,
-                      value: '${task.createdBy.name} ${task.createdBy.lastname}',
+                      value:
+                          '${task.createdBy.name} ${task.createdBy.lastname}',
                     ),
                     ICardItem(
                       label: l10n.task_show_status,
@@ -80,7 +81,7 @@ class TasksShowPage extends StatelessWidget {
                 ),
                 Column(
                   spacing: mediumValue,
-                  children: task.groupsList!.map((item){
+                  children: task.groupsList!.map((item) {
                     return TasksShowGroupWidget(group: item);
                   }).toList(),
                 ),

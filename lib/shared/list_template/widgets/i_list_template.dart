@@ -61,28 +61,29 @@ class IListTemplate<T> extends ListTemplate<T> {
                     },
                   ),
         body: !UserPermissions.hasPermission(listPermission)
-        ? const INoPermissionsWidget()
-        : BlocBuilder<ListCubit<T>, ListState<T>>(
-          builder: (context, state) => switch (state.isLoading) {
-            true => const IListSkeletonizer(),
-            false => (state.data?.isError ?? true)
-                ? IErrorWidget(
-                    subtitle: state.data!.maybeError!.asString(context),
-                  )
-                : (state.data?.maybeValue?.isEmpty ?? true)
-                    ? IErrorWidget(
-                        icon: Icons.cloud_off,
-                        title: l10n.empty_list_title,
-                        subtitle: l10n.empty_list_subtitle,
-                        onPressed: () async =>
-                            context.read<ListCubit<T>>().initialize(),
-                      )
-                    : Padding(
-                        padding: mediumPadding,
-                        child: builder(context, cubit),
-                      ),
-          },
-        ),
+            ? const INoPermissionsWidget()
+            : BlocBuilder<ListCubit<T>, ListState<T>>(
+                builder: (context, state) => switch (state.isLoading) {
+                  true => const IListSkeletonizer(),
+                  false => (state.data?.isError ?? true)
+                      ? IErrorWidget(
+                          subtitle: state.data!.maybeError!.asString(context),
+                          onPressed: () async => cubit.initialize(),
+                        )
+                      : (state.data?.maybeValue?.isEmpty ?? true)
+                          ? IErrorWidget(
+                              icon: Icons.cloud_off,
+                              title: l10n.empty_list_title,
+                              subtitle: l10n.empty_list_subtitle,
+                              onPressed: () async =>
+                                  context.read<ListCubit<T>>().initialize(),
+                            )
+                          : Padding(
+                              padding: mediumPadding,
+                              child: builder(context, cubit),
+                            ),
+                },
+              ),
       ),
     );
   }

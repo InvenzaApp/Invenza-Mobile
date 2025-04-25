@@ -11,31 +11,35 @@ class UsersShowGroupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: mediumPadding,
-      decoration: BoxDecoration(
-        color: context.container,
-        borderRadius: mediumRadius,
-      ),
-      child: Row(
-        spacing: mediumValue,
-        children: [
-          Container(
-            padding: smallPadding,
-            decoration: BoxDecoration(
-              borderRadius: smallRadius,
-              color: context.primary,
+    return InkWell(
+      onTap: (){},
+      borderRadius: BorderRadius.circular(mediumValue),
+      child: Ink(
+        padding: mediumPadding,
+        decoration: BoxDecoration(
+          color: context.container,
+          borderRadius: mediumRadius,
+        ),
+        child: Row(
+          spacing: mediumValue,
+          children: [
+            Container(
+              padding: smallPadding,
+              decoration: BoxDecoration(
+                borderRadius: smallRadius,
+                color: context.primary,
+              ),
+              child: Icon(
+                Icons.group,
+                color: context.onPrimary,
+              ),
             ),
-            child: Icon(
-              Icons.group,
-              color: context.onPrimary,
+            Text(
+              group.title,
+              style: context.bodyMedium,
             ),
-          ),
-          Text(
-            group.title,
-            style: context.bodyMedium,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

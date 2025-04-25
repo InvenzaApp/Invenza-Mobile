@@ -10,30 +10,34 @@ class IPermissionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: mediumPadding,
-      decoration: BoxDecoration(
-        color: context.container,
-        borderRadius: mediumRadius,
-      ),
-      child: Row(
-        spacing: mediumValue,
-        children: [
-          Container(
-            padding: smallPadding,
-            decoration: BoxDecoration(
-              color: context.primary,
-              borderRadius: smallRadius,
+    return InkWell(
+      onTap: (){},
+      borderRadius: BorderRadius.circular(mediumValue),
+      child: Ink(
+        padding: mediumPadding,
+        decoration: BoxDecoration(
+          color: context.container,
+          borderRadius: mediumRadius,
+        ),
+        child: Row(
+          spacing: mediumValue,
+          children: [
+            Container(
+              padding: smallPadding,
+              decoration: BoxDecoration(
+                color: context.primary,
+                borderRadius: smallRadius,
+              ),
+              child: Icon(
+                Icons.shield_outlined,
+                color: context.onPrimary,
+              ),
             ),
-            child: Icon(
-              Icons.shield_outlined,
-              color: context.onPrimary,
+            Text(
+              permission.getName(context),
             ),
-          ),
-          Text(
-            permission.getName(context),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
