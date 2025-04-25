@@ -42,6 +42,7 @@ class _IFormMultipleSelectWidgetState<T extends Entity>
   Widget build(BuildContext context) {
     return FormBuilderField(
       name: 'permissions',
+      initialValue: selectedEntities,
       builder: (field) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
