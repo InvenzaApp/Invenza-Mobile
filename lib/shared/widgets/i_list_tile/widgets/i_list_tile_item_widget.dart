@@ -35,20 +35,24 @@ class IListTileItemWidget extends StatelessWidget {
               Icon(
                 child.icon,
               ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (child.title != null)
-                  Text(
-                    child.title!,
-                    style: context.titleMedium,
-                  ),
-                if (child.subtitle != null)
-                  Text(
-                    child.subtitle!,
-                    style: context.bodyMedium,
-                  ),
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (child.title != null)
+                    Text(
+                      child.title!,
+                      style: context.titleMedium,
+                    ),
+                  if (child.subtitle != null)
+                    Text(
+                      child.subtitle!,
+                      style: context.bodyMedium,
+                      softWrap: true,
+                    ),
+                ],
+              ),
             ),
           ],
         ),

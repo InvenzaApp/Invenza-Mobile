@@ -58,6 +58,7 @@ class LoginPage extends StatelessWidget {
         }
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: BlocBuilder<UserCubit, UserState>(
           builder: (context, state) {
             return Column(
