@@ -32,6 +32,11 @@ InputDecorationTheme get _inputTheme => InputDecorationTheme(
 ThemeData get lightTheme => ThemeData(
       colorScheme: _lightScheme,
       inputDecorationTheme: _inputTheme,
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: <TargetPlatform, PageTransitionsBuilder>{
+          TargetPlatform.android: PredictiveBackPageTransitionsBuilder(),
+        },
+      ),
     );
 
 ThemeData get darkTheme => ThemeData(
