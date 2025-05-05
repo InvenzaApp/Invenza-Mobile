@@ -10,11 +10,6 @@ class AppNavigationDestinations {
 
   List<NavigationDestination> getDestinationList() => [
         NavigationDestination(
-          icon: Icon(Icons.dashboard_outlined, color: context.secondary),
-          label: '',
-          selectedIcon: Icon(Icons.dashboard, color: context.primary),
-        ),
-        NavigationDestination(
           icon: Icon(Icons.task_outlined, color: context.secondary),
           label: '',
           selectedIcon: Icon(Icons.task, color: context.primary),
@@ -36,7 +31,6 @@ class AppNavigationDestinations {
       ];
 
   List<PageRouteInfo<Object?>> getRoutesList() => const [
-        DashboardRoute(),
         TasksListRoute(),
         TeamRoute(),
         SettingsRoute(),
