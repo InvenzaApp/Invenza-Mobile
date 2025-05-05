@@ -48,9 +48,12 @@ class UsersListWidget extends StatelessWidget {
                 color: context.onPrimary,
               ),
             ),
-            Text(
-              child.title,
-              style: context.titleMedium,
+            Expanded(
+              child: Text(
+                child.title,
+                style: context.titleMedium,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

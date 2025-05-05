@@ -175,9 +175,12 @@ class _IFormMultipleSelectWidget extends StatelessWidget {
           spacing: mediumValue,
           children: [
             Icon(isSelected ? Icons.check_circle : Icons.circle_outlined),
-            Text(
-              entity.title,
-              style: context.bodyMedium,
+            Expanded(
+              child: Text(
+                entity.title,
+                style: context.bodyMedium,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

@@ -34,9 +34,12 @@ class UsersShowGroupWidget extends StatelessWidget {
                 color: context.onPrimary,
               ),
             ),
-            Text(
-              group.title,
-              style: context.bodyMedium,
+            Expanded(
+              child: Text(
+                group.title,
+                style: context.bodyMedium,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),
