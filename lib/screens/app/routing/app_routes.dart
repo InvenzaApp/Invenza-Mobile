@@ -19,10 +19,6 @@ abstract class AppRoutes {
           page: AppRoute.page,
           children: [
             AutoRoute(
-              path: 'dashboard',
-              page: DashboardRoute.page,
-            ),
-            AutoRoute(
               path: 'tasks',
               page: TasksListRoute.page,
             ),
