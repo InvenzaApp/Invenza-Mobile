@@ -2,6 +2,7 @@ import 'package:app/cubit/user_cubit/user_state.dart';
 import 'package:app/features/user/models/user_auth_payload.dart';
 import 'package:app/features/user/repository/user_auth_repository.dart';
 import 'package:app/modules/secure_module.dart';
+import 'package:app/modules/token_module.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,9 +10,11 @@ import 'package:injectable/injectable.dart';
 class UserCubit extends Cubit<UserState> {
   UserCubit({
     required this.repo,
+    required this.tokenModule,
   }) : super(const UserState());
 
   final UserAuthRepository repo;
+  final TokenModule tokenModule;
   static final secure = SecureModule();
 
   void reset() => emit(const UserState());
@@ -30,6 +33,7 @@ class UserCubit extends Cubit<UserState> {
 
     if(result.isSuccess){
       await secure.saveUserCredentials(payload);
+      await tokenModule.registerToken(email: payload.email);
       await fetchOrganization();
     }
   }
