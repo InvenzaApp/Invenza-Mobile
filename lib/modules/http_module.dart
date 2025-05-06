@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 
 @module
 abstract class HttpModule{
-    String get _baseUrl => IpModule.ipAddress;
+    String get _baseUrl => IpModule.ipAddress();
 
     @singleton
     @Named('noAuthHttpClient')
