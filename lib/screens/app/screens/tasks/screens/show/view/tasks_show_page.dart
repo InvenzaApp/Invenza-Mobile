@@ -90,8 +90,8 @@ class TasksShowPage extends StatelessWidget {
           ),
         );
       },
-      updatePermission: Permissions.updateTask,
-      deletePermission: Permissions.deleteTask,
+      updatePermission: Permissions.update_task,
+      deletePermission: Permissions.delete_task,
     );
   }
 }

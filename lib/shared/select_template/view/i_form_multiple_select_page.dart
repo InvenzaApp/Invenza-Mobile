@@ -67,8 +67,9 @@ class _IFormMultipleSelectPageState<T extends Entity>
                 ),
               false => (state.data?.isError ?? true)
                   ? IErrorWidget(
-                onPressed: () async => context.read<SelectCubit<T>>().fetch(),
-              )
+                      onPressed: () async =>
+                          context.read<SelectCubit<T>>().fetch(),
+                    )
                   : (state.data?.maybeValue?.isEmpty ?? true)
                       ? IErrorWidget(
                           icon: Icons.cloud_off,
@@ -79,6 +80,36 @@ class _IFormMultipleSelectPageState<T extends Entity>
                         )
                       : Column(
                           children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: context.surface,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  TextButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        selectedEntities = state
+                                            .data!.maybeValue!
+                                            .map((e) => e.id)
+                                            .toList();
+                                      });
+                                    },
+                                    child: Text(l10n.selectAll),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        selectedEntities = [];
+                                      });
+                                    },
+                                    child: Text(l10n.unselectAll),
+                                  ),
+                                ],
+                              ),
+                            ),
                             Expanded(
                               child: Padding(
                                 padding: mediumPadding,

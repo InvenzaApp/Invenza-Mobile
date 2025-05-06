@@ -2,6 +2,7 @@ import 'package:app/core/entity/entity.dart';
 import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
+import 'package:app/shared/select_template/view/i_form_permission_select_page/widgets/i_form_permission_select_panel_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_button.dart';
 import 'package:app/variables.dart';
@@ -46,34 +47,54 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
       ),
       body: Column(
         children: [
+          Container(
+            decoration: BoxDecoration(
+              color: context.surface,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      selectedEntities =
+                          Permissions.values.map((e) => e.name).toList();
+                    });
+                  },
+                  child: Text(l10n.selectAll),
+                ),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      selectedEntities = [];
+                    });
+                  },
+                  child: Text(l10n.unselectAll),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: Padding(
               padding: mediumPadding,
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: Permissions.values.length,
-                itemBuilder: (context, index) {
-                  final permission = Permissions.values[index];
-
-                  return Column(
-                    children: [
-                      _IFormPermissionSelectWidget(
-                        isSelected: selectedEntities.contains(permission.name),
-                        permission: permission,
-                        onChanged: (selected) {
-                          setState(() {
-                            if (selectedEntities.contains(permission.name)) {
-                              selectedEntities.remove(permission.name);
-                            } else {
-                              selectedEntities.add(permission.name);
-                            }
-                          });
-                        },
-                      ),
-                      SizedBox(height: mediumValue),
-                    ],
-                  );
-                },
+              child: SingleChildScrollView(
+                child: Column(
+                  spacing: xLargeValue,
+                  children: [
+                    IFormPermissionSelectPanelWidget(
+                      permissionsCategory: PermissionsCategory.user,
+                      selectedPermissions: selectedEntities,
+                    ),
+                    IFormPermissionSelectPanelWidget(
+                      permissionsCategory: PermissionsCategory.group,
+                      selectedPermissions: selectedEntities,
+                    ),
+                    IFormPermissionSelectPanelWidget(
+                      permissionsCategory: PermissionsCategory.task,
+                      selectedPermissions: selectedEntities,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -99,42 +120,6 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _IFormPermissionSelectWidget extends StatelessWidget {
-  const _IFormPermissionSelectWidget({
-    required this.isSelected,
-    required this.permission,
-    required this.onChanged,
-  });
-
-  final bool isSelected;
-  final Permissions permission;
-  final void Function(bool selected) onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => onChanged(!isSelected),
-      borderRadius: BorderRadius.circular(mediumValue),
-      child: Ink(
-        padding: largePadding,
-        decoration: BoxDecoration(
-          color: isSelected ? context.primaryContainer : context.container,
-          borderRadius: mediumRadius,
-        ),
-        child: Row(
-          spacing: mediumValue,
-          children: [
-            Icon(isSelected ? Icons.check_circle : Icons.circle_outlined),
-            Text(
-              permission.getName(context),
-            ),
-          ],
-        ),
       ),
     );
   }
