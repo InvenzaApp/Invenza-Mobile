@@ -4,6 +4,7 @@ import 'package:app/app/routing/app_router.gr.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/confirm_extension.dart';
+import 'package:app/screens/app/screens/settings/widgets/settings_account_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_list_tile/i_list_tile.dart';
 import 'package:app/shared/widgets/i_logo_widget.dart';
@@ -26,12 +27,12 @@ class SettingsPage extends StatelessWidget {
         title: l10n.settings_app_bar,
         showBackButton: false,
       ),
-      body: Padding(
-        padding: largePadding,
-        child: Column(
-          spacing: largeValue,
-          children: [
-            Expanded(
+      body: Column(
+        children: [
+          const SettingsAccountWidget(),
+          Expanded(
+            child: Padding(
+              padding: mediumHorizontalPadding,
               child: IListTile(
                 children: [
                   IListTileItem(
@@ -73,10 +74,10 @@ class SettingsPage extends StatelessWidget {
                       final userCubit = context.read<UserCubit>();
                       final success =
                           await context.showConfirm(l10n.logout_confirm);
-              
+
                       if (success != null && success) {
                         unawaited(userCubit.signOut());
-              
+
                         if (context.mounted) {
                           await context.replaceRoute(const LoginRoute());
                         }
@@ -86,8 +87,8 @@ class SettingsPage extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

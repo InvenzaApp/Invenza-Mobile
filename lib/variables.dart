@@ -7,9 +7,24 @@ double xLargeValue = 24;
 double circleValue = 1000;
 
 EdgeInsets get smallPadding => EdgeInsets.all(smallValue);
+
 EdgeInsets get mediumPadding => EdgeInsets.all(mediumValue);
+
 EdgeInsets get largePadding => EdgeInsets.all(largeValue);
+
 EdgeInsets get xLargePadding => EdgeInsets.all(xLargeValue);
+
+EdgeInsets get smallHorizontalPadding =>
+    EdgeInsets.symmetric(horizontal: smallValue);
+
+EdgeInsets get mediumHorizontalPadding =>
+    EdgeInsets.symmetric(horizontal: mediumValue);
+
+EdgeInsets get largeHorizontalPadding =>
+    EdgeInsets.symmetric(horizontal: largeValue);
+
+EdgeInsets get xLargeHorizontalPadding =>
+    EdgeInsets.symmetric(horizontal: xLargeValue);
 
 BorderRadiusGeometry smallRadius = BorderRadius.circular(smallValue);
 BorderRadiusGeometry mediumRadius = BorderRadius.circular(mediumValue);
