@@ -24,6 +24,8 @@
   "permissions_widget_subtitle": "Tap here to select permissions",
   "permissions": "Permissions",
   "status": "Status",
+  "selectAll": "Select all",
+  "unselectAll": "Unselect all",
 
   "no_permissions_title": "No permissions",
   "no_permissions_subtitle": "You do not have permissions",
@@ -53,6 +55,10 @@
   "permissions_show_task": "View tasks",
   "permissions_update_task": "Edit tasks",
   "permissions_delete_task": "Delete tasks",
+
+  "permissions_category_users": "Users",
+  "permissions_category_groups": "Groups",
+  "permissions_category_tasks": "Tasks",
 
   "task_status_to_do": "To do",
   "task_status_in_progress": "In progress",

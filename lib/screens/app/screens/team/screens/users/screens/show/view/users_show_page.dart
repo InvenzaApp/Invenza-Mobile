@@ -107,8 +107,8 @@ class UsersShowPage extends StatelessWidget {
           ),
         );
       },
-      updatePermission: Permissions.updateUser,
-      deletePermission: Permissions.deleteUser,
+      updatePermission: Permissions.update_user,
+      deletePermission: Permissions.delete_user,
     );
   }
 }

@@ -46,8 +46,8 @@ class TasksListPage extends StatelessWidget {
           ),
         );
       },
-      createPermission: Permissions.addTask,
-      listPermission: Permissions.listTask,
+      createPermission: Permissions.add_task,
+      listPermission: Permissions.list_task,
     );
   }
 }

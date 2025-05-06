@@ -24,6 +24,8 @@
   "permissions_widget_subtitle": "Kliknij, aby wybrać uprawnienia",
   "permissions": "Uprawnienia",
   "status": "Status",
+  "selectAll": "Zaznacz wszystkie",
+  "unselectAll": "Odznacz wszystkie",
 
   "no_permissions_title": "Brak uprawnień",
   "no_permissions_subtitle": "Niestety, nie masz uprawnień",
@@ -53,6 +55,10 @@
   "permissions_show_task": "Pogląd zadań",
   "permissions_update_task": "Modifykacja zadań",
   "permissions_delete_task": "Usuwanie zadań",
+
+  "permissions_category_users": "Użytkownicy",
+  "permissions_category_groups": "Grupy",
+  "permissions_category_tasks": "Zadania",
 
   "task_status_to_do": "Do zrobienia",
   "task_status_in_progress": "W trakcie",

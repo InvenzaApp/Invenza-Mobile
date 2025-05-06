@@ -3,7 +3,7 @@ import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/text_extension.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
-import 'package:app/shared/select_template/view/i_form_permission_select_page.dart';
+import 'package:app/shared/select_template/view/i_form_permission_select_page/view/i_form_permission_select_page.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';

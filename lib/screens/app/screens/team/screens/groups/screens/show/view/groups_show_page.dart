@@ -55,8 +55,8 @@ class GroupsShowPage extends StatelessWidget {
             ),
           ),
         );
-      }, updatePermission: Permissions.updateGroup,
-      deletePermission: Permissions.deleteGroup,
+      }, updatePermission: Permissions.update_group,
+      deletePermission: Permissions.delete_group,
     );
   }
 }
