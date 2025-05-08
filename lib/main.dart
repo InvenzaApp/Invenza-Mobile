@@ -31,14 +31,12 @@ Future<void> main() async {
         : HydratedStorageDirectory((await getTemporaryDirectory()).path),
   );
 
+  final sharedPreferences = await SharedPreferences.getInstance();
+  getIt.registerSingleton<SharedPreferences>(sharedPreferences);
 
   configureDependencies();
 
-  // final sharedPreferences = await SharedPreferences.getInstance();
-  // getIt.registerSingleton<SharedPreferences>(sharedPreferences);
-
   setupInterceptors();
-
 
   await FirebaseMessaging.instance.requestPermission(provisional: true);
 

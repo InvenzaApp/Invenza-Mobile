@@ -150,6 +150,9 @@ PODS:
   - PromisesObjC (2.4.0)
   - PromisesSwift (2.4.0):
     - PromisesObjC (= 2.4.0)
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
 
 DEPENDENCIES:
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
@@ -159,6 +162,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
 
 SPEC REPOS:
   trunk:
@@ -194,6 +198,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_secure_storage/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
 
 SPEC CHECKSUMS:
   Firebase: 1fe1c0a7d9aaea32efe01fbea5f0ebd8d70e53a2
@@ -219,6 +225,7 @@ SPEC CHECKSUMS:
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
+  shared_preferences_foundation: 9e1978ff2562383bd5676f64ec4e9aa8fa06a6f7
 
 PODFILE CHECKSUM: a57f30d18f102dd3ce366b1d62a55ecbef2158e5
 
