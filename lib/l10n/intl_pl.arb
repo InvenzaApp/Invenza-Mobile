@@ -142,6 +142,8 @@
   "login_sign_in_button": "Zaloguj się",
 
   "settings_app_bar": "Ustawienia",
+  "settings_account_title": "Konto",
+  "settings_account_subtitle": "Zarządzaj swoim kontem",
   "settings_theme_title": "Motyw",
   "settings_theme_subtitle": "Zmień motyw aplikacji",
   "settings_language_title": "Język",

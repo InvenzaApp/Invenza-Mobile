@@ -142,6 +142,8 @@
   "login_sign_in_button": "Sign in",
 
   "settings_app_bar": "Settings",
+  "settings_account_title": "Account",
+  "settings_account_subtitle": "Manage your account",
   "settings_theme_title": "Theme",
   "settings_theme_subtitle": "Change the theme of the application",
   "settings_language_title": "Language",
