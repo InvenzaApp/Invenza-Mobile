@@ -126,15 +126,15 @@ class GroupsListPage extends StatelessWidget {
               return Column(
                 children: [
                   GroupsListWidget(child: group),
-                  SizedBox(height: mediumValue),
+                  SizedBox(height: smallValue),
                 ],
               );
             },
           ),
         );
       },
-      createPermission: Permissions.addGroup,
-      listPermission: Permissions.listGroup,
+      createPermission: Permissions.add_group,
+      listPermission: Permissions.list_group,
     );
   }
 }

@@ -46,7 +46,7 @@ class GroupsShowPage extends StatelessWidget {
                   ],
                 ),
                 Column(
-                  spacing: mediumValue,
+                  spacing: smallValue,
                   children: group.usersList!.map((item){
                     return GroupsShowWidget(user: item);
                   }).toList(),
@@ -55,8 +55,8 @@ class GroupsShowPage extends StatelessWidget {
             ),
           ),
         );
-      }, updatePermission: Permissions.updateGroup,
-      deletePermission: Permissions.deleteGroup,
+      }, updatePermission: Permissions.update_group,
+      deletePermission: Permissions.delete_group,
     );
   }
 }

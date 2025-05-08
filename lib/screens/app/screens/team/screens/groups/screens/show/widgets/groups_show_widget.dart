@@ -23,20 +23,16 @@ class GroupsShowWidget extends StatelessWidget {
         child: Row(
           spacing: mediumValue,
           children: [
-            Container(
-              padding: smallPadding,
-              decoration: BoxDecoration(
-                color: context.primary,
-                borderRadius: smallRadius,
-              ),
-              child: Icon(
-                Icons.person,
-                color: context.onPrimary,
-              ),
+            Icon(
+              Icons.person,
+              color: context.onSurface,
             ),
-            Text(
-              '${user.name} ${user.lastname}',
-              style: context.bodyMedium,
+            Expanded(
+              child: Text(
+                '${user.name} ${user.lastname}',
+                style: context.bodyMedium,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

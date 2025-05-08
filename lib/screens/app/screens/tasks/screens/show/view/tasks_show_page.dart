@@ -80,7 +80,7 @@ class TasksShowPage extends StatelessWidget {
                   ],
                 ),
                 Column(
-                  spacing: mediumValue,
+                  spacing: smallValue,
                   children: task.groupsList!.map((item) {
                     return TasksShowGroupWidget(group: item);
                   }).toList(),
@@ -90,8 +90,8 @@ class TasksShowPage extends StatelessWidget {
           ),
         );
       },
-      updatePermission: Permissions.updateTask,
-      deletePermission: Permissions.deleteTask,
+      updatePermission: Permissions.update_task,
+      deletePermission: Permissions.delete_task,
     );
   }
 }

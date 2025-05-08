@@ -29,7 +29,7 @@ class UsersListWidget extends StatelessWidget {
       },
       borderRadius: BorderRadius.circular(mediumValue),
       child: Ink(
-        padding: mediumPadding,
+        padding: largePadding,
         decoration: BoxDecoration(
           color: context.container,
           borderRadius: mediumRadius,
@@ -37,20 +37,16 @@ class UsersListWidget extends StatelessWidget {
         child: Row(
           spacing: mediumValue,
           children: [
-            Container(
-              padding: smallPadding,
-              decoration: BoxDecoration(
-                color: context.primary,
-                borderRadius: smallRadius,
-              ),
-              child: Icon(
-                Icons.person,
-                color: context.onPrimary,
-              ),
+            Icon(
+              Icons.person,
+              color: context.onSurface,
             ),
-            Text(
-              child.title,
-              style: context.titleMedium,
+            Expanded(
+              child: Text(
+                child.title,
+                style: context.titleMedium,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

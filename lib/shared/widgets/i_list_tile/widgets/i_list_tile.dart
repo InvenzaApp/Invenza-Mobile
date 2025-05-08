@@ -11,10 +11,11 @@ class IListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: children.length,
       shrinkWrap: true,
+      itemCount: children.length,
       itemBuilder: (context, index) {
         return Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             IListTileItemWidget(
               child: children[index],
@@ -22,7 +23,7 @@ class IListTile extends StatelessWidget {
               index: index,
             ),
             if(index != children.length - 1)
-              SizedBox(height: smallValue),
+              SizedBox(height: xSmallValue),
           ],
         );
       },

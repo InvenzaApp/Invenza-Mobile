@@ -39,15 +39,15 @@ class TasksListPage extends StatelessWidget {
               return Column(
                 children: [
                   TasksListWidget(task: task),
-                  SizedBox(height: mediumValue),
+                  SizedBox(height: smallValue),
                 ],
               );
             },
           ),
         );
       },
-      createPermission: Permissions.addTask,
-      listPermission: Permissions.listTask,
+      createPermission: Permissions.add_task,
+      listPermission: Permissions.list_task,
     );
   }
 }

@@ -39,15 +39,15 @@ class UsersListPage extends StatelessWidget {
               return Column(
                 children: [
                   UsersListWidget(child: user),
-                  SizedBox(height: mediumValue),
+                  SizedBox(height: smallValue),
                 ],
               );
             },
           ),
         );
       },
-      createPermission: Permissions.addUser,
-      listPermission: Permissions.listUser,
+      createPermission: Permissions.add_user,
+      listPermission: Permissions.list_user,
     );
   }
 }

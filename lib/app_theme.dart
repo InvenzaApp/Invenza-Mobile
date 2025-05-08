@@ -7,6 +7,14 @@ ColorScheme get _lightScheme => ColorScheme.fromSeed(seedColor: _colorSeed);
 ColorScheme get _darkScheme =>
     ColorScheme.fromSeed(seedColor: _colorSeed, brightness: Brightness.dark);
 
+
+// Predictive back animation
+// PageTransitionsTheme get _predictiveBackTheme => const PageTransitionsTheme(
+//       builders: <TargetPlatform, PageTransitionsBuilder>{
+//         TargetPlatform.android: PredictiveBackPageTransitionsBuilder(),
+//       },
+//     );
+
 InputDecorationTheme get _inputTheme => InputDecorationTheme(
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(
@@ -32,10 +40,12 @@ InputDecorationTheme get _inputTheme => InputDecorationTheme(
 ThemeData get lightTheme => ThemeData(
       colorScheme: _lightScheme,
       inputDecorationTheme: _inputTheme,
+      // pageTransitionsTheme: _predictiveBackTheme,
     );
 
 ThemeData get darkTheme => ThemeData(
       colorScheme: _darkScheme,
       brightness: Brightness.dark,
       inputDecorationTheme: _inputTheme,
+      // pageTransitionsTheme: _predictiveBackTheme,
     );

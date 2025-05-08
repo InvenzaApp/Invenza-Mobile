@@ -27,67 +27,63 @@ class SettingsPage extends StatelessWidget {
         title: l10n.settings_app_bar,
         showBackButton: false,
       ),
-      body: Padding(
-        padding: largePadding,
-        child: Column(
-          spacing: largeValue,
-          children: [
-            const SettingsAccountWidget(),
-            IListTile(
-              children: [
-                IListTileItem(
-                  title: l10n.settings_theme_title,
-                  subtitle: l10n.settings_theme_subtitle,
-                  icon: Icons.dark_mode,
-                  onPressed: () => context.pushRoute(const ThemeRoute()),
-                ),
-                IListTileItem(
-                  title: l10n.settings_language_title,
-                  subtitle: l10n.settings_language_subtitle,
-                  icon: Icons.g_translate,
-                  onPressed: () => context.pushRoute(const LanguageRoute()),
-                ),
-                IListTileItem(
-                  title: l10n.settings_password_title,
-                  subtitle: l10n.settings_password_subtitle,
-                  icon: Icons.password,
-                  onPressed: () =>
-                      context.pushRoute(const ChangePasswordRoute()),
-                ),
-                IListTileItem(
-                  title: l10n.settings_license_title,
-                  subtitle: l10n.settings_license_subtitle,
-                  icon: Icons.policy,
-                  onPressed: () => Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (context) => const LicensePage(
-                        applicationIcon: ILogoWidget(),
+      body: Column(
+        children: [
+          const SettingsAccountWidget(),
+          Expanded(
+            child: Padding(
+              padding: mediumHorizontalPadding,
+              child: IListTile(
+                children: [
+                  IListTileItem(
+                    title: l10n.settings_theme_title,
+                    icon: Icons.dark_mode,
+                    onPressed: () => context.pushRoute(const ThemeRoute()),
+                  ),
+                  IListTileItem(
+                    title: l10n.settings_language_title,
+                    icon: Icons.g_translate,
+                    onPressed: () => context.pushRoute(const LanguageRoute()),
+                  ),
+                  IListTileItem(
+                    title: l10n.settings_password_title,
+                    icon: Icons.password,
+                    onPressed: () =>
+                        context.pushRoute(const ChangePasswordRoute()),
+                  ),
+                  IListTileItem(
+                    title: l10n.settings_license_title,
+                    icon: Icons.policy,
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                        builder: (context) => const LicensePage(
+                          applicationIcon: ILogoWidget(),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                IListTileItem(
-                  title: l10n.settings_logout_title,
-                  subtitle: l10n.settings_logout_subtitle,
-                  icon: Icons.logout,
-                  onPressed: () async {
-                    final userCubit = context.read<UserCubit>();
-                    final success =
-                        await context.showConfirm(l10n.logout_confirm);
+                  IListTileItem(
+                    title: l10n.settings_logout_title,
+                    icon: Icons.logout,
+                    onPressed: () async {
+                      final userCubit = context.read<UserCubit>();
+                      final success =
+                          await context.showConfirm(l10n.logout_confirm);
 
-                    if (success != null && success) {
-                      unawaited(userCubit.signOut());
+                      if (success != null && success) {
+                        unawaited(userCubit.signOut());
 
-                      if (context.mounted) {
-                        await context.replaceRoute(const LoginRoute());
+                        if (context.mounted) {
+                          await context.replaceRoute(const LoginRoute());
+                        }
                       }
-                    }
-                  },
-                ),
-              ],
+                    },
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

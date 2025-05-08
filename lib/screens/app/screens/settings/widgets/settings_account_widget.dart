@@ -13,43 +13,48 @@ class SettingsAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
-        final user = state.userResult?.maybeValue;
-
         return Container(
           padding: mediumPadding,
           decoration: BoxDecoration(
-            color: context.container,
-            borderRadius: mediumRadius,
+            color: context.surface,
           ),
-          child: Row(
-            spacing: mediumValue,
-            children: [
-              Container(
-                padding: smallPadding,
-                decoration: BoxDecoration(
-                  color: context.containerHighest,
-                  borderRadius: smallRadius,
-                ),
-                child: const Icon(
-                  Icons.person,
-                ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    user?.title ?? 'null',
-                    style: context.titleSmall,
+          child: Container(
+            padding: mediumPadding,
+            decoration: BoxDecoration(
+              color: context.container,
+              borderRadius: mediumRadius,
+            ),
+            child: Row(
+              spacing: mediumValue,
+              children: [
+                Container(
+                  padding: smallPadding,
+                  decoration: BoxDecoration(
+                    color: context.primary,
+                    borderRadius: smallRadius,
                   ),
-                  Text(
-                    user?.email ?? 'null',
-                    style: context.bodyMedium.copyWith(
-                      color: context.onSurfaceVariant,
+                  child: Icon(
+                    Icons.person,
+                    color: context.onPrimary,
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      state.userResult?.maybeValue?.title ?? '',
+                      style: context.bodyMedium,
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    Text(
+                      state.userResult?.maybeValue?.email ?? '',
+                      style: context.bodySmall.copyWith(
+                        color: context.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
