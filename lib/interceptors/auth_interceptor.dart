@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:app/cubit/token_cubit/token_cubit.dart';
+import 'package:app/modules/storage_module.dart';
 import 'package:app/type_def/json.dart';
 import 'package:dio/dio.dart';
 
@@ -8,6 +9,7 @@ class AuthInterceptor extends QueuedInterceptor {
   AuthInterceptor({required this.cubit});
 
   final TokenCubit cubit;
+  final storage = StorageModule();
 
   @override
   void onResponse(
@@ -33,6 +35,7 @@ class AuthInterceptor extends QueuedInterceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.headers['authorization'] = 'Bearer ${cubit.token}';
+    options.headers['locale'] = storage.getLocale().languageCode;
     super.onRequest(options, handler);
   }
 }
