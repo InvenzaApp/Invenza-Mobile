@@ -93,10 +93,8 @@
   "task_show_no_group_alert": "Your task does not belong to any group. Assign it to a group to make it available to others.",
 
   "team_app_bar": "Team",
-  "team_users_title": "Users",
-  "team_users_subtitle": "Manage users in your team",
-  "team_groups_title": "Groups",
-  "team_groups_subtitle": "Manage groups in your team",
+  "team_users_title": "Manage users",
+  "team_groups_title": "Manage groups",
 
   "groups_list_app_bar": "Groups",
   "groups_list_no_groups_title": "No groups found",
@@ -142,16 +140,11 @@
   "login_sign_in_button": "Sign in",
 
   "settings_app_bar": "Settings",
-  "settings_theme_title": "Theme",
-  "settings_theme_subtitle": "Change the theme of the application",
-  "settings_language_title": "Language",
-  "settings_language_subtitle": "Change the language of the application",
-  "settings_password_title": "Password",
-  "settings_password_subtitle": "Change password to your account",
+  "settings_theme_title": "App theme",
+  "settings_language_title": "App language",
+  "settings_password_title": "Account password",
   "settings_license_title": "Licenses",
-  "settings_license_subtitle": "Licenses used in the app",
   "settings_logout_title": "Sign out",
-  "settings_logout_subtitle": "Sign out of the application",
 
   "theme_app_bar": "Theme",
   "theme_light_title": "Light theme",

@@ -126,7 +126,7 @@ class GroupsListPage extends StatelessWidget {
               return Column(
                 children: [
                   GroupsListWidget(child: group),
-                  SizedBox(height: mediumValue),
+                  SizedBox(height: smallValue),
                 ],
               );
             },

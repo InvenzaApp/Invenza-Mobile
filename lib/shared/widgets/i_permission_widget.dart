@@ -14,7 +14,7 @@ class IPermissionWidget extends StatelessWidget {
       onTap: (){},
       borderRadius: BorderRadius.circular(mediumValue),
       child: Ink(
-        padding: mediumPadding,
+        padding: largePadding,
         decoration: BoxDecoration(
           color: context.container,
           borderRadius: mediumRadius,
@@ -22,16 +22,9 @@ class IPermissionWidget extends StatelessWidget {
         child: Row(
           spacing: mediumValue,
           children: [
-            Container(
-              padding: smallPadding,
-              decoration: BoxDecoration(
-                color: context.primary,
-                borderRadius: smallRadius,
-              ),
-              child: Icon(
-                Icons.shield_outlined,
-                color: context.onPrimary,
-              ),
+            Icon(
+              Icons.shield_outlined,
+              color: context.onSurface,
             ),
             Text(
               permission.getName(context),

@@ -39,7 +39,7 @@ class UsersListPage extends StatelessWidget {
               return Column(
                 children: [
                   UsersListWidget(child: user),
-                  SizedBox(height: mediumValue),
+                  SizedBox(height: smallValue),
                 ],
               );
             },

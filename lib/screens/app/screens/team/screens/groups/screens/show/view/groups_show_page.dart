@@ -46,7 +46,7 @@ class GroupsShowPage extends StatelessWidget {
                   ],
                 ),
                 Column(
-                  spacing: mediumValue,
+                  spacing: smallValue,
                   children: group.usersList!.map((item){
                     return GroupsShowWidget(user: item);
                   }).toList(),
