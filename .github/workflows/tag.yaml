@@ -23,8 +23,6 @@ jobs:
           raw_latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null)
           echo "Surowy ostatni tag znaleziony przez 'git describe': '$raw_latest_tag'"
 
-          local version_core
-
           if [[ -z "$raw_latest_tag" ]]; then
             version_core="0.0.0"
             echo "Nie znaleziono istniejących tagów. Używam wersji startowej: $version_core"
@@ -37,9 +35,9 @@ jobs:
           major=${parts[0]:-0} # Domyślnie 0, jeśli część nie istnieje
           minor=${parts[1]:-0} # Domyślnie 0, jeśli część nie istnieje
           patch=${parts[2]:-0} # Domyślnie 0, jeśli część nie istnieje
-          
+
           new_patch=$((patch + 1))
-          
+
           new_tag="${major}.${minor}.${new_patch}"
 
           echo "Nowy tag do utworzenia: $new_tag"
