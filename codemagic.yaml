@@ -2,5 +2,20 @@ workflows:
   invenza:
     name: Invenza
     scripts:
+      - name: Download Firebase
+        script: curl -sL https://firebase.tools | bash
+      - name: Install Flutterfire CLI
+        script: dart pub global activate flutterfire_cli
+      - name: Configure Flutterfire
+        script: |
+          flutterfire configure \
+          --yes \
+          --project=$FIREBASE_PROJECT_ID \
+          --platforms=android,ios \
+          --ios-bundle-id=pl.invenza.app \
+          --android-package-name=pl.invenza.mobileapp
       - name: Initialize flutter project
         script: flutter clean && flutter pub get && dart run build_runner build
+    environment:
+      groups:
+        - firebase_credentials
