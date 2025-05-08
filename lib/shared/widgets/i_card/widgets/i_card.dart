@@ -12,14 +12,14 @@ class ICard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: () {},
       borderRadius: BorderRadius.circular(mediumValue),
       child: Ink(
         padding: mediumPadding,
         decoration:
-        BoxDecoration(color: context.container, borderRadius: mediumRadius),
+            BoxDecoration(color: context.container, borderRadius: mediumRadius),
         child: Column(
-          spacing: xLargeValue,
+          spacing: mediumValue,
           children: children.map((child) {
             return Row(
               children: [
@@ -31,7 +31,9 @@ class ICard extends StatelessWidget {
                       if (child.label != null)
                         Text(
                           child.label!,
-                          style: context.titleMedium,
+                          style: context.bodySmall.copyWith(
+                            color: context.onSurfaceVariant,
+                          ),
                         ),
                       Text(
                         child.value,

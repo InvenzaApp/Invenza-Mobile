@@ -43,11 +43,6 @@ class IListTileItemWidget extends StatelessWidget {
                   if (child.title != null)
                     Text(
                       child.title!,
-                      style: context.titleMedium,
-                    ),
-                  if (child.subtitle != null)
-                    Text(
-                      child.subtitle!,
                       style: context.bodyMedium,
                       softWrap: true,
                     ),

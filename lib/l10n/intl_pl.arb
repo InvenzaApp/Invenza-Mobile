@@ -93,10 +93,8 @@
   "task_show_no_group_alert": "Twoje zadanie nie jest przypisane do żadnej grupy. Przypisz je do grupy, aby było widoczne dla innych.",
 
   "team_app_bar": "Zespół",
-  "team_users_title": "Użytkownicy",
-  "team_users_subtitle": "Zarządzaj użytkownikami w swoim zespole",
-  "team_groups_title": "Grupy",
-  "team_groups_subtitle": "Zarządzaj grupami w swoim zespole",
+  "team_users_title": "Zarządzaj użytkownikami",
+  "team_groups_title": "Zarządzaj grupami",
 
   "groups_list_app_bar": "Grupy",
   "groups_list_no_groups_title": "Nie znaleziono żadnych grup",
@@ -142,16 +140,11 @@
   "login_sign_in_button": "Zaloguj się",
 
   "settings_app_bar": "Ustawienia",
-  "settings_theme_title": "Motyw",
-  "settings_theme_subtitle": "Zmień motyw aplikacji",
-  "settings_language_title": "Język",
-  "settings_language_subtitle": "Zmień język aplikacji",
-  "settings_password_title": "Hasło",
-  "settings_password_subtitle": "Zmień hasło do swojego konta",
+  "settings_theme_title": "Motyw aplikacji",
+  "settings_language_title": "Język aplikacji",
+  "settings_password_title": "Hasło konta",
   "settings_license_title": "Licencje",
-  "settings_license_subtitle": "Licencje użyte w aplikacji",
-  "settings_logout_title": "Wyloguj",
-  "settings_logout_subtitle": "Wyloguj się z aplikacji",
+  "settings_logout_title": "Wyloguj się",
 
   "theme_app_bar": "Motyw",
   "theme_light_title": "Jasny motyw",
