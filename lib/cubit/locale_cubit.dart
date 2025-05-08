@@ -1,20 +1,24 @@
+import 'package:app/di.dart';
+import 'package:app/modules/storage_module.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-class LocaleCubit extends HydratedCubit<Locale>{
-  LocaleCubit() : super(const Locale('en'));
-  static const localeKey = 'locale';
-
-  void changeLocale(Locale locale) => emit(locale);
-
-  @override
-  Locale fromJson(Map<String, dynamic> json) {
-    final locale = json[localeKey] as String?;
-    return locale != null ? Locale(locale) : const Locale('en');
+class LocaleCubit extends Cubit<Locale>{
+  LocaleCubit() : super(const Locale('pl')){
+    loadLocale();
   }
 
-  @override
-  Map<String, dynamic>? toJson(Locale state) {
-    return { localeKey: state.toString() };
+  static const localeKey = 'locale';
+  final storageModule = StorageModule();
+
+  void changeLocale(Locale locale){
+    emit(locale);
+    print("LOCALE: ${locale.languageCode}");
+    storageModule.saveLocale(locale);
+  }
+
+  void loadLocale(){
+    final locale = storageModule.getLocale();
+    emit(locale);
   }
 }

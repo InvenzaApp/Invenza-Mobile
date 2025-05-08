@@ -9,6 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,9 +31,14 @@ Future<void> main() async {
         : HydratedStorageDirectory((await getTemporaryDirectory()).path),
   );
 
+
   configureDependencies();
 
+  // final sharedPreferences = await SharedPreferences.getInstance();
+  // getIt.registerSingleton<SharedPreferences>(sharedPreferences);
+
   setupInterceptors();
+
 
   await FirebaseMessaging.instance.requestPermission(provisional: true);
 
