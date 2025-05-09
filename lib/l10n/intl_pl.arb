@@ -55,10 +55,13 @@
   "permissions_show_task": "Pogląd zadań",
   "permissions_update_task": "Modifykacja zadań",
   "permissions_delete_task": "Usuwanie zadań",
+  "permissions_show_organization": "Podgląd organizacji",
+  "permissions_update_organization": "Modyfikacja organizacji",
 
   "permissions_category_users": "Użytkownicy",
   "permissions_category_groups": "Grupy",
   "permissions_category_tasks": "Zadania",
+  "permissions_category_organization": "Organizacja",
 
   "task_status_to_do": "Do zrobienia",
   "task_status_in_progress": "W trakcie",

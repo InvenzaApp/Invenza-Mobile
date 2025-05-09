@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/core/user_permissions/user_permissions.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/confirm_extension.dart';
 import 'package:app/screens/app/screens/settings/widgets/settings_account_widget.dart';
@@ -40,12 +42,16 @@ class SettingsPage extends StatelessWidget {
                     icon: Icons.person,
                     onPressed: () => context.pushRoute(const AccountRoute()),
                   ),
-                  IListTileItem(
+                  if (UserPermissions.hasPermission(
+                    Permissions.show_organization,
+                  )) ...[
+                    IListTileItem(
                       title: l10n.settings_organization_title,
                       icon: Icons.business,
                       onPressed: () =>
                           context.pushRoute(const OrganizationShowRoute()),
-                  ),
+                    ),
+                  ],
                   IListTileItem(
                     title: l10n.settings_theme_title,
                     icon: Icons.dark_mode,
@@ -65,15 +71,13 @@ class SettingsPage extends StatelessWidget {
                   IListTileItem(
                     title: l10n.settings_license_title,
                     icon: Icons.policy,
-                    onPressed: () =>
-                        Navigator.of(context).push(
-                          MaterialPageRoute<void>(
-                            builder: (context) =>
-                            const LicensePage(
-                              applicationIcon: ILogoWidget(),
-                            ),
-                          ),
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                        builder: (context) => const LicensePage(
+                          applicationIcon: ILogoWidget(),
                         ),
+                      ),
+                    ),
                   ),
                   IListTileItem(
                     title: l10n.settings_logout_title,
@@ -81,7 +85,7 @@ class SettingsPage extends StatelessWidget {
                     onPressed: () async {
                       final userCubit = context.read<UserCubit>();
                       final success =
-                      await context.showConfirm(l10n.logout_confirm);
+                          await context.showConfirm(l10n.logout_confirm);
 
                       if (success != null && success) {
                         unawaited(userCubit.signOut());

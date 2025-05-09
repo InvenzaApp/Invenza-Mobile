@@ -55,10 +55,13 @@
   "permissions_show_task": "View tasks",
   "permissions_update_task": "Edit tasks",
   "permissions_delete_task": "Delete tasks",
+  "permissions_show_organization": "View organization",
+  "permissions_update_organization": "Edit organization",
 
   "permissions_category_users": "Users",
   "permissions_category_groups": "Groups",
   "permissions_category_tasks": "Tasks",
+  "permissions_category_organization": "Organization",
 
   "task_status_to_do": "To do",
   "task_status_in_progress": "In progress",

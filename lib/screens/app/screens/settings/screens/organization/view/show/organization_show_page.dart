@@ -1,6 +1,8 @@
 import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/core/user_permissions/user_permissions.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/cubit/user_cubit/user_state.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_card/i_card.dart';
@@ -25,10 +27,14 @@ class OrganizationShowPage extends StatelessWidget {
             context: context,
             title: l10n.organization_app_bar,
           ),
-          floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.edit),
-            onPressed: () => context.pushRoute(const OrganizationUpdateRoute()),
-          ),
+          floatingActionButton:
+              UserPermissions.hasPermission(Permissions.update_organization)
+                  ? FloatingActionButton(
+                      child: const Icon(Icons.edit),
+                      onPressed: () =>
+                          context.pushRoute(const OrganizationUpdateRoute()),
+                    )
+                  : null,
           body: Column(
             children: [
               Padding(

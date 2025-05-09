@@ -93,6 +93,10 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
                       permissionsCategory: PermissionsCategory.task,
                       selectedPermissions: selectedEntities,
                     ),
+                    IFormPermissionSelectPanelWidget(
+                      permissionsCategory: PermissionsCategory.organization,
+                      selectedPermissions: selectedEntities,
+                    ),
                   ],
                 ),
               ),
