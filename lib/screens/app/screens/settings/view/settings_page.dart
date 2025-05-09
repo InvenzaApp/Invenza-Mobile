@@ -37,7 +37,6 @@ class SettingsPage extends StatelessWidget {
                 children: [
                   IListTileItem(
                     title: l10n.settings_account_title,
-                    subtitle: l10n.settings_account_subtitle,
                     icon: Icons.person,
                     onPressed: () => context.pushRoute(const AccountRoute()),
                   ),
