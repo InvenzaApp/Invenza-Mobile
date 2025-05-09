@@ -15,7 +15,7 @@ class GroupsShowWidget extends StatelessWidget {
       onTap: () {},
       borderRadius: BorderRadius.circular(mediumValue),
       child: Ink(
-        padding: mediumPadding,
+        padding: xLargePadding,
         decoration: BoxDecoration(
           color: context.container,
           borderRadius: mediumRadius,

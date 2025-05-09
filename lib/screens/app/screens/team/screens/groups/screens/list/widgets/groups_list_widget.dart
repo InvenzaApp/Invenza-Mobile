@@ -29,7 +29,7 @@ class GroupsListWidget extends StatelessWidget {
       },
       borderRadius: BorderRadius.circular(mediumValue),
       child: Ink(
-        padding: largePadding,
+        padding: xLargePadding,
         decoration: BoxDecoration(
           color: context.container,
           borderRadius: mediumRadius,
