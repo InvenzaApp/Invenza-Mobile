@@ -21,7 +21,12 @@ firebase login
 ```
 And to configure app project, run
 ```
-flutterfire configure
+flutterfire configure -a pl.invenza.mobileapp -i pl.invenza.app
+```
+Also, to configure development flavor, run
+```
+flutterfire configure -a pl.invenza.mobileapp.dev -i pl.invenza.app.dev
+
 ```
 
 ### Mobile app
