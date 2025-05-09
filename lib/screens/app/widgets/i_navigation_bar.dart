@@ -21,7 +21,7 @@ class INavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Padding(
-        padding: mediumPadding,
+        padding: largePadding,
         child: Column(
           children: [
             Ink(
@@ -29,17 +29,13 @@ class INavigationBar extends StatelessWidget {
               decoration: BoxDecoration(
                 color: context.surface,
                 borderRadius: xLargeRadius,
-                boxShadow: [
-                  BoxShadow(
-                    color: context.shadow.withValues(alpha: 0.1),
-                    blurRadius: 10,
-                  ),
-                ],
+                border:
+                    Border.all(color: context.shadow.withValues(alpha: 0.1)),
               ),
               child: Row(
                 spacing: smallValue,
                 children: destinations.asMap().entries.map(
-                      (entry) {
+                  (entry) {
                     final index = entry.key;
                     final item = entry.value;
                     final selected = selectedIndex == index;
@@ -51,7 +47,7 @@ class INavigationBar extends StatelessWidget {
                         splashColor: context.primaryContainer,
                         highlightColor: context.primaryContainer,
                         child: Padding(
-                          padding: mediumPadding,
+                          padding: smallPadding,
                           child: selected ? item.selectedIcon! : item.icon,
                         ),
                       ),
@@ -60,7 +56,7 @@ class INavigationBar extends StatelessWidget {
                 ).toList(),
               ),
             ),
-            SizedBox(height: mediumValue),
+            SizedBox(height: smallValue),
           ],
         ),
       ),

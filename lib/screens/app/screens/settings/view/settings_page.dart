@@ -43,26 +43,22 @@ class SettingsPage extends StatelessWidget {
                   ),
                   IListTileItem(
                     title: l10n.settings_theme_title,
-                    subtitle: l10n.settings_theme_subtitle,
                     icon: Icons.dark_mode,
                     onPressed: () => context.pushRoute(const ThemeRoute()),
                   ),
                   IListTileItem(
                     title: l10n.settings_language_title,
-                    subtitle: l10n.settings_language_subtitle,
                     icon: Icons.g_translate,
                     onPressed: () => context.pushRoute(const LanguageRoute()),
                   ),
                   IListTileItem(
                     title: l10n.settings_password_title,
-                    subtitle: l10n.settings_password_subtitle,
                     icon: Icons.password,
                     onPressed: () =>
                         context.pushRoute(const ChangePasswordRoute()),
                   ),
                   IListTileItem(
                     title: l10n.settings_license_title,
-                    subtitle: l10n.settings_license_subtitle,
                     icon: Icons.policy,
                     onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute<void>(
@@ -74,7 +70,6 @@ class SettingsPage extends StatelessWidget {
                   ),
                   IListTileItem(
                     title: l10n.settings_logout_title,
-                    subtitle: l10n.settings_logout_subtitle,
                     icon: Icons.logout,
                     onPressed: () async {
                       final userCubit = context.read<UserCubit>();

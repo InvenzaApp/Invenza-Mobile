@@ -50,7 +50,7 @@ class SettingsAccountWidget extends StatelessWidget {
                       style: context.bodySmall.copyWith(
                         color: context.onSurfaceVariant,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ],

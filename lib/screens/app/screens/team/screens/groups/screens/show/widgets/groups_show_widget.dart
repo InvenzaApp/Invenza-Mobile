@@ -23,16 +23,9 @@ class GroupsShowWidget extends StatelessWidget {
         child: Row(
           spacing: mediumValue,
           children: [
-            Container(
-              padding: smallPadding,
-              decoration: BoxDecoration(
-                color: context.primary,
-                borderRadius: smallRadius,
-              ),
-              child: Icon(
-                Icons.person,
-                color: context.onPrimary,
-              ),
+            Icon(
+              Icons.person,
+              color: context.onSurface,
             ),
             Expanded(
               child: Text(

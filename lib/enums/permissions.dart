@@ -91,4 +91,3 @@ enum PermissionsCategory {
 enum PermissionsType{
   add, list, show, update, delete;
 }
-

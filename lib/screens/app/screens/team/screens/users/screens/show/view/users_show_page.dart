@@ -81,7 +81,7 @@ class UsersShowPage extends StatelessWidget {
                   ),
                   SizedBox(height: smallValue),
                   Column(
-                    spacing: mediumValue,
+                    spacing: smallValue,
                     children: user.groups!.map((group) {
                       return UsersShowGroupWidget(group: group);
                     }).toList(),
@@ -95,7 +95,7 @@ class UsersShowPage extends StatelessWidget {
                   ),
                   SizedBox(height: smallValue),
                   Column(
-                    spacing: mediumValue,
+                    spacing: smallValue,
                     children: user.permissions.map((permission) {
                       return IPermissionWidget(permission: permission);
                     }).toList(),

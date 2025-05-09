@@ -15,7 +15,7 @@ class UsersShowGroupWidget extends StatelessWidget {
       onTap: (){},
       borderRadius: BorderRadius.circular(mediumValue),
       child: Ink(
-        padding: mediumPadding,
+        padding: largePadding,
         decoration: BoxDecoration(
           color: context.container,
           borderRadius: mediumRadius,
@@ -23,16 +23,9 @@ class UsersShowGroupWidget extends StatelessWidget {
         child: Row(
           spacing: mediumValue,
           children: [
-            Container(
-              padding: smallPadding,
-              decoration: BoxDecoration(
-                borderRadius: smallRadius,
-                color: context.primary,
-              ),
-              child: Icon(
-                Icons.group,
-                color: context.onPrimary,
-              ),
+            Icon(
+              Icons.group,
+              color: context.onSurface,
             ),
             Expanded(
               child: Text(

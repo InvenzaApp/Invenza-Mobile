@@ -23,7 +23,7 @@ class IListTile extends StatelessWidget {
               index: index,
             ),
             if(index != children.length - 1)
-              SizedBox(height: smallValue),
+              SizedBox(height: xSmallValue),
           ],
         );
       },

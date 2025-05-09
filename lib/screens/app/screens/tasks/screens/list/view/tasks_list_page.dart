@@ -39,7 +39,7 @@ class TasksListPage extends StatelessWidget {
               return Column(
                 children: [
                   TasksListWidget(task: task),
-                  SizedBox(height: mediumValue),
+                  SizedBox(height: smallValue),
                 ],
               );
             },

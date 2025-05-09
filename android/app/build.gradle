@@ -39,16 +39,39 @@ android {
 
     signingConfigs {
         release {
-            keyAlias = keystoreProperties["keyAlias"]
-            keyPassword = keystoreProperties["keyPassword"]
-            storeFile = keystoreProperties["storeFile"] ? file(keystoreProperties['storeFile']) : null
-            storePassword = keystoreProperties["storePassword"]
+            if(System.getenv()["CI"]){
+                storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
+                storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
+                keyAlias Systen.getenv()["CM_KEY_ALIAS"]
+                keyPassword System.getenv()["CM_KEY_PASSWORD"]
+            }else{
+                keyAlias = keystoreProperties["keyAlias"]
+                keyPassword = keystoreProperties["keyPassword"]
+                storeFile = keystoreProperties["storeFile"] ? file(keystoreProperties['storeFile']) : null
+                storePassword = keystoreProperties["storePassword"]
+            }
         }
     }
 
     buildTypes {
         release {
             signingConfig = signingConfigs.release
+        }
+    }
+
+    flavorDimensions += "default"
+
+    productFlavors {
+        development {
+            dimension = "default"
+            manifestPlaceholders = [appName: "[DEV] Invenza"]
+            applicationIdSuffix = ".dev"
+        }
+
+        production {
+            dimension = "default"
+            manifestPlaceholders = [appName: "Invenza"]
+            applicationIdSuffix = ""
         }
     }
 }
