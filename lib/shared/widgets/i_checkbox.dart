@@ -29,7 +29,7 @@ class ICheckbox<T> extends StatelessWidget {
           borderRadius: mediumRadius,
         ),
         child: Padding(
-          padding: largePadding,
+          padding: xLargePadding,
           child: Row(
             spacing: mediumValue,
             children: [

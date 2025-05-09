@@ -20,7 +20,7 @@ class TasksShowGroupWidget extends StatelessWidget {
       onTap: () => context.pushRoute(GroupsShowRoute(resourceId: group.id)),
       borderRadius: BorderRadius.circular(mediumValue),
       child: Ink(
-        padding: largePadding,
+        padding: xLargePadding,
         decoration: BoxDecoration(
           color: context.container,
           borderRadius: mediumRadius,
