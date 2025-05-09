@@ -123,7 +123,10 @@ class _AccountPageState extends State<AccountPage> {
                               unawaited(userCubit.signOut());
 
                               if (context.mounted) {
-                                await context.replaceRoute(const LoginRoute());
+                                // await context.roun(const LoginRoute());
+                                await context.router.replaceAll(
+                                  [const LoginRoute()],
+                                );
                               }
                             } else {
                               if (!context.mounted) return;
