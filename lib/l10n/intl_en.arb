@@ -142,6 +142,7 @@
   "settings_app_bar": "Settings",
   "settings_theme_title": "App theme",
   "settings_language_title": "App language",
+  "settings_account_title": "My account",
   "settings_password_title": "Account password",
   "settings_license_title": "Licenses",
   "settings_logout_title": "Sign out",
@@ -162,5 +163,14 @@
   "password_page_confirm_label": "Confirm new password",
   "password_page_passwords_error": "Passwords are not the same.",
   "password_page_api_error": "Old password is incorrect",
-  "password_page_submit": "Change password"
+  "password_page_submit": "Change password",
+
+  "account_app_bar": "My account",
+  "account_name_title": "Name",
+  "account_name_placeholder": "Enter name",
+  "account_lastname_title": "Lastname",
+  "account_lastname_placeholder": "Enter lastname",
+  "account_email_title": "Email address",
+  "account_email_placeholder": "Enter email address",
+  "account_email_taken_alert": "Email address has been already taken"
 }

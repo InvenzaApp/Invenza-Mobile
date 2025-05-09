@@ -40,12 +40,13 @@ class Task extends Entity with EquatableMixin {
   @override
   List<Object?> get props => [
         id,
-    title,
+        title,
         description,
         deadline,
         groupsList,
         createdAt,
         createdBy,
         groupsIdList,
+        status,
       ];
 }

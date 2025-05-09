@@ -36,6 +36,11 @@ class SettingsPage extends StatelessWidget {
               child: IListTile(
                 children: [
                   IListTileItem(
+                    title: l10n.settings_account_title,
+                    icon: Icons.person,
+                    onPressed: () => context.pushRoute(const AccountRoute()),
+                  ),
+                  IListTileItem(
                     title: l10n.settings_theme_title,
                     icon: Icons.dark_mode,
                     onPressed: () => context.pushRoute(const ThemeRoute()),

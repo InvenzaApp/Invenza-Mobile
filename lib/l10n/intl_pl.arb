@@ -142,6 +142,7 @@
   "settings_app_bar": "Ustawienia",
   "settings_theme_title": "Motyw aplikacji",
   "settings_language_title": "Język aplikacji",
+  "settings_account_title": "Moje konto",
   "settings_password_title": "Hasło konta",
   "settings_license_title": "Licencje",
   "settings_logout_title": "Wyloguj się",
@@ -162,5 +163,14 @@
   "password_page_confirm_label": "Powtórz nowe hasło",
   "password_page_passwords_error": "Hasła nie są takie same.",
   "password_page_api_error": "Stare hasło jest nieprawidłowe",
-  "password_page_submit": "Zmień hasło"
+  "password_page_submit": "Zmień hasło",
+
+  "account_app_bar": "Moje konto",
+  "account_name_title": "Imię",
+  "account_name_placeholder": "Wpisz imię",
+  "account_lastname_title": "Nazwisko",
+  "account_lastname_placeholder": "Wpisz nazwisko",
+  "account_email_title": "Adres e-mail",
+  "account_email_placeholder": "Wpisz adres e-mail",
+  "account_email_taken_alert": "Adres e-mail jest już zajęty"
 }
