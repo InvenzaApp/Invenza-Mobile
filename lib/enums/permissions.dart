@@ -16,7 +16,9 @@ enum Permissions {
   list_task,
   show_task,
   update_task,
-  delete_task;
+  delete_task,
+  show_organization,
+  update_organization;
 
   static Permissions fromSingleJson(dynamic json) {
     return Permissions.values.byName(json as String);
@@ -46,6 +48,8 @@ enum Permissions {
         show_task => context.l10n.permissions_show_task,
         update_task => context.l10n.permissions_update_task,
         delete_task => context.l10n.permissions_delete_task,
+        show_organization => context.l10n.permissions_show_organization,
+        update_organization => context.l10n.permissions_update_organization,
       };
 
   static List<Permissions> getByCategory(PermissionsCategory category) {
@@ -54,7 +58,7 @@ enum Permissions {
         .toList();
   }
 
-  IconData getPermissionTypeIcon(){
+  IconData getPermissionTypeIcon() {
     for (final pType in PermissionsType.values) {
       if (name.contains(pType.name)) {
         return switch (pType) {
@@ -73,21 +77,28 @@ enum Permissions {
 enum PermissionsCategory {
   user,
   group,
-  task;
+  task,
+  organization;
 
-  String getName(BuildContext context) => switch(this){
-    user => context.l10n.permissions_category_users,
-    group => context.l10n.permissions_category_groups,
-    task => context.l10n.permissions_category_tasks
-  };
+  String getName(BuildContext context) => switch (this) {
+        user => context.l10n.permissions_category_users,
+        group => context.l10n.permissions_category_groups,
+        task => context.l10n.permissions_category_tasks,
+        organization => context.l10n.permissions_category_organization,
+      };
 
-  IconData getIcon() => switch(this){
-    user => Icons.person,
-    group => Icons.groups,
-    task => Icons.task,
-  };
+  IconData getIcon() => switch (this) {
+        user => Icons.person,
+        group => Icons.groups,
+        task => Icons.task,
+        organization => Icons.business,
+      };
 }
 
-enum PermissionsType{
-  add, list, show, update, delete;
+enum PermissionsType {
+  add,
+  list,
+  show,
+  update,
+  delete;
 }
