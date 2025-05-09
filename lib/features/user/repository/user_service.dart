@@ -38,4 +38,18 @@ class UserService {
         .then((res) => jsonDecode(res.data!) as Json)
         .catchError((e) => noInternetConnectionJson);
   }
+
+  Future<Json> updateUser(Json payload) async{
+    return _authDio
+        .post<String>('$userUrl/update-user', data: payload)
+        .then((res) => jsonDecode(res.data!) as Json)
+        .catchError((e) => noInternetConnectionJson);
+  }
+
+  Future<Json> updateOrganization(Json payload) async{
+    return _authDio
+        .post<String>('$organizationUrl/organization-update', data: payload)
+        .then((res) => jsonDecode(res.data!) as Json)
+        .catchError((e) => noInternetConnectionJson);
+  }
 }

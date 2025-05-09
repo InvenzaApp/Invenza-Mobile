@@ -67,6 +67,12 @@
   "task_status_review": "Review",
   "task_status_done": "Done",
 
+  "address_street": "Street",
+  "address_apartment_number": "Apartment number",
+  "address_city": "City",
+  "address_post_code": "Postal code",
+  "address_country": "Country",
+
   "tasks_list_app_bar": "Tasks",
   "tasks_list_no_tasks_title": "No tasks found",
 
@@ -142,6 +148,8 @@
   "settings_app_bar": "Settings",
   "settings_theme_title": "App theme",
   "settings_language_title": "App language",
+  "settings_account_title": "My account",
+  "settings_organization_title": "My organization",
   "settings_password_title": "Account password",
   "settings_license_title": "Licenses",
   "settings_logout_title": "Sign out",
@@ -162,5 +170,34 @@
   "password_page_confirm_label": "Confirm new password",
   "password_page_passwords_error": "Passwords are not the same.",
   "password_page_api_error": "Old password is incorrect",
-  "password_page_submit": "Change password"
+  "password_page_submit": "Change password",
+
+  "account_app_bar": "My account",
+  "account_name_title": "Name",
+  "account_name_placeholder": "Enter name",
+  "account_lastname_title": "Lastname",
+  "account_lastname_placeholder": "Enter lastname",
+  "account_email_title": "Email address",
+  "account_email_placeholder": "Enter email address",
+  "account_email_taken_alert": "Email address has been already taken",
+
+  "organization_app_bar": "Organization",
+  "organization_title": "Organization name",
+
+  "organization_update_app_bar": "Update organization",
+  "organization_update_title_label": "Organization name",
+  "organization_update_title_placeholder": "Enter name",
+  "organization_update_street_title": "Street",
+  "organization_update_street_placeholder": "Enter street",
+  "organization_update_building_title": "Building number",
+  "organization_update_building_placeholder": "Enter number",
+  "organization_update_apartment_title": "Apartment number",
+  "organization_update_apartment_placeholder": "Enter number",
+  "organization_update_post_code_title": "Postal code",
+  "organization_update_post_code_placeholder": "Enter code",
+  "organization_update_city_title": "City",
+  "organization_update_city_placeholder": "Enter city",
+  "organization_update_country_title": "Country",
+  "organization_update_country_placeholder": "Enter country",
+  "organization_update_unknown_error": "Unknown error occured. Please contant with administration"
 }

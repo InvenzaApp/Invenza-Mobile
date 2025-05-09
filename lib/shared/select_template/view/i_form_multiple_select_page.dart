@@ -197,7 +197,7 @@ class _IFormMultipleSelectWidget extends StatelessWidget {
       onTap: () => onChanged(!isSelected),
       borderRadius: BorderRadius.circular(mediumValue),
       child: Ink(
-        padding: largePadding,
+        padding: xLargePadding,
         decoration: BoxDecoration(
           color: isSelected ? context.primaryContainer : context.container,
           borderRadius: mediumRadius,

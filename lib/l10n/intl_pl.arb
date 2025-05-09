@@ -67,6 +67,12 @@
   "task_status_review": "W ocenie",
   "task_status_done": "Zrobione",
 
+  "address_street": "Ulica",
+  "address_apartment_number": "Numer lokalu",
+  "address_city": "Miejscowość",
+  "address_post_code": "Kod pocztowy",
+  "address_country": "Kraj",
+
   "tasks_list_app_bar": "Zadania",
   "tasks_list_no_tasks_title": "Nie znaleziono żadnych zadań",
 
@@ -142,6 +148,8 @@
   "settings_app_bar": "Ustawienia",
   "settings_theme_title": "Motyw aplikacji",
   "settings_language_title": "Język aplikacji",
+  "settings_account_title": "Moje konto",
+  "settings_organization_title": "Moja organizacja",
   "settings_password_title": "Hasło konta",
   "settings_license_title": "Licencje",
   "settings_logout_title": "Wyloguj się",
@@ -162,5 +170,34 @@
   "password_page_confirm_label": "Powtórz nowe hasło",
   "password_page_passwords_error": "Hasła nie są takie same.",
   "password_page_api_error": "Stare hasło jest nieprawidłowe",
-  "password_page_submit": "Zmień hasło"
+  "password_page_submit": "Zmień hasło",
+
+  "account_app_bar": "Moje konto",
+  "account_name_title": "Imię",
+  "account_name_placeholder": "Wpisz imię",
+  "account_lastname_title": "Nazwisko",
+  "account_lastname_placeholder": "Wpisz nazwisko",
+  "account_email_title": "Adres e-mail",
+  "account_email_placeholder": "Wpisz adres e-mail",
+  "account_email_taken_alert": "Adres e-mail jest już zajęty",
+
+  "organization_app_bar": "Organizacja",
+  "organization_title": "Nazwa organizacji",
+
+  "organization_update_app_bar": "Edytuj organizacje",
+  "organization_update_title_label": "Nazwa organizacji",
+  "organization_update_title_placeholder": "Wpisz nazwę",
+  "organization_update_street_title": "Ulica",
+  "organization_update_street_placeholder": "Wpisz ulice",
+  "organization_update_building_title": "Numer budynku",
+  "organization_update_building_placeholder": "Wpisz numer",
+  "organization_update_apartment_title": "Numer lokalu",
+  "organization_update_apartment_placeholder": "Wpisz numer",
+  "organization_update_post_code_title": "Kod pocztowy",
+  "organization_update_post_code_placeholder": "Wpisz kod",
+  "organization_update_city_title": "Miejscowość",
+  "organization_update_city_placeholder": "Wpisz miejscowość",
+  "organization_update_country_title": "Kraj",
+  "organization_update_country_placeholder": "Wpisz kraj",
+  "organization_update_unknown_error": "Wystąpił nieznany bład. Skontaktuj się z administracją"
 }

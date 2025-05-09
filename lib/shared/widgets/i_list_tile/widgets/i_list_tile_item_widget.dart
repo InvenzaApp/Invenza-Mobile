@@ -23,7 +23,7 @@ class IListTileItemWidget extends StatelessWidget {
       onTap: child.onPressed,
       borderRadius: getInkWellBorderRadius(index, listLength),
       child: Ink(
-        padding: largePadding,
+        padding: xLargePadding,
         decoration: BoxDecoration(
           color: context.container,
           borderRadius: getInkBorderRadius(index, listLength),

@@ -15,5 +15,17 @@ abstract class SettingsRoutes {
           path: '/change_password',
           page: ChangePasswordRoute.page,
         ),
+        AutoRoute(
+          path: '/account',
+          page: AccountRoute.page,
+        ),
+        AutoRoute(
+          path: '/organization-show',
+          page: OrganizationShowRoute.page,
+        ),
+        AutoRoute(
+          path: '/organization-update',
+          page: OrganizationUpdateRoute.page,
+        ),
       ];
 }
