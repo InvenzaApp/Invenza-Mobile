@@ -51,6 +51,22 @@ android {
             signingConfig = signingConfigs.release
         }
     }
+
+    flavorDimensions += "default"
+
+    productFlavors {
+        development {
+            dimension = "default"
+            manifestPlaceholders = [appName: "[DEV] Invenza"]
+            applicationIdSuffix = ".dev"
+        }
+
+        production {
+            dimension = "default"
+            manifestPlaceholders = [appName: "Invenza"]
+            applicationIdSuffix = ""
+        }
+    }
 }
 
 flutter {
