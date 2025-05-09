@@ -1,4 +1,5 @@
 # Invenza
+[![Codemagic build status](https://api.codemagic.io/apps/681ccb739357b7eb40c4b4f5/681ccb739357b7eb40c4b4f4/status_badge.svg)](https://codemagic.io/app/681ccb739357b7eb40c4b4f5/681ccb739357b7eb40c4b4f4/latest_build)
 
 Invenza - mobile app
 
@@ -20,7 +21,12 @@ firebase login
 ```
 And to configure app project, run
 ```
-flutterfire configure
+flutterfire configure -a pl.invenza.mobileapp -i pl.invenza.app
+```
+Also, to configure development flavor, run
+```
+flutterfire configure -a pl.invenza.mobileapp.dev -i pl.invenza.app.dev
+
 ```
 
 ### Mobile app
