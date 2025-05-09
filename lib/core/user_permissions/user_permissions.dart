@@ -5,8 +5,8 @@ import 'package:app/enums/permissions.dart';
 class UserPermissions{
   static bool hasPermission(Permissions permission){
     final cubit = inject<UserCubit>();
-    final user = cubit.state.userResult!.maybeValue!;
+    final user = cubit.state.userResult?.maybeValue;
 
-    return user.permissions.contains(permission);
+    return user?.permissions.contains(permission) ?? false;
   }
 }
