@@ -1,4 +1,5 @@
 import 'package:app/core/entity/entity.dart';
+import 'package:app/features/address/models/address.dart';
 import 'package:app/features/user/models/user.dart';
 import 'package:app/type_def/json.dart';
 import 'package:equatable/equatable.dart';
@@ -13,6 +14,7 @@ class Organization extends Entity with EquatableMixin {
     required this.title,
     required this.usersList,
     required this.admin,
+    required this.address,
   });
 
   factory Organization.fromJson(Json json) => _$OrganizationFromJson(json);
@@ -24,7 +26,8 @@ class Organization extends Entity with EquatableMixin {
   @JsonKey(name: 'users')
   final List<User> usersList;
   final User admin;
+  final Address address;
 
   @override
-  List<Object?> get props => [id, title, usersList, admin];
+  List<Object?> get props => [id, title, usersList, admin, address];
 }

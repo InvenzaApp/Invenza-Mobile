@@ -65,39 +65,41 @@ class _AccountPageState extends State<AccountPage> {
                 Expanded(
                   child: Padding(
                     padding: mediumPadding,
-                    child: Column(
-                      spacing: mediumValue,
-                      children: [
-                        IFormTextField(
-                          name: 'name',
-                          label: l10n.account_name_title,
-                          placeholder: l10n.account_name_placeholder,
-                          initialValue: user.name,
-                          validators: [
-                            FormBuilderValidators.required(),
-                          ],
-                        ),
-                        IFormTextField(
-                          name: 'lastname',
-                          label: l10n.account_lastname_title,
-                          placeholder: l10n.account_lastname_placeholder,
-                          initialValue: user.lastname,
-                          validators: [
-                            FormBuilderValidators.required(),
-                          ],
-                        ),
-                        IFormTextField(
-                          name: 'email',
-                          label: l10n.account_email_title,
-                          placeholder: l10n.account_email_placeholder,
-                          initialValue: user.email,
-                          keyboardType: TextInputType.emailAddress,
-                          validators: [
-                            FormBuilderValidators.required(),
-                            FormBuilderValidators.email(),
-                          ],
-                        ),
-                      ],
+                    child: SingleChildScrollView(
+                      child: Column(
+                        spacing: mediumValue,
+                        children: [
+                          IFormTextField(
+                            name: 'name',
+                            label: l10n.account_name_title,
+                            placeholder: l10n.account_name_placeholder,
+                            initialValue: user.name,
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                          ),
+                          IFormTextField(
+                            name: 'lastname',
+                            label: l10n.account_lastname_title,
+                            placeholder: l10n.account_lastname_placeholder,
+                            initialValue: user.lastname,
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                          ),
+                          IFormTextField(
+                            name: 'email',
+                            label: l10n.account_email_title,
+                            placeholder: l10n.account_email_placeholder,
+                            initialValue: user.email,
+                            keyboardType: TextInputType.emailAddress,
+                            validators: [
+                              FormBuilderValidators.required(),
+                              FormBuilderValidators.email(),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -123,7 +125,6 @@ class _AccountPageState extends State<AccountPage> {
                               unawaited(userCubit.signOut());
 
                               if (context.mounted) {
-                                // await context.roun(const LoginRoute());
                                 await context.router.replaceAll(
                                   [const LoginRoute()],
                                 );
