@@ -6,12 +6,18 @@ import 'package:form_builder_validators/localization/l10n.dart';
 List<Locale> get appSupportedLocales => const [
       Locale('pl'),
       Locale('en'),
+      Locale('es'),
+      Locale('de'),
+      Locale('uk'),
+      Locale('it'),
+      Locale('zh'),
+      Locale('ja'),
     ];
 
 List<LocalizationsDelegate<dynamic>> get appLocalizationsDelegates => [
-  GlobalMaterialLocalizations.delegate,
-  GlobalWidgetsLocalizations.delegate,
-  GlobalCupertinoLocalizations.delegate,
-  AppLocalizations.delegate,
-  FormBuilderLocalizations.delegate,
-];
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+      AppLocalizations.delegate,
+      FormBuilderLocalizations.delegate,
+    ];
