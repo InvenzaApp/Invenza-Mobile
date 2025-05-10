@@ -135,7 +135,11 @@
   "users_create_password_placeholder": "输入密码",
   "users_create_groups_label": "群组",
   "users_create_groups_title": "选择群组",
+  "users_create_admin_title": "管理员账户",
+  "users_create_admin_subtitle": "决定用户是否应有权访问管理员功能",
   "users_create_groups_subtitle": "点击此处选择群组",
+
+  "users_update_app_bar": "更新用户",
 
   "users_list_app_bar": "用户",
 

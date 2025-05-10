@@ -135,7 +135,11 @@
   "users_create_password_placeholder": "パスワードを入力",
   "users_create_groups_label": "グループ",
   "users_create_groups_title": "グループを選択",
+  "users_create_admin_title": "管理者アカウント",
+  "users_create_admin_subtitle": "ユーザーが管理者機能へのアクセス権を持つべきかどうかを決定します",
   "users_create_groups_subtitle": "ここをタップしてグループを選択",
+
+  "users_update_app_bar": "ユーザーを更新",
 
   "users_list_app_bar": "ユーザー",
 

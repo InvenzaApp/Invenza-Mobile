@@ -135,7 +135,11 @@
   "users_create_password_placeholder": "Enter password",
   "users_create_groups_label": "Groups",
   "users_create_groups_title": "Select groups",
+  "users_create_admin_title": "Administrator account",
+  "users_create_admin_subtitle": "Decide if the user should have access to administrator functions",
   "users_create_groups_subtitle": "Tap here to select groups",
+
+  "users_update_app_bar": "Update user",
 
   "users_list_app_bar": "Users",
 

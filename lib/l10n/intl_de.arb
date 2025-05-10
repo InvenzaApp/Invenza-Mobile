@@ -135,7 +135,11 @@
   "users_create_password_placeholder": "Passwort eingeben",
   "users_create_groups_label": "Gruppen",
   "users_create_groups_title": "Gruppen auswählen",
+  "users_create_admin_title": "Administratorkonto",
+  "users_create_admin_subtitle": "Entscheiden Sie, ob der Benutzer Zugriff auf Administratorfunktionen haben soll",
   "users_create_groups_subtitle": "Hier tippen, um Gruppen auszuwählen",
+
+  "users_update_app_bar": "Benutzer aktualisieren",
 
   "users_list_app_bar": "Benutzer",
 

@@ -73,9 +73,9 @@ class _IFormTemplateState extends State<IFormTemplate> {
                         isLoading = true;
                       });
 
-                      final result = await widget.useCase.invoke(
-                        _formKey.currentState!.value,
-                      );
+                      final payload = _formKey.currentState!.value;
+
+                      final result = await widget.useCase.invoke(payload);
 
                       setState(() {
                         isLoading = false;

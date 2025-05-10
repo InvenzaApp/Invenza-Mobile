@@ -17,6 +17,7 @@ class User extends Entity with EquatableMixin {
     required this.organizationId,
     required this.groupsIdList,
     required this.permissions,
+    required this.admin,
     this.groups,
   });
 
@@ -34,6 +35,7 @@ class User extends Entity with EquatableMixin {
   @JsonKey(fromJson: Permissions.fromJson, toJson: Permissions.toJson)
   final List<Permissions> permissions;
   final List<Group>? groups;
+  final bool admin;
 
   @override
   List<Object?> get props => [
