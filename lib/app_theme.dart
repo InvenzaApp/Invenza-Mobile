@@ -35,6 +35,9 @@ InputDecorationTheme get _inputTheme => InputDecorationTheme(
       focusedErrorBorder: OutlineInputBorder(
         borderSide: BorderSide(color: _lightScheme.error, width: 2),
       ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: _lightScheme.outline),
+      ),
     );
 
 ThemeData get lightTheme => ThemeData(

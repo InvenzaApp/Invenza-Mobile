@@ -18,7 +18,9 @@ enum Permissions {
   update_task,
   delete_task,
   show_organization,
-  update_organization;
+  update_organization,
+  other_account_show,
+  other_account_update;
 
   static Permissions fromSingleJson(dynamic json) {
     return Permissions.values.byName(json as String);
@@ -50,6 +52,8 @@ enum Permissions {
         delete_task => context.l10n.permissions_delete_task,
         show_organization => context.l10n.permissions_show_organization,
         update_organization => context.l10n.permissions_update_organization,
+        other_account_show => context.l10n.permissions_other_account_show,
+        other_account_update => context.l10n.permissions_other_account_update,
       };
 
   static List<Permissions> getByCategory(PermissionsCategory category) {
@@ -78,13 +82,15 @@ enum PermissionsCategory {
   user,
   group,
   task,
-  organization;
+  organization,
+  other;
 
   String getName(BuildContext context) => switch (this) {
         user => context.l10n.permissions_category_users,
         group => context.l10n.permissions_category_groups,
         task => context.l10n.permissions_category_tasks,
         organization => context.l10n.permissions_category_organization,
+        other => context.l10n.permissions_category_other,
       };
 
   IconData getIcon() => switch (this) {
@@ -92,6 +98,7 @@ enum PermissionsCategory {
         group => Icons.groups,
         task => Icons.task,
         organization => Icons.business,
+        other => Icons.info,
       };
 }
 
