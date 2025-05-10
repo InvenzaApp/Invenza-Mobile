@@ -57,11 +57,14 @@
   "permissions_delete_task": "Usuwanie zadań",
   "permissions_show_organization": "Podgląd organizacji",
   "permissions_update_organization": "Modyfikacja organizacji",
+  "permissions_other_account_show": "Podgląd konta",
+  "permissions_other_account_update": "Modyfikacja konta",
 
   "permissions_category_users": "Użytkownicy",
   "permissions_category_groups": "Grupy",
   "permissions_category_tasks": "Zadania",
   "permissions_category_organization": "Organizacja",
+  "permissions_category_other": "Pozostałe",
 
   "task_status_to_do": "Do zrobienia",
   "task_status_in_progress": "W trakcie",

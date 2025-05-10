@@ -58,7 +58,8 @@ extension ColorExtension on BuildContext {
 
   Color get onSurfaceVariant => Theme.of(this).colorScheme.onSurfaceVariant;
 
-  Color get outline => Theme.of(this).colorScheme.outline.withValues(alpha: 0.1);
+  Color get outline =>
+      Theme.of(this).colorScheme.outline.withValues(alpha: 0.3);
 
   Color get outlineVariant => Theme.of(this).colorScheme.outlineVariant;
 
@@ -70,22 +71,22 @@ extension ColorExtension on BuildContext {
       Theme.of(this).colorScheme.brightness == Brightness.dark;
 }
 
-extension TaskStatusColorExtension on TaskStatus{
-  Color get color => switch(this){
-    TaskStatus.toDo => const Color(0xFF4577C1),
-    TaskStatus.inProgress => const Color(0xFF318719),
-    TaskStatus.waiting => const Color(0xFF288E7F),
-    TaskStatus.testing => const Color(0xFF7135B3),
-    TaskStatus.review => const Color(0xFFBD3838),
-    TaskStatus.done => const Color(0xFFB56D11),
-  };
+extension TaskStatusColorExtension on TaskStatus {
+  Color get color => switch (this) {
+        TaskStatus.toDo => const Color(0xFF4577C1),
+        TaskStatus.inProgress => const Color(0xFF318719),
+        TaskStatus.waiting => const Color(0xFF288E7F),
+        TaskStatus.testing => const Color(0xFF7135B3),
+        TaskStatus.review => const Color(0xFFBD3838),
+        TaskStatus.done => const Color(0xFFB56D11),
+      };
 
-  Color get surfaceColor => switch(this){
-    TaskStatus.toDo => const Color(0xFFD1E4FF),
-    TaskStatus.inProgress => const Color(0xFFD2FDC6),
-    TaskStatus.waiting => const Color(0xFFD6FFF7),
-    TaskStatus.testing => const Color(0xFFE9D3FF),
-    TaskStatus.review => const Color(0xFFFFCCCC),
-    TaskStatus.done => const Color(0xFFFFEDC5),
-  };
+  Color get surfaceColor => switch (this) {
+        TaskStatus.toDo => const Color(0xFFD1E4FF),
+        TaskStatus.inProgress => const Color(0xFFD2FDC6),
+        TaskStatus.waiting => const Color(0xFFD6FFF7),
+        TaskStatus.testing => const Color(0xFFE9D3FF),
+        TaskStatus.review => const Color(0xFFFFCCCC),
+        TaskStatus.done => const Color(0xFFFFEDC5),
+      };
 }

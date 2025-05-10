@@ -13,6 +13,7 @@ class IFormTextField extends IFormStatelessWidget {
     this.validators = const [],
     this.initialValue,
     this.keyboardType,
+    this.disabled = false,
     super.key,
   });
 
@@ -23,6 +24,7 @@ class IFormTextField extends IFormStatelessWidget {
   final List<FormFieldValidator<String>> validators;
   final String? initialValue;
   final TextInputType? keyboardType;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,7 @@ class IFormTextField extends IFormStatelessWidget {
         FormBuilderTextField(
           name: name,
           initialValue: initialValue,
+          enabled: !disabled,
           decoration: InputDecoration(
             hintText: placeholder,
           ),

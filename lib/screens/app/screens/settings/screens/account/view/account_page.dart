@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:app/app/routing/app_router.gr.dart';
+import 'package:app/core/user_permissions/user_permissions.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
+import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/alert_extension.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
@@ -77,6 +79,9 @@ class _AccountPageState extends State<AccountPage> {
                             validators: [
                               FormBuilderValidators.required(),
                             ],
+                            disabled: !UserPermissions.hasPermission(
+                              Permissions.other_account_update,
+                            ),
                           ),
                           IFormTextField(
                             name: 'lastname',
@@ -86,6 +91,9 @@ class _AccountPageState extends State<AccountPage> {
                             validators: [
                               FormBuilderValidators.required(),
                             ],
+                            disabled: !UserPermissions.hasPermission(
+                              Permissions.other_account_update,
+                            ),
                           ),
                           IFormTextField(
                             name: 'email',
@@ -97,6 +105,9 @@ class _AccountPageState extends State<AccountPage> {
                               FormBuilderValidators.required(),
                               FormBuilderValidators.email(),
                             ],
+                            disabled: !UserPermissions.hasPermission(
+                              Permissions.other_account_update,
+                            ),
                           ),
                         ],
                       ),
@@ -111,6 +122,9 @@ class _AccountPageState extends State<AccountPage> {
                   child: Column(
                     children: [
                       IButton(
+                        enabled: UserPermissions.hasPermission(
+                          Permissions.other_account_update,
+                        ),
                         isPending: state.isLoading,
                         label: l10n.update,
                         onPressed: () async {
