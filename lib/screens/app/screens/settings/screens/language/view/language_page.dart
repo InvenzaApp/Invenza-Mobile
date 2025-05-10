@@ -92,7 +92,7 @@ class LanguagePage extends StatelessWidget {
                       .changeLocale(const Locale('ja')),
                 ),
               ],
-            )
+            ),
           );
         },
       ),

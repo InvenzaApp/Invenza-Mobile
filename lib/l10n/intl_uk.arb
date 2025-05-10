@@ -135,7 +135,11 @@
   "users_create_password_placeholder": "Введіть пароль",
   "users_create_groups_label": "Групи",
   "users_create_groups_title": "Вибрати групи",
+  "users_create_admin_title": "Обліковий запис адміністратора",
+  "users_create_admin_subtitle": "Вирішіть, чи повинен користувач мати доступ до функцій адміністратора",
   "users_create_groups_subtitle": "Торкніться тут, щоб вибрати групи",
+
+  "users_update_app_bar": "Оновити користувача",
 
   "users_list_app_bar": "Користувачі",
 

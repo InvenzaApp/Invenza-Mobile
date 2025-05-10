@@ -38,7 +38,8 @@ class SettingsPage extends StatelessWidget {
               child: IListTile(
                 children: [
                   if (UserPermissions.hasPermission(
-                      Permissions.other_account_show)) ...[
+                    Permissions.other_account_show,
+                  )) ...[
                     IListTileItem(
                       title: l10n.settings_account_title,
                       icon: Icons.person,
