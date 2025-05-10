@@ -168,6 +168,12 @@
   "language_app_bar": "Language",
   "language_english_title": "English",
   "language_polish_title": "Polish",
+  "language_spanish_title": "Spanish",
+  "language_german_title": "German",
+  "language_italian_title": "Italian",
+  "language_ukrainian_title": "Ukrainian",
+  "language_chinese_title": "Chinese",
+  "language_japanese_title": "Japanese",
 
   "password_page_app_bar": "Change password",
   "password_page_placeholder": "Enter password",
