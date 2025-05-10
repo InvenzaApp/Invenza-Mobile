@@ -111,7 +111,7 @@ class ChangePasswordPage extends StatelessWidget implements AutoRouteWrapper {
                         unawaited(userCubit.signOut());
 
                         if (context.mounted) {
-                          await context.replaceRoute(const LoginRoute());
+                          await context.router.replaceAll([const LoginRoute()]);
                         }
                       }
                     }
