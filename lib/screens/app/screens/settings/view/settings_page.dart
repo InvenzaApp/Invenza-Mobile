@@ -37,11 +37,14 @@ class SettingsPage extends StatelessWidget {
               padding: mediumHorizontalPadding,
               child: IListTile(
                 children: [
-                  IListTileItem(
-                    title: l10n.settings_account_title,
-                    icon: Icons.person,
-                    onPressed: () => context.pushRoute(const AccountRoute()),
-                  ),
+                  if (UserPermissions.hasPermission(
+                      Permissions.other_account_show)) ...[
+                    IListTileItem(
+                      title: l10n.settings_account_title,
+                      icon: Icons.person,
+                      onPressed: () => context.pushRoute(const AccountRoute()),
+                    ),
+                  ],
                   if (UserPermissions.hasPermission(
                     Permissions.show_organization,
                   )) ...[

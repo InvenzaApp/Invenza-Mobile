@@ -28,9 +28,9 @@ class INavigationBar extends StatelessWidget {
               padding: smallPadding,
               decoration: BoxDecoration(
                 color: context.surface,
-                borderRadius: xLargeRadius,
+                borderRadius: xxLargeRadius,
                 border:
-                    Border.all(color: context.shadow.withValues(alpha: 0.1)),
+                    Border.all(color: context.outline),
               ),
               child: Row(
                 spacing: smallValue,
@@ -47,7 +47,7 @@ class INavigationBar extends StatelessWidget {
                         splashColor: context.primaryContainer,
                         highlightColor: context.primaryContainer,
                         child: Padding(
-                          padding: smallPadding,
+                          padding: largePadding,
                           child: selected ? item.selectedIcon! : item.icon,
                         ),
                       ),

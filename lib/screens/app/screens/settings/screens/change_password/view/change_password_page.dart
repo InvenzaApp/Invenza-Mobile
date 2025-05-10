@@ -5,6 +5,7 @@ import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
 import 'package:app/extensions/alert_extension.dart';
 import 'package:app/extensions/app_localizations.dart';
+import 'package:app/extensions/color_extension.dart';
 import 'package:app/features/user/repository/user_auth_repository.dart';
 import 'package:app/screens/app/screens/settings/screens/change_password/cubit/change_password_cubit.dart';
 import 'package:app/screens/app/screens/settings/screens/change_password/cubit/change_password_state.dart';
@@ -45,13 +46,13 @@ class ChangePasswordPage extends StatelessWidget implements AutoRouteWrapper {
       ),
       body: BlocBuilder<ChangePasswordCubit, ChangePasswordState>(
         builder: (context, state) {
-          return Padding(
-            padding: mediumPadding,
+          return FormBuilder(
+            key: _formKey,
             child: Column(
               children: [
                 Expanded(
-                  child: FormBuilder(
-                    key: _formKey,
+                  child: Padding(
+                    padding: mediumPadding,
                     child: Column(
                       spacing: mediumValue,
                       children: [
@@ -94,28 +95,41 @@ class ChangePasswordPage extends StatelessWidget implements AutoRouteWrapper {
                     ),
                   ),
                 ),
-                IButton(
-                  label: l10n.password_page_submit,
-                  isPending: state.isLoading,
-                  onPressed: () async {
-                    if (_formKey.currentState!.saveAndValidate()) {
-                      final payload = _formKey.currentState!.value;
-                      final userCubit = context.read<UserCubit>();
-                      final success = await context
-                          .read<ChangePasswordCubit>()
-                          .changePassword(payload);
+                Container(
+                  padding: largePadding,
+                  decoration: BoxDecoration(
+                    color: context.container,
+                  ),
+                  child: Column(
+                    children: [
+                      IButton(
+                        label: l10n.password_page_submit,
+                        isPending: state.isLoading,
+                        onPressed: () async {
+                          if (_formKey.currentState!.saveAndValidate()) {
+                            final payload = _formKey.currentState!.value;
+                            final userCubit = context.read<UserCubit>();
+                            final success = await context
+                                .read<ChangePasswordCubit>()
+                                .changePassword(payload);
 
-                      if(!success && context.mounted){
-                        await context.showAlert(l10n.password_page_api_error);
-                      }else{
-                        unawaited(userCubit.signOut());
+                            if (!success && context.mounted) {
+                              await context
+                                  .showAlert(l10n.password_page_api_error);
+                            } else {
+                              unawaited(userCubit.signOut());
 
-                        if (context.mounted) {
-                          await context.replaceRoute(const LoginRoute());
-                        }
-                      }
-                    }
-                  },
+                              if (context.mounted) {
+                                await context.router
+                                    .replaceAll([const LoginRoute()]);
+                              }
+                            }
+                          }
+                        },
+                      ),
+                      SizedBox(height: mediumValue),
+                    ],
+                  ),
                 ),
               ],
             ),

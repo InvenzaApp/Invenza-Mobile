@@ -26,15 +26,18 @@ class _IFormPermissionSelectPanelWidgetState
     return Column(
       spacing: smallValue,
       children: [
-        Row(
-          spacing: smallValue,
-          children: [
-            Icon(widget.permissionsCategory.getIcon()),
-            Text(
-              widget.permissionsCategory.getName(context),
-              style: context.titleMedium,
-            ),
-          ],
+        Padding(
+          padding: smallHorizontalPadding,
+          child: Row(
+            spacing: smallValue,
+            children: [
+              Icon(widget.permissionsCategory.getIcon()),
+              Text(
+                widget.permissionsCategory.getName(context),
+                style: context.bodyMedium,
+              ),
+            ],
+          ),
         ),
         ...Permissions.getByCategory(widget.permissionsCategory).map(
           (permission) {

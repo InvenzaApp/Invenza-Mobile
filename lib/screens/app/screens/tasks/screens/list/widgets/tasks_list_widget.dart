@@ -4,6 +4,7 @@ import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/date_time_extension.dart';
 import 'package:app/extensions/text_extension.dart';
 import 'package:app/features/tasks/models/task.dart';
+import 'package:app/screens/app/screens/tasks/screens/list/widgets/task_status_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class TasksListWidget extends StatelessWidget {
           borderRadius: mediumRadius,
           border: task.groupsIdList.isEmpty
               ? Border.all(color: context.error)
-              : null,
+              : Border.all(color: Colors.transparent),
         ),
         child: Row(
           spacing: mediumValue,
@@ -43,10 +44,8 @@ class TasksListWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    task.status.getName(context),
-                    style: context.bodySmall.copyWith(color: task.status.color),
-                  ),
+                  TaskStatusWidget(task: task),
+                  SizedBox(height: xSmallValue),
                   Text(
                     task.title,
                     style: context.titleMedium,
@@ -61,9 +60,20 @@ class TasksListWidget extends StatelessWidget {
                       ),
                     ),
                   if (task.deadline != null)
-                    Text(
-                      task.deadline!.formattedDateTime,
-                      style: context.bodySmall,
+                    Column(
+                      children: [
+                        SizedBox(height: mediumValue),
+                        Row(
+                          spacing: smallValue,
+                          children: [
+                            const Icon(Icons.flag_outlined),
+                            Text(
+                              task.deadline!.formattedDateTime,
+                              style: context.bodyMedium,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                 ],
               ),

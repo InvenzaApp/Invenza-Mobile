@@ -79,7 +79,7 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
               padding: mediumPadding,
               child: SingleChildScrollView(
                 child: Column(
-                  spacing: xLargeValue,
+                  spacing: xxLargeValue,
                   children: [
                     IFormPermissionSelectPanelWidget(
                       permissionsCategory: PermissionsCategory.user,
@@ -95,6 +95,10 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
                     ),
                     IFormPermissionSelectPanelWidget(
                       permissionsCategory: PermissionsCategory.organization,
+                      selectedPermissions: selectedEntities,
+                    ),
+                    IFormPermissionSelectPanelWidget(
+                      permissionsCategory: PermissionsCategory.other,
                       selectedPermissions: selectedEntities,
                     ),
                   ],

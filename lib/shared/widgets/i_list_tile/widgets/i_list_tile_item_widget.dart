@@ -29,7 +29,7 @@ class IListTileItemWidget extends StatelessWidget {
           borderRadius: getInkBorderRadius(index, listLength),
         ),
         child: Row(
-          spacing: largeValue,
+          spacing: mediumValue,
           children: [
             if (child.icon != null)
               Icon(

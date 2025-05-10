@@ -8,6 +8,7 @@ class IButton extends StatelessWidget {
     this.fullWidth = true,
     this.leadingIcon,
     this.isPending = false,
+    this.enabled = true,
     super.key,
   });
 
@@ -16,12 +17,22 @@ class IButton extends StatelessWidget {
   final bool fullWidth;
   final IconData? leadingIcon;
   final bool isPending;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     return FilledButton(
-      onPressed: (){
-        if(!isPending){
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.resolveWith<Color>(
+          (states) {
+            if(!enabled) return context.onSurfaceVariant;
+            return context.primary;
+          },
+        ),
+      ),
+      onPressed: () {
+        if(!enabled) return;
+        if (!isPending) {
           onPressed();
         }
       },
@@ -29,23 +40,22 @@ class IButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: fullWidth ? MainAxisSize.max : MainAxisSize.min,
         children: [
-          if(isPending)
+          if (isPending)
             Transform.scale(
               scale: 0.7,
               child: CircularProgressIndicator(
                 color: context.onPrimary,
               ),
             )
-          else
-            ...[
-              if(leadingIcon != null)
-                Icon(
-                  leadingIcon,
-                ),
-              Text(
-                label,
+          else ...[
+            if (leadingIcon != null)
+              Icon(
+                leadingIcon,
               ),
-            ],
+            Text(
+              label,
+            ),
+          ],
         ],
       ),
     );
