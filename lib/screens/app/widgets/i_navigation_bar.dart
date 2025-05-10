@@ -30,7 +30,7 @@ class INavigationBar extends StatelessWidget {
                 color: context.surface,
                 borderRadius: xxLargeRadius,
                 border:
-                    Border.all(color: context.shadow.withValues(alpha: 0.1)),
+                    Border.all(color: context.outline),
               ),
               child: Row(
                 spacing: smallValue,

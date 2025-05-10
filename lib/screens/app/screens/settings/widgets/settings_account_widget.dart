@@ -23,7 +23,7 @@ class SettingsAccountWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: context.container,
               borderRadius: mediumRadius,
-              border: Border.all(color: context.shadow.withValues(alpha: 0.1)),
+              border: Border.all(color: context.outline),
             ),
             child: Row(
               spacing: mediumValue,
