@@ -26,6 +26,8 @@
   "status": "状态",
   "selectAll": "全选",
   "unselectAll": "取消全选",
+  "lock_title": "安全锁",
+  "lock_subtitle": "点击以防止修改。只有具有管理员身份的用户才能编辑。",
 
   "no_permissions_title": "无权限",
   "no_permissions_subtitle": "您没有权限",

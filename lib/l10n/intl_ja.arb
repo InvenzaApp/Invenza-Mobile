@@ -26,6 +26,8 @@
   "status": "ステータス",
   "selectAll": "すべて選択",
   "unselectAll": "すべて選択解除",
+  "lock_title": "ロック",
+  "lock_subtitle": "クリックして変更を防止します。管理者ステータスを持つユーザーのみが編集できます。",
 
   "no_permissions_title": "権限がありません",
   "no_permissions_subtitle": "あなたには権限がありません",

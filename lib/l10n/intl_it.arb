@@ -26,6 +26,8 @@
   "status": "Stato",
   "selectAll": "Seleziona tutto",
   "unselectAll": "Deseleziona tutto",
+  "lock_title": "Blocco",
+  "lock_subtitle": "Fai clic per impedire modifiche. Solo gli utenti con stato di amministratore potranno modificare.",
 
   "no_permissions_title": "Nessun permesso",
   "no_permissions_subtitle": "Non hai i permessi",

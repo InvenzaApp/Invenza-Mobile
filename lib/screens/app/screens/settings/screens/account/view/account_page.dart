@@ -50,6 +50,18 @@ class _AccountPageState extends State<AccountPage> {
     user = context.read<UserCubit>().state.userResult!.maybeValue!;
   }
 
+  bool disabledGetter() {
+    final userCubit = context.read<UserCubit>();
+
+    if (!UserPermissions.hasPermission(Permissions.other_account_update)) {
+      return true;
+    }
+    if(userCubit.state.userResult?.maybeValue?.admin ?? false) return false;
+    if(user.locked) return true;
+
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -79,9 +91,7 @@ class _AccountPageState extends State<AccountPage> {
                             validators: [
                               FormBuilderValidators.required(),
                             ],
-                            disabled: !UserPermissions.hasPermission(
-                              Permissions.other_account_update,
-                            ),
+                            disabled: disabledGetter(),
                           ),
                           IFormTextField(
                             name: 'lastname',
@@ -91,9 +101,7 @@ class _AccountPageState extends State<AccountPage> {
                             validators: [
                               FormBuilderValidators.required(),
                             ],
-                            disabled: !UserPermissions.hasPermission(
-                              Permissions.other_account_update,
-                            ),
+                            disabled: disabledGetter(),
                           ),
                           IFormTextField(
                             name: 'email',
@@ -105,9 +113,7 @@ class _AccountPageState extends State<AccountPage> {
                               FormBuilderValidators.required(),
                               FormBuilderValidators.email(),
                             ],
-                            disabled: !UserPermissions.hasPermission(
-                              Permissions.other_account_update,
-                            ),
+                            disabled: disabledGetter(),
                           ),
                         ],
                       ),
@@ -122,9 +128,7 @@ class _AccountPageState extends State<AccountPage> {
                   child: Column(
                     children: [
                       IButton(
-                        enabled: UserPermissions.hasPermission(
-                          Permissions.other_account_update,
-                        ),
+                        enabled: !disabledGetter(),
                         isPending: state.isLoading,
                         label: l10n.update,
                         onPressed: () async {

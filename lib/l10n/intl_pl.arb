@@ -26,6 +26,8 @@
   "status": "Status",
   "selectAll": "Zaznacz wszystkie",
   "unselectAll": "Odznacz wszystkie",
+  "lock_title": "Zabezpieczenie",
+  "lock_subtitle": "Kliknij, aby zapobiec modyfikacjom. Edytować będą mogli tylko użytkownicy ze statusem administratora.",
 
   "no_permissions_title": "Brak uprawnień",
   "no_permissions_subtitle": "Niestety, nie masz uprawnień",

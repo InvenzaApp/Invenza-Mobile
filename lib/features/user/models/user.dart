@@ -1,4 +1,4 @@
-import 'package:app/core/entity/entity.dart';
+import 'package:app/core/entity/item_entity.dart';
 import 'package:app/enums/permissions.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:equatable/equatable.dart';
@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user.g.dart';
 
 @JsonSerializable(createToJson: false)
-class User extends Entity with EquatableMixin {
+class User extends ItemEntity with EquatableMixin {
   User({
     required this.id,
     required this.name,
@@ -18,6 +18,7 @@ class User extends Entity with EquatableMixin {
     required this.groupsIdList,
     required this.permissions,
     required this.admin,
+    required this.locked,
     this.groups,
   });
 
@@ -36,6 +37,8 @@ class User extends Entity with EquatableMixin {
   final List<Permissions> permissions;
   final List<Group>? groups;
   final bool admin;
+  @override
+  final bool locked;
 
   @override
   List<Object?> get props => [
@@ -48,5 +51,6 @@ class User extends Entity with EquatableMixin {
         groupsIdList,
         permissions,
         groups,
+        locked,
       ];
 }
