@@ -1,3 +1,4 @@
+import 'package:app/core/entity/item_entity.dart';
 import 'package:app/core/list/cubit/list_cubit.dart';
 import 'package:app/core/list/cubit/list_state.dart';
 import 'package:app/core/list/list_template.dart';
@@ -8,22 +9,23 @@ import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_error_widget.dart';
 import 'package:app/shared/widgets/i_list_skeletonizer.dart';
 import 'package:app/shared/widgets/i_no_permissions_widget.dart';
+import 'package:app/shared/widgets/i_search_bar.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class IListTemplate<T> extends ListTemplate<T> {
+class IListTemplate<T extends ItemEntity> extends ListTemplate<T> {
   const IListTemplate({
     required this.cubit,
-    required this.builder,
+    required this.widget,
     required this.createPermission,
     required this.listPermission,
     super.key,
   });
 
   @override
-  final Widget Function(BuildContext context, ListCubit<T> cubit) builder;
+  final Widget Function(BuildContext context, T item) widget;
 
   @override
   final ListCubit<T> cubit;
@@ -80,7 +82,56 @@ class IListTemplate<T> extends ListTemplate<T> {
                             )
                           : Padding(
                               padding: mediumPadding,
-                              child: builder(context, cubit),
+                              // child: builder(context, cubit),
+                              child: RefreshIndicator(
+                                onRefresh: () async =>
+                                    context.read<ListCubit<T>>().initialize(),
+                                child: ListView.builder(
+                                  itemCount: state.isSearching
+                                      ? state.filteredData.length + 1
+                                      : state.data!.maybeValue!.length + 1,
+                                  itemBuilder: (context, index) {
+                                    if (index == 0) {
+                                      return Column(
+                                        children: [
+                                          ISearchBar(
+                                            onChanged: (query) {
+                                              context
+                                                  .read<ListCubit<T>>()
+                                                  .onSearch(
+                                                    query,
+                                                  );
+                                            },
+                                          ),
+                                          SizedBox(height: mediumValue),
+                                        ],
+                                      );
+                                    }
+
+                                    if (state.filteredData.isNotEmpty) {
+                                      final item =
+                                          state.filteredData[index - 1];
+
+                                      return Column(
+                                        children: [
+                                          widget(context, item),
+                                          SizedBox(height: smallValue),
+                                        ],
+                                      );
+                                    }
+
+                                    final item =
+                                        state.data!.maybeValue![index - 1];
+
+                                    return Column(
+                                      children: [
+                                        widget(context, item),
+                                        SizedBox(height: smallValue),
+                                      ],
+                                    );
+                                  },
+                                ),
+                              ),
                             ),
                 },
               ),

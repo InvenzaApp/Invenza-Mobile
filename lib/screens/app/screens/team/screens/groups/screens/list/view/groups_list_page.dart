@@ -85,7 +85,6 @@
 //   }
 // }
 
-import 'package:app/core/list/cubit/list_cubit.dart';
 import 'package:app/di.dart';
 import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
@@ -95,10 +94,8 @@ import 'package:app/features/group/network/groups_repository.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/cubit/groups_list_cubit.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/list/widgets/groups_list_widget.dart';
 import 'package:app/shared/list_template/i_list_template.dart';
-import 'package:app/variables.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class GroupsListPage extends StatelessWidget {
@@ -113,25 +110,8 @@ class GroupsListPage extends StatelessWidget {
           title: context.l10n.groups_list_app_bar,
         ),
       ),
-      builder: (context, cubit) {
-        final groupsList = cubit.data;
-
-        return RefreshIndicator(
-          onRefresh: () async => context.read<ListCubit<Group>>().initialize(),
-          child: ListView.builder(
-            itemCount: groupsList.length,
-            itemBuilder: (context, index) {
-              final group = groupsList[index];
-
-              return Column(
-                children: [
-                  GroupsListWidget(child: group),
-                  SizedBox(height: smallValue),
-                ],
-              );
-            },
-          ),
-        );
+      widget: (context, item) {
+        return GroupsListWidget(child: item);
       },
       createPermission: Permissions.add_group,
       listPermission: Permissions.list_group,
