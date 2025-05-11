@@ -56,6 +56,7 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final user = context.read<UserCubit>().state.userResult?.maybeValue;
 
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, userState) {
@@ -75,7 +76,7 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
                 FormBuilderValidators.required(),
               ],
             ),
-            IFormTextField(
+            IFormExpandedTextField(
               name: 'description',
               initialValue: resources?.description,
               label: l10n.task_form_description_label,
@@ -106,6 +107,14 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
                   .toList(),
               validator: FormBuilderValidators.required(),
             ),
+            if (user?.admin ?? false) ...[
+              IFormCheckbox(
+                name: 'locked',
+                title: l10n.lock_title,
+                subtitle: l10n.lock_subtitle,
+                initialValue: resources?.locked,
+              ),
+            ],
           ],
         );
       },

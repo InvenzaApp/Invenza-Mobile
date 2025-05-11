@@ -2,6 +2,7 @@
   "ok": "Okay",
   "confirm": "Confirm",
   "cancel": "Cancel",
+  "search": "Search",
   "notification": "Notification",
   "logout_confirm": "Are you sure you want to sign out?",
   "create": "Create",
@@ -26,6 +27,8 @@
   "status": "Status",
   "selectAll": "Select all",
   "unselectAll": "Unselect all",
+  "lock_title": "Security",
+  "lock_subtitle": "Click to prevent modifications. Only users with administrator status will be able to edit.",
 
   "no_permissions_title": "No permissions",
   "no_permissions_subtitle": "You do not have permissions",
@@ -135,7 +138,11 @@
   "users_create_password_placeholder": "Enter password",
   "users_create_groups_label": "Groups",
   "users_create_groups_title": "Select groups",
+  "users_create_admin_title": "Administrator account",
+  "users_create_admin_subtitle": "Decide if the user should have access to administrator functions",
   "users_create_groups_subtitle": "Tap here to select groups",
+
+  "users_update_app_bar": "Update user",
 
   "users_list_app_bar": "Users",
 
@@ -168,6 +175,12 @@
   "language_app_bar": "Language",
   "language_english_title": "English",
   "language_polish_title": "Polish",
+  "language_spanish_title": "Spanish",
+  "language_german_title": "German",
+  "language_italian_title": "Italian",
+  "language_ukrainian_title": "Ukrainian",
+  "language_chinese_title": "Chinese",
+  "language_japanese_title": "Japanese",
 
   "password_page_app_bar": "Change password",
   "password_page_placeholder": "Enter password",

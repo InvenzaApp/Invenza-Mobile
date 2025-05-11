@@ -1,4 +1,5 @@
 import 'package:app/di.dart';
+import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/user/network/users_remote_data_source.dart';
 import 'package:app/features/user/network/users_repository.dart';
 import 'package:app/features/user/use_case/users_update_use_case.dart';
@@ -18,7 +19,7 @@ class UsersUpdateFormPage extends StatelessWidget {
       useCase: UsersUpdateUseCase(
         cockpitRepository: UsersRepository(
           remoteDS: inject<UsersRemoteDataSource>(),
-          title: 'Aktualizuj użytkownika',
+          title: context.l10n.users_update_app_bar,
         ),
         resourceId: resourceId,
       ),

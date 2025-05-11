@@ -2,6 +2,7 @@
   "ok": "Okej",
   "confirm": "Dalej",
   "cancel": "Anuluj",
+  "search": "Szukaj",
   "notification": "Powiadomienie",
   "logout_confirm": "Czy na pewno chcesz się wylogować?",
   "create": "Utwórz",
@@ -26,6 +27,8 @@
   "status": "Status",
   "selectAll": "Zaznacz wszystkie",
   "unselectAll": "Odznacz wszystkie",
+  "lock_title": "Zabezpieczenie",
+  "lock_subtitle": "Kliknij, aby zapobiec modyfikacjom. Edytować będą mogli tylko użytkownicy ze statusem administratora.",
 
   "no_permissions_title": "Brak uprawnień",
   "no_permissions_subtitle": "Niestety, nie masz uprawnień",
@@ -135,7 +138,11 @@
   "users_create_password_placeholder": "Wpisz hasło",
   "users_create_groups_label": "Grupy",
   "users_create_groups_title": "Wybierz grupy",
+  "users_create_admin_title": "Konto administratora",
+  "users_create_admin_subtitle": "Zdecyduj, czy użytkownik ma mieć dostęp do funkcji administratora",
   "users_create_groups_subtitle": "Kliknij, aby wybrać grupy",
+
+  "users_update_app_bar": "Aktualizuj użytkownika",
 
   "users_list_app_bar": "Użytkownicy",
 
@@ -168,6 +175,12 @@
   "language_app_bar": "Język",
   "language_english_title": "Angielski",
   "language_polish_title": "Polski",
+  "language_spanish_title": "Hiszpański",
+  "language_german_title": "Niemiecki",
+  "language_italian_title": "Włoski",
+  "language_ukrainian_title": "Ukraiński",
+  "language_chinese_title": "Chiński",
+  "language_japanese_title": "Japoński",
 
   "password_page_app_bar": "Zmień hasło",
   "password_page_placeholder": "Wpisz hasło",

@@ -53,6 +53,7 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final user = context.read<UserCubit>().state.userResult?.maybeValue;
 
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) => switch (state.isLoading) {
@@ -90,6 +91,14 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
                       initialIdList:
                           resources?.usersList?.map((e) => e.id).toList(),
                     ),
+                  if (user?.admin ?? false) ...[
+                    IFormCheckbox(
+                      name: 'locked',
+                      title: l10n.lock_title,
+                      subtitle: l10n.lock_subtitle,
+                      initialValue: resources?.locked,
+                    ),
+                  ],
                 ],
               ),
       },

@@ -128,6 +128,15 @@ class OrganizationUpdatePage extends StatelessWidget
                             ],
                             initialValue: organization?.address.country,
                           ),
+                          if (userCubit.state.userResult?.maybeValue?.admin ??
+                              false) ...[
+                            IFormCheckbox(
+                              name: 'locked',
+                              title: l10n.lock_title,
+                              subtitle: l10n.lock_subtitle,
+                              initialValue: organization?.locked,
+                            ),
+                          ],
                         ],
                       ),
                     ),

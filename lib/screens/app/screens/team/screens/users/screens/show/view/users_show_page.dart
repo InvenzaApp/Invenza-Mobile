@@ -3,6 +3,7 @@ import 'package:app/di.dart';
 import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/text_extension.dart';
+import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/network/users_remote_data_source.dart';
 import 'package:app/features/user/network/users_repository.dart';
 import 'package:app/screens/app/screens/team/screens/users/screens/show/cubits/users_show_cubit.dart';
@@ -37,7 +38,7 @@ class UsersShowPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    return IShowTemplate(
+    return IShowTemplate<User>(
       cubit: UsersShowCubit(
         resourceId: resourceId,
         repository: UsersRepository(
