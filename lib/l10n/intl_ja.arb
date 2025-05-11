@@ -1,5 +1,7 @@
 {
   "ok": "OK",
+  "yes": "はい",
+  "no": "いいえ",
   "confirm": "確認",
   "cancel": "キャンセル",
   "search": "検索",
@@ -29,6 +31,8 @@
   "unselectAll": "すべて選択解除",
   "lock_title": "ロック",
   "lock_subtitle": "クリックして変更を防止します。管理者ステータスを持つユーザーのみが編集できます。",
+  "locked": "ロック済み",
+  "locked_hint": "これは、アイテムが管理者ステータスを持つ人物によってのみ変更できることを意味します",
 
   "no_permissions_title": "権限がありません",
   "no_permissions_subtitle": "あなたには権限がありません",

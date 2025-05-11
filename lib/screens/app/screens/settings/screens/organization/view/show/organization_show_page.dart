@@ -83,6 +83,12 @@ class OrganizationShowPage extends StatelessWidget {
                       label: l10n.address_country,
                       value: organization?.address.country ?? '',
                     ),
+                    if(organization?.locked ?? false)...[
+                      ICardItem(
+                        label: context.l10n.locked,
+                        value: context.l10n.yes,
+                      ),
+                    ]
                   ],
                 ),
               ),

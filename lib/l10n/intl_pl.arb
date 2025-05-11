@@ -1,5 +1,7 @@
 {
   "ok": "Okej",
+  "yes": "Tak",
+  "no": "Nie",
   "confirm": "Dalej",
   "cancel": "Anuluj",
   "search": "Szukaj",
@@ -29,6 +31,8 @@
   "unselectAll": "Odznacz wszystkie",
   "lock_title": "Zabezpieczenie",
   "lock_subtitle": "Kliknij, aby zapobiec modyfikacjom. Edytować będą mogli tylko użytkownicy ze statusem administratora.",
+  "locked": "Zabezpieczony",
+  "locked_hint": "Oznacza to, że element może modyfikować osoba ze statusem administratora",
 
   "no_permissions_title": "Brak uprawnień",
   "no_permissions_subtitle": "Niestety, nie masz uprawnień",

@@ -5,6 +5,7 @@ import 'package:app/core/list/cubit/list_cubit.dart';
 import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/text_extension.dart';
 import 'package:app/features/group/models/group.dart';
+import 'package:app/shared/widgets/i_lock_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -34,20 +35,27 @@ class GroupsListWidget extends StatelessWidget {
           color: context.container,
           borderRadius: mediumRadius,
         ),
-        child: Row(
-          spacing: mediumValue,
+        child: Column(
           children: [
-            Icon(
-              Icons.groups,
-              color: context.onSurface,
+            Row(
+              spacing: mediumValue,
+              children: [
+                Icon(
+                  Icons.groups,
+                  color: context.onSurface,
+                ),
+                Expanded(
+                  child: Text(
+                    child.title,
+                    style: context.titleMedium,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: Text(
-                child.title,
-                style: context.titleMedium,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
+            if(child.locked)...[
+              const ILockWidget(),
+            ],
           ],
         ),
       ),

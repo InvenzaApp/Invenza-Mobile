@@ -77,6 +77,12 @@ class TasksShowPage extends StatelessWidget {
                       label: l10n.task_show_status,
                       value: task.status.getName(context),
                     ),
+                    if (task.locked) ...[
+                      ICardItem(
+                        label: l10n.locked,
+                        value: l10n.yes,
+                      ),
+                    ],
                   ],
                 ),
                 Column(

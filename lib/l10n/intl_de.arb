@@ -1,5 +1,7 @@
 {
   "ok": "Okay",
+  "yes": "Ja",
+  "no": "Nein",
   "confirm": "Bestätigen",
   "cancel": "Abbrechen",
   "search": "Suchen",
@@ -29,6 +31,8 @@
   "unselectAll": "Auswahl aufheben",
   "lock_title": "Sperre",
   "lock_subtitle": "Klicken Sie, um Änderungen zu verhindern. Nur Benutzer mit Administratorstatus können bearbeiten.",
+  "locked": "Gesichert",
+  "locked_hint": "Dies bedeutet, dass das Element von einer Person mit Administratorstatus geändert werden kann",
 
   "no_permissions_title": "Keine Berechtigungen",
   "no_permissions_subtitle": "Sie haben keine Berechtigungen",
