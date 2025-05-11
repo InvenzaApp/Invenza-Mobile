@@ -4,6 +4,7 @@ import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/cubit/user_cubit/user_state.dart';
 import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
+import 'package:app/features/organization/models/organization.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_card/i_card.dart';
 import 'package:app/variables.dart';
@@ -14,6 +15,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 @RoutePage()
 class OrganizationShowPage extends StatelessWidget {
   const OrganizationShowPage({super.key});
+
+  bool canEdit(UserState userState, Organization? organization) {
+    if (!UserPermissions.hasPermission(Permissions.update_organization)) {
+      return false;
+    }
+
+    if (userState.userResult?.maybeValue?.admin ?? false) return true;
+
+    if(organization?.locked ?? true) return false;
+
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +40,16 @@ class OrganizationShowPage extends StatelessWidget {
             context: context,
             title: l10n.organization_app_bar,
           ),
-          floatingActionButton:
-              UserPermissions.hasPermission(Permissions.update_organization)
-                  ? FloatingActionButton(
-                      child: const Icon(Icons.edit),
-                      onPressed: () =>
-                          context.pushRoute(const OrganizationUpdateRoute()),
-                    )
-                  : null,
+          floatingActionButton: canEdit(
+            context.read<UserCubit>().state,
+            organization,
+          )
+              ? FloatingActionButton(
+                  child: const Icon(Icons.edit),
+                  onPressed: () =>
+                      context.pushRoute(const OrganizationUpdateRoute()),
+                )
+              : null,
           body: Column(
             children: [
               Padding(
