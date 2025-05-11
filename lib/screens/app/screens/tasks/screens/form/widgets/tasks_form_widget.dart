@@ -12,6 +12,7 @@ import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/use_case/tasks_update_use_case.dart';
 import 'package:app/screens/app/screens/tasks/screens/form/widgets/task_status/i_form_task_status_widget.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
+import 'package:app/shared/form_template/widgets/i_form_checkbox.dart';
 import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +57,7 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final user = context.read<UserCubit>().state.userResult?.maybeValue;
 
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, userState) {
@@ -106,6 +108,14 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
                   .toList(),
               validator: FormBuilderValidators.required(),
             ),
+            if (user?.admin ?? false) ...[
+              IFormCheckbox(
+                name: 'locked',
+                title: l10n.lock_title,
+                subtitle: l10n.lock_subtitle,
+                initialValue: resources?.locked,
+              ),
+            ],
           ],
         );
       },

@@ -9,6 +9,7 @@ import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/network/users_remote_data_source.dart';
 import 'package:app/features/user/network/users_repository.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
+import 'package:app/shared/form_template/widgets/i_form_checkbox.dart';
 import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
 import 'package:app/shared/widgets/i_form_skeletonizer.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
@@ -53,6 +54,7 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final user = context.read<UserCubit>().state.userResult?.maybeValue;
 
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) => switch (state.isLoading) {
@@ -90,6 +92,14 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
                       initialIdList:
                           resources?.usersList?.map((e) => e.id).toList(),
                     ),
+                  if (user?.admin ?? false) ...[
+                    IFormCheckbox(
+                      name: 'locked',
+                      title: l10n.lock_title,
+                      subtitle: l10n.lock_subtitle,
+                      initialValue: resources?.locked,
+                    ),
+                  ],
                 ],
               ),
       },

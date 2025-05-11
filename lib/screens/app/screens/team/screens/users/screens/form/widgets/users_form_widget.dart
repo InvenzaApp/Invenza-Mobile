@@ -120,12 +120,18 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
         IFormPermissionSelectWidget(
           initialList: resources?.permissions.map((e) => e.name).toList(),
         ),
-        if(user?.admin ?? false)...[
+        if (user?.admin ?? false) ...[
           IFormCheckbox(
             initialValue: resources?.admin,
             name: 'admin',
             title: l10n.users_create_admin_title,
             subtitle: l10n.users_create_admin_subtitle,
+          ),
+          IFormCheckbox(
+            name: 'locked',
+            title: l10n.lock_title,
+            subtitle: l10n.lock_subtitle,
+            initialValue: resources?.locked,
           ),
         ],
       ],

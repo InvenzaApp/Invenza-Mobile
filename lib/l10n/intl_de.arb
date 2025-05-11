@@ -26,6 +26,8 @@
   "status": "Status",
   "selectAll": "Alle auswählen",
   "unselectAll": "Auswahl aufheben",
+  "lock_title": "Sperre",
+  "lock_subtitle": "Klicken Sie, um Änderungen zu verhindern. Nur Benutzer mit Administratorstatus können bearbeiten.",
 
   "no_permissions_title": "Keine Berechtigungen",
   "no_permissions_subtitle": "Sie haben keine Berechtigungen",

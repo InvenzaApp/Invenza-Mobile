@@ -1,4 +1,4 @@
-import 'package:app/core/entity/entity.dart';
+import 'package:app/core/entity/item_entity.dart';
 import 'package:app/enums/task_status.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:app/features/user/models/user.dart';
@@ -9,7 +9,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'task.g.dart';
 
 @JsonSerializable(createToJson: false)
-class Task extends Entity with EquatableMixin {
+class Task extends ItemEntity with EquatableMixin {
   Task({
     required this.id,
     required this.title,
@@ -18,6 +18,7 @@ class Task extends Entity with EquatableMixin {
     required this.createdBy,
     required this.groupsIdList,
     required this.status,
+    required this.locked,
     this.description,
     this.deadline,
   });
@@ -36,6 +37,8 @@ class Task extends Entity with EquatableMixin {
   final User createdBy;
   @JsonKey(fromJson: TaskStatus.fromJson, toJson: TaskStatus.toJson)
   final TaskStatus status;
+  @override
+  final bool locked;
 
   @override
   List<Object?> get props => [
@@ -48,5 +51,6 @@ class Task extends Entity with EquatableMixin {
         createdBy,
         groupsIdList,
         status,
+        locked,
       ];
 }
