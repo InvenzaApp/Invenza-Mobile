@@ -1,5 +1,7 @@
 {
   "ok": "好的",
+  "yes": "是",
+  "no": "否",
   "confirm": "确认",
   "cancel": "取消",
   "search": "搜索",
@@ -29,6 +31,8 @@
   "unselectAll": "取消全选",
   "lock_title": "安全锁",
   "lock_subtitle": "点击以防止修改。只有具有管理员身份的用户才能编辑。",
+  "locked": "已锁定",
+  "locked_hint": "这意味着该项目只能由具有管理员身份的人员修改",
 
   "no_permissions_title": "无权限",
   "no_permissions_subtitle": "您没有权限",

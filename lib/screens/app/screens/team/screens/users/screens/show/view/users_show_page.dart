@@ -72,6 +72,12 @@ class UsersShowPage extends StatelessWidget {
                       label: l10n.users_show_email,
                       value: user.email,
                     ),
+                    if (user.locked) ...[
+                      ICardItem(
+                        label: l10n.locked,
+                        value: l10n.yes,
+                      ),
+                    ],
                   ],
                 ),
                 SizedBox(height: largeValue),

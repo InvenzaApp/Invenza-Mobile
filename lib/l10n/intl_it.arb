@@ -1,5 +1,7 @@
 {
   "ok": "OK",
+  "yes": "Sì",
+  "no": "No",
   "confirm": "Conferma",
   "cancel": "Annulla",
   "search": "Cerca",
@@ -29,6 +31,8 @@
   "unselectAll": "Deseleziona tutto",
   "lock_title": "Blocco",
   "lock_subtitle": "Fai clic per impedire modifiche. Solo gli utenti con stato di amministratore potranno modificare.",
+  "locked": "Bloccato",
+  "locked_hint": "Ciò significa che l'elemento può essere modificato da una persona con stato di amministratore",
 
   "no_permissions_title": "Nessun permesso",
   "no_permissions_subtitle": "Non hai i permessi",

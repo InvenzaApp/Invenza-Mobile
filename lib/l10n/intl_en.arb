@@ -1,5 +1,7 @@
 {
   "ok": "Okay",
+  "yes": "Yes",
+  "no": "No",
   "confirm": "Confirm",
   "cancel": "Cancel",
   "search": "Search",
@@ -29,6 +31,8 @@
   "unselectAll": "Unselect all",
   "lock_title": "Security",
   "lock_subtitle": "Click to prevent modifications. Only users with administrator status will be able to edit.",
+  "locked": "Secured",
+  "locked_hint": "This means that the item can be modified by a person with administrator status",
 
   "no_permissions_title": "No permissions",
   "no_permissions_subtitle": "You do not have permissions",
