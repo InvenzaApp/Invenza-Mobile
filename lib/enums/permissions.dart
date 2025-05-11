@@ -56,8 +56,13 @@ enum Permissions {
         other_account_update => context.l10n.permissions_other_account_update,
       };
 
-  static List<Permissions> getByCategory(PermissionsCategory category) {
-    return Permissions.values
+  static List<Permissions> getByCategory({
+    required PermissionsCategory category,
+    required List<Permissions> userPermissions,
+  }) {
+    return Permissions
+        .values
+        .where((item) => userPermissions.contains(item))
         .where((item) => item.name.contains(category.name))
         .toList();
   }
