@@ -9,7 +9,6 @@ import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/network/users_remote_data_source.dart';
 import 'package:app/features/user/network/users_repository.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
-import 'package:app/shared/form_template/widgets/i_form_checkbox.dart';
 import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
 import 'package:app/shared/widgets/i_form_skeletonizer.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';

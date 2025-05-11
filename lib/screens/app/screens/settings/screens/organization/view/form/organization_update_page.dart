@@ -10,7 +10,6 @@ import 'package:app/features/organization/network/organization_repository.dart';
 import 'package:app/screens/app/screens/settings/screens/organization/cubit/organization_cubit.dart';
 import 'package:app/screens/app/screens/settings/screens/organization/cubit/organization_state.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
-import 'package:app/shared/form_template/widgets/i_form_checkbox.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_button.dart';
 import 'package:app/variables.dart';

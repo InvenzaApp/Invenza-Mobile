@@ -8,7 +8,6 @@ import 'package:app/features/group/network/groups_repository.dart';
 import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/use_case/users_update_use_case.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
-import 'package:app/shared/form_template/widgets/i_form_checkbox.dart';
 import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
 import 'package:app/shared/select_template/widgets/i_form_permission_select_widget.dart';
 import 'package:app/shared/widgets/i_form_skeletonizer.dart';
