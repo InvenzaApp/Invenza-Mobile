@@ -19,5 +19,9 @@ abstract class TasksRoutes {
           path: '/task-update',
           page: TasksUpdateFormRoute.page,
         ),
+        AutoRoute(
+          path: '/comments',
+          page: CommentsRoute.page,
+        ),
       ];
 }

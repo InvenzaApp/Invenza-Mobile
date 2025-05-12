@@ -100,6 +100,8 @@
   "task_form_deadline_label": "Термін виконання завдання (необов'язково)",
   "task_form_deadline_placeholder": "Введіть термін",
   "task_form_groups_label": "Групи",
+  "task_form_comment_title": "Коментарі",
+  "task_form_comment_subtitle": "Дозволити коментарі під цим завданням",
 
   "task_show_app_bar": "Попередній перегляд завдання",
   "task_show_delete_confirm": "Ви впевнені, що хочете видалити це завдання?",
@@ -109,6 +111,7 @@
   "task_show_created_at": "Створено",
   "task_show_created_by": "Створено",
   "task_show_status": "Статус",
+  "task_show_comments": "Коментарі",
   "task_show_no_group_alert": "Ваше завдання не належить до жодної групи. Призначте його групі, щоб зробити його доступним для інших.",
 
   "team_app_bar": "Команда",
@@ -222,5 +225,10 @@
   "organization_update_city_placeholder": "Введіть місто",
   "organization_update_country_title": "Країна",
   "organization_update_country_placeholder": "Введіть країну",
-  "organization_update_unknown_error": "Сталася невідома помилка. Будь ласка, зв'яжіться з адміністрацією."
+  "organization_update_unknown_error": "Сталася невідома помилка. Будь ласка, зв'яжіться з адміністрацією.",
+
+  "comments_app_bar": "Коментарі",
+  "comments_input_placeholder": "Введіть коментар",
+  "comments_not_found": "Коментарів не знайдено",
+  "comments_deleted": "Коментар видалено"
 }

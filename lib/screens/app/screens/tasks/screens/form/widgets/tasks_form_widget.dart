@@ -107,6 +107,12 @@ class _TasksFormWidgetState extends State<TasksFormWidget> {
                   .toList(),
               validator: FormBuilderValidators.required(),
             ),
+            IFormCheckbox(
+              name: 'commentsEnabled',
+              title: l10n.task_form_comment_title,
+              subtitle: l10n.task_form_comment_subtitle,
+              initialValue: resources?.commentsEnabled ?? true,
+            ),
             if (user?.admin ?? false) ...[
               IFormCheckbox(
                 name: 'locked',

@@ -88,7 +88,7 @@ class OrganizationShowPage extends StatelessWidget {
                         label: context.l10n.locked,
                         value: context.l10n.yes,
                       ),
-                    ]
+                    ],
                   ],
                 ),
               ),

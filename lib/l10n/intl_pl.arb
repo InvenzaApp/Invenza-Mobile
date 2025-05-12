@@ -100,6 +100,8 @@
   "task_form_deadline_label": "Termin zadania (opcjonalne)",
   "task_form_deadline_placeholder": "Podaj termin",
   "task_form_groups_label": "Grupy",
+  "task_form_comment_title": "Komentarze",
+  "task_form_comment_subtitle": "Zezwalaj na komentarze pod tym zadaniem",
 
   "task_show_app_bar": "Podgląd zadania",
   "task_show_delete_confirm": "Czy na pewno chcesz usunąc zadanie?",
@@ -109,6 +111,7 @@
   "task_show_created_at": "Utworzone o",
   "task_show_created_by": "Utworzone przez",
   "task_show_status": "Status",
+  "task_show_comments": "Komentarze",
   "task_show_no_group_alert": "Twoje zadanie nie jest przypisane do żadnej grupy. Przypisz je do grupy, aby było widoczne dla innych.",
 
   "team_app_bar": "Zespół",
@@ -222,5 +225,10 @@
   "organization_update_city_placeholder": "Wpisz miejscowość",
   "organization_update_country_title": "Kraj",
   "organization_update_country_placeholder": "Wpisz kraj",
-  "organization_update_unknown_error": "Wystąpił nieznany bład. Skontaktuj się z administracją"
+  "organization_update_unknown_error": "Wystąpił nieznany bład. Skontaktuj się z administracją",
+
+  "comments_app_bar": "Komentarze",
+  "comments_input_placeholder": "Wpisz komentarz",
+  "comments_not_found": "Nie znaleziono komentarzy",
+  "comments_deleted": "Usunięto komentarz"
 }

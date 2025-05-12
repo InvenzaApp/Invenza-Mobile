@@ -1,5 +1,6 @@
 import 'package:app/core/entity/item_entity.dart';
 import 'package:app/enums/task_status.dart';
+import 'package:app/features/comment/models/comment.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:app/features/user/models/user.dart';
 import 'package:app/type_def/json.dart';
@@ -19,6 +20,8 @@ class Task extends ItemEntity with EquatableMixin {
     required this.groupsIdList,
     required this.status,
     required this.locked,
+    required this.comments,
+    required this.commentsEnabled,
     this.description,
     this.deadline,
   });
@@ -39,6 +42,8 @@ class Task extends ItemEntity with EquatableMixin {
   final TaskStatus status;
   @override
   final bool locked;
+  final List<Comment> comments;
+  final bool commentsEnabled;
 
   @override
   List<Object?> get props => [
@@ -52,5 +57,7 @@ class Task extends ItemEntity with EquatableMixin {
         groupsIdList,
         status,
         locked,
+        comments,
+        commentsEnabled,
       ];
 }
