@@ -52,4 +52,10 @@ class UserService {
         .then((res) => jsonDecode(res.data!) as Json)
         .catchError((e) => noInternetConnectionJson);
   }
+
+  Future<Json> fetchUser(int userId) async{
+    return _authDio.get<String>('$userUrl/get-user/$userId')
+        .then((res) => jsonDecode(res.data!) as Json)
+        .catchError((e) => noInternetConnectionJson);
+  }
 }

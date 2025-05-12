@@ -32,4 +32,8 @@ class UserAuthRepository {
         .changePassword(payload)
         .then((data) => data['data'] as bool);
   }
+
+  Future<Result<User>> fetchUser(int userId) async{
+    return service.fetchUser(userId).asResult<User>(fromJson: User.fromJson);
+  }
 }

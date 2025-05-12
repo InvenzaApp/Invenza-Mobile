@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:app/app/routing/app_router.gr.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
 import 'package:app/extensions/app_localizations.dart';
@@ -160,14 +159,9 @@ class OrganizationUpdatePage extends StatelessWidget
                             final success =
                                 await cubit.updateOrganization(payload);
 
-                            if (success) {
-                              unawaited(userCubit.signOut());
-
-                              if (context.mounted) {
-                                await context.router.replaceAll(
-                                  [const LoginRoute()],
-                                );
-                              }
+                            if (success && context.mounted) {
+                              unawaited(userCubit.fetchOrganization());
+                              await context.maybePop();
                             } else {
                               if (!context.mounted) return;
                               context.showToast(

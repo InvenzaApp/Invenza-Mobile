@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:app/app/routing/app_router.gr.dart';
 import 'package:app/core/user_permissions/user_permissions.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
@@ -139,14 +138,9 @@ class _AccountPageState extends State<AccountPage> {
                             final payload = _formKey.currentState!.value;
                             final success = await cubit.updateUser(payload);
 
-                            if (success) {
-                              unawaited(userCubit.signOut());
-
-                              if (context.mounted) {
-                                await context.router.replaceAll(
-                                  [const LoginRoute()],
-                                );
-                              }
+                            if (success && context.mounted) {
+                              unawaited(userCubit.fetchUser());
+                              await context.maybePop();
                             } else {
                               if (!context.mounted) return;
                               await context
