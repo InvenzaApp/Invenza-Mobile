@@ -1,5 +1,5 @@
 import 'package:app/core/cockpit_repository/cockpit_repository.dart';
-import 'package:app/core/entity/entity.dart';
+import 'package:app/core/entity/item_entity.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/text_extension.dart';
@@ -10,7 +10,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-class IFormMultipleSelectWidget<T extends Entity> extends IFormStatefulWidget {
+class IFormMultipleSelectWidget<T extends ItemEntity> extends IFormStatefulWidget {
   const IFormMultipleSelectWidget({
     required this.repository,
     required this.name,
@@ -37,7 +37,7 @@ class IFormMultipleSelectWidget<T extends Entity> extends IFormStatefulWidget {
       _IFormMultipleSelectWidgetState<T>();
 }
 
-class _IFormMultipleSelectWidgetState<T extends Entity>
+class _IFormMultipleSelectWidgetState<T extends ItemEntity>
     extends State<IFormMultipleSelectWidget> {
   List<int> selectedEntities = [];
 
