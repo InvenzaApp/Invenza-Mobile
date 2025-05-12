@@ -158,6 +158,7 @@
   "users_show_lastname": "Прізвище",
   "users_show_email": "Адреса електронної пошти",
   "users_show_groups": "Групи",
+  "users_show_administrator": "Адміністратор",
 
   "login_email_label": "Адреса електронної пошти",
   "login_email_placeholder": "Введіть адресу електронної пошти",

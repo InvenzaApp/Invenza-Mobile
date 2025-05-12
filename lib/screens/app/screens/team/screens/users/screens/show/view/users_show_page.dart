@@ -78,6 +78,12 @@ class UsersShowPage extends StatelessWidget {
                         value: l10n.yes,
                       ),
                     ],
+                    if (user.admin) ...[
+                      ICardItem(
+                        label: l10n.users_show_administrator,
+                        value: l10n.yes,
+                      ),
+                    ]
                   ],
                 ),
                 SizedBox(height: largeValue),

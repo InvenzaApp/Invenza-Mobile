@@ -158,6 +158,7 @@
   "users_show_lastname": "姓",
   "users_show_email": "メールアドレス",
   "users_show_groups": "グループ",
+  "users_show_administrator": "管理者",
 
   "login_email_label": "メールアドレス",
   "login_email_placeholder": "メールアドレスを入力",
