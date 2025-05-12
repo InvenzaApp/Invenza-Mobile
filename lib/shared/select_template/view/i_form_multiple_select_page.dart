@@ -1,7 +1,9 @@
 import 'package:app/core/cockpit_repository/cockpit_repository.dart';
 import 'package:app/core/entity/entity.dart';
+import 'package:app/core/entity/item_entity.dart';
 import 'package:app/core/select/select_cubit.dart';
 import 'package:app/core/select/select_state.dart';
+import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/text_extension.dart';
@@ -14,7 +16,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class IFormMultipleSelectPage<T extends Entity> extends StatefulWidget {
+class IFormMultipleSelectPage<T extends ItemEntity> extends StatefulWidget {
   const IFormMultipleSelectPage({
     required this.repository,
     required this.name,
@@ -33,7 +35,7 @@ class IFormMultipleSelectPage<T extends Entity> extends StatefulWidget {
       _IFormMultipleSelectPageState<T>();
 }
 
-class _IFormMultipleSelectPageState<T extends Entity>
+class _IFormMultipleSelectPageState<T extends ItemEntity>
     extends State<IFormMultipleSelectPage> {
   List<int> selectedEntities = [];
 
@@ -51,6 +53,7 @@ class _IFormMultipleSelectPageState<T extends Entity>
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final user = context.read<UserCubit>().state.userResult!.maybeValue!;
 
     return BlocProvider(
       create: (_) => SelectCubit<T>(repository: widget.repository),
@@ -118,6 +121,10 @@ class _IFormMultipleSelectPageState<T extends Entity>
                                   itemCount: state.data!.maybeValue!.length,
                                   itemBuilder: (context, index) {
                                     final data = state.data!.maybeValue![index];
+
+                                    if(!user.admin && data.locked){
+                                      return const SizedBox.shrink();
+                                    }
 
                                     if (widget.dontBuildWithId != null &&
                                         data.id == widget.dontBuildWithId) {

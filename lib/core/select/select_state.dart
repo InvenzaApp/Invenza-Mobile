@@ -1,8 +1,8 @@
-import 'package:app/core/entity/entity.dart';
+import 'package:app/core/entity/item_entity.dart';
 import 'package:app/core/result/result.dart';
 import 'package:equatable/equatable.dart';
 
-class SelectState<T extends Entity> extends Equatable {
+class SelectState<T extends ItemEntity> extends Equatable {
   const SelectState({
     this.isLoading = false,
     this.data,
