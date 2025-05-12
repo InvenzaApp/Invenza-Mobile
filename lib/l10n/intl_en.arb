@@ -100,6 +100,8 @@
   "task_form_deadline_label": "Task deadline (optional)",
   "task_form_deadline_placeholder": "Enter deadline",
   "task_form_groups_label": "Groups",
+  "task_form_comment_title": "Comments",
+  "task_form_comment_subtitle": "Allow comments under this task",
 
   "task_show_app_bar": "Task preview",
   "task_show_delete_confirm": "Are you sure you want to delete this task?",
@@ -109,6 +111,7 @@
   "task_show_created_at": "Created at",
   "task_show_created_by": "Created by",
   "task_show_status": "Status",
+  "task_show_comments": "Comments",
   "task_show_no_group_alert": "Your task does not belong to any group. Assign it to a group to make it available to others.",
 
   "team_app_bar": "Team",
@@ -222,5 +225,10 @@
   "organization_update_city_placeholder": "Enter city",
   "organization_update_country_title": "Country",
   "organization_update_country_placeholder": "Enter country",
-  "organization_update_unknown_error": "Unknown error occured. Please contant with administration"
+  "organization_update_unknown_error": "Unknown error occured. Please contant with administration",
+
+  "comments_app_bar": "Comments",
+  "comments_input_placeholder": "Enter comment",
+  "comments_not_found": "No comments found",
+  "comments_deleted": "Comment deleted"
 }

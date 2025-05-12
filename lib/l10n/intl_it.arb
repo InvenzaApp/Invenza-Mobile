@@ -100,6 +100,8 @@
   "task_form_deadline_label": "Scadenza attività (opzionale)",
   "task_form_deadline_placeholder": "Inserisci scadenza",
   "task_form_groups_label": "Gruppi",
+  "task_form_comment_title": "Commenti",
+  "task_form_comment_subtitle": "Consenti commenti per questa attività",
 
   "task_show_app_bar": "Anteprima attività",
   "task_show_delete_confirm": "Sei sicuro di voler eliminare questa attività?",
@@ -109,6 +111,7 @@
   "task_show_created_at": "Creata il",
   "task_show_created_by": "Creata da",
   "task_show_status": "Stato",
+  "task_show_comments": "Commenti",
   "task_show_no_group_alert": "La tua attività non appartiene a nessun gruppo. Assegnala a un gruppo per renderla disponibile ad altri.",
 
   "team_app_bar": "Team",
@@ -222,5 +225,10 @@
   "organization_update_city_placeholder": "Inserisci città",
   "organization_update_country_title": "Paese",
   "organization_update_country_placeholder": "Inserisci paese",
-  "organization_update_unknown_error": "Si è verificato un errore sconosciuto. Si prega di contattare l'amministrazione."
+  "organization_update_unknown_error": "Si è verificato un errore sconosciuto. Si prega di contattare l'amministrazione.",
+
+  "comments_app_bar": "Commenti",
+  "comments_input_placeholder": "Inserisci commento",
+  "comments_not_found": "Nessun commento trovato",
+  "comments_deleted": "Commento eliminato"
 }

@@ -6,6 +6,7 @@ import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/network/tasks_remote_data_source.dart';
 import 'package:app/features/tasks/network/tasks_repository.dart';
 import 'package:app/screens/app/screens/tasks/screens/show/cubit/tasks_show_cubit.dart';
+import 'package:app/screens/app/screens/tasks/screens/show/widgets/tasks_show_comment_button.dart';
 import 'package:app/screens/app/screens/tasks/screens/show/widgets/tasks_show_group_widget.dart';
 import 'package:app/shared/show_template/i_show_template.dart';
 import 'package:app/shared/widgets/i_alert_widget.dart';
@@ -85,6 +86,8 @@ class TasksShowPage extends StatelessWidget {
                     ],
                   ],
                 ),
+                if(task.commentsEnabled)
+                  TasksShowCommentButton(task: task,),
                 Column(
                   spacing: smallValue,
                   children: task.groupsList!.map((item) {
