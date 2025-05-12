@@ -72,7 +72,7 @@ class TasksListWidget extends StatelessWidget {
                               size: xLargeValue,
                             ),
                             Text(
-                              task.deadline!.formattedDateTime,
+                              task.deadline!.formattedDateTime(context),
                               style: context.bodyMedium,
                             ),
                           ],

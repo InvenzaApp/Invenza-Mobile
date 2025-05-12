@@ -63,11 +63,11 @@ class TasksShowPage extends StatelessWidget {
                     if (task.deadline != null)
                       ICardItem(
                         label: l10n.task_show_deadline,
-                        value: task.deadline!.formattedDateTime,
+                        value: task.deadline!.formattedDateTime(context),
                       ),
                     ICardItem(
                       label: l10n.task_show_created_at,
-                      value: task.createdAt.formattedDateTime,
+                      value: task.createdAt.formattedDateTime(context),
                     ),
                     ICardItem(
                       label: l10n.task_show_created_by,

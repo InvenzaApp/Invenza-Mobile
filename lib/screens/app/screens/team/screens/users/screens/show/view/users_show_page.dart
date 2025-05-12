@@ -83,7 +83,7 @@ class UsersShowPage extends StatelessWidget {
                         label: l10n.users_show_administrator,
                         value: l10n.yes,
                       ),
-                    ]
+                    ],
                   ],
                 ),
                 SizedBox(height: largeValue),

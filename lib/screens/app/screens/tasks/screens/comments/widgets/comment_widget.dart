@@ -67,7 +67,7 @@ class CommentWidget extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    comment.publishDate.formattedDateTime,
+                    comment.publishDate.formattedDateTime(context),
                     style: context.bodySmall,
                   ),
                   Text(
