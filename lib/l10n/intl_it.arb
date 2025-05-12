@@ -158,6 +158,7 @@
   "users_show_lastname": "Cognome",
   "users_show_email": "Indirizzo email",
   "users_show_groups": "Gruppi",
+  "users_show_administrator": "Amministratore",
 
   "login_email_label": "Indirizzo email",
   "login_email_placeholder": "Inserisci indirizzo email",

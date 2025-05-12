@@ -158,6 +158,7 @@
   "users_show_lastname": "姓氏",
   "users_show_email": "电子邮件地址",
   "users_show_groups": "群组",
+  "users_show_administrator": "管理员",
 
   "login_email_label": "电子邮件地址",
   "login_email_placeholder": "输入电子邮件地址",
