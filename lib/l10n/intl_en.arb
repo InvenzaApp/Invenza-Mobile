@@ -110,6 +110,7 @@
   "task_show_deadline": "Deadline",
   "task_show_created_at": "Created at",
   "task_show_created_by": "Created by",
+  "task_show_created_by_none": "Deleted user",
   "task_show_status": "Status",
   "task_show_comments": "Comments",
   "task_show_no_group_alert": "Your task does not belong to any group. Assign it to a group to make it available to others.",

@@ -110,6 +110,7 @@
   "task_show_deadline": "Termin zadania",
   "task_show_created_at": "Utworzone o",
   "task_show_created_by": "Utworzone przez",
+  "task_show_created_by_none": "Usunięty użytkownik",
   "task_show_status": "Status",
   "task_show_comments": "Komentarze",
   "task_show_no_group_alert": "Twoje zadanie nie jest przypisane do żadnej grupy. Przypisz je do grupy, aby było widoczne dla innych.",

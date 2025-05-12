@@ -110,6 +110,7 @@
   "task_show_deadline": "截止日期",
   "task_show_created_at": "创建于",
   "task_show_created_by": "创建者",
+  "task_show_created_by_none": "已删除用户",
   "task_show_status": "状态",
   "task_show_comments": "评论",
   "task_show_no_group_alert": "您的任务不属于任何群组。请将其分配到一个群组，以便其他人可以使用。",

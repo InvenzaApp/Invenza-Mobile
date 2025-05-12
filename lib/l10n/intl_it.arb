@@ -110,6 +110,7 @@
   "task_show_deadline": "Scadenza",
   "task_show_created_at": "Creata il",
   "task_show_created_by": "Creata da",
+  "task_show_created_by_none": "Utente eliminato",
   "task_show_status": "Stato",
   "task_show_comments": "Commenti",
   "task_show_no_group_alert": "La tua attività non appartiene a nessun gruppo. Assegnala a un gruppo per renderla disponibile ad altri.",

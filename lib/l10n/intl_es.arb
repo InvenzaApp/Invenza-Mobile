@@ -110,6 +110,7 @@
   "task_show_deadline": "Fecha límite",
   "task_show_created_at": "Creado el",
   "task_show_created_by": "Creado por",
+  "task_show_created_by_none": "Usuario eliminado",
   "task_show_status": "Estado",
   "task_show_comments": "Comentarios",
   "task_show_no_group_alert": "Tu tarea no pertenece a ningún grupo. Asígnala a un grupo para que esté disponible para otros.",
