@@ -16,12 +16,12 @@ class Task extends ItemEntity with EquatableMixin {
     required this.title,
     required this.groupsList,
     required this.createdAt,
-    required this.createdBy,
     required this.groupsIdList,
     required this.status,
     required this.locked,
     required this.comments,
     required this.commentsEnabled,
+    this.createdBy,
     this.description,
     this.deadline,
   });
@@ -37,7 +37,7 @@ class Task extends ItemEntity with EquatableMixin {
   final List<Group>? groupsList;
   final List<int> groupsIdList;
   final DateTime createdAt;
-  final User createdBy;
+  final User? createdBy;
   @JsonKey(fromJson: TaskStatus.fromJson, toJson: TaskStatus.toJson)
   final TaskStatus status;
   @override

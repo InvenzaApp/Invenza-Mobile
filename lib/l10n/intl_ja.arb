@@ -110,6 +110,7 @@
   "task_show_deadline": "期限",
   "task_show_created_at": "作成日時",
   "task_show_created_by": "作成者",
+  "task_show_created_by_none": "削除されたユーザー",
   "task_show_status": "ステータス",
   "task_show_comments": "コメント",
   "task_show_no_group_alert": "あなたのタスクはどのグループにも属していません。他の人が利用できるようにグループに割り当ててください。",

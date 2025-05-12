@@ -71,8 +71,8 @@ class TasksShowPage extends StatelessWidget {
                     ),
                     ICardItem(
                       label: l10n.task_show_created_by,
-                      value:
-                          '${task.createdBy.name} ${task.createdBy.lastname}',
+                      value: task.createdBy?.title ??
+                          l10n.task_show_created_by_none,
                     ),
                     ICardItem(
                       label: l10n.task_show_status,
@@ -86,8 +86,10 @@ class TasksShowPage extends StatelessWidget {
                     ],
                   ],
                 ),
-                if(task.commentsEnabled)
-                  TasksShowCommentButton(task: task,),
+                if (task.commentsEnabled)
+                  TasksShowCommentButton(
+                    task: task,
+                  ),
                 Column(
                   spacing: smallValue,
                   children: task.groupsList!.map((item) {
