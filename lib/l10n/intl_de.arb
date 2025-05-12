@@ -1,5 +1,7 @@
 {
   "ok": "Okay",
+  "yes": "Ja",
+  "no": "Nein",
   "confirm": "Bestätigen",
   "cancel": "Abbrechen",
   "search": "Suchen",
@@ -29,6 +31,8 @@
   "unselectAll": "Auswahl aufheben",
   "lock_title": "Sperre",
   "lock_subtitle": "Klicken Sie, um Änderungen zu verhindern. Nur Benutzer mit Administratorstatus können bearbeiten.",
+  "locked": "Gesichert",
+  "locked_hint": "Dies bedeutet, dass das Element von einer Person mit Administratorstatus geändert werden kann",
 
   "no_permissions_title": "Keine Berechtigungen",
   "no_permissions_subtitle": "Sie haben keine Berechtigungen",
@@ -96,6 +100,8 @@
   "task_form_deadline_label": "Frist für Aufgabe (optional)",
   "task_form_deadline_placeholder": "Frist eingeben",
   "task_form_groups_label": "Gruppen",
+  "task_form_comment_title": "Kommentare",
+  "task_form_comment_subtitle": "Kommentare zu dieser Aufgabe zulassen",
 
   "task_show_app_bar": "Aufgabenvorschau",
   "task_show_delete_confirm": "Möchten Sie diese Aufgabe wirklich löschen?",
@@ -105,6 +111,7 @@
   "task_show_created_at": "Erstellt am",
   "task_show_created_by": "Erstellt von",
   "task_show_status": "Status",
+  "task_show_comments": "Kommentare",
   "task_show_no_group_alert": "Ihre Aufgabe gehört zu keiner Gruppe. Weisen Sie sie einer Gruppe zu, um sie anderen verfügbar zu machen.",
 
   "team_app_bar": "Team",
@@ -151,6 +158,7 @@
   "users_show_lastname": "Nachname",
   "users_show_email": "E-Mail-Adresse",
   "users_show_groups": "Gruppen",
+  "users_show_administrator": "Administrator",
 
   "login_email_label": "E-Mail-Adresse",
   "login_email_placeholder": "E-Mail-Adresse eingeben",
@@ -218,5 +226,10 @@
   "organization_update_city_placeholder": "Stadt eingeben",
   "organization_update_country_title": "Land",
   "organization_update_country_placeholder": "Land eingeben",
-  "organization_update_unknown_error": "Unbekannter Fehler aufgetreten. Bitte kontaktieren Sie die Administration."
+  "organization_update_unknown_error": "Unbekannter Fehler aufgetreten. Bitte kontaktieren Sie die Administration.",
+
+  "comments_app_bar": "Kommentare",
+  "comments_input_placeholder": "Kommentar eingeben",
+  "comments_not_found": "Keine Kommentare gefunden",
+  "comments_deleted": "Kommentar gelöscht"
 }

@@ -1,5 +1,7 @@
 {
   "ok": "Okay",
+  "yes": "Yes",
+  "no": "No",
   "confirm": "Confirm",
   "cancel": "Cancel",
   "search": "Search",
@@ -29,6 +31,8 @@
   "unselectAll": "Unselect all",
   "lock_title": "Security",
   "lock_subtitle": "Click to prevent modifications. Only users with administrator status will be able to edit.",
+  "locked": "Secured",
+  "locked_hint": "This means that the item can be modified by a person with administrator status",
 
   "no_permissions_title": "No permissions",
   "no_permissions_subtitle": "You do not have permissions",
@@ -96,6 +100,8 @@
   "task_form_deadline_label": "Task deadline (optional)",
   "task_form_deadline_placeholder": "Enter deadline",
   "task_form_groups_label": "Groups",
+  "task_form_comment_title": "Comments",
+  "task_form_comment_subtitle": "Allow comments under this task",
 
   "task_show_app_bar": "Task preview",
   "task_show_delete_confirm": "Are you sure you want to delete this task?",
@@ -105,6 +111,7 @@
   "task_show_created_at": "Created at",
   "task_show_created_by": "Created by",
   "task_show_status": "Status",
+  "task_show_comments": "Comments",
   "task_show_no_group_alert": "Your task does not belong to any group. Assign it to a group to make it available to others.",
 
   "team_app_bar": "Team",
@@ -151,6 +158,7 @@
   "users_show_lastname": "Lastname",
   "users_show_email": "Email address",
   "users_show_groups": "Groups",
+  "users_show_administrator": "Administrator",
 
   "login_email_label": "Email address",
   "login_email_placeholder": "Enter email address",
@@ -218,5 +226,10 @@
   "organization_update_city_placeholder": "Enter city",
   "organization_update_country_title": "Country",
   "organization_update_country_placeholder": "Enter country",
-  "organization_update_unknown_error": "Unknown error occured. Please contant with administration"
+  "organization_update_unknown_error": "Unknown error occured. Please contant with administration",
+
+  "comments_app_bar": "Comments",
+  "comments_input_placeholder": "Enter comment",
+  "comments_not_found": "No comments found",
+  "comments_deleted": "Comment deleted"
 }

@@ -1,5 +1,7 @@
 {
   "ok": "OK",
+  "yes": "はい",
+  "no": "いいえ",
   "confirm": "確認",
   "cancel": "キャンセル",
   "search": "検索",
@@ -29,6 +31,8 @@
   "unselectAll": "すべて選択解除",
   "lock_title": "ロック",
   "lock_subtitle": "クリックして変更を防止します。管理者ステータスを持つユーザーのみが編集できます。",
+  "locked": "ロック済み",
+  "locked_hint": "これは、アイテムが管理者ステータスを持つ人物によってのみ変更できることを意味します",
 
   "no_permissions_title": "権限がありません",
   "no_permissions_subtitle": "あなたには権限がありません",
@@ -96,6 +100,8 @@
   "task_form_deadline_label": "タスクの期限（オプション）",
   "task_form_deadline_placeholder": "期限を入力",
   "task_form_groups_label": "グループ",
+  "task_form_comment_title": "コメント",
+  "task_form_comment_subtitle": "このタスクへのコメントを許可する",
 
   "task_show_app_bar": "タスクプレビュー",
   "task_show_delete_confirm": "このタスクを本当に削除しますか？",
@@ -105,6 +111,7 @@
   "task_show_created_at": "作成日時",
   "task_show_created_by": "作成者",
   "task_show_status": "ステータス",
+  "task_show_comments": "コメント",
   "task_show_no_group_alert": "あなたのタスクはどのグループにも属していません。他の人が利用できるようにグループに割り当ててください。",
 
   "team_app_bar": "チーム",
@@ -151,6 +158,7 @@
   "users_show_lastname": "姓",
   "users_show_email": "メールアドレス",
   "users_show_groups": "グループ",
+  "users_show_administrator": "管理者",
 
   "login_email_label": "メールアドレス",
   "login_email_placeholder": "メールアドレスを入力",
@@ -218,5 +226,10 @@
   "organization_update_city_placeholder": "市町村を入力",
   "organization_update_country_title": "国",
   "organization_update_country_placeholder": "国を入力",
-  "organization_update_unknown_error": "不明なエラーが発生しました。管理者に連絡してください。"
+  "organization_update_unknown_error": "不明なエラーが発生しました。管理者に連絡してください。",
+
+  "comments_app_bar": "コメント",
+  "comments_input_placeholder": "コメントを入力",
+  "comments_not_found": "コメントが見つかりません",
+  "comments_deleted": "コメントを削除しました"
 }

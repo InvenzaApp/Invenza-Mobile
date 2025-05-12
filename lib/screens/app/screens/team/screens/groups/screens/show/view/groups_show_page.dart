@@ -43,6 +43,12 @@ class GroupsShowPage extends StatelessWidget {
                       label: context.l10n.groups_show_name,
                       value: group.title,
                     ),
+                    if(group.locked)...[
+                      ICardItem(
+                        label: context.l10n.locked,
+                        value: context.l10n.yes,
+                      ),
+                    ],
                   ],
                 ),
                 Column(

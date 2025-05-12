@@ -1,5 +1,7 @@
 {
   "ok": "好的",
+  "yes": "是",
+  "no": "否",
   "confirm": "确认",
   "cancel": "取消",
   "search": "搜索",
@@ -29,6 +31,8 @@
   "unselectAll": "取消全选",
   "lock_title": "安全锁",
   "lock_subtitle": "点击以防止修改。只有具有管理员身份的用户才能编辑。",
+  "locked": "已锁定",
+  "locked_hint": "这意味着该项目只能由具有管理员身份的人员修改",
 
   "no_permissions_title": "无权限",
   "no_permissions_subtitle": "您没有权限",
@@ -96,6 +100,8 @@
   "task_form_deadline_label": "任务截止日期（可选）",
   "task_form_deadline_placeholder": "输入截止日期",
   "task_form_groups_label": "群组",
+  "task_form_comment_title": "评论",
+  "task_form_comment_subtitle": "允许在此任务下发表评论",
 
   "task_show_app_bar": "任务预览",
   "task_show_delete_confirm": "您确定要删除此任务吗？",
@@ -105,6 +111,7 @@
   "task_show_created_at": "创建于",
   "task_show_created_by": "创建者",
   "task_show_status": "状态",
+  "task_show_comments": "评论",
   "task_show_no_group_alert": "您的任务不属于任何群组。请将其分配到一个群组，以便其他人可以使用。",
 
   "team_app_bar": "团队",
@@ -151,6 +158,7 @@
   "users_show_lastname": "姓氏",
   "users_show_email": "电子邮件地址",
   "users_show_groups": "群组",
+  "users_show_administrator": "管理员",
 
   "login_email_label": "电子邮件地址",
   "login_email_placeholder": "输入电子邮件地址",
@@ -218,5 +226,10 @@
   "organization_update_city_placeholder": "输入城市",
   "organization_update_country_title": "国家",
   "organization_update_country_placeholder": "输入国家",
-  "organization_update_unknown_error": "发生未知错误。请联系管理员。"
+  "organization_update_unknown_error": "发生未知错误。请联系管理员。",
+
+  "comments_app_bar": "评论",
+  "comments_input_placeholder": "输入评论",
+  "comments_not_found": "未找到评论",
+  "comments_deleted": "评论已删除"
 }

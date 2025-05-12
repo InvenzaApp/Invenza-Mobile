@@ -1,5 +1,7 @@
 {
   "ok": "Aceptar",
+  "yes": "Sí",
+  "no": "No",
   "confirm": "Confirmar",
   "cancel": "Cancelar",
   "search": "Buscar",
@@ -29,6 +31,8 @@
   "unselectAll": "Deseleccionar todo",
   "lock_title": "Seguridad",
   "lock_subtitle": "Haz clic para evitar modificaciones. Solo los usuarios con estado de administrador podrán editar.",
+  "locked": "Asegurado",
+  "locked_hint": "Esto significa que el elemento puede ser modificado por una persona con estado de administrador",
 
   "no_permissions_title": "Sin permisos",
   "no_permissions_subtitle": "No tienes permisos",
@@ -96,6 +100,8 @@
   "task_form_deadline_label": "Fecha límite de la tarea (opcional)",
   "task_form_deadline_placeholder": "Introduce la fecha límite",
   "task_form_groups_label": "Grupos",
+  "task_form_comment_title": "Comentarios",
+  "task_form_comment_subtitle": "Permitir comentarios en esta tarea",
 
   "task_show_app_bar": "Vista previa de la tarea",
   "task_show_delete_confirm": "¿Estás seguro de que quieres eliminar esta tarea?",
@@ -105,6 +111,7 @@
   "task_show_created_at": "Creado el",
   "task_show_created_by": "Creado por",
   "task_show_status": "Estado",
+  "task_show_comments": "Comentarios",
   "task_show_no_group_alert": "Tu tarea no pertenece a ningún grupo. Asígnala a un grupo para que esté disponible para otros.",
 
   "team_app_bar": "Equipo",
@@ -151,6 +158,7 @@
   "users_show_lastname": "Apellido",
   "users_show_email": "Dirección de correo electrónico",
   "users_show_groups": "Grupos",
+  "users_show_administrator": "Administrador",
 
   "login_email_label": "Dirección de correo electrónico",
   "login_email_placeholder": "Introduce la dirección de correo electrónico",
@@ -218,5 +226,10 @@
   "organization_update_city_placeholder": "Introduce la ciudad",
   "organization_update_country_title": "País",
   "organization_update_country_placeholder": "Introduce el país",
-  "organization_update_unknown_error": "Ocurrió un error desconocido. Por favor, contacta con la administración."
+  "organization_update_unknown_error": "Ocurrió un error desconocido. Por favor, contacta con la administración.",
+
+  "comments_app_bar": "Comentarios",
+  "comments_input_placeholder": "Escribe un comentario",
+  "comments_not_found": "No se encontraron comentarios",
+  "comments_deleted": "Comentario eliminado"
 }
