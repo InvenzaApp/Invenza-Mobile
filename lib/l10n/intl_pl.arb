@@ -64,6 +64,11 @@
   "permissions_delete_task": "Usuwanie zadań",
   "permissions_show_organization": "Podgląd organizacji",
   "permissions_update_organization": "Modyfikacja organizacji",
+  "permissions_add_calendar": "Dodawanie wydarzenia",
+  "permissions_list_calendar": "Wyświetlanie kalendarza",
+  "permissions_show_calendar": "Podgląd wydarzenia",
+  "permissions_update_calendar": "Modyfikacja wydarzenia",
+  "permissions_delete_calendar": "Usuwanie wydarzenia",
   "permissions_other_account_show": "Podgląd konta",
   "permissions_other_account_update": "Modyfikacja konta",
 
@@ -71,6 +76,7 @@
   "permissions_category_groups": "Grupy",
   "permissions_category_tasks": "Zadania",
   "permissions_category_organization": "Organizacja",
+  "permissions_category_calendar": "Kalendarz",
   "permissions_category_other": "Pozostałe",
 
   "task_status_to_do": "Do zrobienia",
@@ -118,6 +124,7 @@
   "team_app_bar": "Zespół",
   "team_users_title": "Zarządzaj użytkownikami",
   "team_groups_title": "Zarządzaj grupami",
+  "team_calendar": "Kalendarz",
 
   "groups_list_app_bar": "Grupy",
   "groups_list_no_groups_title": "Nie znaleziono żadnych grup",
@@ -232,5 +239,26 @@
   "comments_app_bar": "Komentarze",
   "comments_input_placeholder": "Wpisz komentarz",
   "comments_not_found": "Nie znaleziono komentarzy",
-  "comments_deleted": "Usunięto komentarz"
+  "comments_deleted": "Usunięto komentarz",
+
+  "calendar_show_app_bar": "Podgląd wydarzenia",
+  "calendar_show_title": "Nazwa wydarzenia",
+  "calendar_show_description": "Opis",
+  "calendar_show_date_from": "Start wydarzenia",
+  "calendar_show_date_to": "Koniec wydarzenia",
+
+  "calendar_update_app_bar": "Edytuj wydarzenie",
+
+  "calendar_create_app_bar": "Dodaj wydarzenie",
+
+  "calendar_list_app_bar": "Kalendarz",
+
+  "calendar_form_title_label": "Tytuł",
+  "calendar_form_title_placeholder": "Wpisz tytuł",
+  "calendar_form_description_label": "Opis (opcjonalne)",
+  "calendar_form_description_placeholder": "Wpisz opis",
+  "calendar_form_date_from_label": "Start wydarzenia",
+  "calendar_form_date_from_placeholder": "Wybierz date",
+  "calendar_form_date_to_label": "Koniec wydarzenia",
+  "calendar_form_date_to_placeholder": "Wybierz date"
 }

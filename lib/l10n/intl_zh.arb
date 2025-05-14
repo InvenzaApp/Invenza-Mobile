@@ -64,6 +64,11 @@
   "permissions_delete_task": "删除任务",
   "permissions_show_organization": "查看组织",
   "permissions_update_organization": "编辑组织",
+  "permissions_add_calendar": "添加事件",
+  "permissions_list_calendar": "查看日历",
+  "permissions_show_calendar": "查看事件",
+  "permissions_update_calendar": "修改事件",
+  "permissions_delete_calendar": "删除事件",
   "permissions_other_account_show": "查看账户",
   "permissions_other_account_update": "编辑账户",
 
@@ -71,6 +76,7 @@
   "permissions_category_groups": "群组",
   "permissions_category_tasks": "任务",
   "permissions_category_organization": "组织",
+  "permissions_category_calendar": "日历",
   "permissions_category_other": "其他",
 
   "task_status_to_do": "待办",
@@ -118,6 +124,7 @@
   "team_app_bar": "团队",
   "team_users_title": "管理用户",
   "team_groups_title": "管理群组",
+  "team_calendar": "日历",
 
   "groups_list_app_bar": "群组",
   "groups_list_no_groups_title": "未找到群组",
@@ -232,5 +239,26 @@
   "comments_app_bar": "评论",
   "comments_input_placeholder": "输入评论",
   "comments_not_found": "未找到评论",
-  "comments_deleted": "评论已删除"
+  "comments_deleted": "评论已删除",
+
+  "calendar_show_app_bar": "事件预览",
+  "calendar_show_title": "事件名称",
+  "calendar_show_description": "描述",
+  "calendar_show_date_from": "事件开始",
+  "calendar_show_date_to": "事件结束",
+
+  "calendar_update_app_bar": "编辑事件",
+
+  "calendar_create_app_bar": "添加事件",
+
+  "calendar_list_app_bar": "日历",
+
+  "calendar_form_title_label": "标题",
+  "calendar_form_title_placeholder": "输入标题",
+  "calendar_form_description_label": "描述（可选）",
+  "calendar_form_description_placeholder": "输入描述",
+  "calendar_form_date_from_label": "事件开始",
+  "calendar_form_date_from_placeholder": "选择日期",
+  "calendar_form_date_to_label": "事件结束",
+  "calendar_form_date_to_placeholder": "选择日期"
 }

@@ -64,6 +64,11 @@
   "permissions_delete_task": "Elimina attività",
   "permissions_show_organization": "Visualizza organizzazione",
   "permissions_update_organization": "Modifica organizzazione",
+  "permissions_add_calendar": "Aggiungi evento",
+  "permissions_list_calendar": "Visualizza calendario",
+  "permissions_show_calendar": "Visualizza evento",
+  "permissions_update_calendar": "Modifica evento",
+  "permissions_delete_calendar": "Elimina evento",
   "permissions_other_account_show": "Visualizza account",
   "permissions_other_account_update": "Modifica account",
 
@@ -71,6 +76,7 @@
   "permissions_category_groups": "Gruppi",
   "permissions_category_tasks": "Attività",
   "permissions_category_organization": "Organizzazione",
+  "permissions_category_calendar": "Calendario",
   "permissions_category_other": "Altro",
 
   "task_status_to_do": "Da fare",
@@ -118,6 +124,7 @@
   "team_app_bar": "Team",
   "team_users_title": "Gestisci utenti",
   "team_groups_title": "Gestisci gruppi",
+  "team_calendar": "Calendario",
 
   "groups_list_app_bar": "Gruppi",
   "groups_list_no_groups_title": "Nessun gruppo trovato",
@@ -232,5 +239,26 @@
   "comments_app_bar": "Commenti",
   "comments_input_placeholder": "Inserisci commento",
   "comments_not_found": "Nessun commento trovato",
-  "comments_deleted": "Commento eliminato"
+  "comments_deleted": "Commento eliminato",
+
+  "calendar_show_app_bar": "Anteprima evento",
+  "calendar_show_title": "Nome evento",
+  "calendar_show_description": "Descrizione",
+  "calendar_show_date_from": "Inizio evento",
+  "calendar_show_date_to": "Fine evento",
+
+  "calendar_update_app_bar": "Modifica evento",
+
+  "calendar_create_app_bar": "Aggiungi evento",
+
+  "calendar_list_app_bar": "Calendario",
+
+  "calendar_form_title_label": "Titolo",
+  "calendar_form_title_placeholder": "Inserisci il titolo",
+  "calendar_form_description_label": "Descrizione (opzionale)",
+  "calendar_form_description_placeholder": "Inserisci la descrizione",
+  "calendar_form_date_from_label": "Inizio evento",
+  "calendar_form_date_from_placeholder": "Seleziona data",
+  "calendar_form_date_to_label": "Fine evento",
+  "calendar_form_date_to_placeholder": "Seleziona data"
 }
