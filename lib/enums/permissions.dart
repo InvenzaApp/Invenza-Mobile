@@ -19,6 +19,11 @@ enum Permissions {
   delete_task,
   show_organization,
   update_organization,
+  add_calendar,
+  list_calendar,
+  show_calendar,
+  update_calendar,
+  delete_calendar,
   other_account_show,
   other_account_update;
 
@@ -54,6 +59,11 @@ enum Permissions {
         update_organization => context.l10n.permissions_update_organization,
         other_account_show => context.l10n.permissions_other_account_show,
         other_account_update => context.l10n.permissions_other_account_update,
+        add_calendar => context.l10n.permissions_add_calendar,
+        list_calendar => context.l10n.permissions_list_calendar,
+        show_calendar => context.l10n.permissions_show_calendar,
+        update_calendar => context.l10n.permissions_update_calendar,
+        delete_calendar => context.l10n.permissions_delete_calendar,
       };
 
   static List<Permissions> getByCategory({
@@ -88,6 +98,7 @@ enum PermissionsCategory {
   group,
   task,
   organization,
+  calendar,
   other;
 
   String getName(BuildContext context) => switch (this) {
@@ -96,6 +107,7 @@ enum PermissionsCategory {
         task => context.l10n.permissions_category_tasks,
         organization => context.l10n.permissions_category_organization,
         other => context.l10n.permissions_category_other,
+        calendar => context.l10n.permissions_category_calendar,
       };
 
   IconData getIcon() => switch (this) {
@@ -103,6 +115,7 @@ enum PermissionsCategory {
         group => Icons.groups,
         task => Icons.task,
         organization => Icons.business,
+        calendar => Icons.calendar_month,
         other => Icons.info,
       };
 }

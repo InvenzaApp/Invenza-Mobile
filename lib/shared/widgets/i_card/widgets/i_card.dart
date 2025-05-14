@@ -20,6 +20,7 @@ class ICard extends StatelessWidget {
             BoxDecoration(color: context.container, borderRadius: mediumRadius),
         child: Column(
           spacing: mediumValue,
+          mainAxisSize: MainAxisSize.min,
           children: children.map((child) {
             return Row(
               children: [
