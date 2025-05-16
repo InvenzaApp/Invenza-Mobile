@@ -33,31 +33,35 @@ class IErrorWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      icon ?? Icons.error_outline,
-                      size: 64,
-                      color: context.primary,
-                    ),
-                    SizedBox(
-                      height: largeValue,
-                    ),
-                    Text(
-                      title ?? context.l10n.error_title,
-                      style: context.titleMedium.copyWith(
-                        color: context.onSurfaceVariant,
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        icon ?? Icons.error_outline,
+                        size: 64,
+                        color: context.primary,
                       ),
-                    ),
-                    if (showSubtitle)
+                      SizedBox(
+                        height: largeValue,
+                      ),
                       Text(
-                        subtitle ?? context.l10n.error_subtitle,
-                        style: context.bodyMedium.copyWith(
+                        title ?? context.l10n.error_title,
+                        style: context.titleMedium.copyWith(
                           color: context.onSurfaceVariant,
                         ),
                       ),
-                  ],
+                      if (showSubtitle)
+                        Text(
+                          subtitle ?? context.l10n.error_subtitle,
+                          style: context.bodyMedium.copyWith(
+                            color: context.onSurfaceVariant,
+                          ),
+                          softWrap: true,
+                          textAlign: TextAlign.center,
+                        ),
+                    ],
+                  ),
                 ),
               ],
             ),
