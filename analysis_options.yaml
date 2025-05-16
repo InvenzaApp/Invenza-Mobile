@@ -4,3 +4,8 @@ linter:
   rules:
     public_member_api_docs: false
     constant_identifier_names: false
+    lines_longer_than_80_chars: false
+    always_use_package_imports: false
+    avoid_redundant_argument_values: false
+    avoid_positional_boolean_parameters: false
+    sort_pub_dependencies: false
