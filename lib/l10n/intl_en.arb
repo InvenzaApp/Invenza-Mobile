@@ -64,6 +64,11 @@
   "permissions_delete_task": "Delete tasks",
   "permissions_show_organization": "View organization",
   "permissions_update_organization": "Edit organization",
+  "permissions_add_calendar": "Add event",
+  "permissions_list_calendar": "View calendar",
+  "permissions_show_calendar": "View event",
+  "permissions_update_calendar": "Modify event",
+  "permissions_delete_calendar": "Delete event",
   "permissions_other_account_show": "View account",
   "permissions_other_account_update": "Edit account",
 
@@ -71,6 +76,7 @@
   "permissions_category_groups": "Groups",
   "permissions_category_tasks": "Tasks",
   "permissions_category_organization": "Organization",
+  "permissions_category_calendar": "Calendar",
   "permissions_category_other": "Other",
 
   "task_status_to_do": "To do",
@@ -110,6 +116,7 @@
   "task_show_deadline": "Deadline",
   "task_show_created_at": "Created at",
   "task_show_created_by": "Created by",
+  "task_show_created_by_none": "Deleted user",
   "task_show_status": "Status",
   "task_show_comments": "Comments",
   "task_show_no_group_alert": "Your task does not belong to any group. Assign it to a group to make it available to others.",
@@ -117,6 +124,7 @@
   "team_app_bar": "Team",
   "team_users_title": "Manage users",
   "team_groups_title": "Manage groups",
+  "team_calendar": "Calendar",
 
   "groups_list_app_bar": "Groups",
   "groups_list_no_groups_title": "No groups found",
@@ -231,5 +239,26 @@
   "comments_app_bar": "Comments",
   "comments_input_placeholder": "Enter comment",
   "comments_not_found": "No comments found",
-  "comments_deleted": "Comment deleted"
+  "comments_deleted": "Comment deleted",
+
+  "calendar_show_app_bar": "Event preview",
+  "calendar_show_title": "Event name",
+  "calendar_show_description": "Description",
+  "calendar_show_date_from": "Event start",
+  "calendar_show_date_to": "Event end",
+
+  "calendar_update_app_bar": "Edit event",
+
+  "calendar_create_app_bar": "Add event",
+
+  "calendar_list_app_bar": "Calendar",
+
+  "calendar_form_title_label": "Title",
+  "calendar_form_title_placeholder": "Enter title",
+  "calendar_form_description_label": "Description (optional)",
+  "calendar_form_description_placeholder": "Enter description",
+  "calendar_form_date_from_label": "Event start",
+  "calendar_form_date_from_placeholder": "Select date",
+  "calendar_form_date_to_label": "Event end",
+  "calendar_form_date_to_placeholder": "Select date"
 }

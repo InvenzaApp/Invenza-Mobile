@@ -64,6 +64,11 @@
   "permissions_delete_task": "タスクを削除",
   "permissions_show_organization": "組織を表示",
   "permissions_update_organization": "組織を編集",
+  "permissions_add_calendar": "イベントを追加",
+  "permissions_list_calendar": "カレンダーを表示",
+  "permissions_show_calendar": "イベントを表示",
+  "permissions_update_calendar": "イベントを変更",
+  "permissions_delete_calendar": "イベントを削除",
   "permissions_other_account_show": "アカウントを表示",
   "permissions_other_account_update": "アカウントを編集",
 
@@ -71,6 +76,7 @@
   "permissions_category_groups": "グループ",
   "permissions_category_tasks": "タスク",
   "permissions_category_organization": "組織",
+  "permissions_category_calendar": "カレンダー",
   "permissions_category_other": "その他",
 
   "task_status_to_do": "未着手",
@@ -110,6 +116,7 @@
   "task_show_deadline": "期限",
   "task_show_created_at": "作成日時",
   "task_show_created_by": "作成者",
+  "task_show_created_by_none": "削除されたユーザー",
   "task_show_status": "ステータス",
   "task_show_comments": "コメント",
   "task_show_no_group_alert": "あなたのタスクはどのグループにも属していません。他の人が利用できるようにグループに割り当ててください。",
@@ -117,6 +124,7 @@
   "team_app_bar": "チーム",
   "team_users_title": "ユーザー管理",
   "team_groups_title": "グループ管理",
+  "team_calendar": "カレンダー",
 
   "groups_list_app_bar": "グループ",
   "groups_list_no_groups_title": "グループが見つかりません",
@@ -231,5 +239,26 @@
   "comments_app_bar": "コメント",
   "comments_input_placeholder": "コメントを入力",
   "comments_not_found": "コメントが見つかりません",
-  "comments_deleted": "コメントを削除しました"
+  "comments_deleted": "コメントを削除しました",
+
+  "calendar_show_app_bar": "イベントプレビュー",
+  "calendar_show_title": "イベント名",
+  "calendar_show_description": "説明",
+  "calendar_show_date_from": "イベント開始",
+  "calendar_show_date_to": "イベント終了",
+
+  "calendar_update_app_bar": "イベントを編集",
+
+  "calendar_create_app_bar": "イベントを追加",
+
+  "calendar_list_app_bar": "カレンダー",
+
+  "calendar_form_title_label": "タイトル",
+  "calendar_form_title_placeholder": "タイトルを入力",
+  "calendar_form_description_label": "説明（任意）",
+  "calendar_form_description_placeholder": "説明を入力",
+  "calendar_form_date_from_label": "イベント開始",
+  "calendar_form_date_from_placeholder": "日付を選択",
+  "calendar_form_date_to_label": "イベント終了",
+  "calendar_form_date_to_placeholder": "日付を選択"
 }

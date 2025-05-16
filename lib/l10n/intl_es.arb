@@ -64,6 +64,11 @@
   "permissions_delete_task": "Eliminar tareas",
   "permissions_show_organization": "Ver organización",
   "permissions_update_organization": "Editar organización",
+  "permissions_add_calendar": "Añadir evento",
+  "permissions_list_calendar": "Ver calendario",
+  "permissions_show_calendar": "Ver evento",
+  "permissions_update_calendar": "Modificar evento",
+  "permissions_delete_calendar": "Eliminar evento",
   "permissions_other_account_show": "Ver cuenta",
   "permissions_other_account_update": "Editar cuenta",
 
@@ -71,6 +76,7 @@
   "permissions_category_groups": "Grupos",
   "permissions_category_tasks": "Tareas",
   "permissions_category_organization": "Organización",
+  "permissions_category_calendar": "Calendario",
   "permissions_category_other": "Otros",
 
   "task_status_to_do": "Por hacer",
@@ -110,6 +116,7 @@
   "task_show_deadline": "Fecha límite",
   "task_show_created_at": "Creado el",
   "task_show_created_by": "Creado por",
+  "task_show_created_by_none": "Usuario eliminado",
   "task_show_status": "Estado",
   "task_show_comments": "Comentarios",
   "task_show_no_group_alert": "Tu tarea no pertenece a ningún grupo. Asígnala a un grupo para que esté disponible para otros.",
@@ -117,6 +124,7 @@
   "team_app_bar": "Equipo",
   "team_users_title": "Gestionar usuarios",
   "team_groups_title": "Gestionar grupos",
+  "team_calendar": "Calendario",
 
   "groups_list_app_bar": "Grupos",
   "groups_list_no_groups_title": "No se encontraron grupos",
@@ -231,5 +239,26 @@
   "comments_app_bar": "Comentarios",
   "comments_input_placeholder": "Escribe un comentario",
   "comments_not_found": "No se encontraron comentarios",
-  "comments_deleted": "Comentario eliminado"
+  "comments_deleted": "Comentario eliminado",
+
+  "calendar_show_app_bar": "Vista previa del evento",
+  "calendar_show_title": "Nombre del evento",
+  "calendar_show_description": "Descripción",
+  "calendar_show_date_from": "Inicio del evento",
+  "calendar_show_date_to": "Fin del evento",
+
+  "calendar_update_app_bar": "Editar evento",
+
+  "calendar_create_app_bar": "Añadir evento",
+
+  "calendar_list_app_bar": "Calendario",
+
+  "calendar_form_title_label": "Título",
+  "calendar_form_title_placeholder": "Escribe un título",
+  "calendar_form_description_label": "Descripción (opcional)",
+  "calendar_form_description_placeholder": "Escribe una descripción",
+  "calendar_form_date_from_label": "Inicio del evento",
+  "calendar_form_date_from_placeholder": "Selecciona la fecha",
+  "calendar_form_date_to_label": "Fin del evento",
+  "calendar_form_date_to_placeholder": "Selecciona la fecha"
 }

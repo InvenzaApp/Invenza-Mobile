@@ -64,6 +64,11 @@
   "permissions_delete_task": "Aufgaben löschen",
   "permissions_show_organization": "Organisation anzeigen",
   "permissions_update_organization": "Organisation bearbeiten",
+  "permissions_add_calendar": "Ereignis hinzufügen",
+  "permissions_list_calendar": "Kalender anzeigen",
+  "permissions_show_calendar": "Ereignis anzeigen",
+  "permissions_update_calendar": "Ereignis ändern",
+  "permissions_delete_calendar": "Ereignis löschen",
   "permissions_other_account_show": "Konto anzeigen",
   "permissions_other_account_update": "Konto bearbeiten",
 
@@ -71,6 +76,7 @@
   "permissions_category_groups": "Gruppen",
   "permissions_category_tasks": "Aufgaben",
   "permissions_category_organization": "Organisation",
+  "permissions_category_calendar": "Kalender",
   "permissions_category_other": "Andere",
 
   "task_status_to_do": "Zu erledigen",
@@ -110,6 +116,7 @@
   "task_show_deadline": "Frist",
   "task_show_created_at": "Erstellt am",
   "task_show_created_by": "Erstellt von",
+  "task_show_created_by_none": "Gelöschter Benutzer",
   "task_show_status": "Status",
   "task_show_comments": "Kommentare",
   "task_show_no_group_alert": "Ihre Aufgabe gehört zu keiner Gruppe. Weisen Sie sie einer Gruppe zu, um sie anderen verfügbar zu machen.",
@@ -117,6 +124,7 @@
   "team_app_bar": "Team",
   "team_users_title": "Benutzer verwalten",
   "team_groups_title": "Gruppen verwalten",
+  "team_calendar": "Kalender",
 
   "groups_list_app_bar": "Gruppen",
   "groups_list_no_groups_title": "Keine Gruppen gefunden",
@@ -231,5 +239,26 @@
   "comments_app_bar": "Kommentare",
   "comments_input_placeholder": "Kommentar eingeben",
   "comments_not_found": "Keine Kommentare gefunden",
-  "comments_deleted": "Kommentar gelöscht"
+  "comments_deleted": "Kommentar gelöscht",
+
+  "calendar_show_app_bar": "Ereignisvorschau",
+  "calendar_show_title": "Ereignisname",
+  "calendar_show_description": "Beschreibung",
+  "calendar_show_date_from": "Ereignisbeginn",
+  "calendar_show_date_to": "Ereignisende",
+
+  "calendar_update_app_bar": "Ereignis bearbeiten",
+
+  "calendar_create_app_bar": "Ereignis hinzufügen",
+
+  "calendar_list_app_bar": "Kalender",
+
+  "calendar_form_title_label": "Titel",
+  "calendar_form_title_placeholder": "Titel eingeben",
+  "calendar_form_description_label": "Beschreibung (optional)",
+  "calendar_form_description_placeholder": "Beschreibung eingeben",
+  "calendar_form_date_from_label": "Ereignisbeginn",
+  "calendar_form_date_from_placeholder": "Datum auswählen",
+  "calendar_form_date_to_label": "Ereignisende",
+  "calendar_form_date_to_placeholder": "Datum auswählen"
 }

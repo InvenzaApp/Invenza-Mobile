@@ -12,7 +12,7 @@ class OrganizationRepository {
   final UserService service;
 
   Future<bool> updateOrganization(Json payload) async{
-    final success = await service.updateOrganization(payload).asResult<bool>();
+    final success = await service.updateOrganization(payload).asResult<int>();
     return success.isSuccess;
   }
 }
