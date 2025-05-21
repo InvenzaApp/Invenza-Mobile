@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class IListTileItem {
-  const IListTileItem({
+class IListTile {
+  const IListTile({
     this.title,
     this.icon,
     this.onPressed,

@@ -4,8 +4,8 @@ import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/toast_extension.dart';
 import 'package:app/shared/form_template/models/i_form_widget.dart';
-import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_button.dart';
+import 'package:app/shared/widgets/one_ui_scroll_view.dart';
 import 'package:app/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -35,13 +35,11 @@ class _IFormTemplateState extends State<IFormTemplate> {
     final l10n = context.l10n;
 
     return Scaffold(
-      appBar: iAppBar(
-        context: context,
+      body: OneUIScrollView(
         title: widget.useCase.cockpitRepository.title ?? l10n.form,
-      ),
-      body: Column(
-        children: [
-          Expanded(
+        subtitle: l10n.form,
+        slivers: [
+          SliverToBoxAdapter(
             child: FormBuilder(
               key: _formKey,
               child: SingleChildScrollView(
@@ -55,50 +53,51 @@ class _IFormTemplateState extends State<IFormTemplate> {
               ),
             ),
           ),
-          Container(
-            padding: largePadding,
-            decoration: BoxDecoration(
-              color: context.container,
-            ),
-            child: Column(
-              children: [
-                IButton(
-                  isPending: isLoading,
-                  label: widget.useCase is CreateUseCase
-                      ? l10n.create
-                      : l10n.update,
-                  onPressed: () async {
-                    if (_formKey.currentState!.saveAndValidate()) {
-                      setState(() {
-                        isLoading = true;
-                      });
-
-                      final payload = _formKey.currentState!.value;
-
-                      final result = await widget.useCase.invoke(payload);
-
-                      setState(() {
-                        isLoading = false;
-                      });
-
-                      if (!context.mounted) return;
-
-                      if (result.isError) {
-                        final error = result.maybeError!;
-                        context.showToast(error.asString(context));
-                      }
-
-                      if (result.isSuccess) {
-                        widget.onSubmit(result);
-                      }
-                    }
-                  },
-                ),
-                SizedBox(height: mediumValue),
-              ],
-            ),
-          ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        padding: largePadding,
+        decoration: BoxDecoration(
+          color: context.container,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IButton(
+              isPending: isLoading,
+              label: widget.useCase is CreateUseCase
+                  ? l10n.create
+                  : l10n.update,
+              onPressed: () async {
+                if (_formKey.currentState!.saveAndValidate()) {
+                  setState(() {
+                    isLoading = true;
+                  });
+
+                  final payload = _formKey.currentState!.value;
+
+                  final result = await widget.useCase.invoke(payload);
+
+                  setState(() {
+                    isLoading = false;
+                  });
+
+                  if (!context.mounted) return;
+
+                  if (result.isError) {
+                    final error = result.maybeError!;
+                    context.showToast(error.asString(context));
+                  }
+
+                  if (result.isSuccess) {
+                    widget.onSubmit(result);
+                  }
+                }
+              },
+            ),
+            SizedBox(height: mediumValue),
+          ],
+        ),
       ),
     );
   }
