@@ -34,6 +34,10 @@
   "locked": "Bloccato",
   "locked_hint": "Ciò significa che l'elemento può essere modificato da una persona con stato di amministratore",
 
+  "nav_bar_tasks": "Attività",
+  "nav_bar_team": "Team",
+  "nav_bar_settings": "Impostazioni",
+
   "no_permissions_title": "Nessun permesso",
   "no_permissions_subtitle": "Purtroppo non hai i permessi",
 

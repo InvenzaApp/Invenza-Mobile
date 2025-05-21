@@ -34,6 +34,10 @@
   "locked": "ロック済み",
   "locked_hint": "これは、アイテムが管理者ステータスを持つ人物によってのみ変更できることを意味します",
 
+  "nav_bar_tasks": "タスク",
+  "nav_bar_team": "チーム",
+  "nav_bar_settings": "設定",
+
   "no_permissions_title": "権限がありません",
   "no_permissions_subtitle": "申し訳ありませんが、権限がありません",
 

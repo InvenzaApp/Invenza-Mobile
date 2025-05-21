@@ -18,7 +18,6 @@ class AppPage extends StatelessWidget {
         return INavigationBar(
           selectedIndex: tabsRouter.activeIndex,
           destinations: destinations,
-          tabsRouter: tabsRouter,
           onDestinationSelected: tabsRouter.setActiveIndex,
         );
       },

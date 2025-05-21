@@ -34,6 +34,10 @@
   "locked": "Gesichert",
   "locked_hint": "Dies bedeutet, dass das Element von einer Person mit Administratorstatus geändert werden kann",
 
+  "nav_bar_tasks": "Aufgaben",
+  "nav_bar_team": "Team",
+  "nav_bar_settings": "Einstellungen",
+
   "no_permissions_title": "Keine Berechtigungen",
   "no_permissions_subtitle": "Leider haben Sie keine Berechtigungen",
 
