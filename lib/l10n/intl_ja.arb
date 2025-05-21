@@ -267,5 +267,7 @@
   "calendar_form_date_from_label": "イベント開始",
   "calendar_form_date_from_placeholder": "日付を選択",
   "calendar_form_date_to_label": "イベント終了",
-  "calendar_form_date_to_placeholder": "日付を選択"
+  "calendar_form_date_to_placeholder": "日付を選択",
+
+  "organizations_app_bar": "組織"
 }

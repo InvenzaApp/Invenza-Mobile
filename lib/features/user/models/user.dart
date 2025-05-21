@@ -14,7 +14,7 @@ class User extends ItemEntity with EquatableMixin {
     required this.lastname,
     required this.title,
     required this.email,
-    required this.organizationId,
+    required this.organizationsIdList,
     required this.groupsIdList,
     required this.permissions,
     required this.admin,
@@ -31,7 +31,7 @@ class User extends ItemEntity with EquatableMixin {
   @override
   final String title;
   final String email;
-  final int organizationId;
+  final List<int> organizationsIdList;
   final List<int> groupsIdList;
   @JsonKey(fromJson: Permissions.fromJson, toJson: Permissions.toJson)
   final List<Permissions> permissions;
@@ -47,7 +47,7 @@ class User extends ItemEntity with EquatableMixin {
         lastname,
         title,
         email,
-        organizationId,
+        organizationsIdList,
         groupsIdList,
         permissions,
         groups,

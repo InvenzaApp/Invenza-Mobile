@@ -69,4 +69,24 @@ extension AuthResultExtension<T> on Future<Json> {
       }
     }
   }
+
+  Future<Result<List<E>>> asListResult<E>({E Function(Json)? fromJson}) async {
+    final result = await then((item) => item);
+
+    final success = result['success'] as bool;
+    final data = result['data'];
+
+    if (!success) {
+      return ErrorResult(ApiMessages.fromJson(data as String));
+    } else {
+      if (fromJson != null) {
+        final dataList = (data as List<dynamic>).map((item){
+          return fromJson(item as Json);
+        }).toList();
+        return SuccessResult(dataList);
+      } else {
+        return SuccessResult(data as List<E>);
+      }
+    }
+  }
 }

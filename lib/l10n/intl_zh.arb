@@ -267,5 +267,7 @@
   "calendar_form_date_from_label": "事件开始",
   "calendar_form_date_from_placeholder": "选择日期",
   "calendar_form_date_to_label": "事件结束",
-  "calendar_form_date_to_placeholder": "选择日期"
+  "calendar_form_date_to_placeholder": "选择日期",
+
+  "organizations_app_bar": "组织"
 }

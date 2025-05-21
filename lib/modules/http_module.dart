@@ -16,6 +16,10 @@ abstract class HttpModule{
     @Named('httpClient')
     Dio get httpClient => _createDio();
 
+    @singleton
+    @Named('organizationHttpClient')
+    Dio get organizationHttpClient => _createDio();
+
     Dio _createDio() {
       final dio = Dio(
         BaseOptions(

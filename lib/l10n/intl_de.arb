@@ -267,5 +267,7 @@
   "calendar_form_date_from_label": "Ereignisbeginn",
   "calendar_form_date_from_placeholder": "Datum auswählen",
   "calendar_form_date_to_label": "Ereignisende",
-  "calendar_form_date_to_placeholder": "Datum auswählen"
+  "calendar_form_date_to_placeholder": "Datum auswählen",
+
+  "organizations_app_bar": "Organisationen"
 }
