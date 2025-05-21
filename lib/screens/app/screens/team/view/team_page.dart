@@ -25,8 +25,7 @@ class TeamPage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: mediumPadding,
-              child: Column(
-                spacing: mediumValue,
+              child: IListTileWidget(
                 children: [
                   IListTile(
                     title: l10n.team_users_title,

@@ -31,8 +31,7 @@ class SettingsPage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: mediumPadding,
-              child: Column(
-                spacing: mediumValue,
+              child: IListTileWidget(
                 children: [
                   if (UserPermissions.hasPermission(
                     Permissions.other_account_show,
