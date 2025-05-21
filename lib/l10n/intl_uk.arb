@@ -119,6 +119,7 @@
   "task_show_created_by_none": "Видалений користувач",
   "task_show_status": "Статус",
   "task_show_comments": "Коментарі",
+  "task_show_groups": "Групи",
   "task_show_no_group_alert": "Ваше завдання не призначено жодній групі. Призначте його групі, щоб воно було видимим для інших.",
 
   "team_app_bar_title": "Команда",
@@ -141,6 +142,7 @@
 
   "groups_show_app_bar": "Перегляд групи",
   "groups_show_name": "Назва групи",
+  "groups_show_users": "Користувачі",
   "groups_show_delete_alert": "Ви впевнені, що хочете видалити групу?",
 
   "users_create_app_bar": "Додати користувача",

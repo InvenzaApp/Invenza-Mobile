@@ -119,6 +119,7 @@
   "task_show_created_by_none": "削除されたユーザー",
   "task_show_status": "ステータス",
   "task_show_comments": "コメント",
+  "task_show_groups": "グループ",
   "task_show_no_group_alert": "あなたのタスクはどのグループにも割り当てられていません。他の人が表示できるようにグループに割り当ててください。",
 
   "team_app_bar_title": "チーム",
@@ -141,6 +142,7 @@
 
   "groups_show_app_bar": "グループプレビュー",
   "groups_show_name": "グループ名",
+  "groups_show_users": "ユーザー",
   "groups_show_delete_alert": "グループを本当に削除しますか？",
 
   "users_create_app_bar": "ユーザーを追加",

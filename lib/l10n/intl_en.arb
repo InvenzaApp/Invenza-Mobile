@@ -119,6 +119,7 @@
   "task_show_created_by_none": "Deleted user",
   "task_show_status": "Status",
   "task_show_comments": "Comments",
+  "task_show_groups": "Groups",
   "task_show_no_group_alert": "Your task is not assigned to any group. Assign it to a group to make it visible to others.",
 
   "team_app_bar_title": "Team",
@@ -141,6 +142,7 @@
 
   "groups_show_app_bar": "Group preview",
   "groups_show_name": "Group name",
+  "groups_show_users": "Users",
   "groups_show_delete_alert": "Are you sure you want to delete this group?",
 
   "users_create_app_bar": "Add user",

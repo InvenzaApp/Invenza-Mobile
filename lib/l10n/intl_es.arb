@@ -119,6 +119,7 @@
   "task_show_created_by_none": "Usuario eliminado",
   "task_show_status": "Estado",
   "task_show_comments": "Comentarios",
+  "task_show_groups": "Grupos",
   "task_show_no_group_alert": "Tu tarea no está asignada a ningún grupo. Asígnala a un grupo para que sea visible para otros.",
 
   "team_app_bar_title": "Equipo",
@@ -141,6 +142,7 @@
 
   "groups_show_app_bar": "Vista previa del grupo",
   "groups_show_name": "Nombre del grupo",
+  "groups_show_users": "Usuarios",
   "groups_show_delete_alert": "¿Estás seguro de que quieres eliminar el grupo?",
 
   "users_create_app_bar": "Añadir usuario",

@@ -119,6 +119,7 @@
   "task_show_created_by_none": "Gelöschter Benutzer",
   "task_show_status": "Status",
   "task_show_comments": "Kommentare",
+  "task_show_groups": "Gruppen",
   "task_show_no_group_alert": "Ihre Aufgabe ist keiner Gruppe zugewiesen. Weisen Sie sie einer Gruppe zu, damit sie für andere sichtbar ist.",
 
   "team_app_bar_title": "Team",
@@ -141,6 +142,7 @@
 
   "groups_show_app_bar": "Gruppenvorschau",
   "groups_show_name": "Gruppenname",
+  "groups_show_users": "Benutzer",
   "groups_show_delete_alert": "Möchten Sie die Gruppe wirklich löschen?",
 
   "users_create_app_bar": "Benutzer hinzufügen",
