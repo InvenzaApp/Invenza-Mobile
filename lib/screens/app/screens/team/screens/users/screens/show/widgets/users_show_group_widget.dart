@@ -1,5 +1,6 @@
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/extensions/color_extension.dart';
+import 'package:app/extensions/string_extension.dart';
 import 'package:app/extensions/text_extension.dart';
 import 'package:app/extensions/user_extension.dart';
 import 'package:app/features/group/models/group.dart';
@@ -39,7 +40,7 @@ class UsersShowGroupWidget extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                _hasAccess(user) ? group.title : group.id.toString(),
+                _hasAccess(user) ? group.title : group.title.hashString(),
                 style: context.bodyMedium.copyWith(
                   decoration:
                       _hasAccess(user) ? null : TextDecoration.lineThrough,
