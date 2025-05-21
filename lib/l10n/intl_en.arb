@@ -34,6 +34,10 @@
   "locked": "Secured",
   "locked_hint": "This means that the item can be modified by a person with administrator status",
 
+  "nav_bar_tasks": "Tasks",
+  "nav_bar_team": "Team",
+  "nav_bar_settings": "Settings",
+
   "no_permissions_title": "No permissions",
   "no_permissions_subtitle": "Unfortunately, you do not have permissions",
 

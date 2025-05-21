@@ -34,6 +34,10 @@
   "locked": "Zabezpieczony",
   "locked_hint": "Oznacza to, że element może modyfikować osoba ze statusem administratora",
 
+  "nav_bar_tasks": "Zadania",
+  "nav_bar_team": "Zespół",
+  "nav_bar_settings": "Ustawienia",
+
   "no_permissions_title": "Brak uprawnień",
   "no_permissions_subtitle": "Niestety, nie masz uprawnień",
 

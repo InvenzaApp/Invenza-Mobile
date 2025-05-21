@@ -34,6 +34,10 @@
   "locked": "已锁定",
   "locked_hint": "这意味着该项目只能由具有管理员身份的人员修改",
 
+  "nav_bar_tasks": "任务",
+  "nav_bar_team": "团队",
+  "nav_bar_settings": "设置",
+
   "no_permissions_title": "无权限",
   "no_permissions_subtitle": "抱歉，您没有权限",
 

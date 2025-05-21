@@ -34,6 +34,10 @@
   "locked": "Захищено",
   "locked_hint": "Це означає, що елемент може змінювати особа зі статусом адміністратора",
 
+  "nav_bar_tasks": "Завдання",
+  "nav_bar_team": "Команда",
+  "nav_bar_settings": "Налаштування",
+
   "no_permissions_title": "Немає дозволів",
   "no_permissions_subtitle": "На жаль, у вас немає дозволів",
 
