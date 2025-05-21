@@ -267,5 +267,7 @@
   "calendar_form_date_from_label": "Початок події",
   "calendar_form_date_from_placeholder": "Виберіть дату",
   "calendar_form_date_to_label": "Кінець події",
-  "calendar_form_date_to_placeholder": "Виберіть дату"
+  "calendar_form_date_to_placeholder": "Виберіть дату",
+
+  "organizations_app_bar": "Організації"
 }

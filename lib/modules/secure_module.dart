@@ -6,6 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureModule{
   static const userKey = 'user';
+  static const organizationIdKey = 'organizationId';
   final storage = const FlutterSecureStorage();
 
   Future<void> saveUserCredentials(UserAuthPayload payload) async{
@@ -23,5 +24,19 @@ class SecureModule{
 
   Future<void> deleteUserCredentials() async{
     await storage.delete(key: userKey);
+  }
+
+  Future<void> saveOrganizationId(int organizationId) async{
+    await storage.write(key: organizationIdKey, value: organizationId.toString());
+  }
+
+  Future<int?> getOrganizationId() async{
+    final value = await storage.read(key: organizationIdKey);
+    if(value == null) return null;
+    return int.parse(value);
+  }
+
+  Future<void> deleteOrganization() async{
+    await storage.delete(key: organizationIdKey);
   }
 }
