@@ -119,6 +119,7 @@
   "task_show_created_by_none": "已删除用户",
   "task_show_status": "状态",
   "task_show_comments": "评论",
+  "task_show_groups": "群组",
   "task_show_no_group_alert": "您的任务未分配给任何群组。请将其分配到一个群组，以便其他人可以看到。",
 
   "team_app_bar_title": "团队",
@@ -141,6 +142,7 @@
 
   "groups_show_app_bar": "群组预览",
   "groups_show_name": "群组名称",
+  "groups_show_users": "用户",
   "groups_show_delete_alert": "您确定要删除群组吗？",
 
   "users_create_app_bar": "添加用户",

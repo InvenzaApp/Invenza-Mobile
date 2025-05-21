@@ -2,6 +2,7 @@ import 'package:app/di.dart';
 import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/date_time_extension.dart';
+import 'package:app/extensions/text_extension.dart';
 import 'package:app/features/tasks/models/task.dart';
 import 'package:app/features/tasks/network/tasks_remote_data_source.dart';
 import 'package:app/features/tasks/network/tasks_repository.dart';
@@ -43,12 +44,14 @@ class TasksShowPage extends StatelessWidget {
           padding: mediumPadding,
           child: SingleChildScrollView(
             child: Column(
-              spacing: mediumValue,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (task.groupsList?.isEmpty ?? true)
+                if (task.groupsList?.isEmpty ?? true)...[
                   IAlertWidget(
                     message: l10n.task_show_no_group_alert,
                   ),
+                  SizedBox(height: largeValue),
+                ],
                 ICard(
                   children: [
                     ICardItem(
@@ -86,16 +89,27 @@ class TasksShowPage extends StatelessWidget {
                     ],
                   ],
                 ),
-                if (task.commentsEnabled)
+                SizedBox(height: largeValue),
+                if (task.commentsEnabled)...[
                   TasksShowCommentButton(
                     task: task,
                   ),
-                Column(
-                  spacing: smallValue,
-                  children: task.groupsList!.map((item) {
-                    return TasksShowGroupWidget(group: item);
-                  }).toList(),
-                ),
+                  SizedBox(height: largeValue),
+                ],
+                if(task.groupsList!.isNotEmpty)...[
+                  Text(
+                    context.l10n.task_form_groups_label,
+                    style: context.bodyMedium,
+                  ),
+                  SizedBox(height: smallValue),
+                  Column(
+                    spacing: smallValue,
+                    children: task.groupsList!.map((item) {
+                      return TasksShowGroupWidget(group: item);
+                    }).toList(),
+                  ),
+                  SizedBox(height: largeValue),
+                ],
               ],
             ),
           ),
