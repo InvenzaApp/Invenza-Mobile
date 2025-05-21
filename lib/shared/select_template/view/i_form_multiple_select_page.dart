@@ -7,6 +7,7 @@ import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
 import 'package:app/extensions/text_extension.dart';
+import 'package:app/features/user/models/user.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_button.dart';
 import 'package:app/shared/widgets/i_error_widget.dart';
@@ -48,6 +49,21 @@ class _IFormMultipleSelectPageState<T extends ItemEntity>
         selectedEntities = widget.initialIdList!;
       });
     }
+  }
+
+  void onSelectAll(SelectState<T> state, User user) {
+    setState(() {
+      selectedEntities = state.data!.maybeValue!
+          .where((e) {
+            if (user.admin) {
+              return true;
+            } else {
+              return !e.locked;
+            }
+          })
+          .map((e) => e.id)
+          .toList();
+    });
   }
 
   @override
@@ -92,14 +108,7 @@ class _IFormMultipleSelectPageState<T extends ItemEntity>
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   TextButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        selectedEntities = state
-                                            .data!.maybeValue!
-                                            .map((e) => e.id)
-                                            .toList();
-                                      });
-                                    },
+                                    onPressed: () => onSelectAll(state, user),
                                     child: Text(l10n.selectAll),
                                   ),
                                   TextButton(
@@ -122,7 +131,7 @@ class _IFormMultipleSelectPageState<T extends ItemEntity>
                                   itemBuilder: (context, index) {
                                     final data = state.data!.maybeValue![index];
 
-                                    if(!user.admin && data.locked){
+                                    if (!user.admin && data.locked) {
                                       return const SizedBox.shrink();
                                     }
 
