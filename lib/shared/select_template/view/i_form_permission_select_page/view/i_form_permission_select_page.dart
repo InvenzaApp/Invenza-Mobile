@@ -1,13 +1,17 @@
 import 'package:app/core/entity/entity.dart';
+import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
+import 'package:app/extensions/user_extension.dart';
+import 'package:app/features/user/models/user.dart';
 import 'package:app/shared/select_template/view/i_form_permission_select_page/widgets/i_form_permission_select_panel_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_button.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class IFormPermissionSelectPage extends StatefulWidget {
   const IFormPermissionSelectPage({
@@ -36,8 +40,20 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
     }
   }
 
+  void onSelectAll(User user) {
+    setState(() {
+      selectedEntities = Permissions.values
+          .where((e) {
+            return user.hasAccessToPermission(e);
+          })
+          .map((e) => e.name)
+          .toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final user = context.read<UserCubit>().state.userResult!.maybeValue!;
     final l10n = context.l10n;
 
     return Scaffold(
@@ -55,12 +71,7 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextButton(
-                  onPressed: () {
-                    setState(() {
-                      selectedEntities =
-                          Permissions.values.map((e) => e.name).toList();
-                    });
-                  },
+                  onPressed: () => onSelectAll(user),
                   child: Text(l10n.selectAll),
                 ),
                 TextButton(
