@@ -23,7 +23,7 @@ class UsersShowPage extends StatelessWidget {
   static final userCubit = inject<UserCubit>();
 
   bool isDeleteAndEditEnabled() {
-    if (userCubit.state.organizationResult?.maybeValue?.id == resourceId) {
+    if (userCubit.state.organizationResult?.maybeValue?.admin.id == resourceId) {
       return false;
     }
 

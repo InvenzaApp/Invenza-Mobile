@@ -273,5 +273,9 @@
   "calendar_form_date_to_label": "Koniec wydarzenia",
   "calendar_form_date_to_placeholder": "Wybierz date",
 
-  "organizations_app_bar": "Organizacje"
+  "organizations_app_bar": "Organizacje",
+
+  "organization_select_label": "Organizacje",
+  "organization_select_title": "Dodatkowe organizacje",
+  "organization_select_subtitle": "Kliknij, aby wybrać dodatkowe organizacje"
 }

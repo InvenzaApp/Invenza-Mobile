@@ -9,6 +9,7 @@ import 'package:app/features/user/models/user.dart';
 import 'package:app/features/user/use_case/users_update_use_case.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
 import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
+import 'package:app/shared/select_template/widgets/i_form_organization_select_widget.dart';
 import 'package:app/shared/select_template/widgets/i_form_permission_select_widget.dart';
 import 'package:app/shared/widgets/i_form_skeletonizer.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
@@ -120,6 +121,9 @@ class _UsersFormWidgetState extends State<UsersFormWidget> {
           initialList: resources?.permissions.map((e) => e.name).toList(),
         ),
         if (user?.admin ?? false) ...[
+          IFormOrganizationSelectWidget(
+            initialList: resources?.organizationsIdList,
+          ),
           IFormCheckbox(
             initialValue: resources?.admin,
             name: 'admin',

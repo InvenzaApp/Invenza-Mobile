@@ -273,5 +273,9 @@
   "calendar_form_date_to_label": "事件结束",
   "calendar_form_date_to_placeholder": "选择日期",
 
-  "organizations_app_bar": "组织"
+  "organizations_app_bar": "组织",
+
+  "organization_select_label": "组织",
+  "organization_select_title": "其他组织",
+  "organization_select_subtitle": "点击选择其他组织"
 }
