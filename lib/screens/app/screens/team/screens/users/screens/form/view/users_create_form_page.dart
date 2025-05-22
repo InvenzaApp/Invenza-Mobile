@@ -1,3 +1,4 @@
+import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/features/user/network/users_remote_data_source.dart';
@@ -19,6 +20,7 @@ class UsersCreateFormPage extends StatelessWidget {
           remoteDS: inject<UsersRemoteDataSource>(),
           title: context.l10n.users_create_app_bar,
         ),
+        userCubit: inject<UserCubit>(),
       ),
     );
   }

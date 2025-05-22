@@ -273,5 +273,9 @@
   "calendar_form_date_to_label": "Ereignisende",
   "calendar_form_date_to_placeholder": "Datum auswählen",
 
-  "organizations_app_bar": "Organisationen"
+  "organizations_app_bar": "Organisationen",
+
+  "organization_select_label": "Organisationen",
+  "organization_select_title": "Zusätzliche Organisationen",
+  "organization_select_subtitle": "Klicken Sie, um zusätzliche Organisationen auszuwählen"
 }

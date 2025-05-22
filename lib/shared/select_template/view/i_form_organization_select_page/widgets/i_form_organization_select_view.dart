@@ -1,18 +1,18 @@
-import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/color_extension.dart';
+import 'package:app/features/organization/models/organization.dart';
 import 'package:app/variables.dart';
 import 'package:flutter/material.dart';
 
-class IFormPermissionSelectWidget extends StatelessWidget {
-  const IFormPermissionSelectWidget({
+class IFormOrganizationSelectView extends StatelessWidget {
+  const IFormOrganizationSelectView({
     required this.isSelected,
-    required this.permission,
+    required this.organization,
     required this.onChanged,
     super.key,
   });
 
   final bool isSelected;
-  final Permissions permission;
+  final Organization organization;
   final void Function(bool selected) onChanged;
 
   @override
@@ -32,10 +32,10 @@ class IFormPermissionSelectWidget extends StatelessWidget {
             Icon(
               isSelected
                   ? Icons.check_circle
-                  : permission.getPermissionTypeIcon(),
+                  : Icons.business,
             ),
             Text(
-              permission.getName(context),
+              organization.title,
             ),
           ],
         ),

@@ -45,6 +45,8 @@ class UserCubit extends Cubit<UserState> {
 
     if(organizationId == null) return;
 
+    await fetchOrganizations();
+
     await selectOrganization(organizationId);
   }
 
