@@ -74,7 +74,7 @@ class _OrganizationsPageState extends State<OrganizationsPage> {
                     await context.router.replaceAll([const AppRoute()]);
                   },
                   child: Ink(
-                    padding: mediumPadding,
+                    padding: largePadding,
                     child: Row(
                       spacing: mediumValue,
                       children: [

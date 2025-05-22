@@ -25,17 +25,21 @@ class IListTileButton extends StatelessWidget {
       return BorderRadius.only(
         topLeft: Radius.circular(mediumValue),
         topRight: Radius.circular(mediumValue),
+        bottomLeft: Radius.circular(xSmallValue),
+        bottomRight: Radius.circular(xSmallValue),
       );
     }
 
     if(index == (length - 1)){
       return BorderRadius.only(
+        topLeft: Radius.circular(xSmallValue),
+        topRight: Radius.circular(xSmallValue),
         bottomLeft: Radius.circular(mediumValue),
         bottomRight: Radius.circular(mediumValue),
       );
     }
 
-    return BorderRadius.zero;
+    return BorderRadius.circular(xSmallValue);
   }
 
   @override
@@ -44,7 +48,7 @@ class IListTileButton extends StatelessWidget {
       onTap: child.onPressed,
       borderRadius: _getBorderRadius(),
       child: Ink(
-        padding: xLargePadding,
+        padding: largePadding,
         decoration: BoxDecoration(
           color: context.container,
           borderRadius: _getBorderRadius(),
