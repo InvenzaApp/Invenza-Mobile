@@ -1,11 +1,8 @@
-import 'package:app/core/entity/entity.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
-import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/color_extension.dart';
-import 'package:app/extensions/user_extension.dart';
-import 'package:app/features/user/models/user.dart';
-import 'package:app/shared/select_template/view/i_form_permission_select_page/widgets/i_form_permission_select_panel_widget.dart';
+import 'package:app/features/organization/models/organization.dart';
+import 'package:app/shared/select_template/view/i_form_organization_select_page/widgets/i_form_organization_select_view.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_button.dart';
 import 'package:app/variables.dart';
@@ -13,21 +10,22 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class IFormPermissionSelectPage extends StatefulWidget {
-  const IFormPermissionSelectPage({
+class IFormOrganizationSelectPage extends StatefulWidget {
+  const IFormOrganizationSelectPage({
     this.initialList,
     super.key,
   });
 
-  final List<String>? initialList;
+  final List<int>? initialList;
 
   @override
-  State<IFormPermissionSelectPage> createState() =>
-      _IFormPermissionSelectPageState();
+  State<IFormOrganizationSelectPage> createState() =>
+      _IFormOrganizationSelectPageState();
 }
 
-class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
-  List<String> selectedEntities = [];
+class _IFormOrganizationSelectPageState
+    extends State<IFormOrganizationSelectPage> {
+  List<int> selectedEntities = [];
 
   @override
   void initState() {
@@ -40,20 +38,22 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
     }
   }
 
-  void onSelectAll(User user) {
+  void onSelectAll(
+    List<Organization> organizationsList,
+    int selectedOrganizationId,
+  ) {
     setState(() {
-      selectedEntities = Permissions.values
-          .where((e) {
-            return user.hasAccessToPermission(e);
-          })
-          .map((e) => e.name)
-          .toList();
+      selectedEntities = organizationsList
+          .where((e) => e.id != selectedOrganizationId)
+          .map((e) => e.id).toList();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final user = context.read<UserCubit>().state.userResult!.maybeValue!;
+    final organizationsList = context.read<UserCubit>().state.organizationsList;
+    final selectedOrganizationId =
+        context.read<UserCubit>().state.selectedOrganizationId!;
     final l10n = context.l10n;
 
     return Scaffold(
@@ -71,7 +71,8 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextButton(
-                  onPressed: () => onSelectAll(user),
+                  onPressed: () =>
+                      onSelectAll(organizationsList, selectedOrganizationId),
                   child: Text(l10n.selectAll),
                 ),
                 TextButton(
@@ -90,33 +91,24 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
               padding: mediumPadding,
               child: SingleChildScrollView(
                 child: Column(
-                  spacing: xxLargeValue,
-                  children: [
-                    IFormPermissionSelectPanelWidget(
-                      permissionsCategory: PermissionsCategory.user,
-                      selectedPermissions: selectedEntities,
-                    ),
-                    IFormPermissionSelectPanelWidget(
-                      permissionsCategory: PermissionsCategory.group,
-                      selectedPermissions: selectedEntities,
-                    ),
-                    IFormPermissionSelectPanelWidget(
-                      permissionsCategory: PermissionsCategory.task,
-                      selectedPermissions: selectedEntities,
-                    ),
-                    IFormPermissionSelectPanelWidget(
-                      permissionsCategory: PermissionsCategory.calendar,
-                      selectedPermissions: selectedEntities,
-                    ),
-                    IFormPermissionSelectPanelWidget(
-                      permissionsCategory: PermissionsCategory.organization,
-                      selectedPermissions: selectedEntities,
-                    ),
-                    IFormPermissionSelectPanelWidget(
-                      permissionsCategory: PermissionsCategory.other,
-                      selectedPermissions: selectedEntities,
-                    ),
-                  ],
+                  spacing: mediumValue,
+                  children: organizationsList
+                      .where((e) => e.id != selectedOrganizationId)
+                      .map((organization) {
+                    return IFormOrganizationSelectView(
+                      isSelected: selectedEntities.contains(organization.id),
+                      organization: organization,
+                      onChanged: (selected) {
+                        setState(() {
+                          if (selectedEntities.contains(organization.id)) {
+                            selectedEntities.remove(organization.id);
+                          } else {
+                            selectedEntities.add(organization.id);
+                          }
+                        });
+                      },
+                    );
+                  }).toList(),
                 ),
               ),
             ),
@@ -132,7 +124,7 @@ class _IFormPermissionSelectPageState extends State<IFormPermissionSelectPage> {
                   label: l10n.save,
                   onPressed: () {
                     if (selectedEntities.isEmpty) {
-                      context.maybePop(<Entity>[]);
+                      context.maybePop(<int>[]);
                     } else {
                       context.maybePop(selectedEntities);
                     }

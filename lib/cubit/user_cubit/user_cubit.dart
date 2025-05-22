@@ -22,6 +22,8 @@ class UserCubit extends Cubit<UserState> {
   Future<void> signIn(UserAuthPayload payload) async {
     emit(state.copyWith(isLoading: true));
 
+    if(state.userResult != null) return;
+
     final result = await repo.signIn(payload);
 
     emit(
@@ -31,26 +33,73 @@ class UserCubit extends Cubit<UserState> {
       ),
     );
 
-    if(result.isSuccess){
+    if (result.isSuccess) {
       await secure.saveUserCredentials(payload);
       await tokenModule.registerToken(email: payload.email);
-      await fetchOrganization();
+      await _checkSavedOrganization();
     }
+  }
+
+  Future<void> _checkSavedOrganization() async{
+    final organizationId = await secure.getOrganizationId();
+
+    if(organizationId == null) return;
+
+    await fetchOrganizations();
+
+    await selectOrganization(organizationId);
+  }
+
+  Future<void> fetchOrganizations() async {
+    emit(state.copyWith(isLoading: true));
+
+    final result = await repo.getOrganizations();
+
+    emit(
+      state.copyWith(
+        isLoading: false,
+        organizationsList: result.isSuccess ? result.maybeValue! : null,
+      ),
+    );
+  }
+
+  Future<void> selectOrganization(int organizationId) async {
+    emit(state.copyWith(isLoading: true));
+
+    final result = await repo.selectOrganization(organizationId);
+
+    if(result.isError) return;
+
+    await secure.saveOrganizationId(organizationId);
+
+    emit(state.copyWith(selectedOrganizationId: organizationId));
+
+    await fetchOrganization();
   }
 
   Future<void> fetchOrganization() async {
     emit(state.copyWith(isLoading: true));
-    if (state.userResult?.isError ?? false) return;
-    final result = await repo
-        .getOrganization(state.userResult!.maybeValue!.organizationId);
+
+    if (state.selectedOrganizationId == null) {
+      emit(state.copyWith(isLoading: false));
+      return;
+    }
+
+    if (state.userResult?.isError ?? false) {
+      emit(state.copyWith(isLoading: false));
+      return;
+    }
+
+    final result = await repo.getOrganization(state.selectedOrganizationId!);
 
     emit(state.copyWith(organizationResult: result, isLoading: false));
   }
 
-  Future<void> fetchUser() async{
-    if(state.userResult?.isError ?? true) return;
+  Future<void> fetchUser() async {
+    if (state.userResult?.isError ?? true) return;
     emit(state.copyWith(isLoading: true));
-    final newUserResult = await repo.fetchUser(state.userResult!.maybeValue!.id);
+    final newUserResult =
+        await repo.fetchUser(state.userResult!.maybeValue!.id);
     emit(state.copyWith(isLoading: false, userResult: newUserResult));
   }
 
@@ -64,6 +113,7 @@ class UserCubit extends Cubit<UserState> {
 
   Future<void> signOut() async {
     await secure.deleteUserCredentials();
+    await secure.deleteOrganization();
     reset();
   }
 }

@@ -18,7 +18,7 @@ class GroupsCreateUseCase extends CreateUseCase {
   Future<Result<int>> invoke(Json payload) async {
     final creatorId = userCubit.state.userResult!.maybeValue!.id;
 
-    final mutablePayload = Map<String, dynamic>.from(payload);
+    final mutablePayload = Json.from(payload);
 
     final existingUsers = (mutablePayload['usersIdList'] as List<int>?) ?? [];
     mutablePayload['usersIdList'] = [creatorId, ...existingUsers];

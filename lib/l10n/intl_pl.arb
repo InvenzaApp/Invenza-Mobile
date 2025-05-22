@@ -34,6 +34,10 @@
   "locked": "Zabezpieczony",
   "locked_hint": "Oznacza to, że element może modyfikować osoba ze statusem administratora",
 
+  "nav_bar_tasks": "Zadania",
+  "nav_bar_team": "Zespół",
+  "nav_bar_settings": "Ustawienia",
+
   "no_permissions_title": "Brak uprawnień",
   "no_permissions_subtitle": "Niestety, nie masz uprawnień",
 
@@ -119,9 +123,11 @@
   "task_show_created_by_none": "Usunięty użytkownik",
   "task_show_status": "Status",
   "task_show_comments": "Komentarze",
+  "task_show_groups": "Grupy",
   "task_show_no_group_alert": "Twoje zadanie nie jest przypisane do żadnej grupy. Przypisz je do grupy, aby było widoczne dla innych.",
 
-  "team_app_bar": "Zespół",
+  "team_app_bar_title": "Zespół",
+  "team_app_bar_subtitle": "Zarządzaj swoim zespołem",
   "team_users_title": "Zarządzaj użytkownikami",
   "team_groups_title": "Zarządzaj grupami",
   "team_calendar": "Kalendarz",
@@ -140,6 +146,7 @@
 
   "groups_show_app_bar": "Podgląd grupy",
   "groups_show_name": "Nazwa grupy",
+  "groups_show_users": "Użytkownicy",
   "groups_show_delete_alert": "Czy na pewno chcesz usunąć grupę?",
 
   "users_create_app_bar": "Dodaj użytkownika",
@@ -174,7 +181,8 @@
   "login_password_placeholder": "Wpisz hasło",
   "login_sign_in_button": "Zaloguj się",
 
-  "settings_app_bar": "Ustawienia",
+  "settings_app_bar_title": "Ustawienia",
+  "settings_app_bar_subtitle": "Dostosuj ustawienia aplikacji",
   "settings_theme_title": "Motyw aplikacji",
   "settings_language_title": "Język aplikacji",
   "settings_account_title": "Moje konto",
@@ -198,7 +206,8 @@
   "language_chinese_title": "Chiński",
   "language_japanese_title": "Japoński",
 
-  "password_page_app_bar": "Zmień hasło",
+  "password_page_app_bar_title": "Moje hasło",
+  "password_page_app_bar_subtitle": "Zmień swoje hasło",
   "password_page_placeholder": "Wpisz hasło",
   "password_page_old_label": "Stare hasło",
   "password_page_new_label": "Nowe hasło",
@@ -207,7 +216,8 @@
   "password_page_api_error": "Stare hasło jest nieprawidłowe",
   "password_page_submit": "Zmień hasło",
 
-  "account_app_bar": "Moje konto",
+  "account_app_bar_title": "Moje konto",
+  "account_app_bar_subtitle": "Zarządzaj swoim kontem",
   "account_name_title": "Imię",
   "account_name_placeholder": "Wpisz imię",
   "account_lastname_title": "Nazwisko",
@@ -219,7 +229,8 @@
   "organization_app_bar": "Organizacja",
   "organization_title": "Nazwa organizacji",
 
-  "organization_update_app_bar": "Edytuj organizacje",
+  "organization_update_app_bar_title": "Organizacja",
+  "organization_update_app_bar_subtitle": "Edytuj swoją organizację",
   "organization_update_title_label": "Nazwa organizacji",
   "organization_update_title_placeholder": "Wpisz nazwę",
   "organization_update_street_title": "Ulica",
@@ -260,5 +271,11 @@
   "calendar_form_date_from_label": "Start wydarzenia",
   "calendar_form_date_from_placeholder": "Wybierz date",
   "calendar_form_date_to_label": "Koniec wydarzenia",
-  "calendar_form_date_to_placeholder": "Wybierz date"
+  "calendar_form_date_to_placeholder": "Wybierz date",
+
+  "organizations_app_bar": "Organizacje",
+
+  "organization_select_label": "Organizacje",
+  "organization_select_title": "Dodatkowe organizacje",
+  "organization_select_subtitle": "Kliknij, aby wybrać dodatkowe organizacje"
 }

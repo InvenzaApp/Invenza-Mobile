@@ -21,6 +21,7 @@ class IListTemplate<T extends ItemEntity> extends ListTemplate<T> {
     required this.widget,
     required this.createPermission,
     required this.listPermission,
+    this.showBackButton = true,
     super.key,
   });
 
@@ -36,6 +37,8 @@ class IListTemplate<T extends ItemEntity> extends ListTemplate<T> {
   @override
   final Permissions listPermission;
 
+  final bool showBackButton;
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -45,7 +48,7 @@ class IListTemplate<T extends ItemEntity> extends ListTemplate<T> {
         appBar: iAppBar(
           context: context,
           title: cubit.repository.title ?? l10n.list,
-          showBackButton: false,
+          showBackButton: showBackButton,
         ),
         floatingActionButton:
             (!UserPermissions.hasPermission(createPermission) ||

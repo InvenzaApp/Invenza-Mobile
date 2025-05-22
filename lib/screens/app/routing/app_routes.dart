@@ -2,6 +2,7 @@ import 'package:app/app/routing/app_router.gr.dart';
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
 import 'package:app/guards/auth_guard.dart';
+import 'package:app/guards/organization_guard.dart';
 import 'package:app/screens/app/screens/settings/routing/settings_routes.dart';
 import 'package:app/screens/app/screens/tasks/routing/tasks_routes.dart';
 import 'package:app/screens/app/screens/team/routing/team_routes.dart';
@@ -15,6 +16,7 @@ abstract class AppRoutes {
             AuthGuard(
               userCubit: inject<UserCubit>(),
             ),
+            OrganizationGuard(),
           ],
           page: AppRoute.page,
           children: [

@@ -1,6 +1,7 @@
 import 'package:app/di.dart';
 import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
+import 'package:app/extensions/text_extension.dart';
 import 'package:app/features/group/models/group.dart';
 import 'package:app/features/group/network/groups_remote_data_source.dart';
 import 'package:app/features/group/network/groups_repository.dart';
@@ -35,7 +36,7 @@ class GroupsShowPage extends StatelessWidget {
           padding: mediumPadding,
           child: SingleChildScrollView(
             child: Column(
-              spacing: mediumValue,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ICard(
                   children: [
@@ -51,12 +52,21 @@ class GroupsShowPage extends StatelessWidget {
                     ],
                   ],
                 ),
-                Column(
-                  spacing: smallValue,
-                  children: group.usersList!.map((item){
-                    return GroupsShowWidget(user: item);
-                  }).toList(),
-                ),
+                SizedBox(height: largeValue),
+                if(group.usersList!.isNotEmpty)...[
+                  Text(
+                    context.l10n.groups_show_users,
+                    style: context.bodyMedium,
+                  ),
+                  SizedBox(height: smallValue),
+                  Column(
+                    spacing: smallValue,
+                    children: group.usersList!.map((item){
+                      return GroupsShowWidget(user: item);
+                    }).toList(),
+                  ),
+                  SizedBox(height: largeValue),
+                ],
               ],
             ),
           ),

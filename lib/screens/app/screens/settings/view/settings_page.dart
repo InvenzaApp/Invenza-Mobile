@@ -7,6 +7,7 @@ import 'package:app/enums/permissions.dart';
 import 'package:app/extensions/app_localizations.dart';
 import 'package:app/extensions/confirm_extension.dart';
 import 'package:app/screens/app/screens/settings/widgets/settings_account_widget.dart';
+import 'package:app/screens/app/screens/settings/widgets/settings_organization_widget.dart';
 import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_list_tile/i_list_tile.dart';
 import 'package:app/shared/widgets/i_logo_widget.dart';
@@ -26,21 +27,23 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: iAppBar(
         context: context,
-        title: l10n.settings_app_bar,
+        title: l10n.settings_app_bar_title,
         showBackButton: false,
       ),
-      body: Column(
-        children: [
-          const SettingsAccountWidget(),
-          Expanded(
-            child: Padding(
-              padding: mediumHorizontalPadding,
-              child: IListTile(
+      body: Padding(
+        padding: mediumPadding,
+        child: SingleChildScrollView(
+          child: Column(
+            spacing: mediumValue,
+            children: [
+              const SettingsAccountWidget(),
+              const SettingsOrganizationWidget(),
+              IListTileWidget(
                 children: [
                   if (UserPermissions.hasPermission(
                     Permissions.other_account_show,
                   )) ...[
-                    IListTileItem(
+                    IListTile(
                       title: l10n.settings_account_title,
                       icon: Icons.person,
                       onPressed: () => context.pushRoute(const AccountRoute()),
@@ -49,30 +52,29 @@ class SettingsPage extends StatelessWidget {
                   if (UserPermissions.hasPermission(
                     Permissions.show_organization,
                   )) ...[
-                    IListTileItem(
+                    IListTile(
                       title: l10n.settings_organization_title,
                       icon: Icons.business,
                       onPressed: () =>
                           context.pushRoute(const OrganizationShowRoute()),
                     ),
                   ],
-                  IListTileItem(
+                  IListTile(
                     title: l10n.settings_theme_title,
                     icon: Icons.dark_mode,
                     onPressed: () => context.pushRoute(const ThemeRoute()),
                   ),
-                  IListTileItem(
+                  IListTile(
                     title: l10n.settings_language_title,
                     icon: Icons.g_translate,
                     onPressed: () => context.pushRoute(const LanguageRoute()),
                   ),
-                  IListTileItem(
+                  IListTile(
                     title: l10n.settings_password_title,
                     icon: Icons.password,
-                    onPressed: () =>
-                        context.pushRoute(const ChangePasswordRoute()),
+                    onPressed: () => context.pushRoute(const ChangePasswordRoute()),
                   ),
-                  IListTileItem(
+                  IListTile(
                     title: l10n.settings_license_title,
                     icon: Icons.policy,
                     onPressed: () => Navigator.of(context).push(
@@ -83,17 +85,16 @@ class SettingsPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  IListTileItem(
+                  IListTile(
                     title: l10n.settings_logout_title,
                     icon: Icons.logout,
                     onPressed: () async {
                       final userCubit = context.read<UserCubit>();
-                      final success =
-                          await context.showConfirm(l10n.logout_confirm);
-
+                      final success = await context.showConfirm(l10n.logout_confirm);
+              
                       if (success != null && success) {
                         unawaited(userCubit.signOut());
-
+              
                         if (context.mounted) {
                           await context.replaceRoute(const LoginRoute());
                         }
@@ -102,9 +103,9 @@ class SettingsPage extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

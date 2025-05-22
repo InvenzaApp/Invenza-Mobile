@@ -28,6 +28,7 @@ class TasksListPage extends StatelessWidget {
       widget: (context, item) {
         return TasksListWidget(task: item);
       },
+      showBackButton: false,
     );
   }
 }

@@ -13,50 +13,34 @@ class SettingsAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
-        return Container(
-          padding: mediumPadding,
-          decoration: BoxDecoration(
-            color: context.surface,
-          ),
-          child: Container(
-            padding: mediumPadding,
-            decoration: BoxDecoration(
-              color: context.container,
-              borderRadius: mediumRadius,
-              border: Border.all(color: context.outline),
+        final user = state.userResult?.maybeValue;
+        return Column(
+          children: [
+            Container(
+              padding: mediumPadding,
+              decoration: BoxDecoration(
+                color: context.primary,
+                borderRadius: mediumRadius,
+              ),
+              child: Icon(
+                Icons.person,
+                color: context.onPrimary,
+                size: xxLargeValue,
+              ),
             ),
-            child: Row(
-              spacing: mediumValue,
-              children: [
-                Container(
-                  padding: smallPadding,
-                  decoration: BoxDecoration(
-                    color: context.primary,
-                    borderRadius: smallRadius,
-                  ),
-                  child: Icon(
-                    Icons.person,
-                    color: context.onPrimary,
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      state.userResult?.maybeValue?.title ?? '',
-                      style: context.bodyMedium,
-                    ),
-                    Text(
-                      state.userResult?.maybeValue?.email ?? '',
-                      style: context.bodySmall.copyWith(
-                        color: context.onSurfaceVariant,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+            SizedBox(height: smallValue),
+            Text(
+              user?.title ?? '',
+              style: context.titleLarge,
             ),
-          ),
+            Text(
+              user?.email ?? '',
+              style: context.bodyMedium.copyWith(
+                color: context.onSurfaceVariant,
+              ),
+            ),
+            SizedBox(height: largeValue),
+          ],
         );
       },
     );

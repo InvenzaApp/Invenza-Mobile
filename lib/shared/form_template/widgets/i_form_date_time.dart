@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-class IFormDateTime extends IFormStatelessWidget {
+class IFormDateTime extends IFormStatefulWidget {
   const IFormDateTime({
     required this.name,
     this.label,
@@ -23,23 +23,62 @@ class IFormDateTime extends IFormStatelessWidget {
   final List<FormFieldValidator<DateTime>> validators;
 
   @override
+  State<StatefulWidget> createState() => _IFormDateTimeState();
+}
+
+class _IFormDateTimeState extends State<IFormDateTime> {
+  bool showingDelete = false;
+
+  final _formKey = GlobalKey<FormBuilderFieldState<dynamic, dynamic>>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    if(widget.initialValue != null){
+      setState(() {
+        showingDelete = true;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if(label != null)
+        if (widget.label != null)
           Text(
-            label!,
+            widget.label!,
             style: context.bodyMedium,
           ),
         FormBuilderDateTimePicker(
-          name: name,
+          key: _formKey,
+          name: widget.name,
           decoration: InputDecoration(
-            hintText: placeholder,
+            hintText: widget.placeholder,
+            suffixIcon: showingDelete
+                ? IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _formKey.currentState?.didChange(null);
+                        showingDelete = false;
+                      });
+                    },
+                    icon: const Icon(Icons.close),
+                  )
+                : null,
           ),
-          initialValue: initialValue,
-          valueTransformer: valueTransformer,
-          validator: FormBuilderValidators.compose(validators),
+          onChanged: (value) {
+            if(value != null) {
+              setState(() {
+                showingDelete = true;
+              });
+            }
+          },
+          initialValue: widget.initialValue,
+          valueTransformer: widget.valueTransformer,
+          validator: FormBuilderValidators.compose(widget.validators),
         ),
       ],
     );

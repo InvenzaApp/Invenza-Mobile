@@ -9,8 +9,8 @@ import 'package:app/features/organization/network/organization_repository.dart';
 import 'package:app/screens/app/screens/settings/screens/organization/cubit/organization_cubit.dart';
 import 'package:app/screens/app/screens/settings/screens/organization/cubit/organization_state.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
-import 'package:app/shared/widgets/i_app_bar.dart';
 import 'package:app/shared/widgets/i_button.dart';
+import 'package:app/shared/widgets/one_ui_scroll_view.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -45,15 +45,13 @@ class OrganizationUpdatePage extends StatelessWidget
         final organization = userCubit.state.organizationResult?.maybeValue;
 
         return Scaffold(
-          appBar: iAppBar(
-            context: context,
-            title: l10n.organization_update_app_bar,
-          ),
-          body: FormBuilder(
-            key: _formKey,
-            child: Column(
-              children: [
-                Expanded(
+          body: OneUIScrollView(
+            title: l10n.organization_update_app_bar_title,
+            subtitle: l10n.organization_update_app_bar_subtitle,
+            slivers: [
+              SliverToBoxAdapter(
+                child: FormBuilder(
+                  key: _formKey,
                   child: Padding(
                     padding: mediumPadding,
                     child: SingleChildScrollView(
@@ -64,7 +62,7 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'title',
                             label: l10n.organization_update_title_label,
                             placeholder:
-                                l10n.organization_update_title_placeholder,
+                            l10n.organization_update_title_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -74,7 +72,7 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'street',
                             label: l10n.organization_update_street_title,
                             placeholder:
-                                l10n.organization_update_street_placeholder,
+                            l10n.organization_update_street_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -84,7 +82,7 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'buildingNumber',
                             label: l10n.organization_update_building_title,
                             placeholder:
-                                l10n.organization_update_building_placeholder,
+                            l10n.organization_update_building_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -94,14 +92,14 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'apartmentNumber',
                             label: l10n.organization_update_apartment_title,
                             placeholder:
-                                l10n.organization_update_apartment_placeholder,
+                            l10n.organization_update_apartment_placeholder,
                             initialValue: organization?.address.apartmentNumber,
                           ),
                           IFormTextField(
                             name: 'postCode',
                             label: l10n.organization_update_post_code_title,
                             placeholder:
-                                l10n.organization_update_post_code_placeholder,
+                            l10n.organization_update_post_code_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -111,7 +109,7 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'city',
                             label: l10n.organization_update_city_title,
                             placeholder:
-                                l10n.organization_update_city_placeholder,
+                            l10n.organization_update_city_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -121,7 +119,7 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'country',
                             label: l10n.organization_update_country_title,
                             placeholder:
-                                l10n.organization_update_country_placeholder,
+                            l10n.organization_update_country_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -141,40 +139,41 @@ class OrganizationUpdatePage extends StatelessWidget
                     ),
                   ),
                 ),
-                Container(
-                  padding: largePadding,
-                  decoration: BoxDecoration(
-                    color: context.container,
-                  ),
-                  child: Column(
-                    children: [
-                      IButton(
-                        isPending: state.isLoading,
-                        label: l10n.update,
-                        onPressed: () async {
-                          if (_formKey.currentState!.saveAndValidate()) {
-                            final payload = _formKey.currentState!.value;
-                            final cubit = context.read<OrganizationCubit>();
+              ),
+            ],
+          ),
+          bottomNavigationBar: Container(
+            padding: largePadding,
+            decoration: BoxDecoration(
+              color: context.container,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IButton(
+                  isPending: state.isLoading,
+                  label: l10n.update,
+                  onPressed: () async {
+                    if (_formKey.currentState!.saveAndValidate()) {
+                      final payload = _formKey.currentState!.value;
+                      final cubit = context.read<OrganizationCubit>();
 
-                            final success =
-                                await cubit.updateOrganization(payload);
+                      final success =
+                      await cubit.updateOrganization(payload);
 
-                            if (success && context.mounted) {
-                              unawaited(userCubit.fetchOrganization());
-                              await context.maybePop();
-                            } else {
-                              if (!context.mounted) return;
-                              context.showToast(
-                                l10n.organization_update_unknown_error,
-                              );
-                            }
-                          }
-                        },
-                      ),
-                      SizedBox(height: mediumValue),
-                    ],
-                  ),
+                      if (success && context.mounted) {
+                        unawaited(userCubit.fetchOrganization());
+                        await context.maybePop();
+                      } else {
+                        if (!context.mounted) return;
+                        context.showToast(
+                          l10n.organization_update_unknown_error,
+                        );
+                      }
+                    }
+                  },
                 ),
+                SizedBox(height: mediumValue),
               ],
             ),
           ),

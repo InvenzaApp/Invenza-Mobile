@@ -27,6 +27,18 @@ class UserAuthRepository {
         .asResult<Organization>(fromJson: Organization.fromJson);
   }
 
+  Future<Result<bool>> selectOrganization(int organizationId) async{
+    return service
+        .selectOrganization(organizationId)
+        .asResult<bool>();
+  }
+
+  Future<Result<List<Organization>>> getOrganizations() async{
+    return service
+        .getOrganizations()
+        .asListResult<Organization>(fromJson: Organization.fromJson);
+  }
+
   Future<bool> updatePassword(Json payload) async{
     return service
         .changePassword(payload)
