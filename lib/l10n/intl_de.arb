@@ -277,5 +277,21 @@
 
   "organization_select_label": "Organisationen",
   "organization_select_title": "Zusätzliche Organisationen",
-  "organization_select_subtitle": "Klicken Sie, um zusätzliche Organisationen auszuwählen"
+  "organization_select_subtitle": "Klicken Sie, um zusätzliche Organisationen auszuwählen",
+
+  "organization_create_app_bar": "Organisation erstellen",
+  "organization_create_title_label": "Name der Organisation",
+  "organization_create_title_placeholder": "Name eingeben",
+  "organization_create_street_label": "Straße",
+  "organization_create_street_placeholder": "Straße eingeben",
+  "organization_create_building_label": "Hausnummer",
+  "organization_create_building_placeholder": "Nummer eingeben",
+  "organization_create_apartment_label": "Wohnungsnummer (optional)",
+  "organization_create_apartment_placeholder": "Nummer eingeben",
+  "organization_create_post_code_label": "Postleitzahl",
+  "organization_create_post_code_placeholder": "PLZ eingeben",
+  "organization_create_city_label": "Stadt",
+  "organization_create_city_placeholder": "Stadt eingeben",
+  "organization_create_country_label": "Land",
+  "organization_create_country_placeholder": "Land eingeben"
 }

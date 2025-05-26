@@ -16,7 +16,8 @@ class SettingsOrganizationWidget extends StatelessWidget {
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
         return InkWell(
-          onTap: () => context.router.replaceAll([const OrganizationsRoute()]),
+          onTap: () =>
+              context.router.replaceAll([const OrganizationsListRoute()]),
           child: Ink(
             padding: mediumPadding,
             decoration: BoxDecoration(
@@ -34,17 +35,16 @@ class SettingsOrganizationWidget extends StatelessWidget {
                     color: context.primary,
                   ),
                 ),
-                Expanded(
-                  child: Text(
-                    state.organizationsList
-                        .firstWhere(
-                          (e) => e.id == state.selectedOrganizationId!,
-                        )
-                        .title,
-                    style: context.bodyMedium,
+                if (state.organizationsList.isNotEmpty) ...[
+                  Expanded(
+                    child: Text(
+                      state.organizationsList
+                          .firstWhere((e) => e.id == state.selectedOrganizationId).title,
+                      style: context.bodyMedium,
+                    ),
                   ),
-                ),
-                const Icon(Icons.chevron_right),
+                  const Icon(Icons.chevron_right),
+                ],
               ],
             ),
           ),

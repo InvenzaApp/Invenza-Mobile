@@ -14,14 +14,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
-class OrganizationsPage extends StatefulWidget {
-  const OrganizationsPage({super.key});
+class OrganizationsListPage extends StatefulWidget {
+  const OrganizationsListPage({super.key});
 
   @override
-  State<OrganizationsPage> createState() => _OrganizationsPageState();
+  State<OrganizationsListPage> createState() => _OrganizationsListPageState();
 }
 
-class _OrganizationsPageState extends State<OrganizationsPage> {
+class _OrganizationsListPageState extends State<OrganizationsListPage> {
   @override
   void initState() {
     super.initState();
@@ -30,16 +30,32 @@ class _OrganizationsPageState extends State<OrganizationsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.read<UserCubit>().state.userResult!.maybeValue!;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(context.l10n.organization_app_bar),
         centerTitle: false,
         actions: [
+          if (user.superadmin) ...[
+            IconButton(
+              onPressed: () async {
+                final userCubit = context.read<UserCubit>();
+                final requireUpdate =
+                    await context.pushRoute(const OrganizationCreateRoute());
+
+                if (requireUpdate == true) {
+                  await userCubit.fetchOrganizations();
+                }
+              },
+              icon: const Icon(Icons.add_business_outlined),
+            ),
+          ],
           IconButton(
             onPressed: () async {
               final userCubit = context.read<UserCubit>();
               final success =
-              await context.showConfirm(context.l10n.logout_confirm);
+                  await context.showConfirm(context.l10n.logout_confirm);
 
               if (success != null && success) {
                 unawaited(userCubit.signOut());
@@ -58,16 +74,24 @@ class _OrganizationsPageState extends State<OrganizationsPage> {
       ),
       body: BlocBuilder<UserCubit, UserState>(
         builder: (context, state) {
-          if (state.isLoading) {
+          if (state.isFetchingOrganizations) {
             return const ILoadingWidget();
           }
 
-          return SingleChildScrollView(
-            child: Column(
-              children: state.organizationsList.map((organization) {
+          return RefreshIndicator(
+            onRefresh: () async {
+              await context.read<UserCubit>().fetchOrganizations();
+            },
+            child: ListView.builder(
+              itemCount: state.organizationsList.length,
+              itemBuilder: (context, index) {
+                final organization = state.organizationsList[index];
+
                 return InkWell(
                   onTap: () async {
-                    await context.read<UserCubit>().selectOrganization(organization.id);
+                    await context
+                        .read<UserCubit>()
+                        .selectOrganization(organization.id);
 
                     if(!context.mounted) return;
 
@@ -97,7 +121,7 @@ class _OrganizationsPageState extends State<OrganizationsPage> {
                     ),
                   ),
                 );
-              }).toList(),
+              },
             ),
           );
         },

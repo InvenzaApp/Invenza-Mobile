@@ -277,5 +277,21 @@
 
   "organization_select_label": "Organizaciones",
   "organization_select_title": "Organizaciones adicionales",
-  "organization_select_subtitle": "Haz clic para seleccionar organizaciones adicionales"
+  "organization_select_subtitle": "Haz clic para seleccionar organizaciones adicionales",
+
+  "organization_create_app_bar": "Crear Organización",
+  "organization_create_title_label": "Nombre de la organización",
+  "organization_create_title_placeholder": "Escribe el nombre",
+  "organization_create_street_label": "Calle",
+  "organization_create_street_placeholder": "Escribe la calle",
+  "organization_create_building_label": "Número de edificio",
+  "organization_create_building_placeholder": "Escribe el número",
+  "organization_create_apartment_label": "Número de apartamento (opcional)",
+  "organization_create_apartment_placeholder": "Escribe el número",
+  "organization_create_post_code_label": "Código postal",
+  "organization_create_post_code_placeholder": "Escribe el código",
+  "organization_create_city_label": "Ciudad",
+  "organization_create_city_placeholder": "Escribe la ciudad",
+  "organization_create_country_label": "País",
+  "organization_create_country_placeholder": "Escribe el país"
 }

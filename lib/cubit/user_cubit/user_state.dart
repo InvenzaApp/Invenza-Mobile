@@ -10,6 +10,7 @@ class UserState extends Equatable {
     this.isLoading = false,
     this.selectedOrganizationId,
     this.organizationsList = const [],
+    this.isFetchingOrganizations = false,
   });
 
   final Result<User>? userResult;
@@ -17,6 +18,7 @@ class UserState extends Equatable {
   final bool isLoading;
   final int? selectedOrganizationId;
   final List<Organization> organizationsList;
+  final bool isFetchingOrganizations;
 
   UserState copyWith({
     Result<User>? userResult,
@@ -24,6 +26,7 @@ class UserState extends Equatable {
     bool? isLoading,
     int? selectedOrganizationId,
     List<Organization>? organizationsList,
+    bool? isFetchingOrganizations,
   }) =>
       UserState(
         userResult: userResult ?? this.userResult,
@@ -32,6 +35,8 @@ class UserState extends Equatable {
         selectedOrganizationId:
             selectedOrganizationId ?? this.selectedOrganizationId,
         organizationsList: organizationsList ?? this.organizationsList,
+        isFetchingOrganizations:
+            isFetchingOrganizations ?? this.isFetchingOrganizations,
       );
 
   @override
@@ -41,5 +46,6 @@ class UserState extends Equatable {
         isLoading,
         selectedOrganizationId,
         organizationsList,
+        isFetchingOrganizations,
       ];
 }

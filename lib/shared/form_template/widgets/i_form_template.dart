@@ -15,11 +15,13 @@ class IFormTemplate extends StatefulWidget {
     required this.useCase,
     required this.fields,
     required this.onSubmit,
+    this.appbarTitle,
     super.key,
   });
 
   final UseCase useCase;
   final List<IFormWidget> fields;
+  final String? appbarTitle;
   final void Function(Result<int> resourceId) onSubmit;
 
   @override
@@ -36,7 +38,9 @@ class _IFormTemplateState extends State<IFormTemplate> {
 
     return Scaffold(
       body: OneUIScrollView(
-        title: widget.useCase.cockpitRepository.title ?? l10n.form,
+        title: widget.appbarTitle ??
+            widget.useCase.cockpitRepository.title ??
+            l10n.form,
         subtitle: l10n.form,
         slivers: [
           SliverToBoxAdapter(
@@ -65,9 +69,8 @@ class _IFormTemplateState extends State<IFormTemplate> {
           children: [
             IButton(
               isPending: isLoading,
-              label: widget.useCase is CreateUseCase
-                  ? l10n.create
-                  : l10n.update,
+              label:
+                  widget.useCase is CreateUseCase ? l10n.create : l10n.update,
               onPressed: () async {
                 if (_formKey.currentState!.saveAndValidate()) {
                   setState(() {
