@@ -277,5 +277,21 @@
 
   "organization_select_label": "組織",
   "organization_select_title": "追加の組織",
-  "organization_select_subtitle": "クリックして追加の組織を選択"
+  "organization_select_subtitle": "クリックして追加の組織を選択",
+
+  "organization_create_app_bar": "組織を作成",
+  "organization_create_title_label": "組織名",
+  "organization_create_title_placeholder": "名前を入力",
+  "organization_create_street_label": "通り",
+  "organization_create_street_placeholder": "通りを入力",
+  "organization_create_building_label": "建物番号",
+  "organization_create_building_placeholder": "番号を入力",
+  "organization_create_apartment_label": "アパート番号（任意）",
+  "organization_create_apartment_placeholder": "番号を入力",
+  "organization_create_post_code_label": "郵便番号",
+  "organization_create_post_code_placeholder": "郵便番号を入力",
+  "organization_create_city_label": "市町村",
+  "organization_create_city_placeholder": "市町村を入力",
+  "organization_create_country_label": "国",
+  "organization_create_country_placeholder": "国を入力"
 }

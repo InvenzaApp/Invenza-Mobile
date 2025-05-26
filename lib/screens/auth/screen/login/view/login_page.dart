@@ -54,7 +54,7 @@ class LoginPage extends StatelessWidget {
           }
         } else if ((state.userResult?.isSuccess ?? false) && !_hasNavigated) {
           _hasNavigated = true;
-          await context.replaceRoute(const OrganizationsRoute());
+          await context.replaceRoute(const OrganizationsListRoute());
         }
       },
       child: Scaffold(

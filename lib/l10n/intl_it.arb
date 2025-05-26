@@ -277,5 +277,21 @@
 
   "organization_select_label": "Organizzazioni",
   "organization_select_title": "Organizzazioni aggiuntive",
-  "organization_select_subtitle": "Fai clic per selezionare organizzazioni aggiuntive"
+  "organization_select_subtitle": "Fai clic per selezionare organizzazioni aggiuntive",
+
+  "organization_create_app_bar": "Crea Organizzazione",
+  "organization_create_title_label": "Nome organizzazione",
+  "organization_create_title_placeholder": "Inserisci nome",
+  "organization_create_street_label": "Via",
+  "organization_create_street_placeholder": "Inserisci via",
+  "organization_create_building_label": "Numero civico",
+  "organization_create_building_placeholder": "Inserisci numero",
+  "organization_create_apartment_label": "Numero interno (opzionale)",
+  "organization_create_apartment_placeholder": "Inserisci numero",
+  "organization_create_post_code_label": "Codice postale",
+  "organization_create_post_code_placeholder": "Inserisci codice",
+  "organization_create_city_label": "Città",
+  "organization_create_city_placeholder": "Inserisci città",
+  "organization_create_country_label": "Paese",
+  "organization_create_country_placeholder": "Inserisci paese"
 }

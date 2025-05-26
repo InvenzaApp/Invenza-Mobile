@@ -277,5 +277,21 @@
 
   "organization_select_label": "Організації",
   "organization_select_title": "Додаткові організації",
-  "organization_select_subtitle": "Натисніть, щоб вибрати додаткові організації"
+  "organization_select_subtitle": "Натисніть, щоб вибрати додаткові організації",
+
+  "organization_create_app_bar": "Створити організацію",
+  "organization_create_title_label": "Назва організації",
+  "organization_create_title_placeholder": "Введіть назву",
+  "organization_create_street_label": "Вулиця",
+  "organization_create_street_placeholder": "Введіть вулицю",
+  "organization_create_building_label": "Номер будинку",
+  "organization_create_building_placeholder": "Введіть номер",
+  "organization_create_apartment_label": "Номер квартири (необов'язково)",
+  "organization_create_apartment_placeholder": "Введіть номер",
+  "organization_create_post_code_label": "Поштовий індекс",
+  "organization_create_post_code_placeholder": "Введіть індекс",
+  "organization_create_city_label": "Місто",
+  "organization_create_city_placeholder": "Введіть місто",
+  "organization_create_country_label": "Країна",
+  "organization_create_country_placeholder": "Введіть країну"
 }
