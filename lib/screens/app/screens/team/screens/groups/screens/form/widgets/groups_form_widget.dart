@@ -10,6 +10,7 @@ import 'package:app/features/user/network/users_remote_data_source.dart';
 import 'package:app/features/user/network/users_repository.dart';
 import 'package:app/shared/form_template/i_form_template.dart';
 import 'package:app/shared/select_template/widgets/i_form_multiple_select_widget.dart';
+import 'package:app/shared/select_template/widgets/i_form_organization_select_widget.dart';
 import 'package:app/shared/widgets/i_form_skeletonizer.dart';
 import 'package:app/shared/widgets/i_scaffold_error_widget.dart';
 import 'package:auto_route/auto_route.dart';
@@ -92,6 +93,9 @@ class _GroupsFormWidgetState extends State<GroupsFormWidget> {
                           resources?.usersList?.map((e) => e.id).toList(),
                     ),
                   if (user?.admin ?? false) ...[
+                    IFormOrganizationSelectWidget(
+                      initialList: resources?.organizationsIdList,
+                    ),
                     IFormCheckbox(
                       name: 'locked',
                       title: l10n.lock_title,

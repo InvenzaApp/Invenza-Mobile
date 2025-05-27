@@ -17,11 +17,20 @@ class GroupsCreateUseCase extends CreateUseCase {
   @override
   Future<Result<int>> invoke(Json payload) async {
     final creatorId = userCubit.state.userResult!.maybeValue!.id;
+    final defaultOrganizationId = userCubit.state.selectedOrganizationId!;
 
     final mutablePayload = Json.from(payload);
 
     final existingUsers = (mutablePayload['usersIdList'] as List<int>?) ?? [];
     mutablePayload['usersIdList'] = [creatorId, ...existingUsers];
+
+    final selectedOrganizations =
+        (mutablePayload['organizationsIdList'] as List<int>?) ?? [];
+
+    mutablePayload['organizationsIdList'] = [
+      defaultOrganizationId,
+      ...selectedOrganizations,
+    ];
 
     return cockpitRepository.create(mutablePayload);
   }
