@@ -22,14 +22,26 @@ class GroupsUpdateUseCase extends UpdateUseCase {
   @override
   Future<Result<int>> invoke(Json payload) async {
     final creatorId = userCubit.state.userResult!.maybeValue!.id;
+    final defaultOrganizationId = userCubit.state.selectedOrganizationId!;
 
     final mutablePayload = Map<String, dynamic>.from(payload);
 
     final existingUsers = (mutablePayload['usersIdList'] as List<int>?) ?? [];
+
     mutablePayload['usersIdList'] = [
       if (!existingUsers.contains(creatorId)) creatorId,
       ...existingUsers,
     ];
+
+    final selectedOrganizations =
+        (mutablePayload['organizationsIdList'] as List<int>?) ?? [];
+
+    mutablePayload['organizationsIdList'] = [
+      if (!selectedOrganizations.contains(defaultOrganizationId))
+        defaultOrganizationId,
+      ...selectedOrganizations,
+    ];
+
 
     return cockpitRepository.update(resourceId, mutablePayload);
   }

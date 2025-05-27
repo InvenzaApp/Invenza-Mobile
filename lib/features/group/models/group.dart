@@ -12,6 +12,7 @@ class Group extends ItemEntity with EquatableMixin {
     required this.id,
     required this.title,
     required this.locked,
+    required this.organizationsIdList,
     this.usersList,
   });
 
@@ -22,9 +23,16 @@ class Group extends ItemEntity with EquatableMixin {
   @override
   final String title;
   final List<User>? usersList;
+  final List<int> organizationsIdList;
   @override
   final bool locked;
 
   @override
-  List<Object?> get props => [id, title, usersList, locked];
+  List<Object?> get props => [
+        id,
+        title,
+        usersList,
+        locked,
+        organizationsIdList,
+      ];
 }
