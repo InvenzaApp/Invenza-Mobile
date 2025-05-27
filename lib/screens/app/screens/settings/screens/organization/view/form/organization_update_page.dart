@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:app/cubit/user_cubit/user_cubit.dart';
 import 'package:app/di.dart';
 import 'package:app/extensions/app_localizations.dart';
@@ -62,7 +60,7 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'title',
                             label: l10n.organization_update_title_label,
                             placeholder:
-                            l10n.organization_update_title_placeholder,
+                                l10n.organization_update_title_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -72,7 +70,7 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'street',
                             label: l10n.organization_update_street_title,
                             placeholder:
-                            l10n.organization_update_street_placeholder,
+                                l10n.organization_update_street_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -82,7 +80,7 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'buildingNumber',
                             label: l10n.organization_update_building_title,
                             placeholder:
-                            l10n.organization_update_building_placeholder,
+                                l10n.organization_update_building_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -92,14 +90,14 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'apartmentNumber',
                             label: l10n.organization_update_apartment_title,
                             placeholder:
-                            l10n.organization_update_apartment_placeholder,
+                                l10n.organization_update_apartment_placeholder,
                             initialValue: organization?.address.apartmentNumber,
                           ),
                           IFormTextField(
                             name: 'postCode',
                             label: l10n.organization_update_post_code_title,
                             placeholder:
-                            l10n.organization_update_post_code_placeholder,
+                                l10n.organization_update_post_code_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -109,7 +107,7 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'city',
                             label: l10n.organization_update_city_title,
                             placeholder:
-                            l10n.organization_update_city_placeholder,
+                                l10n.organization_update_city_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -119,7 +117,7 @@ class OrganizationUpdatePage extends StatelessWidget
                             name: 'country',
                             label: l10n.organization_update_country_title,
                             placeholder:
-                            l10n.organization_update_country_placeholder,
+                                l10n.organization_update_country_placeholder,
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -158,11 +156,14 @@ class OrganizationUpdatePage extends StatelessWidget
                       final payload = _formKey.currentState!.value;
                       final cubit = context.read<OrganizationCubit>();
 
-                      final success =
-                      await cubit.updateOrganization(payload);
+                      final success = await cubit.updateOrganization(
+                        organization!.id,
+                        payload,
+                        () async =>
+                            context.read<UserCubit>().fetchOrganization(),
+                      );
 
                       if (success && context.mounted) {
-                        unawaited(userCubit.fetchOrganization());
                         await context.maybePop();
                       } else {
                         if (!context.mounted) return;

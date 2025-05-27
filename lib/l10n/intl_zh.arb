@@ -277,5 +277,21 @@
 
   "organization_select_label": "组织",
   "organization_select_title": "其他组织",
-  "organization_select_subtitle": "点击选择其他组织"
+  "organization_select_subtitle": "点击选择其他组织",
+
+  "organization_create_app_bar": "创建组织",
+  "organization_create_title_label": "组织名称",
+  "organization_create_title_placeholder": "输入名称",
+  "organization_create_street_label": "街道",
+  "organization_create_street_placeholder": "输入街道",
+  "organization_create_building_label": "门牌号",
+  "organization_create_building_placeholder": "输入门牌号",
+  "organization_create_apartment_label": "公寓号（可选）",
+  "organization_create_apartment_placeholder": "输入公寓号",
+  "organization_create_post_code_label": "邮政编码",
+  "organization_create_post_code_placeholder": "输入邮政编码",
+  "organization_create_city_label": "城市",
+  "organization_create_city_placeholder": "输入城市",
+  "organization_create_country_label": "国家",
+  "organization_create_country_placeholder": "输入国家"
 }

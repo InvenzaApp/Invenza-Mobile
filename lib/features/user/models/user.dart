@@ -18,6 +18,7 @@ class User extends ItemEntity with EquatableMixin {
     required this.groupsIdList,
     required this.permissions,
     required this.admin,
+    required this.superadmin,
     required this.locked,
     this.groups,
   });
@@ -37,6 +38,7 @@ class User extends ItemEntity with EquatableMixin {
   final List<Permissions> permissions;
   final List<Group>? groups;
   final bool admin;
+  final bool superadmin;
   @override
   final bool locked;
 

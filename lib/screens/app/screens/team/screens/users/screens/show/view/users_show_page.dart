@@ -9,7 +9,8 @@ import 'package:app/features/user/network/users_repository.dart';
 import 'package:app/screens/app/screens/team/screens/users/screens/show/cubits/users_show_cubit.dart';
 import 'package:app/screens/app/screens/team/screens/users/screens/show/widgets/users_show_group_widget.dart';
 import 'package:app/shared/show_template/i_show_template.dart';
-import 'package:app/shared/widgets/i_card/i_card.dart';
+import 'package:app/shared/widgets/i_admin_widget.dart';
+import 'package:app/shared/widgets/i_lock_widget.dart';
 import 'package:app/shared/widgets/i_permission_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/annotations.dart';
@@ -23,7 +24,8 @@ class UsersShowPage extends StatelessWidget {
   static final userCubit = inject<UserCubit>();
 
   bool isDeleteAndEditEnabled() {
-    if (userCubit.state.organizationResult?.maybeValue?.admin.id == resourceId) {
+    if (userCubit.state.organizationResult?.maybeValue?.admin.id ==
+        resourceId) {
       return false;
     }
 
@@ -52,40 +54,23 @@ class UsersShowPage extends StatelessWidget {
         final user = cubit.data;
 
         return Padding(
-          padding: mediumPadding,
+          padding: xLargePadding,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                ICard(
-                  children: [
-                    ICardItem(
-                      label: l10n.users_show_name,
-                      value: user.name,
-                    ),
-                    ICardItem(
-                      label: l10n.users_show_lastname,
-                      value: user.lastname,
-                    ),
-                    ICardItem(
-                      label: l10n.users_show_email,
-                      value: user.email,
-                    ),
-                    if (user.locked) ...[
-                      ICardItem(
-                        label: l10n.locked,
-                        value: l10n.yes,
-                      ),
-                    ],
-                    if (user.admin) ...[
-                      ICardItem(
-                        label: l10n.users_show_administrator,
-                        value: l10n.yes,
-                      ),
-                    ],
-                  ],
+                if(user.admin)...[
+                  const IAdminWidget(),
+                  SizedBox(height: mediumValue),
+                ],
+                IShowTitleWidget(
+                  text: user.title,
                 ),
+                IShowEmailWidget(text: user.email),
+                if(user.locked)...[
+                  const ILockWidget(),
+                ],
                 SizedBox(height: largeValue),
                 if (user.groups?.isNotEmpty ?? false) ...[
                   Text(

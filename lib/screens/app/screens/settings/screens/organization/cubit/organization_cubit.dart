@@ -10,10 +10,15 @@ class OrganizationCubit extends Cubit<OrganizationState> {
 
   final OrganizationRepository repository;
 
-  Future<bool> updateOrganization(Json payload) async{
+  Future<bool> updateOrganization(
+    int resourceId,
+    Json payload,
+    Future<void> Function() fetchOrganizationFunction,
+  ) async {
     emit(const OrganizationState(isLoading: true));
-    final success = await repository.updateOrganization(payload);
+    final success = await repository.update(resourceId, payload);
+    await fetchOrganizationFunction();
     emit(const OrganizationState(isLoading: false));
-    return success;
+    return success.isSuccess;
   }
 }

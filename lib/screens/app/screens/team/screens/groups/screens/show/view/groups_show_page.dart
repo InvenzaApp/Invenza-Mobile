@@ -8,7 +8,7 @@ import 'package:app/features/group/network/groups_repository.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/show/cubit/groups_show_cubit.dart';
 import 'package:app/screens/app/screens/team/screens/groups/screens/show/widgets/groups_show_widget.dart';
 import 'package:app/shared/show_template/i_show_template.dart';
-import 'package:app/shared/widgets/i_card/i_card.dart';
+import 'package:app/shared/widgets/i_lock_widget.dart';
 import 'package:app/variables.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
@@ -38,20 +38,12 @@ class GroupsShowPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ICard(
-                  children: [
-                    ICardItem(
-                      label: context.l10n.groups_show_name,
-                      value: group.title,
-                    ),
-                    if(group.locked)...[
-                      ICardItem(
-                        label: context.l10n.locked,
-                        value: context.l10n.yes,
-                      ),
-                    ],
-                  ],
+                IShowTitleWidget(
+                  text: group.title,
                 ),
+                if(group.locked)...[
+                  const ILockWidget(),
+                ],
                 SizedBox(height: largeValue),
                 if(group.usersList!.isNotEmpty)...[
                   Text(

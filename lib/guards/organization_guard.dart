@@ -16,7 +16,7 @@ class OrganizationGuard extends AutoRouteGuard {
       return;
     }
 
-    await router.replaceAll([const OrganizationsRoute()]);
+    await router.replaceAll([const OrganizationsListRoute()]);
     resolver.resolveNext(false, reevaluateNext: false);
   }
 }
