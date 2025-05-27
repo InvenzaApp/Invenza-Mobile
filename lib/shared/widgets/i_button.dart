@@ -1,4 +1,5 @@
 import 'package:app/extensions/color_extension.dart';
+import 'package:app/variables.dart';
 import 'package:flutter/material.dart';
 
 class IButton extends StatelessWidget {
@@ -48,10 +49,12 @@ class IButton extends StatelessWidget {
               ),
             )
           else ...[
-            if (leadingIcon != null)
+            if (leadingIcon != null)...[
               Icon(
                 leadingIcon,
               ),
+              SizedBox(width: smallValue),
+            ],
             Text(
               label,
             ),
