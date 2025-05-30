@@ -33,7 +33,7 @@ class GroupsShowPage extends StatelessWidget {
         final group = cubit.data;
 
         return Padding(
-          padding: mediumPadding,
+          padding: xLargePadding,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
